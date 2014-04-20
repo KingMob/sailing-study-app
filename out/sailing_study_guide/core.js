@@ -25,81 +25,81 @@ sailing_study_guide.core.answer_class = (function answer_class(answer){if(cljs.c
 }
 }
 });
-sailing_study_guide.core.answer_view = (function answer_view(answer,owner){if(typeof sailing_study_guide.core.t14176 !== 'undefined')
+sailing_study_guide.core.answer_view = (function answer_view(answer,owner){if(typeof sailing_study_guide.core.t14268 !== 'undefined')
 {} else
 {
 /**
 * @constructor
 */
-sailing_study_guide.core.t14176 = (function (owner,answer,answer_view,meta14177){
+sailing_study_guide.core.t14268 = (function (owner,answer,answer_view,meta14269){
 this.owner = owner;
 this.answer = answer;
 this.answer_view = answer_view;
-this.meta14177 = meta14177;
+this.meta14269 = meta14269;
 this.cljs$lang$protocol_mask$partition1$ = 0;
 this.cljs$lang$protocol_mask$partition0$ = 393216;
 })
-sailing_study_guide.core.t14176.cljs$lang$type = true;
-sailing_study_guide.core.t14176.cljs$lang$ctorStr = "sailing-study-guide.core/t14176";
-sailing_study_guide.core.t14176.cljs$lang$ctorPrWriter = (function (this__4010__auto__,writer__4011__auto__,opt__4012__auto__){return cljs.core._write.call(null,writer__4011__auto__,"sailing-study-guide.core/t14176");
+sailing_study_guide.core.t14268.cljs$lang$type = true;
+sailing_study_guide.core.t14268.cljs$lang$ctorStr = "sailing-study-guide.core/t14268";
+sailing_study_guide.core.t14268.cljs$lang$ctorPrWriter = (function (this__4010__auto__,writer__4011__auto__,opt__4012__auto__){return cljs.core._write.call(null,writer__4011__auto__,"sailing-study-guide.core/t14268");
 });
-sailing_study_guide.core.t14176.prototype.om$core$IRenderState$ = true;
-sailing_study_guide.core.t14176.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__14179){var self__ = this;
-var map__14180 = p__14179;var map__14180__$1 = ((cljs.core.seq_QMARK_.call(null,map__14180))?cljs.core.apply.call(null,cljs.core.hash_map,map__14180):map__14180);var choose_answer_chan = cljs.core.get.call(null,map__14180__$1,new cljs.core.Keyword(null,"choose-answer-chan","choose-answer-chan",2675027133));var ___$1 = this;return React.DOM.li({"className": clojure.string.join.call(null," ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["answer",sailing_study_guide.core.answer_class.call(null,self__.answer)], null)), "onClick": (function (){return cljs.core.async.put_BANG_.call(null,choose_answer_chan,self__.answer);
+sailing_study_guide.core.t14268.prototype.om$core$IRenderState$ = true;
+sailing_study_guide.core.t14268.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__14271){var self__ = this;
+var map__14272 = p__14271;var map__14272__$1 = ((cljs.core.seq_QMARK_.call(null,map__14272))?cljs.core.apply.call(null,cljs.core.hash_map,map__14272):map__14272);var choose_answer_chan = cljs.core.get.call(null,map__14272__$1,new cljs.core.Keyword(null,"choose-answer-chan","choose-answer-chan",2675027133));var ___$1 = this;return React.DOM.li({"className": clojure.string.join.call(null," ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["answer",sailing_study_guide.core.answer_class.call(null,self__.answer)], null)), "onClick": (function (e){return cljs.core.async.put_BANG_.call(null,choose_answer_chan,self__.answer);
 })},new cljs.core.Keyword(null,"text","text",1017460895).cljs$core$IFn$_invoke$arity$1(self__.answer));
 });
-sailing_study_guide.core.t14176.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_14178){var self__ = this;
-var _14178__$1 = this;return self__.meta14177;
+sailing_study_guide.core.t14268.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_14270){var self__ = this;
+var _14270__$1 = this;return self__.meta14269;
 });
-sailing_study_guide.core.t14176.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_14178,meta14177__$1){var self__ = this;
-var _14178__$1 = this;return (new sailing_study_guide.core.t14176(self__.owner,self__.answer,self__.answer_view,meta14177__$1));
+sailing_study_guide.core.t14268.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_14270,meta14269__$1){var self__ = this;
+var _14270__$1 = this;return (new sailing_study_guide.core.t14268(self__.owner,self__.answer,self__.answer_view,meta14269__$1));
 });
-sailing_study_guide.core.__GT_t14176 = (function __GT_t14176(owner__$1,answer__$1,answer_view__$1,meta14177){return (new sailing_study_guide.core.t14176(owner__$1,answer__$1,answer_view__$1,meta14177));
+sailing_study_guide.core.__GT_t14268 = (function __GT_t14268(owner__$1,answer__$1,answer_view__$1,meta14269){return (new sailing_study_guide.core.t14268(owner__$1,answer__$1,answer_view__$1,meta14269));
 });
 }
-return (new sailing_study_guide.core.t14176(owner,answer,answer_view,null));
+return (new sailing_study_guide.core.t14268(owner,answer,answer_view,null));
 });
-sailing_study_guide.core.quiz_question_view = (function quiz_question_view(quiz_question,owner){if(typeof sailing_study_guide.core.t14210 !== 'undefined')
+sailing_study_guide.core.quiz_question_view = (function quiz_question_view(quiz_question,owner){if(typeof sailing_study_guide.core.t14302 !== 'undefined')
 {} else
 {
 /**
 * @constructor
 */
-sailing_study_guide.core.t14210 = (function (owner,quiz_question,quiz_question_view,meta14211){
+sailing_study_guide.core.t14302 = (function (owner,quiz_question,quiz_question_view,meta14303){
 this.owner = owner;
 this.quiz_question = quiz_question;
 this.quiz_question_view = quiz_question_view;
-this.meta14211 = meta14211;
+this.meta14303 = meta14303;
 this.cljs$lang$protocol_mask$partition1$ = 0;
 this.cljs$lang$protocol_mask$partition0$ = 393216;
 })
-sailing_study_guide.core.t14210.cljs$lang$type = true;
-sailing_study_guide.core.t14210.cljs$lang$ctorStr = "sailing-study-guide.core/t14210";
-sailing_study_guide.core.t14210.cljs$lang$ctorPrWriter = (function (this__4010__auto__,writer__4011__auto__,opt__4012__auto__){return cljs.core._write.call(null,writer__4011__auto__,"sailing-study-guide.core/t14210");
+sailing_study_guide.core.t14302.cljs$lang$type = true;
+sailing_study_guide.core.t14302.cljs$lang$ctorStr = "sailing-study-guide.core/t14302";
+sailing_study_guide.core.t14302.cljs$lang$ctorPrWriter = (function (this__4010__auto__,writer__4011__auto__,opt__4012__auto__){return cljs.core._write.call(null,writer__4011__auto__,"sailing-study-guide.core/t14302");
 });
-sailing_study_guide.core.t14210.prototype.om$core$IRenderState$ = true;
-sailing_study_guide.core.t14210.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__14213){var self__ = this;
-var map__14214 = p__14213;var map__14214__$1 = ((cljs.core.seq_QMARK_.call(null,map__14214))?cljs.core.apply.call(null,cljs.core.hash_map,map__14214):map__14214);var choose_answer_chan = cljs.core.get.call(null,map__14214__$1,new cljs.core.Keyword(null,"choose-answer-chan","choose-answer-chan",2675027133));var ___$1 = this;return React.DOM.div(null,React.DOM.h3({"className": "quiz-question"},new cljs.core.Keyword(null,"question","question",4143001432).cljs$core$IFn$_invoke$arity$1(self__.quiz_question)),cljs.core.apply.call(null,om.dom.ul,null,om.core.build_all.call(null,sailing_study_guide.core.answer_view,new cljs.core.Keyword(null,"answers","answers",4461472743).cljs$core$IFn$_invoke$arity$1(self__.quiz_question),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"init-state","init-state",4479067398),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"choose-answer-chan","choose-answer-chan",2675027133),choose_answer_chan], null)], null))));
+sailing_study_guide.core.t14302.prototype.om$core$IRenderState$ = true;
+sailing_study_guide.core.t14302.prototype.om$core$IRenderState$render_state$arity$2 = (function (_,p__14305){var self__ = this;
+var map__14306 = p__14305;var map__14306__$1 = ((cljs.core.seq_QMARK_.call(null,map__14306))?cljs.core.apply.call(null,cljs.core.hash_map,map__14306):map__14306);var choose_answer_chan = cljs.core.get.call(null,map__14306__$1,new cljs.core.Keyword(null,"choose-answer-chan","choose-answer-chan",2675027133));var ___$1 = this;return React.DOM.div(null,React.DOM.h3({"className": "quiz-question"},new cljs.core.Keyword(null,"question","question",4143001432).cljs$core$IFn$_invoke$arity$1(self__.quiz_question)),cljs.core.apply.call(null,om.dom.ul,null,om.core.build_all.call(null,sailing_study_guide.core.answer_view,new cljs.core.Keyword(null,"answers","answers",4461472743).cljs$core$IFn$_invoke$arity$1(self__.quiz_question),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"init-state","init-state",4479067398),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"choose-answer-chan","choose-answer-chan",2675027133),choose_answer_chan], null)], null))));
 });
-sailing_study_guide.core.t14210.prototype.om$core$IWillMount$ = true;
-sailing_study_guide.core.t14210.prototype.om$core$IWillMount$will_mount$arity$1 = (function (_){var self__ = this;
-var ___$1 = this;var choose_answer_chan = om.core.get_state.call(null,self__.owner,new cljs.core.Keyword(null,"choose-answer-chan","choose-answer-chan",2675027133));var c__8068__auto__ = cljs.core.async.chan.call(null,1);cljs.core.async.impl.dispatch.run.call(null,(function (){var f__8069__auto__ = (function (){var switch__8053__auto__ = (function (state_14227){var state_val_14228 = (state_14227[1]);if((state_val_14228 === 4))
-{var inst_14217 = (state_14227[2]);var inst_14218 = cljs.core.deref.call(null,inst_14217);var inst_14219 = new cljs.core.Keyword(null,"text","text",1017460895).cljs$core$IFn$_invoke$arity$1(inst_14218);var inst_14220 = [cljs.core.str("Chose "),cljs.core.str(inst_14219)].join('');var inst_14221 = console.log(inst_14220);var inst_14222 = om.core.update_BANG_.call(null,inst_14217,new cljs.core.Keyword(null,"status","status",4416389988),new cljs.core.Keyword(null,"chosen","chosen",3947656932));var state_14227__$1 = (function (){var statearr_14229 = state_14227;(statearr_14229[7] = inst_14222);
-(statearr_14229[8] = inst_14221);
-return statearr_14229;
-})();var statearr_14230_14239 = state_14227__$1;(statearr_14230_14239[2] = null);
-(statearr_14230_14239[1] = 2);
+sailing_study_guide.core.t14302.prototype.om$core$IWillMount$ = true;
+sailing_study_guide.core.t14302.prototype.om$core$IWillMount$will_mount$arity$1 = (function (_){var self__ = this;
+var ___$1 = this;var choose_answer_chan = om.core.get_state.call(null,self__.owner,new cljs.core.Keyword(null,"choose-answer-chan","choose-answer-chan",2675027133));var c__8068__auto__ = cljs.core.async.chan.call(null,1);cljs.core.async.impl.dispatch.run.call(null,(function (){var f__8069__auto__ = (function (){var switch__8053__auto__ = (function (state_14319){var state_val_14320 = (state_14319[1]);if((state_val_14320 === 4))
+{var inst_14309 = (state_14319[2]);var inst_14310 = cljs.core.deref.call(null,inst_14309);var inst_14311 = new cljs.core.Keyword(null,"text","text",1017460895).cljs$core$IFn$_invoke$arity$1(inst_14310);var inst_14312 = [cljs.core.str("Chose "),cljs.core.str(inst_14311)].join('');var inst_14313 = console.log(inst_14312);var inst_14314 = om.core.update_BANG_.call(null,inst_14309,new cljs.core.Keyword(null,"status","status",4416389988),new cljs.core.Keyword(null,"chosen","chosen",3947656932));var state_14319__$1 = (function (){var statearr_14321 = state_14319;(statearr_14321[7] = inst_14314);
+(statearr_14321[8] = inst_14313);
+return statearr_14321;
+})();var statearr_14322_14331 = state_14319__$1;(statearr_14322_14331[2] = null);
+(statearr_14322_14331[1] = 2);
 return new cljs.core.Keyword(null,"recur","recur",1122293407);
 } else
-{if((state_val_14228 === 3))
-{var inst_14225 = (state_14227[2]);var state_14227__$1 = state_14227;return cljs.core.async.impl.ioc_helpers.return_chan.call(null,state_14227__$1,inst_14225);
+{if((state_val_14320 === 3))
+{var inst_14317 = (state_14319[2]);var state_14319__$1 = state_14319;return cljs.core.async.impl.ioc_helpers.return_chan.call(null,state_14319__$1,inst_14317);
 } else
-{if((state_val_14228 === 2))
-{var state_14227__$1 = state_14227;return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null,state_14227__$1,4,choose_answer_chan);
+{if((state_val_14320 === 2))
+{var state_14319__$1 = state_14319;return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null,state_14319__$1,4,choose_answer_chan);
 } else
-{if((state_val_14228 === 1))
-{var state_14227__$1 = state_14227;var statearr_14231_14240 = state_14227__$1;(statearr_14231_14240[2] = null);
-(statearr_14231_14240[1] = 2);
+{if((state_val_14320 === 1))
+{var state_14319__$1 = state_14319;var statearr_14323_14332 = state_14319__$1;(statearr_14323_14332[2] = null);
+(statearr_14323_14332[1] = 2);
 return new cljs.core.Keyword(null,"recur","recur",1122293407);
 } else
 {return null;
@@ -110,13 +110,13 @@ return new cljs.core.Keyword(null,"recur","recur",1122293407);
 });return ((function (switch__8053__auto__){
 return (function() {
 var state_machine__8054__auto__ = null;
-var state_machine__8054__auto____0 = (function (){var statearr_14235 = [null,null,null,null,null,null,null,null,null];(statearr_14235[0] = state_machine__8054__auto__);
-(statearr_14235[1] = 1);
-return statearr_14235;
+var state_machine__8054__auto____0 = (function (){var statearr_14327 = [null,null,null,null,null,null,null,null,null];(statearr_14327[0] = state_machine__8054__auto__);
+(statearr_14327[1] = 1);
+return statearr_14327;
 });
-var state_machine__8054__auto____1 = (function (state_14227){while(true){
+var state_machine__8054__auto____1 = (function (state_14319){while(true){
 var ret_value__8055__auto__ = (function (){try{while(true){
-var result__8056__auto__ = switch__8053__auto__.call(null,state_14227);if(cljs.core.keyword_identical_QMARK_.call(null,result__8056__auto__,new cljs.core.Keyword(null,"recur","recur",1122293407)))
+var result__8056__auto__ = switch__8053__auto__.call(null,state_14319);if(cljs.core.keyword_identical_QMARK_.call(null,result__8056__auto__,new cljs.core.Keyword(null,"recur","recur",1122293407)))
 {{
 continue;
 }
@@ -125,21 +125,21 @@ continue;
 }
 break;
 }
-}catch (e14236){if((e14236 instanceof Object))
-{var ex__8057__auto__ = e14236;var statearr_14237_14241 = state_14227;(statearr_14237_14241[5] = ex__8057__auto__);
-cljs.core.async.impl.ioc_helpers.process_exception.call(null,state_14227);
+}catch (e14328){if((e14328 instanceof Object))
+{var ex__8057__auto__ = e14328;var statearr_14329_14333 = state_14319;(statearr_14329_14333[5] = ex__8057__auto__);
+cljs.core.async.impl.ioc_helpers.process_exception.call(null,state_14319);
 return new cljs.core.Keyword(null,"recur","recur",1122293407);
 } else
 {if(new cljs.core.Keyword(null,"else","else",1017020587))
-{throw e14236;
+{throw e14328;
 } else
 {return null;
 }
 }
 }})();if(cljs.core.keyword_identical_QMARK_.call(null,ret_value__8055__auto__,new cljs.core.Keyword(null,"recur","recur",1122293407)))
 {{
-var G__14242 = state_14227;
-state_14227 = G__14242;
+var G__14334 = state_14319;
+state_14319 = G__14334;
 continue;
 }
 } else
@@ -148,12 +148,12 @@ continue;
 break;
 }
 });
-state_machine__8054__auto__ = function(state_14227){
+state_machine__8054__auto__ = function(state_14319){
 switch(arguments.length){
 case 0:
 return state_machine__8054__auto____0.call(this);
 case 1:
-return state_machine__8054__auto____1.call(this,state_14227);
+return state_machine__8054__auto____1.call(this,state_14319);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
@@ -162,59 +162,59 @@ state_machine__8054__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__8054_
 return state_machine__8054__auto__;
 })()
 ;})(switch__8053__auto__))
-})();var state__8070__auto__ = (function (){var statearr_14238 = f__8069__auto__.call(null);(statearr_14238[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__8068__auto__);
-return statearr_14238;
+})();var state__8070__auto__ = (function (){var statearr_14330 = f__8069__auto__.call(null);(statearr_14330[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__8068__auto__);
+return statearr_14330;
 })();return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null,state__8070__auto__);
 }));
 return c__8068__auto__;
 });
-sailing_study_guide.core.t14210.prototype.om$core$IInitState$ = true;
-sailing_study_guide.core.t14210.prototype.om$core$IInitState$init_state$arity$1 = (function (_){var self__ = this;
+sailing_study_guide.core.t14302.prototype.om$core$IInitState$ = true;
+sailing_study_guide.core.t14302.prototype.om$core$IInitState$init_state$arity$1 = (function (_){var self__ = this;
 var ___$1 = this;return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"choose-answer-chan","choose-answer-chan",2675027133),cljs.core.async.chan.call(null)], null);
 });
-sailing_study_guide.core.t14210.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_14212){var self__ = this;
-var _14212__$1 = this;return self__.meta14211;
+sailing_study_guide.core.t14302.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_14304){var self__ = this;
+var _14304__$1 = this;return self__.meta14303;
 });
-sailing_study_guide.core.t14210.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_14212,meta14211__$1){var self__ = this;
-var _14212__$1 = this;return (new sailing_study_guide.core.t14210(self__.owner,self__.quiz_question,self__.quiz_question_view,meta14211__$1));
+sailing_study_guide.core.t14302.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_14304,meta14303__$1){var self__ = this;
+var _14304__$1 = this;return (new sailing_study_guide.core.t14302(self__.owner,self__.quiz_question,self__.quiz_question_view,meta14303__$1));
 });
-sailing_study_guide.core.__GT_t14210 = (function __GT_t14210(owner__$1,quiz_question__$1,quiz_question_view__$1,meta14211){return (new sailing_study_guide.core.t14210(owner__$1,quiz_question__$1,quiz_question_view__$1,meta14211));
+sailing_study_guide.core.__GT_t14302 = (function __GT_t14302(owner__$1,quiz_question__$1,quiz_question_view__$1,meta14303){return (new sailing_study_guide.core.t14302(owner__$1,quiz_question__$1,quiz_question_view__$1,meta14303));
 });
 }
-return (new sailing_study_guide.core.t14210(owner,quiz_question,quiz_question_view,null));
+return (new sailing_study_guide.core.t14302(owner,quiz_question,quiz_question_view,null));
 });
-sailing_study_guide.core.quiz_view = (function quiz_view(quiz,owner){if(typeof sailing_study_guide.core.t14246 !== 'undefined')
+sailing_study_guide.core.quiz_view = (function quiz_view(quiz,owner){if(typeof sailing_study_guide.core.t14338 !== 'undefined')
 {} else
 {
 /**
 * @constructor
 */
-sailing_study_guide.core.t14246 = (function (owner,quiz,quiz_view,meta14247){
+sailing_study_guide.core.t14338 = (function (owner,quiz,quiz_view,meta14339){
 this.owner = owner;
 this.quiz = quiz;
 this.quiz_view = quiz_view;
-this.meta14247 = meta14247;
+this.meta14339 = meta14339;
 this.cljs$lang$protocol_mask$partition1$ = 0;
 this.cljs$lang$protocol_mask$partition0$ = 393216;
 })
-sailing_study_guide.core.t14246.cljs$lang$type = true;
-sailing_study_guide.core.t14246.cljs$lang$ctorStr = "sailing-study-guide.core/t14246";
-sailing_study_guide.core.t14246.cljs$lang$ctorPrWriter = (function (this__4010__auto__,writer__4011__auto__,opt__4012__auto__){return cljs.core._write.call(null,writer__4011__auto__,"sailing-study-guide.core/t14246");
+sailing_study_guide.core.t14338.cljs$lang$type = true;
+sailing_study_guide.core.t14338.cljs$lang$ctorStr = "sailing-study-guide.core/t14338";
+sailing_study_guide.core.t14338.cljs$lang$ctorPrWriter = (function (this__4010__auto__,writer__4011__auto__,opt__4012__auto__){return cljs.core._write.call(null,writer__4011__auto__,"sailing-study-guide.core/t14338");
 });
-sailing_study_guide.core.t14246.prototype.om$core$IRender$ = true;
-sailing_study_guide.core.t14246.prototype.om$core$IRender$render$arity$1 = (function (_){var self__ = this;
+sailing_study_guide.core.t14338.prototype.om$core$IRender$ = true;
+sailing_study_guide.core.t14338.prototype.om$core$IRender$render$arity$1 = (function (_){var self__ = this;
 var ___$1 = this;return React.DOM.div(null,React.DOM.h1(null,new cljs.core.Keyword(null,"banner","banner",3912528542).cljs$core$IFn$_invoke$arity$1(self__.quiz)),cljs.core.apply.call(null,om.dom.div,null,om.core.build_all.call(null,sailing_study_guide.core.quiz_question_view,new cljs.core.Keyword(null,"quiz-questions","quiz-questions",2495550279).cljs$core$IFn$_invoke$arity$1(self__.quiz))));
 });
-sailing_study_guide.core.t14246.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_14248){var self__ = this;
-var _14248__$1 = this;return self__.meta14247;
+sailing_study_guide.core.t14338.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_14340){var self__ = this;
+var _14340__$1 = this;return self__.meta14339;
 });
-sailing_study_guide.core.t14246.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_14248,meta14247__$1){var self__ = this;
-var _14248__$1 = this;return (new sailing_study_guide.core.t14246(self__.owner,self__.quiz,self__.quiz_view,meta14247__$1));
+sailing_study_guide.core.t14338.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_14340,meta14339__$1){var self__ = this;
+var _14340__$1 = this;return (new sailing_study_guide.core.t14338(self__.owner,self__.quiz,self__.quiz_view,meta14339__$1));
 });
-sailing_study_guide.core.__GT_t14246 = (function __GT_t14246(owner__$1,quiz__$1,quiz_view__$1,meta14247){return (new sailing_study_guide.core.t14246(owner__$1,quiz__$1,quiz_view__$1,meta14247));
+sailing_study_guide.core.__GT_t14338 = (function __GT_t14338(owner__$1,quiz__$1,quiz_view__$1,meta14339){return (new sailing_study_guide.core.t14338(owner__$1,quiz__$1,quiz_view__$1,meta14339));
 });
 }
-return (new sailing_study_guide.core.t14246(owner,quiz,quiz_view,null));
+return (new sailing_study_guide.core.t14338(owner,quiz,quiz_view,null));
 });
 om.core.root.call(null,sailing_study_guide.core.quiz_view,sailing_study_guide.core.app_state,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"target","target",4427965699),document.getElementById("app")], null));
 
