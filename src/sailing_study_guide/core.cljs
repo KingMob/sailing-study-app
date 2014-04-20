@@ -59,7 +59,7 @@
     (render-state [_ {:keys [choose-answer-chan]}]
             (dom/li
                #js {
-                    :onClick #(put! choose-answer-chan answer)
+                    :onClick (fn [e] (put! choose-answer-chan answer))
                     :className (join " " ["answer" (answer-class answer)])}
                (:text answer)))))
 
