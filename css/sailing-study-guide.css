@@ -1,0 +1,23 @@
+body {
+  background: #233247;
+  background-image: url(/images/Sail-study-bg.jpg);
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+}
+
+.answer {
+    cursor: pointer;
+}
+
+.answer-default {}
+
+.answer-correct {
+  background-color: #0f0;
+}
+
+.answer-incorrect {
+  background-color: #f00;
+}

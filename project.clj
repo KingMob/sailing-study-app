@@ -15,7 +15,7 @@
     :builds [{:id "sailing-study-guide"
               :source-paths ["src"]
               :compiler {
-                :output-to "sailing_study_guide.js"
+                :output-to "out/sailing_study_guide.js"
                 :output-dir "out"
                 :optimizations :none
                 :source-map true}}]})

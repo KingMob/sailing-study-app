@@ -23,7 +23,7 @@
                              {:text "Jibjab"
                               :correct false
                               :status :unchosen}
-                             {:text "Mast"
+                             {:text "Jibber jabber"
                               :correct false
                               :status :unchosen}]}
                   {
@@ -46,8 +46,8 @@
 (defn answer-class [answer]
   (cond
    (= :unchosen (:status answer)) "answer-default"
-   (:correct answer) "answer-correct"
-   :else "answer-incorrect"))
+   (:correct answer) "answer-correct success"
+   :else "answer-incorrect alert"))
 
 ;(get-in @app-state [:quiz-questions 0 :answers 0])
 ;(answer-class (get-in @app-state [:quiz-questions 0 :answers 0]))
@@ -57,10 +57,10 @@
   (reify
     om/IRenderState
     (render-state [_ {:keys [choose-answer-chan]}]
-            (dom/li
+            (dom/div
                #js {
                     :onClick (fn [e] (put! choose-answer-chan answer))
-                    :className (join " " ["answer" (answer-class answer)])}
+                    :className (str "answer small-6 columns button " (answer-class answer))}
                (:text answer)))))
 
 (defn quiz-question-view [quiz-question owner]
@@ -80,18 +80,20 @@
 
     om/IRenderState
     (render-state [_ {:keys [choose-answer-chan]}]
-            (dom/div nil
-                     (dom/h3 #js {:className "quiz-question"} (:question quiz-question))
-                     (apply dom/ul nil (om/build-all answer-view (:answers quiz-question)
-                                                     {:init-state {:choose-answer-chan choose-answer-chan}}))))))
+            (dom/div #js {:className "row"}
+                     (dom/h3 #js {:className "quiz-question small-12 columns"} (:question quiz-question))
+                     (apply dom/div #js {:className "small-12 columns"}
+                            (om/build-all answer-view (:answers quiz-question)
+                                          {:init-state {:choose-answer-chan choose-answer-chan}}))))))
 
 (defn quiz-view [quiz owner]
   (reify
     om/IRender
     (render [_]
-            (dom/div nil
-              (dom/h1 nil (:banner quiz))
-              (apply dom/div nil (om/build-all quiz-question-view (:quiz-questions quiz)))))))
+            (dom/div #js {:className "row"}
+              (dom/h1 #js {:className "small-12 columns"} (:banner quiz))
+              (apply dom/div #js {:className "small-12 columns"}
+                     (om/build-all quiz-question-view (:quiz-questions quiz)))))))
 
 (om/root
   quiz-view
