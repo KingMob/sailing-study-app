@@ -10,8 +10,10 @@
 (def app-state
   (atom
    {:banner "Quiz"
+    :current-section 0
     :sections [{
                 :name "Parts of the boat"
+                :current-question 0
                 :questions
                 [{
                   :question "What is placed between the boat and the dock to cushion the hull?"
@@ -68,17 +70,14 @@
    (:correct answer) "answer-correct success"
    :else "answer-incorrect alert"))
 
-;(get-in @app-state [:quiz-questions 0 :answers 0])
-;(answer-class (get-in @app-state [:quiz-questions 0 :answers 0]))
-
 
 (defn answer-view [answer owner]
   (reify
     om/IRenderState
     (render-state [_ {:keys [choose-answer-chan]}]
                   (dom/div
-                   #js {:onClick (fn [e] (put! choose-answer-chan answer))
-                        :className (str "answer small-6 columns button " (answer-class answer))}
+                   #js{:onClick (fn [e] (put! choose-answer-chan answer))
+                       :className (str "answer small-6 columns button " (answer-class answer))}
                    (:text answer)))))
 
 (defn quiz-question-view [quiz-question owner]
@@ -98,50 +97,60 @@
 
     om/IRenderState
     (render-state [_ {:keys [choose-answer-chan]}]
-                  (dom/div #js {:className "row"}
-                           (dom/h3 #js {:className "quiz-question small-12 columns"} (:question quiz-question))
-                           (apply dom/div #js {:className "small-12 columns"}
+                  (dom/div #js{:className "row"}
+                           (dom/h3 #js{:className "quiz-question small-12 columns"} (:question quiz-question))
+                           (apply dom/div #js{:className "small-12 columns"}
                                   (om/build-all answer-view (:answers quiz-question)
                                                 {:init-state {:choose-answer-chan choose-answer-chan}}))))))
 
-;; (defn header-view [state owner]
-;;   (reify
+(defn header-offcanvas-menu-link []
+  (dom/a #js{:className "right-off-canvas-toggle menu-icon" :href "#"}
+         (dom/span nil)))
 
+(defn header-view [section _]
+  (reify
+    om/IRender
+    (render [_]
+            (let [current-question-num (inc (:current-question section))
+                  total-num-questions (count (:questions section))]
+              (dom/div
+               #js{:className "quiz-header"}
+               (dom/nav
+                #js{:className "tab-bar"}
+                (dom/section #js{:className "left-small text-center"} (str current-question-num "/" total-num-questions))
+                (dom/section #js{:className "middle tab-bar-section"} (:name section))
+                (dom/section #js{:className "right-small"} (header-offcanvas-menu-link))
+                )
+               (dom/div
+                #js{:className "progress"}
+                (dom/span
+                 #js{:className "meter"
+                     :style #js{:width (str (* 100 (/ current-question-num total-num-questions)) "%")}})))))))
+
+;; (:current-section @app-state)
+;; (get-in @app-state [:sections (:current-section @app-state) :name])
 
 
 (defn section-view [section owner]
   (reify
-    om/IInitState
-    (init-state [_]
-                {:current-question 0})
+    om/IRender
+    (render [_]
+            (dom/div
+             #js{:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
+             (dom/div nil (om/build header-view section))
+             (dom/section #js{:className "main-section"} (om/build quiz-question-view (get (:questions section) (:current-question section))))))))
 
-    om/IRenderState
-    (render-state [_ state]
-                  (dom/div nil (om/build quiz-question-view (get (:questions section) (:current-question state)))))))
-
-;; (def current-section 0)
-;; (->
-;;  @app-state
-;;  :sections
-;;  (nth current-section)
-;;  :questions
-;;  (get 0))
 
 (defn quiz-view [quiz owner]
   (reify
-    om/IInitState
-    (init-state [_]
-                {:current-section 0})
-    om/IRenderState
-    (render-state [_ {:keys [current-section]}]
-                  (dom/div #js {:className "row"}
-                           (dom/h1 #js {:className "small-12 columns"} (:banner quiz))
-                           (dom/div #js {:className "small-12 columns"}
-                                    (om/build section-view
-                                              (->
-                                               quiz
-                                               :sections
-                                               (nth current-section))))))))
+    om/IRender
+    (render [_]
+            (dom/div nil
+                     (om/build section-view
+                               (->
+                                quiz
+                                :sections
+                                (nth (:current-section quiz))))))))
 
 (om/root
  quiz-view
