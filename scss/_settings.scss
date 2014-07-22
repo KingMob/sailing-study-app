@@ -11,6 +11,7 @@
 
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700|Roboto:400,700);
 
 // $experimental: true;
 
@@ -43,7 +44,7 @@ $include-print-styles: false;
 // We use these to control various global styles
 $body-bg: #233247;
 $body-font-color: white;
-$body-font-family: Roboto, Helvetica, Arial, sans-serif;
+$body-font-family: Arvo, serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
@@ -64,7 +65,7 @@ $success-color: #47ce7d;
 // $info-color: #a0d3e8;
 
 // We use these to make sure border radius matches unless we want it different.
-$global-radius: 5px;
+$global-radius: 0px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
