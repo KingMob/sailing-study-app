@@ -1,6 +1,8 @@
 {
-  "name": "foundation-libsass-template",
+  "name": "sailing-study-guide",
   "dependencies": {
-    "foundation": "zurb/bower-foundation"
+    "modernizr": ">= 2.7.2",
+    "foundation": "zurb/bower-foundation",
+    "react": "~0.11.0"
   }
 }

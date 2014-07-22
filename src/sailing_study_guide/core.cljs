@@ -64,7 +64,7 @@
                              :correct true
                              :status :unchosen}]}]}]}))
 
-(defn answer-class [answer]
+(defn answer-css-class [answer]
   (cond
    (= :unchosen (:status answer)) "answer-default"
    (:correct answer) "answer-correct success"
@@ -77,7 +77,7 @@
     (render-state [_ {:keys [choose-answer-chan]}]
                   (dom/div
                    #js{:onClick (fn [e] (put! choose-answer-chan answer))
-                       :className (str "answer small-6 columns button " (answer-class answer))}
+                       :className (str "answer small-6 columns button " (answer-css-class answer))}
                    (:text answer)))))
 
 (defn quiz-question-view [quiz-question owner]
