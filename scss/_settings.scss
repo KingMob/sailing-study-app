@@ -13,7 +13,17 @@
 @import "foundation/functions";
 @import url(//fonts.googleapis.com/css?family=Arvo:400,700|Roboto:400,700);
 
+// Our settings
 $font-bold-weight: 700;
+
+// Blues
+$app-blue-1: rgb(35, 50, 71); // #233247; default background
+$app-blue-2: rgb(49, 70, 100);
+$app-blue-3: rgb(82, 121, 175);
+$app-blue-4: rgb(42, 151, 186); // #2a97ba
+$app-blue-5: rgb(122, 155, 202);
+$app-blue-6: rgb(90,192,225);
+
 
 // $experimental: true;
 
@@ -44,7 +54,7 @@ $include-print-styles: false;
 // Global
 
 // We use these to control various global styles
-$body-bg: #233247;
+$body-bg: $app-blue-1;
 $body-font-color: white;
 $body-font-family: Arvo, serif;
 // $body-font-weight: $font-weight-normal;
