@@ -76,9 +76,11 @@
     om/IRenderState
     (render-state [_ {:keys [choose-answer-chan]}]
                   (dom/div
-                   #js{:onClick (fn [e] (put! choose-answer-chan answer))
-                       :className (str "answer small-6 columns button " (answer-css-class answer))}
-                   (:text answer)))))
+                   #js{:className "small-6 columns"}
+                   (dom/button
+                    #js{:onClick (fn [e] (put! choose-answer-chan answer))
+                       :className (str "answer " (answer-css-class answer))}
+                    (:text answer))))))
 
 (defn quiz-question-view [quiz-question owner]
   (reify
@@ -99,7 +101,7 @@
     (render-state [_ {:keys [choose-answer-chan]}]
                   (dom/div #js{:className "row"}
                            (dom/h3 #js{:className "quiz-question small-12 columns"} (:question quiz-question))
-                           (apply dom/div #js{:className "small-12 columns"}
+                           (apply dom/div nil
                                   (om/build-all answer-view (:answers quiz-question)
                                                 {:init-state {:choose-answer-chan choose-answer-chan}}))))))
 

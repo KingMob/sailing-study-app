@@ -1,3 +1,5 @@
+// AKA app.scss in Foundation's terminology
+
 @import "settings";
 @import "foundation";
 
@@ -41,26 +43,26 @@
 
 
 body {
-/*   background-color: #233247; */
   background-image: url("../images/BG_Pattern.gif");
-/*   color: white; */
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: white;
-}
 
 .answer {
-    cursor: pointer;
-}
 
-.answer-default {}
+/*   @extend button; */
+  @include button($radius:true, $full-width:true);
 
-.answer-correct {
-  background-color: #0f0;
-}
+  cursor: pointer;
 
-.answer-incorrect {
-  background-color: #f00;
+  .answer-default {
+  }
+
+  .answer-correct {
+    background-color: #0f0;
+  }
+
+  .answer-incorrect {
+    background-color: #f00;
+  }
 }
 
