@@ -82,7 +82,7 @@
                        :className (str "answer " (answer-css-class answer))}
                     (:text answer))))))
 
-(defn quiz-question-view [quiz-question owner]
+(defn question-view [quiz-question owner]
   (reify
     om/IInitState
     (init-state [_]
@@ -99,9 +99,10 @@
 
     om/IRenderState
     (render-state [_ {:keys [choose-answer-chan]}]
-                  (dom/div #js{:className "quiz-question-container"}
-                           (dom/div #js{:className "quiz-question-text-container"}
-                             (dom/h3 #js{:className "quiz-question"} (:question quiz-question)))
+                  (dom/div #js{:className "question-container"}
+                           (dom/div #js{:className "question-text-container"}
+                             (dom/h3 #js{:className "question-text"} (:question quiz-question)))
+                           (dom/div #js{:className "media-container"})
                            (apply dom/div #js{:className "answer-section"}
                                   (om/build-all answer-view (:answers quiz-question)
                                                 {:init-state {:choose-answer-chan choose-answer-chan}}))))))
@@ -140,8 +141,8 @@
     (render [_]
             (dom/div
              #js{:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
-             (dom/div nil (om/build header-view section))
-             (dom/section #js{:className "main-section"} (om/build quiz-question-view (get (:questions section) (:current-question section))))))))
+             (om/build header-view section)
+             (om/build question-view (get (:questions section) (:current-question section)))))))
 
 
 (defn quiz-view [quiz owner]

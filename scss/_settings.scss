@@ -59,6 +59,7 @@ $body-font-color: white;
 $body-font-family: Arvo, serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
+$secondary-font-family: Roboto, sans;
 
 // We use this to control font-smoothing
 // $font-smoothing: antialiased;
@@ -85,7 +86,8 @@ $global-radius: 10px;
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
 
-// $column-gutter: rem-calc(30);
+/* $column-gutter: rem-calc(30); */
+$column-gutter: rem-calc(20px);
 
 // Media Query Ranges
 // $small-range: (0em, 40em);
