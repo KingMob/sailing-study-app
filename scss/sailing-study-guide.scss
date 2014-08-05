@@ -46,35 +46,49 @@ body {
   background-image: url("../images/BG_Pattern.gif");
 }
 
-.quiz-question-text-container {
-  @include grid-column(12);
-}
-
-.answer-section {
+.question-container {
   @include grid-row();
 
-  .answer-container {
-    @include grid-column(6);
-    background-color: $body-bg;
-    background-image: none;
-    padding: $button-margin-bottom;
+  .question-text-container {
+    @include grid-column(12);
+
+    background-color: $app-blue-4;
+
+    .question-text {
+      font-family: $secondary-font-family;
+    }
   }
 
-  .answer {
+  .media-container {
+  }
 
-    @include button($radius:true, $full-width:true);
+  .answer-section {
+    @include grid-row();
 
-    cursor: pointer;
-
-    .answer-default {
+    .answer-container {
+      @include grid-column(6);
+      background-color: $body-bg;
+      background-image: none;
+  /*     padding: $button-margin-bottom; */
+  /*     margin: 20px; */
     }
 
-    .answer-correct {
-      background-color: #0f0;
-    }
+    .answer {
 
-    .answer-incorrect {
-      background-color: #f00;
+      @include button($radius:true, $full-width:true);
+
+      cursor: pointer;
+
+      .answer-default {
+      }
+
+      .answer-correct {
+        background-color: #0f0;
+      }
+
+      .answer-incorrect {
+        background-color: #f00;
+      }
     }
   }
 }
