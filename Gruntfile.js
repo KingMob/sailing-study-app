@@ -2,14 +2,16 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    // grunt-contrib-sass
     sass: {
       options: {
-        includePaths: ['bower_components/foundation/scss'],
+        loadPath: ['bower_components/foundation/scss', 'bower_components/bourbon/dist'],
         sourcemap: true
       },
       dist: {
         options: {
-          outputStyle: 'nested'
+          quiet: true,
+          style: 'nested'
         },
         files: {
           'css/sailing-study-guide.css': 'scss/sailing-study-guide.scss'
@@ -27,7 +29,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('build', ['sass']);
