@@ -111,6 +111,20 @@
   (dom/a #js{:className "right-off-canvas-toggle menu-icon" :href "#"}
          (dom/span nil)))
 
+(defn header-bar-view [section _]
+  (reify
+    om/IRender
+    (render [_]
+            (let [current-question-num (inc (:current-question section))
+                  total-num-questions (count (:questions section))]
+              (dom/nav
+                #js{:className "tab-bar"}
+                (dom/section #js{:className "left-small text-center"} (str current-question-num "/" total-num-questions))
+                (dom/section #js{:className "middle tab-bar-section"} (:name section))
+                (dom/section #js{:className "right-small"} (header-offcanvas-menu-link))
+                )
+              ))))
+
 (defn header-view [section _]
   (reify
     om/IRender
@@ -119,12 +133,7 @@
                   total-num-questions (count (:questions section))]
               (dom/div
                #js{:className "quiz-header"}
-               (dom/nav
-                #js{:className "tab-bar"}
-                (dom/section #js{:className "left-small text-center"} (str current-question-num "/" total-num-questions))
-                (dom/section #js{:className "middle tab-bar-section"} (:name section))
-                (dom/section #js{:className "right-small"} (header-offcanvas-menu-link))
-                )
+               (om/build header-bar-view section)
                (dom/div
                 #js{:className "progress"}
                 (dom/span
@@ -141,8 +150,9 @@
     (render [_]
             (dom/div
              #js{:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
-             (om/build header-view section)
-             (om/build question-view (get (:questions section) (:current-question section)))))))
+             (dom/div #js{:className "inner-wrap"}
+               (om/build header-view section)
+               (om/build question-view (get (:questions section) (:current-question section))))))))
 
 
 (defn quiz-view [quiz owner]
