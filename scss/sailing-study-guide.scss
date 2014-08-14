@@ -60,6 +60,9 @@ body {
   }
 
   .media-container {
+    @include grid-column(12);
+    @include radial-gradient($app-blue-gradient-1, $app-blue-gradient-2, $fallback: $app-blue-2);
+    height: 10rem;
   }
 
   .answer-section {
@@ -70,7 +73,7 @@ body {
       background-color: $body-bg;
       background-image: none;
   /*     padding: $button-margin-bottom; */
-  /*     margin: 20px; */
+      margin: 20px;
     }
 
     .answer {
