@@ -3,6 +3,6 @@
   "dependencies": {
     "modernizr": ">= 2.7.2",
     "foundation": "zurb/bower-foundation",
-    "react": "~0.11.0"
+    "react": "~0.11"
   }
 }

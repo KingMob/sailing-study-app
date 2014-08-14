@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-2268
+// Compiled by ClojureScript 0.0-2277
 goog.provide('cljs.core.async.impl.buffers');
 goog.require('cljs.core');
 goog.require('cljs.core.async.impl.protocols');
@@ -7,8 +7,8 @@ cljs.core.async.impl.buffers.acopy = (function acopy(src,src_start,dest,dest_sta
 if((cnt < len))
 {(dest[(dest_start + cnt)] = (src[(src_start + cnt)]));
 {
-var G__13526 = (cnt + (1));
-cnt = G__13526;
+var G__13538 = (cnt + (1));
+cnt = G__13538;
 continue;
 }
 } else
@@ -81,13 +81,13 @@ return self__.arr = new_arr;
 cljs.core.async.impl.buffers.RingBuffer.prototype.cleanup = (function (keep_QMARK_){var self__ = this;
 var this$ = this;var n__4399__auto__ = self__.length;var x = (0);while(true){
 if((x < n__4399__auto__))
-{var v_13527 = this$.pop();if(keep_QMARK_.call(null,v_13527))
-{this$.unshift(v_13527);
+{var v_13539 = this$.pop();if(keep_QMARK_.call(null,v_13539))
+{this$.unshift(v_13539);
 } else
 {}
 {
-var G__13528 = (x + (1));
-x = G__13528;
+var G__13540 = (x + (1));
+x = G__13540;
 continue;
 }
 } else

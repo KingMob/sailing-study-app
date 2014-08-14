@@ -1,17 +1,19 @@
-// Foundation by ZURB
-// foundation.zurb.com
-// Licensed under MIT Open Source
+@import "bourbon";
+@import url(//fonts.googleapis.com/css?family=Arvo:400,700|Roboto:400,700);
+
+$prefix-for-microsoft: false;
+$prefix-for-opera:     false;
 
 //
 // FOUNDATION SETTINGS
 //
 
 // This is the default html and body font-size for the base rem value.
-// $rem-base: 16px;
+$rem-base: 16px;
+$em-base: $rem-base;
 
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
-@import url(//fonts.googleapis.com/css?family=Arvo:400,700|Roboto:400,700);
 
 // Our settings
 $font-bold-weight: 700;
@@ -23,6 +25,9 @@ $app-blue-3: rgb(82, 121, 175);
 $app-blue-4: rgb(42, 151, 186); // #2a97ba
 $app-blue-5: rgb(122, 155, 202);
 $app-blue-6: rgb(90,192,225);
+
+$app-blue-gradient-1: rgb(59, 85, 123);
+$app-blue-gradient-2: rgb(40, 59, 86);
 
 
 // $experimental: true;

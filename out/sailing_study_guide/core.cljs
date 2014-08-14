@@ -79,7 +79,7 @@
                    #js{:className "answer-container"}
                    (dom/button
                     #js{:onClick (fn [e] (put! choose-answer-chan answer))
-                       :className (str "answer " (answer-css-class answer))}
+                        :className (str "answer " (answer-css-class answer))}
                     (:text answer))))))
 
 (defn question-view [quiz-question owner]
@@ -101,35 +101,46 @@
     (render-state [_ {:keys [choose-answer-chan]}]
                   (dom/div #js{:className "question-container"}
                            (dom/div #js{:className "question-text-container"}
-                             (dom/h3 #js{:className "question-text"} (:question quiz-question)))
+                                    (dom/h3 #js{:className "question-text"} (:question quiz-question)))
                            (dom/div #js{:className "media-container"})
                            (apply dom/div #js{:className "answer-section"}
                                   (om/build-all answer-view (:answers quiz-question)
                                                 {:init-state {:choose-answer-chan choose-answer-chan}}))))))
 
-(defn header-offcanvas-menu-link []
-  (dom/a #js{:className "right-off-canvas-toggle menu-icon" :href "#"}
-         (dom/span nil)))
+(defn header-bar-view [section _]
+  (reify
+    om/IRender
+    (render [_]
+            (let [current-question-num (inc (:current-question section))
+                  total-num-questions (count (:questions section))]
+              (dom/nav
+               #js{:className "tab-bar"}
+               (dom/section #js{:className "left-small text-center"} (str current-question-num "/" total-num-questions))
+               (dom/section #js{:className "middle tab-bar-section"} (:name section))
+               (dom/section #js{:className "right-small"}
+                            (dom/a #js{:className "right-off-canvas-toggle menu-icon" :href "#"}
+                                   (dom/span nil))))))))
 
-(defn header-view [section _]
+(defn header-progress-view [section _]
   (reify
     om/IRender
     (render [_]
             (let [current-question-num (inc (:current-question section))
                   total-num-questions (count (:questions section))]
               (dom/div
-               #js{:className "quiz-header"}
-               (dom/nav
-                #js{:className "tab-bar"}
-                (dom/section #js{:className "left-small text-center"} (str current-question-num "/" total-num-questions))
-                (dom/section #js{:className "middle tab-bar-section"} (:name section))
-                (dom/section #js{:className "right-small"} (header-offcanvas-menu-link))
-                )
-               (dom/div
-                #js{:className "progress"}
-                (dom/span
-                 #js{:className "meter"
-                     :style #js{:width (str (* 100 (/ current-question-num total-num-questions)) "%")}})))))))
+               #js{:className "progress"}
+               (dom/span
+                #js{:className "meter"
+                    :style #js{:width (str (* 100 (/ current-question-num total-num-questions)) "%")}}))))))
+
+(defn header-view [section _]
+  (reify
+    om/IRender
+    (render [_]
+            (dom/div
+             #js{:className "quiz-header"}
+             (om/build header-bar-view section)
+             (om/build header-progress-view section)))))
 
 ;; (:current-section @app-state)
 ;; (get-in @app-state [:sections (:current-section @app-state) :name])
@@ -141,8 +152,11 @@
     (render [_]
             (dom/div
              #js{:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
-             (om/build header-view section)
-             (om/build question-view (get (:questions section) (:current-question section)))))))
+             (dom/div
+              #js{:className "inner-wrap"}
+              (om/build header-view section)
+              (om/build question-view (get (:questions section) (:current-question section)))
+              (dom/a #js{:className "exit-off-canvas"}))))))
 
 
 (defn quiz-view [quiz owner]
