@@ -153,7 +153,7 @@
             (dom/div
              #js{:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
              (dom/div
-              #js{:className "inner-wrap"}
+              #js{:className "main-content inner-wrap"}
               (om/build header-view section)
               (om/build question-view (get (:questions section) (:current-question section)))
               (dom/a #js{:className "exit-off-canvas"}))))))

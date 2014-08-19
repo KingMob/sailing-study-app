@@ -41,56 +41,95 @@
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
 
+@mixin flex-column {
+  @include display(flex);
+  @include flex-direction(column);
+}
+
+@mixin full-with-gutter {
+/*   @include grid-column(12); */
+  @include padding(0 ($column-gutter / 2));
+}
+
+@mixin grid($spacing: $half-column-gutter, $cell-width: 50%) {
+  @include display(flex);
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+  @include align-items(stretch);
+
+  margin-left: -$spacing;
+  padding: $spacing $spacing 0 $spacing;
+
+  > * {
+    @include flex(0 0 $cell-width);
+    padding-left: $spacing;
+    margin-bottom: $spacing;
+  }
+}
 
 body {
   background-image: url("../images/BG_Pattern.gif");
 }
 
-.question-container {
-  @include grid-row();
+.main-content {
+  min-height: 100vh;
+  @include flex-column;
 
-  .question-text-container {
-    @include grid-column(12);
-
-    background-color: $app-blue-4;
-
-    .question-text {
-      font-family: $secondary-font-family;
-    }
+  .quiz-header {
+    @include flex(0 1 auto);
   }
 
-  .media-container {
-    @include grid-column(12);
-    @include radial-gradient($app-blue-gradient-1, $app-blue-gradient-2, $fallback: $app-blue-2);
-    height: 10rem;
-  }
+  .question-container {
+    @include flex(1 0 auto);
+    @include flex-column;
 
-  .answer-section {
-    @include grid-row();
+    .question-text-container {
+      @include flex(0 0 auto);
+      @include full-with-gutter;
 
-    .answer-container {
-      @include grid-column(6);
-      background-color: $body-bg;
-      background-image: none;
-  /*     padding: $button-margin-bottom; */
-      margin: 20px;
+      background-color: $app-blue-4;
+
+      .question-text {
+        font-family: $secondary-font-family;
+      }
     }
 
-    .answer {
+    .media-container {
+      @include flex(1 0 auto);
 
-      @include button($radius:true, $full-width:true);
+      @include radial-gradient($app-blue-gradient-1, $app-blue-gradient-2, $fallback: $app-blue-2);
+    }
 
-      cursor: pointer;
+    .answer-section {
+      @include flex(0 0 auto);
 
-      .answer-default {
+      @include grid;
+
+      background-color: $app-blue-1;
+
+      .answer-container {
+        background-color: $body-bg;
+        background-image: none;
       }
 
-      .answer-correct {
-        background-color: #0f0;
-      }
+      .answer {
 
-      .answer-incorrect {
-        background-color: #f00;
+        @include button($radius:true, $full-width:true);
+
+        cursor: pointer;
+
+        &.answer-default {
+          background-color: $app-gray;
+          color: $app-blue-1;
+        }
+
+        &.answer-correct {
+          background-color: #0f0;
+        }
+
+        &.answer-incorrect {
+          background-color: #f00;
+        }
       }
     }
   }

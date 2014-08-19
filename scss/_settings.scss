@@ -96,6 +96,7 @@ $global-radius: 10px;
 
 /* $column-gutter: rem-calc(30); */
 $column-gutter: rem-calc(20px);
+$half-column-gutter: $column-gutter / 2;
 
 // Media Query Ranges
 // $small-range: (0em, 40em);
@@ -362,6 +363,7 @@ $header-font-color: #fff;
 // We use this to control the display property.
 // $button-display: inline-block;
 // $button-margin-bottom: rem-calc(20);
+$button-margin-bottom: 0;
 
 // We use these to control button text styles.
 // $button-font-family: $body-font-family;
