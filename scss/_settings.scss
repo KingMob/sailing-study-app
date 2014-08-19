@@ -1,5 +1,6 @@
 @import "bourbon";
-@import url(//fonts.googleapis.com/css?family=Arvo:400,700|Roboto:400,700);
+/* @import url(//fonts.googleapis.com/css?family=Arvo:400,700|Roboto:400,700); */
+@import "fonts.css";
 
 $prefix-for-microsoft: false;
 $prefix-for-opera:     false;
@@ -24,10 +25,12 @@ $app-blue-2: rgb(49, 70, 100);
 $app-blue-3: rgb(82, 121, 175);
 $app-blue-4: rgb(42, 151, 186); // #2a97ba
 $app-blue-5: rgb(122, 155, 202);
-$app-blue-6: rgb(90,192,225);
+$app-blue-6: rgb(90,192,225); // #5AC0E1
 
 $app-blue-gradient-1: rgb(59, 85, 123);
 $app-blue-gradient-2: rgb(40, 59, 86);
+
+$app-gray: rgb(237, 237, 237);
 
 
 // $experimental: true;
@@ -93,6 +96,7 @@ $global-radius: 10px;
 
 /* $column-gutter: rem-calc(30); */
 $column-gutter: rem-calc(20px);
+$half-column-gutter: $column-gutter / 2;
 
 // Media Query Ranges
 // $small-range: (0em, 40em);
@@ -359,6 +363,7 @@ $header-font-color: #fff;
 // We use this to control the display property.
 // $button-display: inline-block;
 // $button-margin-bottom: rem-calc(20);
+$button-margin-bottom: 0;
 
 // We use these to control button text styles.
 // $button-font-family: $body-font-family;
@@ -907,21 +912,23 @@ $button-radius: $global-radius;
 // $include-html-media-classes: $include-html-classes;
 
 // We use this to set the progress bar height
-$progress-bar-height: rem-calc(14);
-$progress-bar-color: #f6f6f6  ;
+$progress-bar-height: rem-calc(8);
+$progress-bar-color: $app-blue-1;
 
 // We use these to control the border styles
 // $progress-bar-border-color: scale-color(#fff, $lightness: 20%);
-$progress-bar-border-size: 2px;
+$progress-bar-border-size: 0;
 // $progress-bar-border-style: solid;
 // $progress-bar-border-radius: $global-radius;
 
 // We use these to control the margin & padding
 // $progress-bar-pad: rem-calc(2);
 // $progress-bar-margin-bottom: rem-calc(10);
+$progress-bar-pad: 0;
+$progress-bar-margin-bottom: 0;
 
 // We use these to set the meter colors
-$progress-meter-color: $primary-color;
+$progress-meter-color: $app-blue-6;
 // $progress-meter-secondary-color: $secondary-color;
 // $progress-meter-success-color: $success-color;
 // $progress-meter-alert-color: $alert-color;
