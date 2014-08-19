@@ -82,6 +82,21 @@
                         :className (str "answer " (answer-css-class answer))}
                     (:text answer))))))
 
+(defn answer-section-view [answers owner]
+  (reify
+    om/IRenderState
+    (render-state [_ {:keys [choose-answer-chan]}]
+                ;  (dom/div #js{:className "answer-section-container"}
+                  (apply dom/div #js{:className "answer-section"}
+;;                          (condp = (count answers)
+;;                            1 "one"
+;;                            2 "two"
+;;                            4 "four")
+
+                         (om/build-all answer-view answers
+                                       {:init-state {:choose-answer-chan choose-answer-chan}})))))
+;)
+
 (defn question-view [quiz-question owner]
   (reify
     om/IInitState
@@ -103,9 +118,7 @@
                            (dom/div #js{:className "question-text-container"}
                                     (dom/h3 #js{:className "question-text"} (:question quiz-question)))
                            (dom/div #js{:className "media-container"})
-                           (apply dom/div #js{:className "answer-section"}
-                                  (om/build-all answer-view (:answers quiz-question)
-                                                {:init-state {:choose-answer-chan choose-answer-chan}}))))))
+                           (om/build answer-section-view (:answers quiz-question))))))
 
 (defn header-bar-view [section _]
   (reify
@@ -153,7 +166,7 @@
             (dom/div
              #js{:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
              (dom/div
-              #js{:className "inner-wrap"}
+              #js{:className "main-content inner-wrap"}
               (om/build header-view section)
               (om/build question-view (get (:questions section) (:current-question section)))
               (dom/a #js{:className "exit-off-canvas"}))))))
