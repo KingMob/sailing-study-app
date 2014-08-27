@@ -5715,6 +5715,11 @@ body {
       .main-content .question-container .answer-section .answer-container {
         background-color: #233247;
         background-image: none; }
+        .main-content .question-container .answer-section .answer-container:first-child:nth-last-child(2), .main-content .question-container .answer-section .answer-container:first-child:nth-last-child(2) ~ .answer-container {
+          -webkit-flex-basis: 100%;
+          -moz-flex-basis: 100%;
+          flex-basis: 100%;
+          -ms-flex-preferred-size: 100%; }
       .main-content .question-container .answer-section .answer {
         border-style: solid;
         border-width: 0px;

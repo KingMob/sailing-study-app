@@ -6,6 +6,8 @@
             [clojure.string :refer [join]]))
 
 (enable-console-print!)
+(set! cljs.core/*print-meta* true)
+
 
 (def app-state
   (atom
@@ -30,7 +32,8 @@
                              :status :unchosen}
                             {:text "Gooseneck"
                              :correct false
-                             :status :unchosen}]}
+                             :status :unchosen}
+                            ]}
                  {
                   :question "What's the small sail at front called?"
                   :image nil
@@ -64,6 +67,17 @@
                              :correct true
                              :status :unchosen}]}]}]}))
 
+;; (swap! app-state assoc-in [:sections 0 :questions 0 :answers 0 :text] "Test update!")
+
+(defn current-section [app-state]
+  ((:sections app-state) (:current-section app-state)))
+
+(defn current-question [app-state]
+  ((:questions (current-section app-state)) (:current-question app-state)))
+
+;; (current-section @app-state)
+;; (current-question @app-state)
+
 (defn answer-css-class [answer]
   (cond
    (= :unchosen (:status answer)) "answer-default"
@@ -78,7 +92,7 @@
                   (dom/div
                    #js{:className "answer-container"}
                    (dom/button
-                    #js{:onClick (fn [e] (put! choose-answer-chan answer))
+                    #js{:onClick (fn [e] (put! choose-answer-chan @answer))
                         :className (str "answer " (answer-css-class answer))}
                     (:text answer))))))
 
@@ -86,16 +100,9 @@
   (reify
     om/IRenderState
     (render-state [_ {:keys [choose-answer-chan]}]
-                ;  (dom/div #js{:className "answer-section-container"}
                   (apply dom/div #js{:className "answer-section"}
-;;                          (condp = (count answers)
-;;                            1 "one"
-;;                            2 "two"
-;;                            4 "four")
-
                          (om/build-all answer-view answers
                                        {:init-state {:choose-answer-chan choose-answer-chan}})))))
-;)
 
 (defn question-view [quiz-question owner]
   (reify
@@ -108,8 +115,14 @@
                 (let [choose-answer-chan (om/get-state owner :choose-answer-chan)]
                   (go (loop []
                         (let [answer-chosen (<! choose-answer-chan)]
-                          (.log js/console (str "Chose " (:text @answer-chosen)))
-                          (om/update! answer-chosen :status :chosen)
+                          (.cd js/console answer-chosen)
+                          (.log js/console (str "Type of answer-chosen: " (type answer-chosen)))
+                          (.log js/console (str "Type->str of answer-chosen: " (type->str answer-chosen)))
+                          (.log js/console (str "Type->str of @answer-chosen: " (type->str @answer-chosen)))
+                          (.log js/console (str "Chose " (:text answer-chosen)))
+;;                           (.log js/console (str "Curr question " (current-question app-state)))
+;;                           (om/update! answer-chosen :status :chosen)
+;;                           (om/update! (current-question app-state) answer-chosen :status :chosen)
                           (recur))))))
 
     om/IRenderState
@@ -118,7 +131,8 @@
                            (dom/div #js{:className "question-text-container"}
                                     (dom/h3 #js{:className "question-text"} (:question quiz-question)))
                            (dom/div #js{:className "media-container"})
-                           (om/build answer-section-view (:answers quiz-question))))))
+                           (om/build answer-section-view (:answers quiz-question)
+                                     {:init-state {:choose-answer-chan choose-answer-chan}})))))
 
 (defn header-bar-view [section _]
   (reify
@@ -183,6 +197,7 @@
                                 :sections
                                 (nth (:current-section quiz))))))))
 
+;; Re-eval this to see live changes in fns
 (om/root
  quiz-view
  app-state
