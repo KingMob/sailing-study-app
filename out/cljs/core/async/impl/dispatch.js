@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-2277
+// Compiled by ClojureScript 0.0-2322
 goog.provide('cljs.core.async.impl.dispatch');
 goog.require('cljs.core');
 goog.require('cljs.core.async.impl.buffers');
@@ -10,14 +10,14 @@ cljs.core.async.impl.dispatch.queued_QMARK_ = false;
 cljs.core.async.impl.dispatch.TASK_BATCH_SIZE = (1024);
 cljs.core.async.impl.dispatch.process_messages = (function process_messages(){cljs.core.async.impl.dispatch.running_QMARK_ = true;
 cljs.core.async.impl.dispatch.queued_QMARK_ = false;
-var count_13541 = (0);while(true){
-var m_13542 = cljs.core.async.impl.dispatch.tasks.pop();if((m_13542 == null))
+var count_14441 = (0);while(true){
+var m_14442 = cljs.core.async.impl.dispatch.tasks.pop();if((m_14442 == null))
 {} else
-{m_13542.call(null);
-if((count_13541 < cljs.core.async.impl.dispatch.TASK_BATCH_SIZE))
+{m_14442.call(null);
+if((count_14441 < cljs.core.async.impl.dispatch.TASK_BATCH_SIZE))
 {{
-var G__13543 = (count_13541 + (1));
-count_13541 = G__13543;
+var G__14443 = (count_14441 + (1));
+count_14441 = G__14443;
 continue;
 }
 } else
@@ -38,10 +38,10 @@ cljs.core.async.impl.dispatch.message_channel.port1.onmessage = (function (msg){
 });
 } else
 {}
-cljs.core.async.impl.dispatch.queue_dispatcher = (function queue_dispatcher(){if(cljs.core.truth_((function (){var and__3531__auto__ = cljs.core.async.impl.dispatch.queued_QMARK_;if(and__3531__auto__)
+cljs.core.async.impl.dispatch.queue_dispatcher = (function queue_dispatcher(){if(cljs.core.truth_((function (){var and__3548__auto__ = cljs.core.async.impl.dispatch.queued_QMARK_;if(and__3548__auto__)
 {return cljs.core.async.impl.dispatch.running_QMARK_;
 } else
-{return and__3531__auto__;
+{return and__3548__auto__;
 }
 })()))
 {return null;
@@ -53,11 +53,8 @@ if(typeof MessageChannel !== 'undefined')
 {if(typeof setImmediate !== 'undefined')
 {return setImmediate(cljs.core.async.impl.dispatch.process_messages);
 } else
-{if(new cljs.core.Keyword(null,"else","else",-1508377146))
 {return setTimeout(cljs.core.async.impl.dispatch.process_messages,(0));
-} else
-{return null;
-}
+
 }
 }
 }
