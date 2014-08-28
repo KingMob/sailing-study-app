@@ -69,11 +69,20 @@
 
 ;; (swap! app-state assoc-in [:sections 0 :questions 0 :answers 0 :text] "Test update!")
 
+(defn cljs-type->str [x]
+  (if-let [ctor (.-constructor x)]
+    (type->str ctor)
+    (type->str x)))
+
 (defn current-section [app-state]
   ((:sections app-state) (:current-section app-state)))
 
 (defn current-question [app-state]
   ((:questions (current-section app-state)) (:current-question app-state)))
+
+(defn next-question [];[app-state]
+  (.log js/console "Chose correctly")
+  (om/transact! app-state [:current-question] inc))
 
 ;; (current-section @app-state)
 ;; (current-question @app-state)
@@ -92,7 +101,7 @@
                   (dom/div
                    #js{:className "answer-container"}
                    (dom/button
-                    #js{:onClick (fn [e] (put! choose-answer-chan @answer))
+                    #js{:onClick (fn [e] (put! choose-answer-chan answer))
                         :className (str "answer " (answer-css-class answer))}
                     (:text answer))))))
 
@@ -115,14 +124,13 @@
                 (let [choose-answer-chan (om/get-state owner :choose-answer-chan)]
                   (go (loop []
                         (let [answer-chosen (<! choose-answer-chan)]
-                          (.cd js/console answer-chosen)
-                          (.log js/console (str "Type of answer-chosen: " (type answer-chosen)))
-                          (.log js/console (str "Type->str of answer-chosen: " (type->str answer-chosen)))
-                          (.log js/console (str "Type->str of @answer-chosen: " (type->str @answer-chosen)))
-                          (.log js/console (str "Chose " (:text answer-chosen)))
-;;                           (.log js/console (str "Curr question " (current-question app-state)))
-;;                           (om/update! answer-chosen :status :chosen)
-;;                           (om/update! (current-question app-state) answer-chosen :status :chosen)
+                          ;;                           (.dir js/console answer-chosen)
+                          ;;                           (.log js/console (str "Cljs-type->str of answer-chosen: " (cljs-type->str @answer-chosen)))
+                          (.log js/console (str "Chose " (:text @answer-chosen)))
+                          (om/update! answer-chosen :status :chosen)
+                          (.log js/console (:correct @answer-chosen))
+                          (when (:correct @answer-chosen)
+                            (next-question nil))
                           (recur))))))
 
     om/IRenderState
