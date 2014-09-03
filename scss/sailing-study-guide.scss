@@ -41,6 +41,9 @@
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
 
+$button-default: $app-gray;
+$button-correct: $success-color;
+$button-incorrect: $alert-color;
 
 // Mixins
 @mixin flex-column {
@@ -69,6 +72,21 @@
   }
 }
 
+@mixin question-transition($duration: 0.5s) {
+
+  @include transition(transform $duration ease-in);
+  transform: translate3d(0, 0, 0);
+
+  &.left {
+    @include transition(transform $duration ease-in);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  &.right {
+    @include transition(transform $duration ease-in);
+    transform: translate3d(100%, 0, 0);
+  }
+}
 
 // Styles
 
@@ -87,6 +105,8 @@ body {
   .question-container {
     @include flex(1 0 auto);
     @include flex-column;
+
+    @include question-transition();
 
     .question-text-container {
       @include flex(0 0 auto);
@@ -126,23 +146,24 @@ body {
 
       .answer {
 
-        @include button($radius:true, $full-width:true);
+        @include button($radius:true, $full-width:true, $bg-hover: $button-bg-hover);
+        @include button-style($bg: $button-default);
 
         cursor: pointer;
 
         &.answer-default {
-          background-color: $app-gray;
           color: $app-blue-1;
         }
 
         &.answer-correct {
-          background-color: #0f0;
+          @include button-style($bg: $button-correct);
         }
 
         &.answer-incorrect {
-          background-color: #f00;
+          @include button-style($bg: $button-incorrect);
         }
       }
     }
   }
+
 }

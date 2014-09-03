@@ -80,9 +80,10 @@
 (defn current-question [app-state]
   ((:questions (current-section app-state)) (:current-question app-state)))
 
-(defn next-question [];[app-state]
+(defn question-answered [];[app-state]
   (.log js/console "Chose correctly")
-  (om/transact! app-state [:current-question] inc))
+  (let [num-questions (-> @app-state current-section :questions count)]
+    (swap! app-state update-in [:current-question] inc)))
 
 ;; (current-section @app-state)
 ;; (current-question @app-state)
@@ -130,7 +131,7 @@
                           (om/update! answer-chosen :status :chosen)
                           (.log js/console (:correct @answer-chosen))
                           (when (:correct @answer-chosen)
-                            (next-question nil))
+                            (question-answered))
                           (recur))))))
 
     om/IRenderState
