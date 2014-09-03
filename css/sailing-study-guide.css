@@ -1,6 +1,7 @@
 /* @import url(//fonts.googleapis.com/css?family=Arvo:400,700|Roboto:400,700); */
 @import url(fonts.css);
 /* $column-gutter: rem-calc(30); */
+/* $button-function-factor: 20%; */
 meta.foundation-version {
   font-family: "/5.3.3/"; }
 
@@ -5643,7 +5644,21 @@ body {
     -webkit-flex-direction: column;
     -moz-flex-direction: column;
     flex-direction: column;
-    -ms-flex-direction: column; }
+    -ms-flex-direction: column;
+    -webkit-transition: -webkit-transform 0.5s ease-in;
+    -moz-transition: -moz-transform 0.5s ease-in;
+    transition: transform 0.5s ease-in;
+    transform: translate3d(0, 0, 0); }
+    .main-content .question-container.left {
+      -webkit-transition: -webkit-transform 0.5s ease-in;
+      -moz-transition: -moz-transform 0.5s ease-in;
+      transition: transform 0.5s ease-in;
+      transform: translate3d(-100%, 0, 0); }
+    .main-content .question-container.right {
+      -webkit-transition: -webkit-transform 0.5s ease-in;
+      -moz-transition: -moz-transform 0.5s ease-in;
+      transition: transform 0.5s ease-in;
+      transform: translate3d(100%, 0, 0); }
     .main-content .question-container .question-text-container {
       -webkit-box-flex: 0;
       -moz-box-flex: 0;
@@ -5749,17 +5764,35 @@ body {
         color: white;
         border-radius: 10px;
         transition: background-color 300ms ease-out;
+        background-color: #ededed;
+        border-color: #bebebe;
+        color: black;
         cursor: pointer; }
         .main-content .question-container .answer-section .answer:hover, .main-content .question-container .answer-section .answer:focus {
           background-color: #1c2839; }
         .main-content .question-container .answer-section .answer:hover, .main-content .question-container .answer-section .answer:focus {
           color: white; }
+        .main-content .question-container .answer-section .answer:hover, .main-content .question-container .answer-section .answer:focus {
+          background-color: #bebebe; }
+        .main-content .question-container .answer-section .answer:hover, .main-content .question-container .answer-section .answer:focus {
+          color: black; }
         .main-content .question-container .answer-section .answer.answer-default {
-          background-color: #ededed;
           color: #233247; }
         .main-content .question-container .answer-section .answer.answer-correct {
-          background-color: #0f0; }
+          background-color: #47ce7d;
+          border-color: #2faf62;
+          color: white; }
+          .main-content .question-container .answer-section .answer.answer-correct:hover, .main-content .question-container .answer-section .answer.answer-correct:focus {
+            background-color: #2faf62; }
+          .main-content .question-container .answer-section .answer.answer-correct:hover, .main-content .question-container .answer-section .answer.answer-correct:focus {
+            color: white; }
         .main-content .question-container .answer-section .answer.answer-incorrect {
-          background-color: #f00; }
+          background-color: #ed5565;
+          border-color: #e71b30;
+          color: white; }
+          .main-content .question-container .answer-section .answer.answer-incorrect:hover, .main-content .question-container .answer-section .answer.answer-incorrect:focus {
+            background-color: #e71b30; }
+          .main-content .question-container .answer-section .answer.answer-incorrect:hover, .main-content .question-container .answer-section .answer.answer-incorrect:focus {
+            color: white; }
 
 /*# sourceMappingURL=sailing-study-guide.css.map */
