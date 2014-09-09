@@ -3,69 +3,17 @@
   (:require [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
             [cljs.core.async :refer [put! chan <!]]
-            [clojure.string :refer [join]]))
+            [clojure.string :refer [join]]
+            [sailing-study-guide.quiz :refer [default-quiz]]))
 
 (enable-console-print!)
 (set! cljs.core/*print-meta* true)
 
-
 (def app-state
   (atom
-   {:banner "Quiz"
-    :current-section 0
-    :sections [{
-                :name "Parts of the boat"
-                :current-question 0
-                :questions
-                [{
-                  :question "What is placed between the boat and the dock to cushion the hull?"
-                  :image nil
-                  :answers [
-                            {:text "Tiller"
-                             :correct false
-                             :status :unchosen}
-                            {:text "Boomvang"
-                             :correct false
-                             :status :unchosen}
-                            {:text "Fender"
-                             :correct true
-                             :status :unchosen}
-                            {:text "Gooseneck"
-                             :correct false
-                             :status :unchosen}
-                            ]}
-                 {
-                  :question "What's the small sail at front called?"
-                  :image nil
-                  :answers [
-                            {:text "Jib"
-                             :correct true
-                             :status :unchosen}
-                            {:text "Jab"
-                             :correct false
-                             :status :unchosen}
-                            {:text "Jibjab"
-                             :correct false
-                             :status :unchosen}
-                            {:text "Jibber jabber"
-                             :correct false
-                             :status :unchosen}]}
-                 {
-                  :question "What's the biggest danger to a boat?"
-                  :image nil
-                  :answers [
-                            {:text "Pirates"
-                             :correct false
-                             :status :unchosen}
-                            {:text "Giant squids"
-                             :correct false
-                             :status :unchosen}
-                            {:text "Barnacles"
-                             :correct false
-                             :status :unchosen}
-                            {:text "That you'll need a bigger one"
-                             :correct true
-                             :status :unchosen}]}]}]}))
+   {:current-section 0
+    :current-question 0
+    :quiz default-quiz}))
 
 ;; (swap! app-state assoc-in [:sections 0 :questions 0 :answers 0 :text] "Test update!")
 
@@ -80,7 +28,7 @@
 (defn current-question [app-state]
   ((:questions (current-section app-state)) (:current-question app-state)))
 
-(defn question-answered [];[app-state]
+(defn question-answered []
   (.log js/console "Chose correctly")
   (let [num-questions (-> @app-state current-section :questions count)]
     (swap! app-state update-in [:current-question] inc)))
@@ -195,16 +143,17 @@
               (dom/a #js{:className "exit-off-canvas"}))))))
 
 
-(defn quiz-view [quiz owner]
+(defn quiz-view [app-state owner]
   (reify
     om/IRender
     (render [_]
             (dom/div nil
                      (om/build section-view
                                (->
-                                quiz
+                                app-state
+                                :quiz
                                 :sections
-                                (nth (:current-section quiz))))))))
+                                (nth (:current-section app-state))))))))
 
 ;; Re-eval this to see live changes in fns
 (om/root
