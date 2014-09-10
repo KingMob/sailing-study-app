@@ -23,10 +23,18 @@
     (type->str x)))
 
 (defn current-section [app-state]
-  ((:sections app-state) (:current-section app-state)))
+  (let [current-section (:current-section app-state)]
+    (get-in app-state [:quiz :sections current-section])))
+
+(current-section @app-state)
 
 (defn current-question [app-state]
-  ((:questions (current-section app-state)) (:current-question app-state)))
+  (let [current-question (:current-section app-state)]
+    (get-in (current-section app-state) [:questions current-question])))
+
+(current-question @app-state)
+(-> @app-state current-section :questions count)
+(:current-question @app-state)
 
 (defn question-answered []
   (.log js/console "Chose correctly")
@@ -73,13 +81,15 @@
                 (let [choose-answer-chan (om/get-state owner :choose-answer-chan)]
                   (go (loop []
                         (let [answer-chosen (<! choose-answer-chan)]
-                          ;;                           (.dir js/console answer-chosen)
+;;                           (.dir js/console answer-chosen)
                           ;;                           (.log js/console (str "Cljs-type->str of answer-chosen: " (cljs-type->str @answer-chosen)))
+;;                           (.dir js/console (om/value answer-chosen))
+;;                           (.dir js/console @answer-chosen)
                           (.log js/console (str "Chose " (:text @answer-chosen)))
                           (om/update! answer-chosen :status :chosen)
-                          (.log js/console (:correct @answer-chosen))
-                          (when (:correct @answer-chosen)
-                            (question-answered))
+;;                           (.log js/console (:correct @answer-chosen))
+;;                           (when (:correct @answer-chosen)
+;;                             (question-answered))
                           (recur))))))
 
     om/IRenderState
