@@ -5,9 +5,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2322"]
 ;;                  [org.clojure/clojurescript "0.0-2277"]
-;                 [org.clojure/clojurescript "0.0-2234"] ; LightTable 0.6.3 has conn issues with higher versions
+;;                  [org.clojure/clojurescript "0.0-2234"] ; LightTable 0.6.3 has conn issues with higher versions
                  [org.clojure/core.async "0.1.338.0-5c5012-alpha"]
-;;                  [org.clojure/core.async "0.1.303.0-886421-alpha"]
                  [om "0.7.1"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]

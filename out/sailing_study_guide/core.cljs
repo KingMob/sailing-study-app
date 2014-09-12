@@ -15,7 +15,6 @@
     :current-question 0
     :quiz default-quiz}))
 
-;; (swap! app-state assoc-in [:sections 0 :questions 0 :answers 0 :text] "Test update!")
 
 (defn cljs-type->str [x]
   (if-let [ctor (.-constructor x)]
@@ -26,15 +25,15 @@
   (let [current-section (:current-section app-state)]
     (get-in app-state [:quiz :sections current-section])))
 
-(current-section @app-state)
+;; (current-section @app-state)
 
 (defn current-question [app-state]
   (let [current-question (:current-section app-state)]
     (get-in (current-section app-state) [:questions current-question])))
 
-(current-question @app-state)
-(-> @app-state current-section :questions count)
-(:current-question @app-state)
+;; (current-question @app-state)
+;; (-> @app-state current-section :questions count)
+;; (:current-question @app-state)
 
 (defn question-answered []
   (.log js/console "Chose correctly")
@@ -54,52 +53,49 @@
 (defn answer-view [answer owner]
   (reify
     om/IRenderState
-    (render-state [_ {:keys [choose-answer-chan]}]
+    (render-state [_ {:keys [answer-chan]}]
                   (dom/div
                    #js{:className "answer-container"}
                    (dom/button
-                    #js{:onClick (fn [e] (put! choose-answer-chan answer))
+                    #js{:onClick (fn [e] (put! answer-chan answer))
                         :className (str "answer " (answer-css-class answer))}
                     (:text answer))))))
 
 (defn answer-section-view [answers owner]
   (reify
     om/IRenderState
-    (render-state [_ {:keys [choose-answer-chan]}]
+    (render-state [_ {:keys [answer-chan]}]
                   (apply dom/div #js{:className "answer-section"}
                          (om/build-all answer-view answers
-                                       {:init-state {:choose-answer-chan choose-answer-chan}})))))
+                                       {:init-state {:answer-chan answer-chan}})))))
+
 
 (defn question-view [quiz-question owner]
   (reify
     om/IInitState
     (init-state [_]
-                {:choose-answer-chan (chan)})
+                {:answer-chan (chan)})
 
     om/IWillMount
     (will-mount [_]
-                (let [choose-answer-chan (om/get-state owner :choose-answer-chan)]
+                (let [answer-chan (om/get-state owner :answer-chan)]
                   (go (loop []
-                        (let [answer-chosen (<! choose-answer-chan)]
-;;                           (.dir js/console answer-chosen)
-                          ;;                           (.log js/console (str "Cljs-type->str of answer-chosen: " (cljs-type->str @answer-chosen)))
-;;                           (.dir js/console (om/value answer-chosen))
-;;                           (.dir js/console @answer-chosen)
-                          (.log js/console (str "Chose " (:text @answer-chosen)))
-                          (om/update! answer-chosen :status :chosen)
-;;                           (.log js/console (:correct @answer-chosen))
+                        (let [answer-chosen (<! answer-chan)]
+                          (.log js/console (str "Chothe " (:text @answer-chosen)))
+                          (om/transact! answer-chosen [:text] #(str % " *"))
+;;                           (om/update! answer-chosen :status :chosen)
 ;;                           (when (:correct @answer-chosen)
 ;;                             (question-answered))
                           (recur))))))
 
     om/IRenderState
-    (render-state [_ {:keys [choose-answer-chan]}]
+    (render-state [_ {:keys [answer-chan]}]
                   (dom/div #js{:className "question-container"}
                            (dom/div #js{:className "question-text-container"}
                                     (dom/h3 #js{:className "question-text"} (:question quiz-question)))
                            (dom/div #js{:className "media-container"})
                            (om/build answer-section-view (:answers quiz-question)
-                                     {:init-state {:choose-answer-chan choose-answer-chan}})))))
+                                     {:init-state {:answer-chan answer-chan}})))))
 
 (defn header-bar-view [section _]
   (reify
@@ -144,6 +140,9 @@
   (reify
     om/IRender
     (render [_]
+(.dir js/console (str "(:current-question section): " (:current-question section)))
+(.dir js/console (str "questionable: " (get (:questions section) (:current-question section))))
+(.log js/console (str "questionable type: " (cljs-type->str (get (:questions section) (:current-question section)))))
             (dom/div
              #js{:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
              (dom/div
