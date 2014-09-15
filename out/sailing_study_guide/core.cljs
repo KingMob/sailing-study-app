@@ -4,6 +4,7 @@
             [om.dom :as dom :include-macros true]
             [cljs.core.async :refer [put! chan <!]]
             [clojure.string :refer [join]]
+            [clairvoyant.core :as trace :include-macros true]
             [sailing-study-guide.quiz :refer [default-quiz]]))
 
 (enable-console-print!)
@@ -140,15 +141,13 @@
   (reify
     om/IRender
     (render [_]
-(.dir js/console (str "(:current-question section): " (:current-question section)))
-(.dir js/console (str "questionable: " (get (:questions section) (:current-question section))))
-(.log js/console (str "questionable type: " (cljs-type->str (get (:questions section) (:current-question section)))))
             (dom/div
              #js{:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
              (dom/div
               #js{:className "main-content inner-wrap"}
               (om/build header-view section)
-              (om/build question-view (get (:questions section) (:current-question section)))
+;;               (om/build question-view (nth (:questions section) (:current-question section)))
+              (om/build question-view (current-question section))
               (dom/a #js{:className "exit-off-canvas"}))))))
 
 
