@@ -2,7 +2,7 @@
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
-            [cljs.core.async :refer [put! chan <!]]
+            [cljs.core.async :refer [put! chan <! pub]]
             [clojure.string :refer [join]]
             [clairvoyant.core :as trace :include-macros true]
             [sailing-study-guide.quiz :refer [default-quiz]]))
@@ -44,22 +44,29 @@
 ;; (current-section @app-state)
 ;; (current-question @app-state)
 
-(defn answer-css-class [answer]
+(defn answer-css-class [status correct]
   (cond
-   (= :unchosen (:status answer)) "answer-default"
-   (:correct answer) "answer-correct success"
+   (= :unchosen status) "answer-default"
+   correct "answer-correct success"
    :else "answer-incorrect alert"))
+
+(answer-css-class :unchosen false)
+(answer-css-class :chosen false)
+(answer-css-class :chosen true)
 
 
 (defn answer-view [answer owner]
   (reify
+    om/IInitState
+    (init-state [_]
+                {:status :unchosen})
     om/IRenderState
-    (render-state [_ {:keys [answer-chan]}]
+    (render-state [_ {:keys [answer-chan status]}]
                   (dom/div
                    #js{:className "answer-container"}
                    (dom/button
                     #js{:onClick (fn [e] (put! answer-chan answer))
-                        :className (str "answer " (answer-css-class answer))}
+                        :className (str "answer " (answer-css-class status (:correct answer)))}
                     (:text answer))))))
 
 (defn answer-section-view [answers owner]
@@ -73,16 +80,17 @@
 
 (defn question-view [quiz-question owner]
   (reify
-    om/IInitState
-    (init-state [_]
-                {:answer-chan (chan)})
+;;     om/IInitState
+;;     (init-state [_]
+;;                 {:answer-chan (chan)})
 
     om/IWillMount
     (will-mount [_]
-                (let [answer-chan (om/get-state owner :answer-chan)]
+;;                 (let [answer-chan (om/get-state owner :answer-chan)]
+                (let [answer-chan (om/get-shared owner :tx-chan)]
                   (go (loop []
                         (let [answer-chosen (<! answer-chan)]
-                          (.log js/console (str "Chothe " (:text @answer-chosen)))
+                          (.log js/console (str "Chose " (:text @answer-chosen)))
                           (om/transact! answer-chosen [:text] #(str % " *"))
 ;;                           (om/update! answer-chosen :status :chosen)
 ;;                           (when (:correct @answer-chosen)
@@ -164,7 +172,11 @@
                                 (nth (:current-section app-state))))))))
 
 ;; Re-eval this to see live changes in fns
-(om/root
- quiz-view
- app-state
- {:target (. js/document (getElementById "app"))})
+(let [tx-chan (chan)
+      tx-pub-chan (pub tx-chan :tag)]
+  (om/root
+   quiz-view
+   app-state
+   {
+    :target (. js/document (getElementById "app"))
+    :shared {:tx-chan tx-chan}}))

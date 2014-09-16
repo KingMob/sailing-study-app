@@ -10,47 +10,35 @@
                  :image nil
                  :answers [
                            {:text "Tiller"
-                            :correct false
-                            :status :unchosen}
+                            :correct false}
                            {:text "Boomvang"
-                            :correct false
-                            :status :unchosen}
+                            :correct false}
                            {:text "Fender"
-                            :correct true
-                            :status :unchosen}
+                            :correct true}
                            {:text "Gooseneck"
-                            :correct false
-                            :status :unchosen}
+                            :correct false}
                            ]}
                 {
                  :question "What's the small sail at front called?"
                  :image nil
                  :answers [
                            {:text "Jib"
-                            :correct true
-                            :status :unchosen}
+                            :correct true}
                            {:text "Jab"
-                            :correct false
-                            :status :unchosen}
+                            :correct false}
                            {:text "Jibjab"
-                            :correct false
-                            :status :unchosen}
+                            :correct false}
                            {:text "Jibber jabber"
-                            :correct false
-                            :status :unchosen}]}
+                            :correct false}]}
                 {
                  :question "What's the biggest danger to a boat?"
                  :image nil
                  :answers [
                            {:text "Pirates"
-                            :correct false
-                            :status :unchosen}
+                            :correct false}
                            {:text "Giant squids"
-                            :correct false
-                            :status :unchosen}
+                            :correct false}
                            {:text "Barnacles"
-                            :correct false
-                            :status :unchosen}
+                            :correct false}
                            {:text "That you'll need a bigger one"
-                            :correct true
-                            :status :unchosen}]}]}]})
+                            :correct true}]}]}]})
