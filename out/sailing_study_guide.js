@@ -11,5 +11,6 @@ goog.addDependency("../cljs/core/async/impl/timers.js", ['cljs.core.async.impl.t
 goog.addDependency("../om/core.js", ['om.core'], ['cljs.core', 'om.dom', 'goog.ui.IdGenerator']);
 goog.addDependency("../clojure/string.js", ['clojure.string'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer']);
 goog.addDependency("../cljs/core/async.js", ['cljs.core.async'], ['cljs.core.async.impl.channels', 'cljs.core.async.impl.dispatch', 'cljs.core', 'cljs.core.async.impl.buffers', 'cljs.core.async.impl.protocols', 'cljs.core.async.impl.ioc_helpers', 'cljs.core.async.impl.timers']);
+goog.addDependency("../sailing_study_guide/dispatch.js", ['sailing_study_guide.dispatch'], ['cljs.core', 'cljs.core.async']);
 goog.addDependency("../clairvoyant/core.js", ['clairvoyant.core'], ['cljs.core']);
-goog.addDependency("../sailing_study_guide/core.js", ['sailing_study_guide.core'], ['cljs.core', 'om.dom', 'sailing_study_guide.quiz', 'cljs.core.async', 'clairvoyant.core', 'om.core', 'clojure.string']);
+goog.addDependency("../sailing_study_guide/core.js", ['sailing_study_guide.core'], ['cljs.core', 'om.dom', 'sailing_study_guide.quiz', 'cljs.core.async', 'clairvoyant.core', 'sailing_study_guide.dispatch', 'om.core', 'clojure.string']);

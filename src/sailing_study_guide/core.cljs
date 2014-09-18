@@ -1,11 +1,13 @@
 (ns sailing-study-guide.core
-  (:require-macros [cljs.core.async.macros :refer [go]])
+  (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
-            [cljs.core.async :refer [put! chan <! pub]]
+            [cljs.core.async :refer [chan put! pub sub unsub <! >!]]
             [clojure.string :refer [join]]
             [clairvoyant.core :as trace :include-macros true]
-            [sailing-study-guide.quiz :refer [default-quiz]]))
+            [sailing-study-guide.quiz :refer [default-quiz]]
+            [sailing-study-guide.dispatch :as dispatcher]
+            ))
 
 (enable-console-print!)
 (set! cljs.core/*print-meta* true)
@@ -65,7 +67,9 @@
                   (dom/div
                    #js{:className "answer-container"}
                    (dom/button
-                    #js{:onClick (fn [e] (put! answer-chan answer))
+                    #js{
+;;                         :onClick (fn [e] (put! answer-chan answer))
+                        :onClick (fn [e] (dispatcher/dispatch! :answer-chosen answer))
                         :className (str "answer " (answer-css-class status (:correct answer)))}
                     (:text answer))))))
 
@@ -80,22 +84,34 @@
 
 (defn question-view [quiz-question owner]
   (reify
-;;     om/IInitState
-;;     (init-state [_]
-;;                 {:answer-chan (chan)})
+    ;;     om/IInitState
+    ;;     (init-state [_]
+    ;;                 {:answer-chan (chan)})
+
+;;     om/IWillMount
+;;     (will-mount [_]
+;;                 ;;                 (let [answer-chan (om/get-state owner :answer-chan)]
+;;                 (let [answer-chan (om/get-shared owner :tx-chan)]
+;;                   (go (loop []
+;;                         (let [answer-chosen (<! answer-chan)]
+;;                           (.log js/console (str "Chose " (:text @answer-chosen)))
+;;                           (om/transact! answer-chosen [:text] #(str % " *"))
+;;                           ;;                           (om/update! answer-chosen :status :chosen)
+;;                           ;;                           (when (:correct @answer-chosen)
+;;                           ;;                             (question-answered))
+;;                           (recur))))))
 
     om/IWillMount
     (will-mount [_]
-;;                 (let [answer-chan (om/get-state owner :answer-chan)]
-                (let [answer-chan (om/get-shared owner :tx-chan)]
-                  (go (loop []
-                        (let [answer-chosen (<! answer-chan)]
-                          (.log js/console (str "Chose " (:text @answer-chosen)))
-                          (om/transact! answer-chosen [:text] #(str % " *"))
-;;                           (om/update! answer-chosen :status :chosen)
-;;                           (when (:correct @answer-chosen)
-;;                             (question-answered))
-                          (recur))))))
+                (let [answer-chan (dispatcher/register :answer-chosen)]
+                  (go-loop []
+                           (let [answer-chosen (<! answer-chan)]
+                             (.log js/console (str "Chose " (:text @answer-chosen)))
+                             ;;                           (om/transact! answer-chosen [:text] #(str % " *"))
+                             ;;                           ;;                           (om/update! answer-chosen :status :chosen)
+                             ;;                           ;;                           (when (:correct @answer-chosen)
+                             ;;                           ;;                             (question-answered))
+                             (recur)))))
 
     om/IRenderState
     (render-state [_ {:keys [answer-chan]}]
@@ -154,7 +170,7 @@
              (dom/div
               #js{:className "main-content inner-wrap"}
               (om/build header-view section)
-;;               (om/build question-view (nth (:questions section) (:current-question section)))
+              ;;               (om/build question-view (nth (:questions section) (:current-question section)))
               (om/build question-view (current-question section))
               (dom/a #js{:className "exit-off-canvas"}))))))
 
@@ -172,11 +188,7 @@
                                 (nth (:current-section app-state))))))))
 
 ;; Re-eval this to see live changes in fns
-(let [tx-chan (chan)
-      tx-pub-chan (pub tx-chan :tag)]
-  (om/root
-   quiz-view
-   app-state
-   {
-    :target (. js/document (getElementById "app"))
-    :shared {:tx-chan tx-chan}}))
+(om/root
+ quiz-view
+ app-state
+ {:target (. js/document (getElementById "app"))})
