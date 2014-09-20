@@ -10,7 +10,7 @@
             ))
 
 (enable-console-print!)
-(set! cljs.core/*print-meta* true)
+;; (set! cljs.core/*print-meta* true)
 
 (def app-state
   (atom
@@ -101,17 +101,17 @@
 ;;                           ;;                             (question-answered))
 ;;                           (recur))))))
 
-    om/IWillMount
-    (will-mount [_]
-                (let [answer-chan (dispatcher/register :answer-chosen)]
-                  (go-loop []
-                           (let [answer-chosen (<! answer-chan)]
-                             (.log js/console (str "Chose " (:text @answer-chosen)))
-                             ;;                           (om/transact! answer-chosen [:text] #(str % " *"))
-                             ;;                           ;;                           (om/update! answer-chosen :status :chosen)
-                             ;;                           ;;                           (when (:correct @answer-chosen)
-                             ;;                           ;;                             (question-answered))
-                             (recur)))))
+;;     om/IWillMount
+;;     (will-mount [_]
+;;                 (let [answer-chan (dispatcher/register :answer-chosen)]
+;;                   (go-loop []
+;;                            (let [answer-chosen (<! answer-chan)]
+;;                              (.log js/console (str "Chose " (:text @answer-chosen)))
+;;                              ;;                           (om/transact! answer-chosen [:text] #(str % " *"))
+;;                              ;;                           ;;                           (om/update! answer-chosen :status :chosen)
+;;                              ;;                           ;;                           (when (:correct @answer-chosen)
+;;                              ;;                           ;;                             (question-answered))
+;;                              (recur)))))
 
     om/IRenderState
     (render-state [_ {:keys [answer-chan]}]
