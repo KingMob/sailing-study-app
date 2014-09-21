@@ -10,7 +10,7 @@
             ))
 
 (enable-console-print!)
-;; (set! cljs.core/*print-meta* true)
+(set! cljs.core/*print-meta* true)
 
 (def app-state
   (atom
