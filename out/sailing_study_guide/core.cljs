@@ -2,7 +2,7 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
-            [cljs.core.async :refer [chan put! pub sub unsub <! >!]]
+            [cljs.core.async :refer [chan mult tap put! pub sub unsub <! >!]]
             [clojure.string :refer [join]]
             [clairvoyant.core :as trace :include-macros true]
             [sailing-study-guide.quiz :refer [default-quiz]]
