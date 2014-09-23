@@ -30,13 +30,22 @@
 ;;         (>! complete true))
 ;;     (block-or-done complete)))
 
-(deftest ^:async basic-core-async-test
-  (let [c (chan 1)
-        val 1234]
-    (go
-     (>! c val)
-     (is (= val (<! c)))
-     (done))))
+;; (deftest ^:async basic-core-async-test
+;;   (let [c (chan 1)
+;;         val 1234]
+;;     (go
+;;      (>! c val)
+;;      (is (= val (<! c)))
+;;      (done))))
+
+;; (deftest ^:async unbuffered-basic-core-async-test
+;;   (let [c (chan)
+;;         val 1234]
+;;     (go
+;;      (>! c val))
+;;     (go
+;;      (is (= val (<! c)))
+;;      (done))))
 
 ;; (with-test
 ;;   (defn pennies->dollar-string

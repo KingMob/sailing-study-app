@@ -32,8 +32,9 @@
                                    :output-to "out/sailing_study_guide_test.js"
                                    :optimizations :whitespace
                                    :pretty-print true
-                                   :preamble ["react/react.min.js"]
-                                   :externs ["react/externs/react.js"]}}
+;;                                    :preamble ["react/react.min.js"] ; seems to cause "React not found" warnings is missing, but "cemerick.cljs.test not found" errors if present!
+;;                                    :externs ["react/externs/react.js"]
+                                   }}
                        {:id "production"
                         :source-paths ["src"]
                         :compiler {
