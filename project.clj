@@ -3,32 +3,48 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2322"]
+                 [org.clojure/clojurescript "0.0-2342"]
                  [org.clojure/core.async "0.1.338.0-5c5012-alpha"]
                  [spellhouse/clairvoyant "0.0-29-g825d69c"]
                  [om "0.7.3"]]
 
+  :hooks [leiningen.cljsbuild]
+
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.11"]
+            [com.cemerick/clojurescript.test "0.3.1"]
             ]
 
   :source-paths ["src"]
 
   :cljsbuild {
-    :builds [{:id "dev"
-              :source-paths ["src"]
-              :compiler {
-                :output-to "out/sailing_study_guide.js"
-                :output-dir "out"
-                :optimizations :none
-                :pretty-print true
-                :source-map true}}
+              :builds [{:id "dev"
+                        :source-paths ["src"]
+                        :compiler {
+                                   :output-to "out/sailing_study_guide.js"
+                                   :output-dir "out"
+                                   :optimizations :none
+                                   :pretty-print true
+                                   :source-map true}}
+                       {:id "test"
+                        :source-paths ["src" "tests"]
+                        :compiler {
+                                   :output-to "out/sailing_study_guide_test.js"
+                                   :optimizations :whitespace
+                                   :pretty-print true
+                                   :preamble ["react/react.min.js"]
+                                   :externs ["react/externs/react.js"]}}
+                       {:id "production"
+                        :source-paths ["src"]
+                        :compiler {
+                                   :output-to "main.js"
+                                   :optimizations :advanced
+                                   :pretty-print false
+                                   :preamble ["react/react.min.js"]
+                                   :externs ["react/externs/react.js"]}}]
 
-             {:id "production"
-              :source-paths ["src"]
-              :compiler {
-                :output-to "main.js"
-                :optimizations :advanced
-                :pretty-print false
-                :preamble ["react/react.min.js"]
-                :externs ["react/externs/react.js"]}}]})
+              :test-commands {"unit-tests-phantomjs" ["phantomjs" :runner
+                                                      "out/sailing_study_guide_test.js"]
+;;                               "unit-tests-rhino" ["rhino" "-opt" "-1" :rhino-runner
+;;                                                   "out/sailing_study_guide_test.js"]
+                              }})
