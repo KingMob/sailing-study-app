@@ -12,17 +12,20 @@
 (tap dispatch-mult dispatch-logger-chan)
 (tap dispatch-mult dispatch-pub-chan)
 
-(defn register [tag cb]
+(defn register [tag]
   (let [c (chan)]
-    (sub dispatch-pub tag c)
-    (go-loop [payload (<! c)]
-             (if-not (nil? payload)
-               (do
-                 (cb (retrieve-message payload))
-                 (recur (<! c)))
-               (do
-                 (println "Leaving loop for " tag)
-                 (close! c))))))
+    (sub dispatch-pub tag c)))
+
+(defn whenever [c cb]
+  (go-loop [payload (<! c)]
+           (if-not (nil? payload)
+             (do
+               (cb (retrieve-message payload))
+               (recur (<! c)))
+             (do
+               (println "Leaving loop for " tag)
+               (close! c)))))
+
 
 (defn unregister [tag chan]
   (unsub dispatch-pub tag chan))

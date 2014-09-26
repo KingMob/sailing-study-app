@@ -4,7 +4,7 @@
 
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2342"]
-                 [org.clojure/core.async "0.1.338.0-5c5012-alpha"]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [spellhouse/clairvoyant "0.0-29-g825d69c"]
                  [om "0.7.3"]]
 
