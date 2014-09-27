@@ -12,6 +12,11 @@
 (tap dispatch-mult dispatch-logger-chan)
 (tap dispatch-mult dispatch-pub-chan)
 
+
+(defn- retrieve-message [payload]
+   (when payload
+     (:message payload)))
+
 (defn register [tag]
   (let [c (chan)]
     (sub dispatch-pub tag c)))
@@ -23,7 +28,7 @@
                (cb (retrieve-message payload))
                (recur (<! c)))
              (do
-               (println "Leaving loop for " tag)
+               (println "Leaving loop for " c)
                (close! c)))))
 
 
@@ -36,9 +41,6 @@
       (doseq [tag tags] (dispatchfn tag))
       (dispatchfn tags))))
 
-(defn- retrieve-message [payload]
-   (when payload
-     (:message payload)))
 
 ;; Start logger
 (go-loop []
