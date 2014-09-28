@@ -1,35 +1,58 @@
-(ns sailing-study-guide.dispatch
-  (:require-macros [cemerick.cljs.test :refer (is deftest with-test run-tests testing test-var done block-or-done)]
+(ns sailing-study-guide.test.dispatch
+  (:require-macros [cemerick.cljs.test :refer (is deftest with-test run-tests testing test-var done block-or-done use-fixtures)]
                    [cljs.core.async.macros :refer [go go-loop]])
   (:require [cemerick.cljs.test :as t]
             [cljs.core.async :refer [chan mult tap put! <! >! pub sub unsub close!]]
-            [clairvoyant.core :as trace :include-macros true]))
+            [clairvoyant.core :as trace :include-macros true]
+            [sailing-study-guide.dispatch :as dispatcher]))
 
 (defn setup []
-  (let [default-tag :foo
-        default-payload {:tag default-tag :message 42}])
+  (def *default-tag* :foo)
+  (def *default-mesg* 42)
+  (def *not-default-mesg* 43)
+  (def *default-payload* {:tag *default-tag* :message *default-mesg*}))
+
 (defn teardown [])
 
-(defn fixture [f]
-    (f)))
+(defn each-fixture [f]
+  (setup)
+  (f)
+  (teardown))
 
-(deftest fixture-test
-  (is (= :foo default-tag)))
+(deftest retrieve-message-test
+  (is (= *default-mesg* (dispatcher/retrieve-message *default-payload*))))
+
 
 (deftest ^:async register-test
-  (let [c (register default-tag)]
-    (put! c default-payload)
+  (let [c (dispatcher/register *default-tag*)]
+    (put! c *default-payload*)
 
     (go
      (is (not (nil? (<! c))))
      (done))))
 
-;; (deftest somewhat-less-wat
-;;   (is (= 1 (+ 0 1))))
+(deftest ^:async unregister-test
+  (let [c (dispatcher/register *default-tag*)]
+    (dispatcher/unregister *default-tag* c)
+    (go
+     (is (= nil (<! c)))
+     (done))))
 
-;; (deftest javascript-allows-div0
-;;   (is (= js/Infinity (/ 1 0) (/ (int 1) (int 0)))))
+(deftest ^:async whenever-test
+  (dispatcher/whenever
+   *default-tag*
+   (fn [mesg]
+     (is (= *default-mesg* mesg))
+     (is (not= *not-default-mesg* mesg))
+     (done)))
+  (put! dispatcher/dispatch-chan *default-payload*))
 
+(deftest ^:async dispatch-test
+  (go
+   (let [payload (<! dispatcher/dispatch-pub-chan)]
+     (is (= *default-payload* payload))
+     (done)))
+  (dispatcher/dispatch! *default-tag* *default-mesg*))
 
 ;; (deftest ^:async core-async-test
 ;;   (let [inputs (repeatedly 10000 #(go 1))]
@@ -67,15 +90,6 @@
 ;;      (is (= val (<! c)))
 ;;      (done))))
 
-;; (let [c (chan)
-;;       val 1234]
-;;   (go
-;;    (>! c val)
-;;    (println "Sent: " val))
-;;   (go
-;;    (println "Received: " (<! c)))
-;;   nil)
-
 ;; (with-test
 ;;   (defn pennies->dollar-string
 ;;     [pennies]
@@ -84,4 +98,4 @@
 ;;   (testing "assertions are nice"
 ;;     (is (thrown-with-msg? js/Error #"integer?" (pennies->dollar-string 564.2)))))
 
-(use-fixtures :each fixture)
+(use-fixtures :each each-fixture)

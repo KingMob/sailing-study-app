@@ -3,7 +3,7 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2342"]
+                 [org.clojure/clojurescript "0.0-2356"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [spellhouse/clairvoyant "0.0-29-g825d69c"]
                  [om "0.7.3"]]

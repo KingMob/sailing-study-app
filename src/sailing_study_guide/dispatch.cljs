@@ -21,19 +21,23 @@
   (let [c (chan)]
     (sub dispatch-pub tag c)))
 
-(defn whenever [c cb]
-  (go-loop [payload (<! c)]
-           (if-not (nil? payload)
-             (do
-               (cb (retrieve-message payload))
-               (recur (<! c)))
-             (do
-               (println "Leaving loop for " c)
-               (close! c)))))
-
-
 (defn unregister [tag chan]
-  (unsub dispatch-pub tag chan))
+  (unsub dispatch-pub tag chan)
+  (close! chan))
+
+(defn whenever [tag cb]
+  (let [c (register tag)]
+    (go-loop [payload (<! c)]
+             (if-not (nil? payload)
+               (do
+;;                  (println "Processing mesg in " payload)
+                 (cb (retrieve-message payload))
+                 (recur (<! c)))
+               (do
+;;                  (println "Leaving loop for " c)
+                 (close! c))))
+    c))
+
 
 (defn dispatch! [tags & message]
   (letfn ([dispatchfn [tag] (put! dispatch-chan {:tag tag :message message})])
