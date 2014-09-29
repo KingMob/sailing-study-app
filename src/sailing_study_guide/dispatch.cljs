@@ -28,7 +28,7 @@
 (defn whenever [tag cb]
   (let [c (register tag)]
     (go-loop [payload (<! c)]
-             (if-not (nil? payload)
+             (if payload
                (do
 ;;                  (println "Processing mesg in " payload)
                  (cb (retrieve-message payload))
@@ -48,7 +48,7 @@
 
 ;; Start logger
 (go-loop []
-         (println "Dispatched: " (pr-str (<! dispatch-logger-chan)))
+         (println "Logged: " (pr-str (<! dispatch-logger-chan)))
          (recur))
 
 

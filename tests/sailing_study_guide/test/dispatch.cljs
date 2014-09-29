@@ -50,6 +50,7 @@
 (deftest ^:async dispatch-test
   (go
    (let [payload (<! dispatcher/dispatch-pub-chan)]
+     (println "payload received")
      (is (= *default-payload* payload))
      (done)))
   (dispatcher/dispatch! *default-tag* *default-mesg*))
