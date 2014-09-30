@@ -4,12 +4,12 @@
             [clairvoyant.core :as trace :include-macros true]))
 
 
+(def *dispatcher-logging-enabled* false)
+
 (def ^:private dispatch-chan (chan))
 (def ^:private dispatch-mult (mult dispatch-chan))
-(def ^:private dispatch-logger-chan (chan))
 (def ^:private dispatch-pub-chan (chan))
 (def ^:private dispatch-pub (pub dispatch-pub-chan #(:tag %)))
-(tap dispatch-mult dispatch-logger-chan)
 (tap dispatch-mult dispatch-pub-chan)
 
 
@@ -47,9 +47,13 @@
 
 
 ;; Start logger
-(go-loop []
-         (println "Logged: " (pr-str (<! dispatch-logger-chan)))
-         (recur))
+(when *dispatcher-logging-enabled*
+  (def ^:private dispatch-logger-chan (chan))
+  (tap dispatch-mult dispatch-logger-chan)
+
+  (go-loop []
+           (println "Logged: " (pr-str (<! dispatch-logger-chan)))
+           (recur)))
 
 
 (comment

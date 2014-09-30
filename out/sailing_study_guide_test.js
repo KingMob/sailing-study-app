@@ -36083,14 +36083,13 @@ goog.require("cljs.core.async");
 goog.require("clairvoyant.core");
 goog.require("clairvoyant.core");
 goog.require("cljs.core.async");
+sailing_study_guide.dispatch._STAR_dispatcher_logging_enabled_STAR_ = false;
 sailing_study_guide.dispatch.dispatch_chan = cljs.core.async.chan.call(null);
 sailing_study_guide.dispatch.dispatch_mult = cljs.core.async.mult.call(null, sailing_study_guide.dispatch.dispatch_chan);
-sailing_study_guide.dispatch.dispatch_logger_chan = cljs.core.async.chan.call(null);
 sailing_study_guide.dispatch.dispatch_pub_chan = cljs.core.async.chan.call(null);
-sailing_study_guide.dispatch.dispatch_pub = cljs.core.async.pub.call(null, sailing_study_guide.dispatch.dispatch_pub_chan, function(p1__10438_SHARP_) {
-  return(new cljs.core.Keyword(null, "tag", "tag", -1290361223)).cljs$core$IFn$_invoke$arity$1(p1__10438_SHARP_);
+sailing_study_guide.dispatch.dispatch_pub = cljs.core.async.pub.call(null, sailing_study_guide.dispatch.dispatch_pub_chan, function(p1__14206_SHARP_) {
+  return(new cljs.core.Keyword(null, "tag", "tag", -1290361223)).cljs$core$IFn$_invoke$arity$1(p1__14206_SHARP_);
 });
-cljs.core.async.tap.call(null, sailing_study_guide.dispatch.dispatch_mult, sailing_study_guide.dispatch.dispatch_logger_chan);
 cljs.core.async.tap.call(null, sailing_study_guide.dispatch.dispatch_mult, sailing_study_guide.dispatch.dispatch_pub_chan);
 sailing_study_guide.dispatch.retrieve_message = function retrieve_message(payload) {
   if (cljs.core.truth_(payload)) {
@@ -36109,86 +36108,86 @@ sailing_study_guide.dispatch.unregister = function unregister(tag, chan) {
 };
 sailing_study_guide.dispatch.whenever = function whenever(tag, cb) {
   var c = sailing_study_guide.dispatch.register.call(null, tag);
-  var c__6799__auto___10509 = cljs.core.async.chan.call(null, 1);
-  cljs.core.async.impl.dispatch.run.call(null, function(c__6799__auto___10509, c) {
+  var c__6844__auto___14277 = cljs.core.async.chan.call(null, 1);
+  cljs.core.async.impl.dispatch.run.call(null, function(c__6844__auto___14277, c) {
     return function() {
-      var f__6800__auto__ = function() {
-        var switch__6784__auto__ = function(c__6799__auto___10509, c) {
-          return function(state_10491) {
-            var state_val_10492 = state_10491[1];
-            if (state_val_10492 === 8) {
-              var inst_10482 = state_10491[2];
-              var inst_10476 = inst_10482;
-              var state_10491__$1 = function() {
-                var statearr_10493 = state_10491;
-                statearr_10493[7] = inst_10476;
-                return statearr_10493;
+      var f__6845__auto__ = function() {
+        var switch__6829__auto__ = function(c__6844__auto___14277, c) {
+          return function(state_14259) {
+            var state_val_14260 = state_14259[1];
+            if (state_val_14260 === 8) {
+              var inst_14250 = state_14259[2];
+              var inst_14244 = inst_14250;
+              var state_14259__$1 = function() {
+                var statearr_14261 = state_14259;
+                statearr_14261[7] = inst_14244;
+                return statearr_14261;
               }();
-              var statearr_10494_10510 = state_10491__$1;
-              statearr_10494_10510[2] = null;
-              statearr_10494_10510[1] = 3;
+              var statearr_14262_14278 = state_14259__$1;
+              statearr_14262_14278[2] = null;
+              statearr_14262_14278[1] = 3;
               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
             } else {
-              if (state_val_10492 === 7) {
-                var inst_10487 = state_10491[2];
-                var state_10491__$1 = state_10491;
-                var statearr_10495_10511 = state_10491__$1;
-                statearr_10495_10511[2] = inst_10487;
-                statearr_10495_10511[1] = 4;
+              if (state_val_14260 === 7) {
+                var inst_14255 = state_14259[2];
+                var state_14259__$1 = state_14259;
+                var statearr_14263_14279 = state_14259__$1;
+                statearr_14263_14279[2] = inst_14255;
+                statearr_14263_14279[1] = 4;
                 return new cljs.core.Keyword(null, "recur", "recur", -437573268);
               } else {
-                if (state_val_10492 === 6) {
-                  var inst_10485 = cljs.core.async.close_BANG_.call(null, c);
-                  var state_10491__$1 = state_10491;
-                  var statearr_10496_10512 = state_10491__$1;
-                  statearr_10496_10512[2] = inst_10485;
-                  statearr_10496_10512[1] = 7;
+                if (state_val_14260 === 6) {
+                  var inst_14253 = cljs.core.async.close_BANG_.call(null, c);
+                  var state_14259__$1 = state_14259;
+                  var statearr_14264_14280 = state_14259__$1;
+                  statearr_14264_14280[2] = inst_14253;
+                  statearr_14264_14280[1] = 7;
                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                 } else {
-                  if (state_val_10492 === 5) {
-                    var inst_10476 = state_10491[7];
-                    var inst_10479 = sailing_study_guide.dispatch.retrieve_message.call(null, inst_10476);
-                    var inst_10480 = cb.call(null, inst_10479);
-                    var state_10491__$1 = function() {
-                      var statearr_10497 = state_10491;
-                      statearr_10497[8] = inst_10480;
-                      return statearr_10497;
+                  if (state_val_14260 === 5) {
+                    var inst_14244 = state_14259[7];
+                    var inst_14247 = sailing_study_guide.dispatch.retrieve_message.call(null, inst_14244);
+                    var inst_14248 = cb.call(null, inst_14247);
+                    var state_14259__$1 = function() {
+                      var statearr_14265 = state_14259;
+                      statearr_14265[8] = inst_14248;
+                      return statearr_14265;
                     }();
-                    return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_10491__$1, 8, c);
+                    return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_14259__$1, 8, c);
                   } else {
-                    if (state_val_10492 === 4) {
-                      var inst_10489 = state_10491[2];
-                      var state_10491__$1 = state_10491;
-                      return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_10491__$1, inst_10489);
+                    if (state_val_14260 === 4) {
+                      var inst_14257 = state_14259[2];
+                      var state_14259__$1 = state_14259;
+                      return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_14259__$1, inst_14257);
                     } else {
-                      if (state_val_10492 === 3) {
-                        var inst_10476 = state_10491[7];
-                        var state_10491__$1 = state_10491;
-                        if (cljs.core.truth_(inst_10476)) {
-                          var statearr_10498_10513 = state_10491__$1;
-                          statearr_10498_10513[1] = 5;
+                      if (state_val_14260 === 3) {
+                        var inst_14244 = state_14259[7];
+                        var state_14259__$1 = state_14259;
+                        if (cljs.core.truth_(inst_14244)) {
+                          var statearr_14266_14281 = state_14259__$1;
+                          statearr_14266_14281[1] = 5;
                         } else {
-                          var statearr_10499_10514 = state_10491__$1;
-                          statearr_10499_10514[1] = 6;
+                          var statearr_14267_14282 = state_14259__$1;
+                          statearr_14267_14282[1] = 6;
                         }
                         return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                       } else {
-                        if (state_val_10492 === 2) {
-                          var inst_10475 = state_10491[2];
-                          var inst_10476 = inst_10475;
-                          var state_10491__$1 = function() {
-                            var statearr_10500 = state_10491;
-                            statearr_10500[7] = inst_10476;
-                            return statearr_10500;
+                        if (state_val_14260 === 2) {
+                          var inst_14243 = state_14259[2];
+                          var inst_14244 = inst_14243;
+                          var state_14259__$1 = function() {
+                            var statearr_14268 = state_14259;
+                            statearr_14268[7] = inst_14244;
+                            return statearr_14268;
                           }();
-                          var statearr_10501_10515 = state_10491__$1;
-                          statearr_10501_10515[2] = null;
-                          statearr_10501_10515[1] = 3;
+                          var statearr_14269_14283 = state_14259__$1;
+                          statearr_14269_14283[2] = null;
+                          statearr_14269_14283[1] = 3;
                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                         } else {
-                          if (state_val_10492 === 1) {
-                            var state_10491__$1 = state_10491;
-                            return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_10491__$1, 2, c);
+                          if (state_val_14260 === 1) {
+                            var state_14259__$1 = state_14259;
+                            return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_14259__$1, 2, c);
                           } else {
                             return null;
                           }
@@ -36200,74 +36199,74 @@ sailing_study_guide.dispatch.whenever = function whenever(tag, cb) {
               }
             }
           };
-        }(c__6799__auto___10509, c);
-        return function(switch__6784__auto__, c__6799__auto___10509, c) {
+        }(c__6844__auto___14277, c);
+        return function(switch__6829__auto__, c__6844__auto___14277, c) {
           return function() {
-            var state_machine__6785__auto__ = null;
-            var state_machine__6785__auto____0 = function() {
-              var statearr_10505 = [null, null, null, null, null, null, null, null, null];
-              statearr_10505[0] = state_machine__6785__auto__;
-              statearr_10505[1] = 1;
-              return statearr_10505;
+            var state_machine__6830__auto__ = null;
+            var state_machine__6830__auto____0 = function() {
+              var statearr_14273 = [null, null, null, null, null, null, null, null, null];
+              statearr_14273[0] = state_machine__6830__auto__;
+              statearr_14273[1] = 1;
+              return statearr_14273;
             };
-            var state_machine__6785__auto____1 = function(state_10491) {
+            var state_machine__6830__auto____1 = function(state_14259) {
               while (true) {
-                var ret_value__6786__auto__ = function() {
+                var ret_value__6831__auto__ = function() {
                   try {
                     while (true) {
-                      var result__6787__auto__ = switch__6784__auto__.call(null, state_10491);
-                      if (cljs.core.keyword_identical_QMARK_.call(null, result__6787__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                      var result__6832__auto__ = switch__6829__auto__.call(null, state_14259);
+                      if (cljs.core.keyword_identical_QMARK_.call(null, result__6832__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
                         continue;
                       } else {
-                        return result__6787__auto__;
+                        return result__6832__auto__;
                       }
                       break;
                     }
-                  } catch (e10506) {
-                    if (e10506 instanceof Object) {
-                      var ex__6788__auto__ = e10506;
-                      var statearr_10507_10516 = state_10491;
-                      statearr_10507_10516[5] = ex__6788__auto__;
-                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_10491);
+                  } catch (e14274) {
+                    if (e14274 instanceof Object) {
+                      var ex__6833__auto__ = e14274;
+                      var statearr_14275_14284 = state_14259;
+                      statearr_14275_14284[5] = ex__6833__auto__;
+                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_14259);
                       return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                     } else {
-                      throw e10506;
+                      throw e14274;
                     }
                   }
                 }();
-                if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6786__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
-                  var G__10517 = state_10491;
-                  state_10491 = G__10517;
+                if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6831__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                  var G__14285 = state_14259;
+                  state_14259 = G__14285;
                   continue;
                 } else {
-                  return ret_value__6786__auto__;
+                  return ret_value__6831__auto__;
                 }
                 break;
               }
             };
-            state_machine__6785__auto__ = function(state_10491) {
+            state_machine__6830__auto__ = function(state_14259) {
               switch(arguments.length) {
                 case 0:
-                  return state_machine__6785__auto____0.call(this);
+                  return state_machine__6830__auto____0.call(this);
                 case 1:
-                  return state_machine__6785__auto____1.call(this, state_10491);
+                  return state_machine__6830__auto____1.call(this, state_14259);
               }
               throw new Error("Invalid arity: " + arguments.length);
             };
-            state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6785__auto____0;
-            state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6785__auto____1;
-            return state_machine__6785__auto__;
+            state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6830__auto____0;
+            state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6830__auto____1;
+            return state_machine__6830__auto__;
           }();
-        }(switch__6784__auto__, c__6799__auto___10509, c);
+        }(switch__6829__auto__, c__6844__auto___14277, c);
       }();
-      var state__6801__auto__ = function() {
-        var statearr_10508 = f__6800__auto__.call(null);
-        statearr_10508[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6799__auto___10509;
-        return statearr_10508;
+      var state__6846__auto__ = function() {
+        var statearr_14276 = f__6845__auto__.call(null);
+        statearr_14276[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6844__auto___14277;
+        return statearr_14276;
       }();
-      return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6801__auto__);
+      return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6846__auto__);
     };
-  }(c__6799__auto___10509, c));
+  }(c__6844__auto___14277, c));
   return c;
 };
 sailing_study_guide.dispatch.dispatch_BANG_ = function() {
@@ -36276,49 +36275,49 @@ sailing_study_guide.dispatch.dispatch_BANG_ = function() {
       return cljs.core.async.put_BANG_.call(null, sailing_study_guide.dispatch.dispatch_chan, new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "tag", "tag", -1290361223), tag, new cljs.core.Keyword(null, "message", "message", -406056002), message], null));
     };
     if (cljs.core.sequential_QMARK_.call(null, tags)) {
-      var seq__10522 = cljs.core.seq.call(null, tags);
-      var chunk__10523 = null;
-      var count__10524 = 0;
-      var i__10525 = 0;
+      var seq__14290 = cljs.core.seq.call(null, tags);
+      var chunk__14291 = null;
+      var count__14292 = 0;
+      var i__14293 = 0;
       while (true) {
-        if (i__10525 < count__10524) {
-          var tag = cljs.core._nth.call(null, chunk__10523, i__10525);
+        if (i__14293 < count__14292) {
+          var tag = cljs.core._nth.call(null, chunk__14291, i__14293);
           dispatchfn.call(null, tag);
-          var G__10526 = seq__10522;
-          var G__10527 = chunk__10523;
-          var G__10528 = count__10524;
-          var G__10529 = i__10525 + 1;
-          seq__10522 = G__10526;
-          chunk__10523 = G__10527;
-          count__10524 = G__10528;
-          i__10525 = G__10529;
+          var G__14294 = seq__14290;
+          var G__14295 = chunk__14291;
+          var G__14296 = count__14292;
+          var G__14297 = i__14293 + 1;
+          seq__14290 = G__14294;
+          chunk__14291 = G__14295;
+          count__14292 = G__14296;
+          i__14293 = G__14297;
           continue;
         } else {
-          var temp__4126__auto__ = cljs.core.seq.call(null, seq__10522);
+          var temp__4126__auto__ = cljs.core.seq.call(null, seq__14290);
           if (temp__4126__auto__) {
-            var seq__10522__$1 = temp__4126__auto__;
-            if (cljs.core.chunked_seq_QMARK_.call(null, seq__10522__$1)) {
-              var c__4363__auto__ = cljs.core.chunk_first.call(null, seq__10522__$1);
-              var G__10530 = cljs.core.chunk_rest.call(null, seq__10522__$1);
-              var G__10531 = c__4363__auto__;
-              var G__10532 = cljs.core.count.call(null, c__4363__auto__);
-              var G__10533 = 0;
-              seq__10522 = G__10530;
-              chunk__10523 = G__10531;
-              count__10524 = G__10532;
-              i__10525 = G__10533;
+            var seq__14290__$1 = temp__4126__auto__;
+            if (cljs.core.chunked_seq_QMARK_.call(null, seq__14290__$1)) {
+              var c__4408__auto__ = cljs.core.chunk_first.call(null, seq__14290__$1);
+              var G__14298 = cljs.core.chunk_rest.call(null, seq__14290__$1);
+              var G__14299 = c__4408__auto__;
+              var G__14300 = cljs.core.count.call(null, c__4408__auto__);
+              var G__14301 = 0;
+              seq__14290 = G__14298;
+              chunk__14291 = G__14299;
+              count__14292 = G__14300;
+              i__14293 = G__14301;
               continue;
             } else {
-              var tag = cljs.core.first.call(null, seq__10522__$1);
+              var tag = cljs.core.first.call(null, seq__14290__$1);
               dispatchfn.call(null, tag);
-              var G__10534 = cljs.core.next.call(null, seq__10522__$1);
-              var G__10535 = null;
-              var G__10536 = 0;
-              var G__10537 = 0;
-              seq__10522 = G__10534;
-              chunk__10523 = G__10535;
-              count__10524 = G__10536;
-              i__10525 = G__10537;
+              var G__14302 = cljs.core.next.call(null, seq__14290__$1);
+              var G__14303 = null;
+              var G__14304 = 0;
+              var G__14305 = 0;
+              seq__14290 = G__14302;
+              chunk__14291 = G__14303;
+              count__14292 = G__14304;
+              i__14293 = G__14305;
               continue;
             }
           } else {
@@ -36339,126 +36338,131 @@ sailing_study_guide.dispatch.dispatch_BANG_ = function() {
     return dispatch_BANG___delegate.call(this, tags, message);
   };
   dispatch_BANG_.cljs$lang$maxFixedArity = 1;
-  dispatch_BANG_.cljs$lang$applyTo = function(arglist__10538) {
-    var tags = cljs.core.first(arglist__10538);
-    var message = cljs.core.rest(arglist__10538);
+  dispatch_BANG_.cljs$lang$applyTo = function(arglist__14306) {
+    var tags = cljs.core.first(arglist__14306);
+    var message = cljs.core.rest(arglist__14306);
     return dispatch_BANG___delegate(tags, message);
   };
   dispatch_BANG_.cljs$core$IFn$_invoke$arity$variadic = dispatch_BANG___delegate;
   return dispatch_BANG_;
 }();
-var c__6799__auto___10560 = cljs.core.async.chan.call(null, 1);
-cljs.core.async.impl.dispatch.run.call(null, function(c__6799__auto___10560) {
-  return function() {
-    var f__6800__auto__ = function() {
-      var switch__6784__auto__ = function(c__6799__auto___10560) {
-        return function(state_10548) {
-          var state_val_10549 = state_10548[1];
-          if (state_val_10549 === 4) {
-            var inst_10541 = state_10548[2];
-            var inst_10542 = cljs.core.pr_str.call(null, inst_10541);
-            var inst_10543 = cljs.core.println.call(null, "Logged: ", inst_10542);
-            var state_10548__$1 = function() {
-              var statearr_10550 = state_10548;
-              statearr_10550[7] = inst_10543;
-              return statearr_10550;
-            }();
-            var statearr_10551_10561 = state_10548__$1;
-            statearr_10551_10561[2] = null;
-            statearr_10551_10561[1] = 2;
-            return new cljs.core.Keyword(null, "recur", "recur", -437573268);
-          } else {
-            if (state_val_10549 === 3) {
-              var inst_10546 = state_10548[2];
-              var state_10548__$1 = state_10548;
-              return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_10548__$1, inst_10546);
+if (cljs.core.truth_(sailing_study_guide.dispatch._STAR_dispatcher_logging_enabled_STAR_)) {
+  sailing_study_guide.dispatch.dispatch_logger_chan = cljs.core.async.chan.call(null);
+  cljs.core.async.tap.call(null, sailing_study_guide.dispatch.dispatch_mult, sailing_study_guide.dispatch.dispatch_logger_chan);
+  var c__6844__auto___14328 = cljs.core.async.chan.call(null, 1);
+  cljs.core.async.impl.dispatch.run.call(null, function(c__6844__auto___14328) {
+    return function() {
+      var f__6845__auto__ = function() {
+        var switch__6829__auto__ = function(c__6844__auto___14328) {
+          return function(state_14316) {
+            var state_val_14317 = state_14316[1];
+            if (state_val_14317 === 4) {
+              var inst_14309 = state_14316[2];
+              var inst_14310 = cljs.core.pr_str.call(null, inst_14309);
+              var inst_14311 = cljs.core.println.call(null, "Logged: ", inst_14310);
+              var state_14316__$1 = function() {
+                var statearr_14318 = state_14316;
+                statearr_14318[7] = inst_14311;
+                return statearr_14318;
+              }();
+              var statearr_14319_14329 = state_14316__$1;
+              statearr_14319_14329[2] = null;
+              statearr_14319_14329[1] = 2;
+              return new cljs.core.Keyword(null, "recur", "recur", -437573268);
             } else {
-              if (state_val_10549 === 2) {
-                var state_10548__$1 = state_10548;
-                return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_10548__$1, 4, sailing_study_guide.dispatch.dispatch_logger_chan);
+              if (state_val_14317 === 3) {
+                var inst_14314 = state_14316[2];
+                var state_14316__$1 = state_14316;
+                return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_14316__$1, inst_14314);
               } else {
-                if (state_val_10549 === 1) {
-                  var state_10548__$1 = state_10548;
-                  var statearr_10552_10562 = state_10548__$1;
-                  statearr_10552_10562[2] = null;
-                  statearr_10552_10562[1] = 2;
-                  return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                if (state_val_14317 === 2) {
+                  var state_14316__$1 = state_14316;
+                  return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_14316__$1, 4, sailing_study_guide.dispatch.dispatch_logger_chan);
                 } else {
-                  return null;
-                }
-              }
-            }
-          }
-        };
-      }(c__6799__auto___10560);
-      return function(switch__6784__auto__, c__6799__auto___10560) {
-        return function() {
-          var state_machine__6785__auto__ = null;
-          var state_machine__6785__auto____0 = function() {
-            var statearr_10556 = [null, null, null, null, null, null, null, null];
-            statearr_10556[0] = state_machine__6785__auto__;
-            statearr_10556[1] = 1;
-            return statearr_10556;
-          };
-          var state_machine__6785__auto____1 = function(state_10548) {
-            while (true) {
-              var ret_value__6786__auto__ = function() {
-                try {
-                  while (true) {
-                    var result__6787__auto__ = switch__6784__auto__.call(null, state_10548);
-                    if (cljs.core.keyword_identical_QMARK_.call(null, result__6787__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
-                      continue;
-                    } else {
-                      return result__6787__auto__;
-                    }
-                    break;
-                  }
-                } catch (e10557) {
-                  if (e10557 instanceof Object) {
-                    var ex__6788__auto__ = e10557;
-                    var statearr_10558_10563 = state_10548;
-                    statearr_10558_10563[5] = ex__6788__auto__;
-                    cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_10548);
+                  if (state_val_14317 === 1) {
+                    var state_14316__$1 = state_14316;
+                    var statearr_14320_14330 = state_14316__$1;
+                    statearr_14320_14330[2] = null;
+                    statearr_14320_14330[1] = 2;
                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                   } else {
-                    throw e10557;
+                    return null;
                   }
                 }
-              }();
-              if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6786__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
-                var G__10564 = state_10548;
-                state_10548 = G__10564;
-                continue;
-              } else {
-                return ret_value__6786__auto__;
               }
-              break;
             }
           };
-          state_machine__6785__auto__ = function(state_10548) {
-            switch(arguments.length) {
-              case 0:
-                return state_machine__6785__auto____0.call(this);
-              case 1:
-                return state_machine__6785__auto____1.call(this, state_10548);
-            }
-            throw new Error("Invalid arity: " + arguments.length);
-          };
-          state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6785__auto____0;
-          state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6785__auto____1;
-          return state_machine__6785__auto__;
-        }();
-      }(switch__6784__auto__, c__6799__auto___10560);
-    }();
-    var state__6801__auto__ = function() {
-      var statearr_10559 = f__6800__auto__.call(null);
-      statearr_10559[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6799__auto___10560;
-      return statearr_10559;
-    }();
-    return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6801__auto__);
-  };
-}(c__6799__auto___10560));
-goog.provide("clojure.string");
+        }(c__6844__auto___14328);
+        return function(switch__6829__auto__, c__6844__auto___14328) {
+          return function() {
+            var state_machine__6830__auto__ = null;
+            var state_machine__6830__auto____0 = function() {
+              var statearr_14324 = [null, null, null, null, null, null, null, null];
+              statearr_14324[0] = state_machine__6830__auto__;
+              statearr_14324[1] = 1;
+              return statearr_14324;
+            };
+            var state_machine__6830__auto____1 = function(state_14316) {
+              while (true) {
+                var ret_value__6831__auto__ = function() {
+                  try {
+                    while (true) {
+                      var result__6832__auto__ = switch__6829__auto__.call(null, state_14316);
+                      if (cljs.core.keyword_identical_QMARK_.call(null, result__6832__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                        continue;
+                      } else {
+                        return result__6832__auto__;
+                      }
+                      break;
+                    }
+                  } catch (e14325) {
+                    if (e14325 instanceof Object) {
+                      var ex__6833__auto__ = e14325;
+                      var statearr_14326_14331 = state_14316;
+                      statearr_14326_14331[5] = ex__6833__auto__;
+                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_14316);
+                      return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                    } else {
+                      throw e14325;
+                    }
+                  }
+                }();
+                if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6831__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                  var G__14332 = state_14316;
+                  state_14316 = G__14332;
+                  continue;
+                } else {
+                  return ret_value__6831__auto__;
+                }
+                break;
+              }
+            };
+            state_machine__6830__auto__ = function(state_14316) {
+              switch(arguments.length) {
+                case 0:
+                  return state_machine__6830__auto____0.call(this);
+                case 1:
+                  return state_machine__6830__auto____1.call(this, state_14316);
+              }
+              throw new Error("Invalid arity: " + arguments.length);
+            };
+            state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6830__auto____0;
+            state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6830__auto____1;
+            return state_machine__6830__auto__;
+          }();
+        }(switch__6829__auto__, c__6844__auto___14328);
+      }();
+      var state__6846__auto__ = function() {
+        var statearr_14327 = f__6845__auto__.call(null);
+        statearr_14327[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6844__auto___14328;
+        return statearr_14327;
+      }();
+      return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6846__auto__);
+    };
+  }(c__6844__auto___14328));
+} else {
+}
+;goog.provide("clojure.string");
 goog.require("cljs.core");
 goog.require("goog.string.StringBuffer");
 goog.require("goog.string");
@@ -37793,370 +37797,371 @@ sailing_study_guide.test.dispatch.each_fixture = function each_fixture(f) {
 sailing_study_guide.test.dispatch.retrieve_message_test = function retrieve_message_test() {
   return cemerick.cljs.test.test_function.call(null, cemerick.cljs.test.init_test_environment.call(null), sailing_study_guide.test.dispatch.retrieve_message_test);
 };
-sailing_study_guide.test.dispatch.retrieve_message_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.retrieve_message_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "line", "line", 212345235), 22, new cljs.core.Keyword(null, "column", "column", 2078222095), 10, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 22, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 31], null), new cljs.core.PersistentArrayMap(null, 
-2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "retrieve-message-test", "sailing-study-guide.test.dispatch/retrieve-message-test", 1279066921, null), new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "line", "line", 212345235), 22, new cljs.core.Keyword(null, "column", "column", 2078222095), 10, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 22, new cljs.core.Keyword(null, 
-"end-column", "end-column", 1425389514), 31], null)), new cljs.core.Keyword(null, "test", "test", 577538877), function retrieve_message_test_test(test_ctx__10668__auto__) {
-  var _test_ctx = test_ctx__10668__auto__;
-  var async_QMARK___10583__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
-  var _STAR_test_ctx_STAR_10834 = cemerick.cljs.test._STAR_test_ctx_STAR_;
+sailing_study_guide.test.dispatch.retrieve_message_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.retrieve_message_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 32, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 22, new cljs.core.Keyword(null, "column", "column", 2078222095), 10, new cljs.core.Keyword(null, "line", "line", 212345235), 22, new cljs.core.Keyword(null, 
+"file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "retrieve-message-test", "sailing-study-guide.test.dispatch/retrieve-message-test", 1279066921, null), new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "end-column", 
+"end-column", 1425389514), 32, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 22, new cljs.core.Keyword(null, "column", "column", 2078222095), 10, new cljs.core.Keyword(null, "line", "line", 212345235), 22, new cljs.core.Keyword(null, "file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null)), new cljs.core.Keyword(null, "test", "test", 577538877), function retrieve_message_test_test(test_ctx__10586__auto__) {
+  var _test_ctx = test_ctx__10586__auto__;
+  var async_QMARK___10501__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
+  var _STAR_test_ctx_STAR_10752 = cemerick.cljs.test._STAR_test_ctx_STAR_;
   try {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10583__auto__) ? null : _test_ctx;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10501__auto__) ? null : _test_ctx;
     try {
       var _test_ctx__$1 = _test_ctx;
-      var async_QMARK___10583__auto____$1 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx__$1)));
-      var _STAR_test_ctx_STAR_10836 = cemerick.cljs.test._STAR_test_ctx_STAR_;
+      var async_QMARK___10501__auto____$1 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx__$1)));
+      var _STAR_test_ctx_STAR_10754 = cemerick.cljs.test._STAR_test_ctx_STAR_;
       try {
-        cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10583__auto____$1) ? null : _test_ctx__$1;
+        cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10501__auto____$1) ? null : _test_ctx__$1;
         try {
           try {
-            var values__10603__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, sailing_study_guide.dispatch.retrieve_message.call(null, sailing_study_guide.test.dispatch._STAR_default_payload_STAR_)), sailing_study_guide.test.dispatch._STAR_default_mesg_STAR_);
-            var result__10604__auto__ = cljs.core.apply.call(null, cljs.core._EQ_, values__10603__auto__);
-            if (result__10604__auto__ instanceof cemerick.cljs.test.TestContext) {
+            var values__10521__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, sailing_study_guide.dispatch.retrieve_message.call(null, sailing_study_guide.test.dispatch._STAR_default_payload_STAR_)), sailing_study_guide.test.dispatch._STAR_default_mesg_STAR_);
+            var result__10522__auto__ = cljs.core.apply.call(null, cljs.core._EQ_, values__10521__auto__);
+            if (result__10522__auto__ instanceof cemerick.cljs.test.TestContext) {
               throw new Error("TestContext provided as [form] in `is` assertion. If using `is` with an explicit test context, use the 3-arg arity.");
             } else {
             }
-            if (cljs.core.truth_(result__10604__auto__)) {
+            if (cljs.core.truth_(result__10522__auto__)) {
               cemerick.cljs.test.do_report.call(null, _test_ctx__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-mesg*", "*default-mesg*", -1965296641, null), cljs.core.list(new cljs.core.Symbol("dispatcher", 
-              "retrieve-message", "dispatcher/retrieve-message", -2024743297, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null))), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core._EQ_, values__10603__auto__), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+              "retrieve-message", "dispatcher/retrieve-message", -2024743297, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null))), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core._EQ_, values__10521__auto__), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
             } else {
               cemerick.cljs.test.do_report.call(null, _test_ctx__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-mesg*", "*default-mesg*", -1965296641, null), cljs.core.list(new cljs.core.Symbol("dispatcher", 
-              "retrieve-message", "dispatcher/retrieve-message", -2024743297, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null))), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__10603__auto__)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, 
+              "retrieve-message", "dispatcher/retrieve-message", -2024743297, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null))), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__10521__auto__)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, 
               "message", "message", -406056002), null], null));
             }
-            return result__10604__auto__;
-          } catch (e10838) {
-            if (e10838 instanceof Error) {
-              var t__10640__auto__ = e10838;
+            return result__10522__auto__;
+          } catch (e10756) {
+            if (e10756 instanceof Error) {
+              var t__10558__auto__ = e10756;
               return cemerick.cljs.test.do_report.call(null, _test_ctx__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-mesg*", "*default-mesg*", -1965296641, null), cljs.core.list(new cljs.core.Symbol("dispatcher", 
-              "retrieve-message", "dispatcher/retrieve-message", -2024743297, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null))), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__10640__auto__, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+              "retrieve-message", "dispatcher/retrieve-message", -2024743297, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null))), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__10558__auto__, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
             } else {
-              throw e10838;
+              throw e10756;
             }
           }
-        } catch (e10837) {
-          if (e10837 instanceof Error) {
-            var e__10584__auto__ = e10837;
-            if (cljs.core.truth_(async_QMARK___10583__auto____$1)) {
-              return cemerick.cljs.test.done_STAR_.call(null, _test_ctx__$1, e__10584__auto__);
+        } catch (e10755) {
+          if (e10755 instanceof Error) {
+            var e__10502__auto__ = e10755;
+            if (cljs.core.truth_(async_QMARK___10501__auto____$1)) {
+              return cemerick.cljs.test.done_STAR_.call(null, _test_ctx__$1, e__10502__auto__);
             } else {
-              throw e__10584__auto__;
+              throw e__10502__auto__;
             }
           } else {
-            throw e10837;
+            throw e10755;
           }
         }
       } finally {
-        cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_10836;
+        cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_10754;
       }
-    } catch (e10835) {
-      if (e10835 instanceof Error) {
-        var e__10584__auto__ = e10835;
-        if (cljs.core.truth_(async_QMARK___10583__auto__)) {
-          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10584__auto__);
+    } catch (e10753) {
+      if (e10753 instanceof Error) {
+        var e__10502__auto__ = e10753;
+        if (cljs.core.truth_(async_QMARK___10501__auto__)) {
+          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10502__auto__);
         } else {
-          throw e__10584__auto__;
+          throw e__10502__auto__;
         }
       } else {
-        throw e10835;
+        throw e10753;
       }
     }
   } finally {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_10834;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_10752;
   }
 }], null)));
 cemerick.cljs.test.register_test_BANG_.call(null, new cljs.core.Symbol(null, "sailing-study-guide.test.dispatch", "sailing-study-guide.test.dispatch", 2120704787, null), new cljs.core.Symbol("sailing-study-guide.test.dispatch", "retrieve-message-test", "sailing-study-guide.test.dispatch/retrieve-message-test", 1279066921, null), sailing_study_guide.test.dispatch.retrieve_message_test);
 sailing_study_guide.test.dispatch.register_test = function register_test() {
   return cemerick.cljs.test.test_function.call(null, cemerick.cljs.test.init_test_environment.call(null), sailing_study_guide.test.dispatch.register_test);
 };
-sailing_study_guide.test.dispatch.register_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.register_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "line", "line", 212345235), 26, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 26, new cljs.core.Keyword(null, "end-column", 
-"end-column", 1425389514), 31], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "register-test", "sailing-study-guide.test.dispatch/register-test", -1619419419, null), new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "line", "line", 212345235), 26, new cljs.core.Keyword(null, 
-"column", "column", 2078222095), 18, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 26, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 31], null)), new cljs.core.Keyword(null, "test", "test", 577538877), function register_test_test(test_ctx__10668__auto__) {
-  var _test_ctx = test_ctx__10668__auto__;
-  var async_QMARK___10583__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
-  var _STAR_test_ctx_STAR_10958 = cemerick.cljs.test._STAR_test_ctx_STAR_;
+sailing_study_guide.test.dispatch.register_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.register_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 32, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 26, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "line", 
+"line", 212345235), 26, new cljs.core.Keyword(null, "file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "register-test", "sailing-study-guide.test.dispatch/register-test", -1619419419, null), new cljs.core.PersistentArrayMap(null, 
+6, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 32, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 26, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "line", "line", 212345235), 26, new cljs.core.Keyword(null, "file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null)), 
+new cljs.core.Keyword(null, "test", "test", 577538877), function register_test_test(test_ctx__10586__auto__) {
+  var _test_ctx = test_ctx__10586__auto__;
+  var async_QMARK___10501__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
+  var _STAR_test_ctx_STAR_10876 = cemerick.cljs.test._STAR_test_ctx_STAR_;
   try {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10583__auto__) ? null : _test_ctx;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10501__auto__) ? null : _test_ctx;
     try {
       var c = sailing_study_guide.dispatch.register.call(null, sailing_study_guide.test.dispatch._STAR_default_tag_STAR_);
       cljs.core.async.put_BANG_.call(null, c, sailing_study_guide.test.dispatch._STAR_default_payload_STAR_);
-      var c__6799__auto__ = cljs.core.async.chan.call(null, 1);
-      cljs.core.async.impl.dispatch.run.call(null, function(c__6799__auto__, c, _STAR_test_ctx_STAR_10958, _test_ctx, async_QMARK___10583__auto__) {
+      var c__6844__auto__ = cljs.core.async.chan.call(null, 1);
+      cljs.core.async.impl.dispatch.run.call(null, function(c__6844__auto__, c, _STAR_test_ctx_STAR_10876, _test_ctx, async_QMARK___10501__auto__) {
         return function() {
-          var f__6800__auto__ = function() {
-            var switch__6784__auto__ = function(c__6799__auto__, c, _STAR_test_ctx_STAR_10958, _test_ctx, async_QMARK___10583__auto__) {
-              return function(state_11035) {
-                var state_val_11036 = state_11035[1];
-                if (state_val_11036 === 7) {
-                  var inst_10972 = state_11035[2];
-                  var inst_10973 = cemerick.cljs.test._STAR_test_ctx_STAR_ = inst_10972;
-                  var state_11035__$1 = function() {
-                    var statearr_11037 = state_11035;
-                    statearr_11037[7] = inst_10973;
-                    return statearr_11037;
+          var f__6845__auto__ = function() {
+            var switch__6829__auto__ = function(c__6844__auto__, c, _STAR_test_ctx_STAR_10876, _test_ctx, async_QMARK___10501__auto__) {
+              return function(state_10953) {
+                var state_val_10954 = state_10953[1];
+                if (state_val_10954 === 7) {
+                  var inst_10890 = state_10953[2];
+                  var inst_10891 = cemerick.cljs.test._STAR_test_ctx_STAR_ = inst_10890;
+                  var state_10953__$1 = function() {
+                    var statearr_10955 = state_10953;
+                    statearr_10955[7] = inst_10891;
+                    return statearr_10955;
                   }();
-                  var statearr_11038_11077 = state_11035__$1;
-                  statearr_11038_11077[2] = null;
-                  statearr_11038_11077[1] = 13;
+                  var statearr_10956_10995 = state_10953__$1;
+                  statearr_10956_10995[2] = null;
+                  statearr_10956_10995[1] = 13;
                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                 } else {
-                  if (state_val_11036 === 20) {
-                    var inst_10998 = state_11035[8];
-                    var inst_11005 = state_11035[2];
-                    var state_11035__$1 = function() {
-                      var statearr_11039 = state_11035;
-                      statearr_11039[9] = inst_11005;
-                      return statearr_11039;
+                  if (state_val_10954 === 20) {
+                    var inst_10916 = state_10953[8];
+                    var inst_10923 = state_10953[2];
+                    var state_10953__$1 = function() {
+                      var statearr_10957 = state_10953;
+                      statearr_10957[9] = inst_10923;
+                      return statearr_10957;
                     }();
-                    if (cljs.core.truth_(inst_10998)) {
-                      var statearr_11040_11078 = state_11035__$1;
-                      statearr_11040_11078[1] = 21;
+                    if (cljs.core.truth_(inst_10916)) {
+                      var statearr_10958_10996 = state_10953__$1;
+                      statearr_10958_10996[1] = 21;
                     } else {
-                      var statearr_11041_11079 = state_11035__$1;
-                      statearr_11041_11079[1] = 22;
+                      var statearr_10959_10997 = state_10953__$1;
+                      statearr_10959_10997[1] = 22;
                     }
                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                   } else {
-                    if (state_val_11036 === 1) {
-                      var inst_10960 = (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx);
-                      var inst_10961 = cljs.core.meta.call(null, inst_10960);
-                      var inst_10962 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(inst_10961);
-                      var state_11035__$1 = function() {
-                        var statearr_11042 = state_11035;
-                        statearr_11042[10] = inst_10962;
-                        return statearr_11042;
+                    if (state_val_10954 === 1) {
+                      var inst_10878 = (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx);
+                      var inst_10879 = cljs.core.meta.call(null, inst_10878);
+                      var inst_10880 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(inst_10879);
+                      var state_10953__$1 = function() {
+                        var statearr_10960 = state_10953;
+                        statearr_10960[10] = inst_10880;
+                        return statearr_10960;
                       }();
-                      var statearr_11043_11080 = state_11035__$1;
-                      statearr_11043_11080[2] = null;
-                      statearr_11043_11080[1] = 4;
+                      var statearr_10961_10998 = state_10953__$1;
+                      statearr_10961_10998[2] = null;
+                      statearr_10961_10998[1] = 4;
                       return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                     } else {
-                      if (state_val_11036 === 4) {
-                        var inst_10962 = state_11035[10];
-                        var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11035, null, null, 3, 2);
-                        var state_11035__$1 = state_11035;
-                        if (cljs.core.truth_(inst_10962)) {
-                          var statearr_11044_11081 = state_11035__$1;
-                          statearr_11044_11081[1] = 5;
+                      if (state_val_10954 === 4) {
+                        var inst_10880 = state_10953[10];
+                        var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_10953, null, null, 3, 2);
+                        var state_10953__$1 = state_10953;
+                        if (cljs.core.truth_(inst_10880)) {
+                          var statearr_10962_10999 = state_10953__$1;
+                          statearr_10962_10999[1] = 5;
                         } else {
-                          var statearr_11045_11082 = state_11035__$1;
-                          statearr_11045_11082[1] = 6;
+                          var statearr_10963_11000 = state_10953__$1;
+                          statearr_10963_11000[1] = 6;
                         }
                         return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                       } else {
-                        if (state_val_11036 === 15) {
-                          var inst_10984 = state_11035[2];
-                          var inst_10985 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
-                          var inst_10986 = cljs.core.list(new cljs.core.Symbol(null, "not", "not", 1044554643, null), cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", 1612038930, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null))));
-                          var inst_10987 = [new cljs.core.Keyword(null, "error", "error", -978969032), inst_10986, inst_10984, null];
-                          var inst_10988 = cljs.core.PersistentHashMap.fromArrays(inst_10985, inst_10987);
-                          var inst_10989 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_10988);
-                          var state_11035__$1 = state_11035;
-                          var statearr_11046_11083 = state_11035__$1;
-                          statearr_11046_11083[2] = inst_10989;
-                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11035__$1);
+                        if (state_val_10954 === 15) {
+                          var inst_10902 = state_10953[2];
+                          var inst_10903 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                          var inst_10904 = cljs.core.list(new cljs.core.Symbol(null, "not", "not", 1044554643, null), cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", 1612038930, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null))));
+                          var inst_10905 = [new cljs.core.Keyword(null, "error", "error", -978969032), inst_10904, inst_10902, null];
+                          var inst_10906 = cljs.core.PersistentHashMap.fromArrays(inst_10903, inst_10905);
+                          var inst_10907 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_10906);
+                          var state_10953__$1 = state_10953;
+                          var statearr_10964_11001 = state_10953__$1;
+                          statearr_10964_11001[2] = inst_10907;
+                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_10953__$1);
                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                         } else {
-                          if (state_val_11036 === 21) {
-                            var inst_10997 = state_11035[11];
-                            var inst_11007 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
-                            var inst_11008 = cljs.core.list(new cljs.core.Symbol(null, "not", "not", 1044554643, null), cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", 1612038930, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null))));
-                            var inst_11009 = cljs.core.cons.call(null, cljs.core.not, inst_10997);
-                            var inst_11010 = [new cljs.core.Keyword(null, "pass", "pass", 1574159993), inst_11008, inst_11009, null];
-                            var inst_11011 = cljs.core.PersistentHashMap.fromArrays(inst_11007, inst_11010);
-                            var inst_11012 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11011);
-                            var state_11035__$1 = state_11035;
-                            var statearr_11047_11084 = state_11035__$1;
-                            statearr_11047_11084[2] = inst_11012;
-                            statearr_11047_11084[1] = 23;
+                          if (state_val_10954 === 21) {
+                            var inst_10915 = state_10953[11];
+                            var inst_10925 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                            var inst_10926 = cljs.core.list(new cljs.core.Symbol(null, "not", "not", 1044554643, null), cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", 1612038930, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null))));
+                            var inst_10927 = cljs.core.cons.call(null, cljs.core.not, inst_10915);
+                            var inst_10928 = [new cljs.core.Keyword(null, "pass", "pass", 1574159993), inst_10926, inst_10927, null];
+                            var inst_10929 = cljs.core.PersistentHashMap.fromArrays(inst_10925, inst_10928);
+                            var inst_10930 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_10929);
+                            var state_10953__$1 = state_10953;
+                            var statearr_10965_11002 = state_10953__$1;
+                            statearr_10965_11002[2] = inst_10930;
+                            statearr_10965_11002[1] = 23;
                             return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                           } else {
-                            if (state_val_11036 === 13) {
-                              var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11035, 9, Error, null, 8);
-                              var state_11035__$1 = state_11035;
-                              var statearr_11048_11085 = state_11035__$1;
-                              statearr_11048_11085[2] = null;
-                              statearr_11048_11085[1] = 16;
+                            if (state_val_10954 === 13) {
+                              var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_10953, 9, Error, null, 8);
+                              var state_10953__$1 = state_10953;
+                              var statearr_10966_11003 = state_10953__$1;
+                              statearr_10966_11003[2] = null;
+                              statearr_10966_11003[1] = 16;
                               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                             } else {
-                              if (state_val_11036 === 22) {
-                                var inst_10997 = state_11035[11];
-                                var inst_11014 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
-                                var inst_11015 = cljs.core.list(new cljs.core.Symbol(null, "not", "not", 1044554643, null), cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", 1612038930, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null))));
-                                var inst_11016 = cljs.core.List.EMPTY;
-                                var inst_11017 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
-                                var inst_11018 = cljs.core.cons.call(null, inst_11017, inst_10997);
-                                var inst_11019 = cljs.core._conj.call(null, inst_11016, inst_11018);
-                                var inst_11020 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
-                                var inst_11021 = cljs.core._conj.call(null, inst_11019, inst_11020);
-                                var inst_11022 = [new cljs.core.Keyword(null, "fail", "fail", 1706214930), inst_11015, inst_11021, null];
-                                var inst_11023 = cljs.core.PersistentHashMap.fromArrays(inst_11014, inst_11022);
-                                var inst_11024 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11023);
-                                var state_11035__$1 = state_11035;
-                                var statearr_11049_11086 = state_11035__$1;
-                                statearr_11049_11086[2] = inst_11024;
-                                statearr_11049_11086[1] = 23;
+                              if (state_val_10954 === 22) {
+                                var inst_10915 = state_10953[11];
+                                var inst_10932 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                                var inst_10933 = cljs.core.list(new cljs.core.Symbol(null, "not", "not", 1044554643, null), cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", 1612038930, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null))));
+                                var inst_10934 = cljs.core.List.EMPTY;
+                                var inst_10935 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
+                                var inst_10936 = cljs.core.cons.call(null, inst_10935, inst_10915);
+                                var inst_10937 = cljs.core._conj.call(null, inst_10934, inst_10936);
+                                var inst_10938 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
+                                var inst_10939 = cljs.core._conj.call(null, inst_10937, inst_10938);
+                                var inst_10940 = [new cljs.core.Keyword(null, "fail", "fail", 1706214930), inst_10933, inst_10939, null];
+                                var inst_10941 = cljs.core.PersistentHashMap.fromArrays(inst_10932, inst_10940);
+                                var inst_10942 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_10941);
+                                var state_10953__$1 = state_10953;
+                                var statearr_10967_11004 = state_10953__$1;
+                                statearr_10967_11004[2] = inst_10942;
+                                statearr_10967_11004[1] = 23;
                                 return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                               } else {
-                                if (state_val_11036 === 6) {
-                                  var state_11035__$1 = state_11035;
-                                  var statearr_11050_11087 = state_11035__$1;
-                                  statearr_11050_11087[2] = _test_ctx;
-                                  statearr_11050_11087[1] = 7;
+                                if (state_val_10954 === 6) {
+                                  var state_10953__$1 = state_10953;
+                                  var statearr_10968_11005 = state_10953__$1;
+                                  statearr_10968_11005[2] = _test_ctx;
+                                  statearr_10968_11005[1] = 7;
                                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                 } else {
-                                  if (state_val_11036 === 17) {
-                                    var inst_10997 = state_11035[11];
-                                    var inst_10993 = state_11035[12];
-                                    var inst_10998 = state_11035[8];
-                                    var inst_10995 = state_11035[2];
-                                    var inst_10996 = inst_10995 == null;
-                                    var inst_10997__$1 = cljs.core._conj.call(null, inst_10993, inst_10996);
-                                    var inst_10998__$1 = cljs.core.apply.call(null, cljs.core.not, inst_10997__$1);
-                                    var inst_10999 = inst_10998__$1 instanceof cemerick.cljs.test.TestContext;
-                                    var state_11035__$1 = function() {
-                                      var statearr_11051 = state_11035;
-                                      statearr_11051[11] = inst_10997__$1;
-                                      statearr_11051[8] = inst_10998__$1;
-                                      return statearr_11051;
+                                  if (state_val_10954 === 17) {
+                                    var inst_10916 = state_10953[8];
+                                    var inst_10915 = state_10953[11];
+                                    var inst_10911 = state_10953[12];
+                                    var inst_10913 = state_10953[2];
+                                    var inst_10914 = inst_10913 == null;
+                                    var inst_10915__$1 = cljs.core._conj.call(null, inst_10911, inst_10914);
+                                    var inst_10916__$1 = cljs.core.apply.call(null, cljs.core.not, inst_10915__$1);
+                                    var inst_10917 = inst_10916__$1 instanceof cemerick.cljs.test.TestContext;
+                                    var state_10953__$1 = function() {
+                                      var statearr_10969 = state_10953;
+                                      statearr_10969[8] = inst_10916__$1;
+                                      statearr_10969[11] = inst_10915__$1;
+                                      return statearr_10969;
                                     }();
-                                    if (cljs.core.truth_(inst_10999)) {
-                                      var statearr_11052_11088 = state_11035__$1;
-                                      statearr_11052_11088[1] = 18;
+                                    if (cljs.core.truth_(inst_10917)) {
+                                      var statearr_10970_11006 = state_10953__$1;
+                                      statearr_10970_11006[1] = 18;
                                     } else {
-                                      var statearr_11053_11089 = state_11035__$1;
-                                      statearr_11053_11089[1] = 19;
+                                      var statearr_10971_11007 = state_10953__$1;
+                                      statearr_10971_11007[1] = 19;
                                     }
                                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                   } else {
-                                    if (state_val_11036 === 3) {
-                                      var inst_10964 = state_11035[2];
-                                      var inst_10965 = cemerick.cljs.test._STAR_test_ctx_STAR_ = cemerick.cljs.test._STAR_test_ctx_STAR_;
-                                      var state_11035__$1 = function() {
-                                        var statearr_11054 = state_11035;
-                                        statearr_11054[13] = inst_10964;
-                                        statearr_11054[14] = inst_10965;
-                                        return statearr_11054;
+                                    if (state_val_10954 === 3) {
+                                      var inst_10882 = state_10953[2];
+                                      var inst_10883 = cemerick.cljs.test._STAR_test_ctx_STAR_ = cemerick.cljs.test._STAR_test_ctx_STAR_;
+                                      var state_10953__$1 = function() {
+                                        var statearr_10972 = state_10953;
+                                        statearr_10972[13] = inst_10882;
+                                        statearr_10972[14] = inst_10883;
+                                        return statearr_10972;
                                       }();
-                                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11035__$1);
+                                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_10953__$1);
                                       return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                     } else {
-                                      if (state_val_11036 === 12) {
-                                        var inst_10980 = state_11035[2];
-                                        var state_11035__$1 = state_11035;
-                                        var statearr_11055_11090 = state_11035__$1;
-                                        statearr_11055_11090[2] = inst_10980;
-                                        cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11035__$1);
+                                      if (state_val_10954 === 12) {
+                                        var inst_10898 = state_10953[2];
+                                        var state_10953__$1 = state_10953;
+                                        var statearr_10973_11008 = state_10953__$1;
+                                        statearr_10973_11008[2] = inst_10898;
+                                        cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_10953__$1);
                                         return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                       } else {
-                                        if (state_val_11036 === 2) {
-                                          var inst_11032 = state_11035[2];
-                                          var inst_11033 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx);
-                                          var state_11035__$1 = function() {
-                                            var statearr_11056 = state_11035;
-                                            statearr_11056[15] = inst_11032;
-                                            return statearr_11056;
+                                        if (state_val_10954 === 2) {
+                                          var inst_10950 = state_10953[2];
+                                          var inst_10951 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx);
+                                          var state_10953__$1 = function() {
+                                            var statearr_10974 = state_10953;
+                                            statearr_10974[15] = inst_10950;
+                                            return statearr_10974;
                                           }();
-                                          return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_11035__$1, inst_11033);
+                                          return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_10953__$1, inst_10951);
                                         } else {
-                                          if (state_val_11036 === 23) {
-                                            var inst_10998 = state_11035[8];
-                                            var inst_11026 = state_11035[2];
-                                            var state_11035__$1 = function() {
-                                              var statearr_11057 = state_11035;
-                                              statearr_11057[16] = inst_11026;
-                                              return statearr_11057;
+                                          if (state_val_10954 === 23) {
+                                            var inst_10916 = state_10953[8];
+                                            var inst_10944 = state_10953[2];
+                                            var state_10953__$1 = function() {
+                                              var statearr_10975 = state_10953;
+                                              statearr_10975[16] = inst_10944;
+                                              return statearr_10975;
                                             }();
-                                            var statearr_11058_11091 = state_11035__$1;
-                                            statearr_11058_11091[2] = inst_10998;
-                                            cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11035__$1);
+                                            var statearr_10976_11009 = state_10953__$1;
+                                            statearr_10976_11009[2] = inst_10916;
+                                            cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_10953__$1);
                                             return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                           } else {
-                                            if (state_val_11036 === 19) {
-                                              var state_11035__$1 = state_11035;
-                                              var statearr_11059_11092 = state_11035__$1;
-                                              statearr_11059_11092[2] = null;
-                                              statearr_11059_11092[1] = 20;
+                                            if (state_val_10954 === 19) {
+                                              var state_10953__$1 = state_10953;
+                                              var statearr_10977_11010 = state_10953__$1;
+                                              statearr_10977_11010[2] = null;
+                                              statearr_10977_11010[1] = 20;
                                               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                             } else {
-                                              if (state_val_11036 === 11) {
-                                                var inst_10974 = state_11035[17];
-                                                var inst_10978 = function() {
-                                                  throw inst_10974;
+                                              if (state_val_10954 === 11) {
+                                                var inst_10892 = state_10953[17];
+                                                var inst_10896 = function() {
+                                                  throw inst_10892;
                                                 }();
-                                                var state_11035__$1 = state_11035;
-                                                var statearr_11060_11093 = state_11035__$1;
-                                                statearr_11060_11093[2] = inst_10978;
-                                                statearr_11060_11093[1] = 12;
+                                                var state_10953__$1 = state_10953;
+                                                var statearr_10978_11011 = state_10953__$1;
+                                                statearr_10978_11011[2] = inst_10896;
+                                                statearr_10978_11011[1] = 12;
                                                 return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                               } else {
-                                                if (state_val_11036 === 9) {
-                                                  var inst_10962 = state_11035[10];
-                                                  var inst_10974 = state_11035[2];
-                                                  var state_11035__$1 = function() {
-                                                    var statearr_11061 = state_11035;
-                                                    statearr_11061[17] = inst_10974;
-                                                    return statearr_11061;
+                                                if (state_val_10954 === 9) {
+                                                  var inst_10880 = state_10953[10];
+                                                  var inst_10892 = state_10953[2];
+                                                  var state_10953__$1 = function() {
+                                                    var statearr_10979 = state_10953;
+                                                    statearr_10979[17] = inst_10892;
+                                                    return statearr_10979;
                                                   }();
-                                                  if (cljs.core.truth_(inst_10962)) {
-                                                    var statearr_11062_11094 = state_11035__$1;
-                                                    statearr_11062_11094[1] = 10;
+                                                  if (cljs.core.truth_(inst_10880)) {
+                                                    var statearr_10980_11012 = state_10953__$1;
+                                                    statearr_10980_11012[1] = 10;
                                                   } else {
-                                                    var statearr_11063_11095 = state_11035__$1;
-                                                    statearr_11063_11095[1] = 11;
+                                                    var statearr_10981_11013 = state_10953__$1;
+                                                    statearr_10981_11013[1] = 11;
                                                   }
                                                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                 } else {
-                                                  if (state_val_11036 === 5) {
-                                                    var state_11035__$1 = state_11035;
-                                                    var statearr_11064_11096 = state_11035__$1;
-                                                    statearr_11064_11096[2] = null;
-                                                    statearr_11064_11096[1] = 7;
+                                                  if (state_val_10954 === 5) {
+                                                    var state_10953__$1 = state_10953;
+                                                    var statearr_10982_11014 = state_10953__$1;
+                                                    statearr_10982_11014[2] = null;
+                                                    statearr_10982_11014[1] = 7;
                                                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                   } else {
-                                                    if (state_val_11036 === 14) {
-                                                      var inst_11028 = state_11035[2];
-                                                      var state_11035__$1 = state_11035;
-                                                      var statearr_11065_11097 = state_11035__$1;
-                                                      statearr_11065_11097[2] = inst_11028;
-                                                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11035__$1);
+                                                    if (state_val_10954 === 14) {
+                                                      var inst_10946 = state_10953[2];
+                                                      var state_10953__$1 = state_10953;
+                                                      var statearr_10983_11015 = state_10953__$1;
+                                                      statearr_10983_11015[2] = inst_10946;
+                                                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_10953__$1);
                                                       return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                     } else {
-                                                      if (state_val_11036 === 16) {
-                                                        var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11035, 15, Error, null, 14);
-                                                        var inst_10993 = cljs.core.List.EMPTY;
-                                                        var state_11035__$1 = function() {
-                                                          var statearr_11066 = state_11035;
-                                                          statearr_11066[12] = inst_10993;
-                                                          return statearr_11066;
+                                                      if (state_val_10954 === 16) {
+                                                        var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_10953, 15, Error, null, 14);
+                                                        var inst_10911 = cljs.core.List.EMPTY;
+                                                        var state_10953__$1 = function() {
+                                                          var statearr_10984 = state_10953;
+                                                          statearr_10984[12] = inst_10911;
+                                                          return statearr_10984;
                                                         }();
-                                                        return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_11035__$1, 17, c);
+                                                        return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_10953__$1, 17, c);
                                                       } else {
-                                                        if (state_val_11036 === 10) {
-                                                          var inst_10974 = state_11035[17];
-                                                          var inst_10976 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx, inst_10974);
-                                                          var state_11035__$1 = state_11035;
-                                                          var statearr_11067_11098 = state_11035__$1;
-                                                          statearr_11067_11098[2] = inst_10976;
-                                                          statearr_11067_11098[1] = 12;
+                                                        if (state_val_10954 === 10) {
+                                                          var inst_10892 = state_10953[17];
+                                                          var inst_10894 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx, inst_10892);
+                                                          var state_10953__$1 = state_10953;
+                                                          var statearr_10985_11016 = state_10953__$1;
+                                                          statearr_10985_11016[2] = inst_10894;
+                                                          statearr_10985_11016[1] = 12;
                                                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                         } else {
-                                                          if (state_val_11036 === 18) {
-                                                            var inst_11001 = new Error("TestContext provided as [form] in `is` assertion. If using `is` with an explicit test context, use the 3-arg arity.");
-                                                            var inst_11002 = function() {
-                                                              throw inst_11001;
+                                                          if (state_val_10954 === 18) {
+                                                            var inst_10919 = new Error("TestContext provided as [form] in `is` assertion. If using `is` with an explicit test context, use the 3-arg arity.");
+                                                            var inst_10920 = function() {
+                                                              throw inst_10919;
                                                             }();
-                                                            var state_11035__$1 = state_11035;
-                                                            var statearr_11068_11099 = state_11035__$1;
-                                                            statearr_11068_11099[2] = inst_11002;
-                                                            statearr_11068_11099[1] = 20;
+                                                            var state_10953__$1 = state_10953;
+                                                            var statearr_10986_11017 = state_10953__$1;
+                                                            statearr_10986_11017[2] = inst_10920;
+                                                            statearr_10986_11017[1] = 20;
                                                             return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                           } else {
-                                                            if (state_val_11036 === 8) {
-                                                              var inst_11030 = state_11035[2];
-                                                              var state_11035__$1 = state_11035;
-                                                              var statearr_11069_11100 = state_11035__$1;
-                                                              statearr_11069_11100[2] = inst_11030;
-                                                              cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11035__$1);
+                                                            if (state_val_10954 === 8) {
+                                                              var inst_10948 = state_10953[2];
+                                                              var state_10953__$1 = state_10953;
+                                                              var statearr_10987_11018 = state_10953__$1;
+                                                              statearr_10987_11018[2] = inst_10948;
+                                                              cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_10953__$1);
                                                               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                             } else {
                                                               return null;
@@ -38184,384 +38189,385 @@ sailing_study_guide.test.dispatch.register_test = cljs.core.with_meta.call(null,
                   }
                 }
               };
-            }(c__6799__auto__, c, _STAR_test_ctx_STAR_10958, _test_ctx, async_QMARK___10583__auto__);
-            return function(switch__6784__auto__, c__6799__auto__, c, _STAR_test_ctx_STAR_10958, _test_ctx, async_QMARK___10583__auto__) {
+            }(c__6844__auto__, c, _STAR_test_ctx_STAR_10876, _test_ctx, async_QMARK___10501__auto__);
+            return function(switch__6829__auto__, c__6844__auto__, c, _STAR_test_ctx_STAR_10876, _test_ctx, async_QMARK___10501__auto__) {
               return function() {
-                var state_machine__6785__auto__ = null;
-                var state_machine__6785__auto____0 = function() {
-                  var statearr_11073 = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
-                  statearr_11073[0] = state_machine__6785__auto__;
-                  statearr_11073[1] = 1;
-                  return statearr_11073;
+                var state_machine__6830__auto__ = null;
+                var state_machine__6830__auto____0 = function() {
+                  var statearr_10991 = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+                  statearr_10991[0] = state_machine__6830__auto__;
+                  statearr_10991[1] = 1;
+                  return statearr_10991;
                 };
-                var state_machine__6785__auto____1 = function(state_11035) {
+                var state_machine__6830__auto____1 = function(state_10953) {
                   while (true) {
-                    var ret_value__6786__auto__ = function() {
+                    var ret_value__6831__auto__ = function() {
                       try {
                         while (true) {
-                          var result__6787__auto__ = switch__6784__auto__.call(null, state_11035);
-                          if (cljs.core.keyword_identical_QMARK_.call(null, result__6787__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                          var result__6832__auto__ = switch__6829__auto__.call(null, state_10953);
+                          if (cljs.core.keyword_identical_QMARK_.call(null, result__6832__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
                             continue;
                           } else {
-                            return result__6787__auto__;
+                            return result__6832__auto__;
                           }
                           break;
                         }
-                      } catch (e11074) {
-                        if (e11074 instanceof Object) {
-                          var ex__6788__auto__ = e11074;
-                          var statearr_11075_11101 = state_11035;
-                          statearr_11075_11101[5] = ex__6788__auto__;
-                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11035);
+                      } catch (e10992) {
+                        if (e10992 instanceof Object) {
+                          var ex__6833__auto__ = e10992;
+                          var statearr_10993_11019 = state_10953;
+                          statearr_10993_11019[5] = ex__6833__auto__;
+                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_10953);
                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                         } else {
-                          throw e11074;
+                          throw e10992;
                         }
                       }
                     }();
-                    if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6786__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
-                      var G__11102 = state_11035;
-                      state_11035 = G__11102;
+                    if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6831__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                      var G__11020 = state_10953;
+                      state_10953 = G__11020;
                       continue;
                     } else {
-                      return ret_value__6786__auto__;
+                      return ret_value__6831__auto__;
                     }
                     break;
                   }
                 };
-                state_machine__6785__auto__ = function(state_11035) {
+                state_machine__6830__auto__ = function(state_10953) {
                   switch(arguments.length) {
                     case 0:
-                      return state_machine__6785__auto____0.call(this);
+                      return state_machine__6830__auto____0.call(this);
                     case 1:
-                      return state_machine__6785__auto____1.call(this, state_11035);
+                      return state_machine__6830__auto____1.call(this, state_10953);
                   }
                   throw new Error("Invalid arity: " + arguments.length);
                 };
-                state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6785__auto____0;
-                state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6785__auto____1;
-                return state_machine__6785__auto__;
+                state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6830__auto____0;
+                state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6830__auto____1;
+                return state_machine__6830__auto__;
               }();
-            }(switch__6784__auto__, c__6799__auto__, c, _STAR_test_ctx_STAR_10958, _test_ctx, async_QMARK___10583__auto__);
+            }(switch__6829__auto__, c__6844__auto__, c, _STAR_test_ctx_STAR_10876, _test_ctx, async_QMARK___10501__auto__);
           }();
-          var state__6801__auto__ = function() {
-            var statearr_11076 = f__6800__auto__.call(null);
-            statearr_11076[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6799__auto__;
-            return statearr_11076;
+          var state__6846__auto__ = function() {
+            var statearr_10994 = f__6845__auto__.call(null);
+            statearr_10994[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6844__auto__;
+            return statearr_10994;
           }();
-          return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6801__auto__);
+          return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6846__auto__);
         };
-      }(c__6799__auto__, c, _STAR_test_ctx_STAR_10958, _test_ctx, async_QMARK___10583__auto__));
-      return c__6799__auto__;
-    } catch (e10959) {
-      if (e10959 instanceof Error) {
-        var e__10584__auto__ = e10959;
-        if (cljs.core.truth_(async_QMARK___10583__auto__)) {
-          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10584__auto__);
+      }(c__6844__auto__, c, _STAR_test_ctx_STAR_10876, _test_ctx, async_QMARK___10501__auto__));
+      return c__6844__auto__;
+    } catch (e10877) {
+      if (e10877 instanceof Error) {
+        var e__10502__auto__ = e10877;
+        if (cljs.core.truth_(async_QMARK___10501__auto__)) {
+          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10502__auto__);
         } else {
-          throw e__10584__auto__;
+          throw e__10502__auto__;
         }
       } else {
-        throw e10959;
+        throw e10877;
       }
     }
   } finally {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_10958;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_10876;
   }
 }], null)));
 cemerick.cljs.test.register_test_BANG_.call(null, new cljs.core.Symbol(null, "sailing-study-guide.test.dispatch", "sailing-study-guide.test.dispatch", 2120704787, null), new cljs.core.Symbol("sailing-study-guide.test.dispatch", "register-test", "sailing-study-guide.test.dispatch/register-test", -1619419419, null), sailing_study_guide.test.dispatch.register_test);
 sailing_study_guide.test.dispatch.unregister_test = function unregister_test() {
   return cemerick.cljs.test.test_function.call(null, cemerick.cljs.test.init_test_environment.call(null), sailing_study_guide.test.dispatch.unregister_test);
 };
-sailing_study_guide.test.dispatch.unregister_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.unregister_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "line", "line", 212345235), 34, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 34, new cljs.core.Keyword(null, "end-column", 
-"end-column", 1425389514), 33], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "unregister-test", "sailing-study-guide.test.dispatch/unregister-test", -1604148922, null), new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "line", "line", 212345235), 34, new cljs.core.Keyword(null, 
-"column", "column", 2078222095), 18, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 34, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 33], null)), new cljs.core.Keyword(null, "test", "test", 577538877), function unregister_test_test(test_ctx__10668__auto__) {
-  var _test_ctx = test_ctx__10668__auto__;
-  var async_QMARK___10583__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
-  var _STAR_test_ctx_STAR_11222 = cemerick.cljs.test._STAR_test_ctx_STAR_;
+sailing_study_guide.test.dispatch.unregister_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.unregister_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 34, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 34, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, 
+"line", "line", 212345235), 34, new cljs.core.Keyword(null, "file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "unregister-test", "sailing-study-guide.test.dispatch/unregister-test", -1604148922, null), new cljs.core.PersistentArrayMap(null, 
+6, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 34, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 34, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "line", "line", 212345235), 34, new cljs.core.Keyword(null, "file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null)), 
+new cljs.core.Keyword(null, "test", "test", 577538877), function unregister_test_test(test_ctx__10586__auto__) {
+  var _test_ctx = test_ctx__10586__auto__;
+  var async_QMARK___10501__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
+  var _STAR_test_ctx_STAR_11140 = cemerick.cljs.test._STAR_test_ctx_STAR_;
   try {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10583__auto__) ? null : _test_ctx;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10501__auto__) ? null : _test_ctx;
     try {
       var c = sailing_study_guide.dispatch.register.call(null, sailing_study_guide.test.dispatch._STAR_default_tag_STAR_);
       sailing_study_guide.dispatch.unregister.call(null, sailing_study_guide.test.dispatch._STAR_default_tag_STAR_, c);
-      var c__6799__auto__ = cljs.core.async.chan.call(null, 1);
-      cljs.core.async.impl.dispatch.run.call(null, function(c__6799__auto__, c, _STAR_test_ctx_STAR_11222, _test_ctx, async_QMARK___10583__auto__) {
+      var c__6844__auto__ = cljs.core.async.chan.call(null, 1);
+      cljs.core.async.impl.dispatch.run.call(null, function(c__6844__auto__, c, _STAR_test_ctx_STAR_11140, _test_ctx, async_QMARK___10501__auto__) {
         return function() {
-          var f__6800__auto__ = function() {
-            var switch__6784__auto__ = function(c__6799__auto__, c, _STAR_test_ctx_STAR_11222, _test_ctx, async_QMARK___10583__auto__) {
-              return function(state_11299) {
-                var state_val_11300 = state_11299[1];
-                if (state_val_11300 === 7) {
-                  var inst_11236 = state_11299[2];
-                  var inst_11237 = cemerick.cljs.test._STAR_test_ctx_STAR_ = inst_11236;
-                  var state_11299__$1 = function() {
-                    var statearr_11301 = state_11299;
-                    statearr_11301[7] = inst_11237;
-                    return statearr_11301;
+          var f__6845__auto__ = function() {
+            var switch__6829__auto__ = function(c__6844__auto__, c, _STAR_test_ctx_STAR_11140, _test_ctx, async_QMARK___10501__auto__) {
+              return function(state_11217) {
+                var state_val_11218 = state_11217[1];
+                if (state_val_11218 === 7) {
+                  var inst_11154 = state_11217[2];
+                  var inst_11155 = cemerick.cljs.test._STAR_test_ctx_STAR_ = inst_11154;
+                  var state_11217__$1 = function() {
+                    var statearr_11219 = state_11217;
+                    statearr_11219[7] = inst_11155;
+                    return statearr_11219;
                   }();
-                  var statearr_11302_11341 = state_11299__$1;
-                  statearr_11302_11341[2] = null;
-                  statearr_11302_11341[1] = 13;
+                  var statearr_11220_11259 = state_11217__$1;
+                  statearr_11220_11259[2] = null;
+                  statearr_11220_11259[1] = 13;
                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                 } else {
-                  if (state_val_11300 === 20) {
-                    var inst_11262 = state_11299[8];
-                    var inst_11269 = state_11299[2];
-                    var state_11299__$1 = function() {
-                      var statearr_11303 = state_11299;
-                      statearr_11303[9] = inst_11269;
-                      return statearr_11303;
+                  if (state_val_11218 === 20) {
+                    var inst_11180 = state_11217[8];
+                    var inst_11187 = state_11217[2];
+                    var state_11217__$1 = function() {
+                      var statearr_11221 = state_11217;
+                      statearr_11221[9] = inst_11187;
+                      return statearr_11221;
                     }();
-                    if (cljs.core.truth_(inst_11262)) {
-                      var statearr_11304_11342 = state_11299__$1;
-                      statearr_11304_11342[1] = 21;
+                    if (cljs.core.truth_(inst_11180)) {
+                      var statearr_11222_11260 = state_11217__$1;
+                      statearr_11222_11260[1] = 21;
                     } else {
-                      var statearr_11305_11343 = state_11299__$1;
-                      statearr_11305_11343[1] = 22;
+                      var statearr_11223_11261 = state_11217__$1;
+                      statearr_11223_11261[1] = 22;
                     }
                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                   } else {
-                    if (state_val_11300 === 1) {
-                      var inst_11224 = (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx);
-                      var inst_11225 = cljs.core.meta.call(null, inst_11224);
-                      var inst_11226 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(inst_11225);
-                      var state_11299__$1 = function() {
-                        var statearr_11306 = state_11299;
-                        statearr_11306[10] = inst_11226;
-                        return statearr_11306;
+                    if (state_val_11218 === 1) {
+                      var inst_11142 = (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx);
+                      var inst_11143 = cljs.core.meta.call(null, inst_11142);
+                      var inst_11144 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(inst_11143);
+                      var state_11217__$1 = function() {
+                        var statearr_11224 = state_11217;
+                        statearr_11224[10] = inst_11144;
+                        return statearr_11224;
                       }();
-                      var statearr_11307_11344 = state_11299__$1;
-                      statearr_11307_11344[2] = null;
-                      statearr_11307_11344[1] = 4;
+                      var statearr_11225_11262 = state_11217__$1;
+                      statearr_11225_11262[2] = null;
+                      statearr_11225_11262[1] = 4;
                       return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                     } else {
-                      if (state_val_11300 === 4) {
-                        var inst_11226 = state_11299[10];
-                        var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11299, null, null, 3, 2);
-                        var state_11299__$1 = state_11299;
-                        if (cljs.core.truth_(inst_11226)) {
-                          var statearr_11308_11345 = state_11299__$1;
-                          statearr_11308_11345[1] = 5;
+                      if (state_val_11218 === 4) {
+                        var inst_11144 = state_11217[10];
+                        var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11217, null, null, 3, 2);
+                        var state_11217__$1 = state_11217;
+                        if (cljs.core.truth_(inst_11144)) {
+                          var statearr_11226_11263 = state_11217__$1;
+                          statearr_11226_11263[1] = 5;
                         } else {
-                          var statearr_11309_11346 = state_11299__$1;
-                          statearr_11309_11346[1] = 6;
+                          var statearr_11227_11264 = state_11217__$1;
+                          statearr_11227_11264[1] = 6;
                         }
                         return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                       } else {
-                        if (state_val_11300 === 15) {
-                          var inst_11248 = state_11299[2];
-                          var inst_11249 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
-                          var inst_11250 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), null, cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null)));
-                          var inst_11251 = [new cljs.core.Keyword(null, "error", "error", -978969032), inst_11250, inst_11248, null];
-                          var inst_11252 = cljs.core.PersistentHashMap.fromArrays(inst_11249, inst_11251);
-                          var inst_11253 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11252);
-                          var state_11299__$1 = state_11299;
-                          var statearr_11310_11347 = state_11299__$1;
-                          statearr_11310_11347[2] = inst_11253;
-                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11299__$1);
+                        if (state_val_11218 === 15) {
+                          var inst_11166 = state_11217[2];
+                          var inst_11167 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                          var inst_11168 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), null, cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null)));
+                          var inst_11169 = [new cljs.core.Keyword(null, "error", "error", -978969032), inst_11168, inst_11166, null];
+                          var inst_11170 = cljs.core.PersistentHashMap.fromArrays(inst_11167, inst_11169);
+                          var inst_11171 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11170);
+                          var state_11217__$1 = state_11217;
+                          var statearr_11228_11265 = state_11217__$1;
+                          statearr_11228_11265[2] = inst_11171;
+                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11217__$1);
                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                         } else {
-                          if (state_val_11300 === 21) {
-                            var inst_11261 = state_11299[11];
-                            var inst_11271 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
-                            var inst_11272 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), null, cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null)));
-                            var inst_11273 = cljs.core.cons.call(null, cljs.core._EQ_, inst_11261);
-                            var inst_11274 = [new cljs.core.Keyword(null, "pass", "pass", 1574159993), inst_11272, inst_11273, null];
-                            var inst_11275 = cljs.core.PersistentHashMap.fromArrays(inst_11271, inst_11274);
-                            var inst_11276 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11275);
-                            var state_11299__$1 = state_11299;
-                            var statearr_11311_11348 = state_11299__$1;
-                            statearr_11311_11348[2] = inst_11276;
-                            statearr_11311_11348[1] = 23;
+                          if (state_val_11218 === 21) {
+                            var inst_11179 = state_11217[11];
+                            var inst_11189 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                            var inst_11190 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), null, cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null)));
+                            var inst_11191 = cljs.core.cons.call(null, cljs.core._EQ_, inst_11179);
+                            var inst_11192 = [new cljs.core.Keyword(null, "pass", "pass", 1574159993), inst_11190, inst_11191, null];
+                            var inst_11193 = cljs.core.PersistentHashMap.fromArrays(inst_11189, inst_11192);
+                            var inst_11194 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11193);
+                            var state_11217__$1 = state_11217;
+                            var statearr_11229_11266 = state_11217__$1;
+                            statearr_11229_11266[2] = inst_11194;
+                            statearr_11229_11266[1] = 23;
                             return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                           } else {
-                            if (state_val_11300 === 13) {
-                              var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11299, 9, Error, null, 8);
-                              var state_11299__$1 = state_11299;
-                              var statearr_11312_11349 = state_11299__$1;
-                              statearr_11312_11349[2] = null;
-                              statearr_11312_11349[1] = 16;
+                            if (state_val_11218 === 13) {
+                              var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11217, 9, Error, null, 8);
+                              var state_11217__$1 = state_11217;
+                              var statearr_11230_11267 = state_11217__$1;
+                              statearr_11230_11267[2] = null;
+                              statearr_11230_11267[1] = 16;
                               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                             } else {
-                              if (state_val_11300 === 22) {
-                                var inst_11261 = state_11299[11];
-                                var inst_11278 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
-                                var inst_11279 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), null, cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null)));
-                                var inst_11280 = cljs.core.List.EMPTY;
-                                var inst_11281 = new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null);
-                                var inst_11282 = cljs.core.cons.call(null, inst_11281, inst_11261);
-                                var inst_11283 = cljs.core._conj.call(null, inst_11280, inst_11282);
-                                var inst_11284 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
-                                var inst_11285 = cljs.core._conj.call(null, inst_11283, inst_11284);
-                                var inst_11286 = [new cljs.core.Keyword(null, "fail", "fail", 1706214930), inst_11279, inst_11285, null];
-                                var inst_11287 = cljs.core.PersistentHashMap.fromArrays(inst_11278, inst_11286);
-                                var inst_11288 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11287);
-                                var state_11299__$1 = state_11299;
-                                var statearr_11313_11350 = state_11299__$1;
-                                statearr_11313_11350[2] = inst_11288;
-                                statearr_11313_11350[1] = 23;
+                              if (state_val_11218 === 22) {
+                                var inst_11179 = state_11217[11];
+                                var inst_11196 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                                var inst_11197 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), null, cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "c", "c", -122660552, null)));
+                                var inst_11198 = cljs.core.List.EMPTY;
+                                var inst_11199 = new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null);
+                                var inst_11200 = cljs.core.cons.call(null, inst_11199, inst_11179);
+                                var inst_11201 = cljs.core._conj.call(null, inst_11198, inst_11200);
+                                var inst_11202 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
+                                var inst_11203 = cljs.core._conj.call(null, inst_11201, inst_11202);
+                                var inst_11204 = [new cljs.core.Keyword(null, "fail", "fail", 1706214930), inst_11197, inst_11203, null];
+                                var inst_11205 = cljs.core.PersistentHashMap.fromArrays(inst_11196, inst_11204);
+                                var inst_11206 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11205);
+                                var state_11217__$1 = state_11217;
+                                var statearr_11231_11268 = state_11217__$1;
+                                statearr_11231_11268[2] = inst_11206;
+                                statearr_11231_11268[1] = 23;
                                 return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                               } else {
-                                if (state_val_11300 === 6) {
-                                  var state_11299__$1 = state_11299;
-                                  var statearr_11314_11351 = state_11299__$1;
-                                  statearr_11314_11351[2] = _test_ctx;
-                                  statearr_11314_11351[1] = 7;
+                                if (state_val_11218 === 6) {
+                                  var state_11217__$1 = state_11217;
+                                  var statearr_11232_11269 = state_11217__$1;
+                                  statearr_11232_11269[2] = _test_ctx;
+                                  statearr_11232_11269[1] = 7;
                                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                 } else {
-                                  if (state_val_11300 === 17) {
-                                    var inst_11262 = state_11299[8];
-                                    var inst_11261 = state_11299[11];
-                                    var inst_11257 = state_11299[12];
-                                    var inst_11259 = state_11299[2];
-                                    var inst_11260 = cljs.core._conj.call(null, inst_11257, inst_11259);
-                                    var inst_11261__$1 = cljs.core._conj.call(null, inst_11260, null);
-                                    var inst_11262__$1 = cljs.core.apply.call(null, cljs.core._EQ_, inst_11261__$1);
-                                    var inst_11263 = inst_11262__$1 instanceof cemerick.cljs.test.TestContext;
-                                    var state_11299__$1 = function() {
-                                      var statearr_11315 = state_11299;
-                                      statearr_11315[8] = inst_11262__$1;
-                                      statearr_11315[11] = inst_11261__$1;
-                                      return statearr_11315;
+                                  if (state_val_11218 === 17) {
+                                    var inst_11179 = state_11217[11];
+                                    var inst_11175 = state_11217[12];
+                                    var inst_11180 = state_11217[8];
+                                    var inst_11177 = state_11217[2];
+                                    var inst_11178 = cljs.core._conj.call(null, inst_11175, inst_11177);
+                                    var inst_11179__$1 = cljs.core._conj.call(null, inst_11178, null);
+                                    var inst_11180__$1 = cljs.core.apply.call(null, cljs.core._EQ_, inst_11179__$1);
+                                    var inst_11181 = inst_11180__$1 instanceof cemerick.cljs.test.TestContext;
+                                    var state_11217__$1 = function() {
+                                      var statearr_11233 = state_11217;
+                                      statearr_11233[11] = inst_11179__$1;
+                                      statearr_11233[8] = inst_11180__$1;
+                                      return statearr_11233;
                                     }();
-                                    if (cljs.core.truth_(inst_11263)) {
-                                      var statearr_11316_11352 = state_11299__$1;
-                                      statearr_11316_11352[1] = 18;
+                                    if (cljs.core.truth_(inst_11181)) {
+                                      var statearr_11234_11270 = state_11217__$1;
+                                      statearr_11234_11270[1] = 18;
                                     } else {
-                                      var statearr_11317_11353 = state_11299__$1;
-                                      statearr_11317_11353[1] = 19;
+                                      var statearr_11235_11271 = state_11217__$1;
+                                      statearr_11235_11271[1] = 19;
                                     }
                                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                   } else {
-                                    if (state_val_11300 === 3) {
-                                      var inst_11228 = state_11299[2];
-                                      var inst_11229 = cemerick.cljs.test._STAR_test_ctx_STAR_ = cemerick.cljs.test._STAR_test_ctx_STAR_;
-                                      var state_11299__$1 = function() {
-                                        var statearr_11318 = state_11299;
-                                        statearr_11318[13] = inst_11229;
-                                        statearr_11318[14] = inst_11228;
-                                        return statearr_11318;
+                                    if (state_val_11218 === 3) {
+                                      var inst_11146 = state_11217[2];
+                                      var inst_11147 = cemerick.cljs.test._STAR_test_ctx_STAR_ = cemerick.cljs.test._STAR_test_ctx_STAR_;
+                                      var state_11217__$1 = function() {
+                                        var statearr_11236 = state_11217;
+                                        statearr_11236[13] = inst_11146;
+                                        statearr_11236[14] = inst_11147;
+                                        return statearr_11236;
                                       }();
-                                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11299__$1);
+                                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11217__$1);
                                       return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                     } else {
-                                      if (state_val_11300 === 12) {
-                                        var inst_11244 = state_11299[2];
-                                        var state_11299__$1 = state_11299;
-                                        var statearr_11319_11354 = state_11299__$1;
-                                        statearr_11319_11354[2] = inst_11244;
-                                        cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11299__$1);
+                                      if (state_val_11218 === 12) {
+                                        var inst_11162 = state_11217[2];
+                                        var state_11217__$1 = state_11217;
+                                        var statearr_11237_11272 = state_11217__$1;
+                                        statearr_11237_11272[2] = inst_11162;
+                                        cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11217__$1);
                                         return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                       } else {
-                                        if (state_val_11300 === 2) {
-                                          var inst_11296 = state_11299[2];
-                                          var inst_11297 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx);
-                                          var state_11299__$1 = function() {
-                                            var statearr_11320 = state_11299;
-                                            statearr_11320[15] = inst_11296;
-                                            return statearr_11320;
+                                        if (state_val_11218 === 2) {
+                                          var inst_11214 = state_11217[2];
+                                          var inst_11215 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx);
+                                          var state_11217__$1 = function() {
+                                            var statearr_11238 = state_11217;
+                                            statearr_11238[15] = inst_11214;
+                                            return statearr_11238;
                                           }();
-                                          return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_11299__$1, inst_11297);
+                                          return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_11217__$1, inst_11215);
                                         } else {
-                                          if (state_val_11300 === 23) {
-                                            var inst_11262 = state_11299[8];
-                                            var inst_11290 = state_11299[2];
-                                            var state_11299__$1 = function() {
-                                              var statearr_11321 = state_11299;
-                                              statearr_11321[16] = inst_11290;
-                                              return statearr_11321;
+                                          if (state_val_11218 === 23) {
+                                            var inst_11180 = state_11217[8];
+                                            var inst_11208 = state_11217[2];
+                                            var state_11217__$1 = function() {
+                                              var statearr_11239 = state_11217;
+                                              statearr_11239[16] = inst_11208;
+                                              return statearr_11239;
                                             }();
-                                            var statearr_11322_11355 = state_11299__$1;
-                                            statearr_11322_11355[2] = inst_11262;
-                                            cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11299__$1);
+                                            var statearr_11240_11273 = state_11217__$1;
+                                            statearr_11240_11273[2] = inst_11180;
+                                            cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11217__$1);
                                             return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                           } else {
-                                            if (state_val_11300 === 19) {
-                                              var state_11299__$1 = state_11299;
-                                              var statearr_11323_11356 = state_11299__$1;
-                                              statearr_11323_11356[2] = null;
-                                              statearr_11323_11356[1] = 20;
+                                            if (state_val_11218 === 19) {
+                                              var state_11217__$1 = state_11217;
+                                              var statearr_11241_11274 = state_11217__$1;
+                                              statearr_11241_11274[2] = null;
+                                              statearr_11241_11274[1] = 20;
                                               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                             } else {
-                                              if (state_val_11300 === 11) {
-                                                var inst_11238 = state_11299[17];
-                                                var inst_11242 = function() {
-                                                  throw inst_11238;
+                                              if (state_val_11218 === 11) {
+                                                var inst_11156 = state_11217[17];
+                                                var inst_11160 = function() {
+                                                  throw inst_11156;
                                                 }();
-                                                var state_11299__$1 = state_11299;
-                                                var statearr_11324_11357 = state_11299__$1;
-                                                statearr_11324_11357[2] = inst_11242;
-                                                statearr_11324_11357[1] = 12;
+                                                var state_11217__$1 = state_11217;
+                                                var statearr_11242_11275 = state_11217__$1;
+                                                statearr_11242_11275[2] = inst_11160;
+                                                statearr_11242_11275[1] = 12;
                                                 return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                               } else {
-                                                if (state_val_11300 === 9) {
-                                                  var inst_11226 = state_11299[10];
-                                                  var inst_11238 = state_11299[2];
-                                                  var state_11299__$1 = function() {
-                                                    var statearr_11325 = state_11299;
-                                                    statearr_11325[17] = inst_11238;
-                                                    return statearr_11325;
+                                                if (state_val_11218 === 9) {
+                                                  var inst_11144 = state_11217[10];
+                                                  var inst_11156 = state_11217[2];
+                                                  var state_11217__$1 = function() {
+                                                    var statearr_11243 = state_11217;
+                                                    statearr_11243[17] = inst_11156;
+                                                    return statearr_11243;
                                                   }();
-                                                  if (cljs.core.truth_(inst_11226)) {
-                                                    var statearr_11326_11358 = state_11299__$1;
-                                                    statearr_11326_11358[1] = 10;
+                                                  if (cljs.core.truth_(inst_11144)) {
+                                                    var statearr_11244_11276 = state_11217__$1;
+                                                    statearr_11244_11276[1] = 10;
                                                   } else {
-                                                    var statearr_11327_11359 = state_11299__$1;
-                                                    statearr_11327_11359[1] = 11;
+                                                    var statearr_11245_11277 = state_11217__$1;
+                                                    statearr_11245_11277[1] = 11;
                                                   }
                                                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                 } else {
-                                                  if (state_val_11300 === 5) {
-                                                    var state_11299__$1 = state_11299;
-                                                    var statearr_11328_11360 = state_11299__$1;
-                                                    statearr_11328_11360[2] = null;
-                                                    statearr_11328_11360[1] = 7;
+                                                  if (state_val_11218 === 5) {
+                                                    var state_11217__$1 = state_11217;
+                                                    var statearr_11246_11278 = state_11217__$1;
+                                                    statearr_11246_11278[2] = null;
+                                                    statearr_11246_11278[1] = 7;
                                                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                   } else {
-                                                    if (state_val_11300 === 14) {
-                                                      var inst_11292 = state_11299[2];
-                                                      var state_11299__$1 = state_11299;
-                                                      var statearr_11329_11361 = state_11299__$1;
-                                                      statearr_11329_11361[2] = inst_11292;
-                                                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11299__$1);
+                                                    if (state_val_11218 === 14) {
+                                                      var inst_11210 = state_11217[2];
+                                                      var state_11217__$1 = state_11217;
+                                                      var statearr_11247_11279 = state_11217__$1;
+                                                      statearr_11247_11279[2] = inst_11210;
+                                                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11217__$1);
                                                       return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                     } else {
-                                                      if (state_val_11300 === 16) {
-                                                        var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11299, 15, Error, null, 14);
-                                                        var inst_11257 = cljs.core.List.EMPTY;
-                                                        var state_11299__$1 = function() {
-                                                          var statearr_11330 = state_11299;
-                                                          statearr_11330[12] = inst_11257;
-                                                          return statearr_11330;
+                                                      if (state_val_11218 === 16) {
+                                                        var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11217, 15, Error, null, 14);
+                                                        var inst_11175 = cljs.core.List.EMPTY;
+                                                        var state_11217__$1 = function() {
+                                                          var statearr_11248 = state_11217;
+                                                          statearr_11248[12] = inst_11175;
+                                                          return statearr_11248;
                                                         }();
-                                                        return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_11299__$1, 17, c);
+                                                        return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_11217__$1, 17, c);
                                                       } else {
-                                                        if (state_val_11300 === 10) {
-                                                          var inst_11238 = state_11299[17];
-                                                          var inst_11240 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx, inst_11238);
-                                                          var state_11299__$1 = state_11299;
-                                                          var statearr_11331_11362 = state_11299__$1;
-                                                          statearr_11331_11362[2] = inst_11240;
-                                                          statearr_11331_11362[1] = 12;
+                                                        if (state_val_11218 === 10) {
+                                                          var inst_11156 = state_11217[17];
+                                                          var inst_11158 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx, inst_11156);
+                                                          var state_11217__$1 = state_11217;
+                                                          var statearr_11249_11280 = state_11217__$1;
+                                                          statearr_11249_11280[2] = inst_11158;
+                                                          statearr_11249_11280[1] = 12;
                                                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                         } else {
-                                                          if (state_val_11300 === 18) {
-                                                            var inst_11265 = new Error("TestContext provided as [form] in `is` assertion. If using `is` with an explicit test context, use the 3-arg arity.");
-                                                            var inst_11266 = function() {
-                                                              throw inst_11265;
+                                                          if (state_val_11218 === 18) {
+                                                            var inst_11183 = new Error("TestContext provided as [form] in `is` assertion. If using `is` with an explicit test context, use the 3-arg arity.");
+                                                            var inst_11184 = function() {
+                                                              throw inst_11183;
                                                             }();
-                                                            var state_11299__$1 = state_11299;
-                                                            var statearr_11332_11363 = state_11299__$1;
-                                                            statearr_11332_11363[2] = inst_11266;
-                                                            statearr_11332_11363[1] = 20;
+                                                            var state_11217__$1 = state_11217;
+                                                            var statearr_11250_11281 = state_11217__$1;
+                                                            statearr_11250_11281[2] = inst_11184;
+                                                            statearr_11250_11281[1] = 20;
                                                             return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                           } else {
-                                                            if (state_val_11300 === 8) {
-                                                              var inst_11294 = state_11299[2];
-                                                              var state_11299__$1 = state_11299;
-                                                              var statearr_11333_11364 = state_11299__$1;
-                                                              statearr_11333_11364[2] = inst_11294;
-                                                              cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11299__$1);
+                                                            if (state_val_11218 === 8) {
+                                                              var inst_11212 = state_11217[2];
+                                                              var state_11217__$1 = state_11217;
+                                                              var statearr_11251_11282 = state_11217__$1;
+                                                              statearr_11251_11282[2] = inst_11212;
+                                                              cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11217__$1);
                                                               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                             } else {
                                                               return null;
@@ -38589,504 +38595,506 @@ sailing_study_guide.test.dispatch.unregister_test = cljs.core.with_meta.call(nul
                   }
                 }
               };
-            }(c__6799__auto__, c, _STAR_test_ctx_STAR_11222, _test_ctx, async_QMARK___10583__auto__);
-            return function(switch__6784__auto__, c__6799__auto__, c, _STAR_test_ctx_STAR_11222, _test_ctx, async_QMARK___10583__auto__) {
+            }(c__6844__auto__, c, _STAR_test_ctx_STAR_11140, _test_ctx, async_QMARK___10501__auto__);
+            return function(switch__6829__auto__, c__6844__auto__, c, _STAR_test_ctx_STAR_11140, _test_ctx, async_QMARK___10501__auto__) {
               return function() {
-                var state_machine__6785__auto__ = null;
-                var state_machine__6785__auto____0 = function() {
-                  var statearr_11337 = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
-                  statearr_11337[0] = state_machine__6785__auto__;
-                  statearr_11337[1] = 1;
-                  return statearr_11337;
+                var state_machine__6830__auto__ = null;
+                var state_machine__6830__auto____0 = function() {
+                  var statearr_11255 = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+                  statearr_11255[0] = state_machine__6830__auto__;
+                  statearr_11255[1] = 1;
+                  return statearr_11255;
                 };
-                var state_machine__6785__auto____1 = function(state_11299) {
+                var state_machine__6830__auto____1 = function(state_11217) {
                   while (true) {
-                    var ret_value__6786__auto__ = function() {
+                    var ret_value__6831__auto__ = function() {
                       try {
                         while (true) {
-                          var result__6787__auto__ = switch__6784__auto__.call(null, state_11299);
-                          if (cljs.core.keyword_identical_QMARK_.call(null, result__6787__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                          var result__6832__auto__ = switch__6829__auto__.call(null, state_11217);
+                          if (cljs.core.keyword_identical_QMARK_.call(null, result__6832__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
                             continue;
                           } else {
-                            return result__6787__auto__;
+                            return result__6832__auto__;
                           }
                           break;
                         }
-                      } catch (e11338) {
-                        if (e11338 instanceof Object) {
-                          var ex__6788__auto__ = e11338;
-                          var statearr_11339_11365 = state_11299;
-                          statearr_11339_11365[5] = ex__6788__auto__;
-                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11299);
+                      } catch (e11256) {
+                        if (e11256 instanceof Object) {
+                          var ex__6833__auto__ = e11256;
+                          var statearr_11257_11283 = state_11217;
+                          statearr_11257_11283[5] = ex__6833__auto__;
+                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11217);
                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                         } else {
-                          throw e11338;
+                          throw e11256;
                         }
                       }
                     }();
-                    if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6786__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
-                      var G__11366 = state_11299;
-                      state_11299 = G__11366;
+                    if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6831__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                      var G__11284 = state_11217;
+                      state_11217 = G__11284;
                       continue;
                     } else {
-                      return ret_value__6786__auto__;
+                      return ret_value__6831__auto__;
                     }
                     break;
                   }
                 };
-                state_machine__6785__auto__ = function(state_11299) {
+                state_machine__6830__auto__ = function(state_11217) {
                   switch(arguments.length) {
                     case 0:
-                      return state_machine__6785__auto____0.call(this);
+                      return state_machine__6830__auto____0.call(this);
                     case 1:
-                      return state_machine__6785__auto____1.call(this, state_11299);
+                      return state_machine__6830__auto____1.call(this, state_11217);
                   }
                   throw new Error("Invalid arity: " + arguments.length);
                 };
-                state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6785__auto____0;
-                state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6785__auto____1;
-                return state_machine__6785__auto__;
+                state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6830__auto____0;
+                state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6830__auto____1;
+                return state_machine__6830__auto__;
               }();
-            }(switch__6784__auto__, c__6799__auto__, c, _STAR_test_ctx_STAR_11222, _test_ctx, async_QMARK___10583__auto__);
+            }(switch__6829__auto__, c__6844__auto__, c, _STAR_test_ctx_STAR_11140, _test_ctx, async_QMARK___10501__auto__);
           }();
-          var state__6801__auto__ = function() {
-            var statearr_11340 = f__6800__auto__.call(null);
-            statearr_11340[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6799__auto__;
-            return statearr_11340;
+          var state__6846__auto__ = function() {
+            var statearr_11258 = f__6845__auto__.call(null);
+            statearr_11258[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6844__auto__;
+            return statearr_11258;
           }();
-          return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6801__auto__);
+          return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6846__auto__);
         };
-      }(c__6799__auto__, c, _STAR_test_ctx_STAR_11222, _test_ctx, async_QMARK___10583__auto__));
-      return c__6799__auto__;
-    } catch (e11223) {
-      if (e11223 instanceof Error) {
-        var e__10584__auto__ = e11223;
-        if (cljs.core.truth_(async_QMARK___10583__auto__)) {
-          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10584__auto__);
+      }(c__6844__auto__, c, _STAR_test_ctx_STAR_11140, _test_ctx, async_QMARK___10501__auto__));
+      return c__6844__auto__;
+    } catch (e11141) {
+      if (e11141 instanceof Error) {
+        var e__10502__auto__ = e11141;
+        if (cljs.core.truth_(async_QMARK___10501__auto__)) {
+          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10502__auto__);
         } else {
-          throw e__10584__auto__;
+          throw e__10502__auto__;
         }
       } else {
-        throw e11223;
+        throw e11141;
       }
     }
   } finally {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11222;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11140;
   }
 }], null)));
 cemerick.cljs.test.register_test_BANG_.call(null, new cljs.core.Symbol(null, "sailing-study-guide.test.dispatch", "sailing-study-guide.test.dispatch", 2120704787, null), new cljs.core.Symbol("sailing-study-guide.test.dispatch", "unregister-test", "sailing-study-guide.test.dispatch/unregister-test", -1604148922, null), sailing_study_guide.test.dispatch.unregister_test);
 sailing_study_guide.test.dispatch.whenever_test = function whenever_test() {
   return cemerick.cljs.test.test_function.call(null, cemerick.cljs.test.init_test_environment.call(null), sailing_study_guide.test.dispatch.whenever_test);
 };
-sailing_study_guide.test.dispatch.whenever_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.whenever_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "line", "line", 212345235), 41, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 41, new cljs.core.Keyword(null, "end-column", 
-"end-column", 1425389514), 31], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "whenever-test", "sailing-study-guide.test.dispatch/whenever-test", -1608122768, null), new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "line", "line", 212345235), 41, new cljs.core.Keyword(null, 
-"column", "column", 2078222095), 18, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 41, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 31], null)), new cljs.core.Keyword(null, "test", "test", 577538877), function whenever_test_test(test_ctx__10668__auto__) {
-  var _test_ctx = test_ctx__10668__auto__;
-  var async_QMARK___10583__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
-  var _STAR_test_ctx_STAR_11375 = cemerick.cljs.test._STAR_test_ctx_STAR_;
+sailing_study_guide.test.dispatch.whenever_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.whenever_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 32, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 41, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "line", 
+"line", 212345235), 41, new cljs.core.Keyword(null, "file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "whenever-test", "sailing-study-guide.test.dispatch/whenever-test", -1608122768, null), new cljs.core.PersistentArrayMap(null, 
+6, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 32, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 41, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "line", "line", 212345235), 41, new cljs.core.Keyword(null, "file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null)), 
+new cljs.core.Keyword(null, "test", "test", 577538877), function whenever_test_test(test_ctx__10586__auto__) {
+  var _test_ctx = test_ctx__10586__auto__;
+  var async_QMARK___10501__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
+  var _STAR_test_ctx_STAR_11293 = cemerick.cljs.test._STAR_test_ctx_STAR_;
   try {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10583__auto__) ? null : _test_ctx;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10501__auto__) ? null : _test_ctx;
     try {
-      sailing_study_guide.dispatch.whenever.call(null, sailing_study_guide.test.dispatch._STAR_default_tag_STAR_, function(_STAR_test_ctx_STAR_11375, _test_ctx, async_QMARK___10583__auto__) {
+      sailing_study_guide.dispatch.whenever.call(null, sailing_study_guide.test.dispatch._STAR_default_tag_STAR_, function(_STAR_test_ctx_STAR_11293, _test_ctx, async_QMARK___10501__auto__) {
         return function(mesg) {
-          var _test_ctx_11383__$1 = _test_ctx;
-          var async_QMARK___10583__auto___11384__$1 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx_11383__$1)));
-          var _STAR_test_ctx_STAR_11377_11385 = cemerick.cljs.test._STAR_test_ctx_STAR_;
+          var _test_ctx_11301__$1 = _test_ctx;
+          var async_QMARK___10501__auto___11302__$1 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx_11301__$1)));
+          var _STAR_test_ctx_STAR_11295_11303 = cemerick.cljs.test._STAR_test_ctx_STAR_;
           try {
-            cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10583__auto___11384__$1) ? null : _test_ctx_11383__$1;
+            cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10501__auto___11302__$1) ? null : _test_ctx_11301__$1;
             try {
               try {
-                var values__10603__auto___11386 = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, mesg), sailing_study_guide.test.dispatch._STAR_default_mesg_STAR_);
-                var result__10604__auto___11387 = cljs.core.apply.call(null, cljs.core._EQ_, values__10603__auto___11386);
-                if (result__10604__auto___11387 instanceof cemerick.cljs.test.TestContext) {
+                var values__10521__auto___11304 = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, mesg), sailing_study_guide.test.dispatch._STAR_default_mesg_STAR_);
+                var result__10522__auto___11305 = cljs.core.apply.call(null, cljs.core._EQ_, values__10521__auto___11304);
+                if (result__10522__auto___11305 instanceof cemerick.cljs.test.TestContext) {
                   throw new Error("TestContext provided as [form] in `is` assertion. If using `is` with an explicit test context, use the 3-arg arity.");
                 } else {
                 }
-                if (cljs.core.truth_(result__10604__auto___11387)) {
-                  cemerick.cljs.test.do_report.call(null, _test_ctx_11383__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-mesg*", "*default-mesg*", -1965296641, null), new cljs.core.Symbol(null, "mesg", "mesg", 
-                  -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core._EQ_, values__10603__auto___11386), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+                if (cljs.core.truth_(result__10522__auto___11305)) {
+                  cemerick.cljs.test.do_report.call(null, _test_ctx_11301__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-mesg*", "*default-mesg*", -1965296641, null), new cljs.core.Symbol(null, "mesg", "mesg", 
+                  -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core._EQ_, values__10521__auto___11304), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
                 } else {
-                  cemerick.cljs.test.do_report.call(null, _test_ctx_11383__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-mesg*", "*default-mesg*", -1965296641, null), new cljs.core.Symbol(null, "mesg", "mesg", 
-                  -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__10603__auto___11386)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+                  cemerick.cljs.test.do_report.call(null, _test_ctx_11301__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-mesg*", "*default-mesg*", -1965296641, null), new cljs.core.Symbol(null, "mesg", "mesg", 
+                  -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__10521__auto___11304)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
                 }
-              } catch (e11379) {
-                if (e11379 instanceof Error) {
-                  var t__10640__auto___11388 = e11379;
-                  cemerick.cljs.test.do_report.call(null, _test_ctx_11383__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-mesg*", "*default-mesg*", -1965296641, null), new cljs.core.Symbol(null, "mesg", "mesg", 
-                  -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__10640__auto___11388, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+              } catch (e11297) {
+                if (e11297 instanceof Error) {
+                  var t__10558__auto___11306 = e11297;
+                  cemerick.cljs.test.do_report.call(null, _test_ctx_11301__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-mesg*", "*default-mesg*", -1965296641, null), new cljs.core.Symbol(null, "mesg", "mesg", 
+                  -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__10558__auto___11306, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
                 } else {
-                  throw e11379;
+                  throw e11297;
                 }
               }
-            } catch (e11378) {
-              if (e11378 instanceof Error) {
-                var e__10584__auto___11389 = e11378;
-                if (cljs.core.truth_(async_QMARK___10583__auto___11384__$1)) {
-                  cemerick.cljs.test.done_STAR_.call(null, _test_ctx_11383__$1, e__10584__auto___11389);
+            } catch (e11296) {
+              if (e11296 instanceof Error) {
+                var e__10502__auto___11307 = e11296;
+                if (cljs.core.truth_(async_QMARK___10501__auto___11302__$1)) {
+                  cemerick.cljs.test.done_STAR_.call(null, _test_ctx_11301__$1, e__10502__auto___11307);
                 } else {
-                  throw e__10584__auto___11389;
+                  throw e__10502__auto___11307;
                 }
               } else {
-                throw e11378;
+                throw e11296;
               }
             }
           } finally {
-            cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11377_11385;
+            cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11295_11303;
           }
-          var _test_ctx_11390__$1 = _test_ctx;
-          var async_QMARK___10583__auto___11391__$1 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx_11390__$1)));
-          var _STAR_test_ctx_STAR_11380_11392 = cemerick.cljs.test._STAR_test_ctx_STAR_;
+          var _test_ctx_11308__$1 = _test_ctx;
+          var async_QMARK___10501__auto___11309__$1 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx_11308__$1)));
+          var _STAR_test_ctx_STAR_11298_11310 = cemerick.cljs.test._STAR_test_ctx_STAR_;
           try {
-            cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10583__auto___11391__$1) ? null : _test_ctx_11390__$1;
+            cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10501__auto___11309__$1) ? null : _test_ctx_11308__$1;
             try {
               try {
-                var values__10603__auto___11393 = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, mesg), sailing_study_guide.test.dispatch._STAR_not_default_mesg_STAR_);
-                var result__10604__auto___11394 = cljs.core.apply.call(null, cljs.core.not_EQ_, values__10603__auto___11393);
-                if (result__10604__auto___11394 instanceof cemerick.cljs.test.TestContext) {
+                var values__10521__auto___11311 = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, mesg), sailing_study_guide.test.dispatch._STAR_not_default_mesg_STAR_);
+                var result__10522__auto___11312 = cljs.core.apply.call(null, cljs.core.not_EQ_, values__10521__auto___11311);
+                if (result__10522__auto___11312 instanceof cemerick.cljs.test.TestContext) {
                   throw new Error("TestContext provided as [form] in `is` assertion. If using `is` with an explicit test context, use the 3-arg arity.");
                 } else {
                 }
-                if (cljs.core.truth_(result__10604__auto___11394)) {
-                  cemerick.cljs.test.do_report.call(null, _test_ctx_11390__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "not\x3d", "not\x3d", 1466536204, null), new cljs.core.Symbol(null, "*not-default-mesg*", "*not-default-mesg*", 1702699795, null), new cljs.core.Symbol(null, 
-                  "mesg", "mesg", -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core.not_EQ_, values__10603__auto___11393), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+                if (cljs.core.truth_(result__10522__auto___11312)) {
+                  cemerick.cljs.test.do_report.call(null, _test_ctx_11308__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "not\x3d", "not\x3d", 1466536204, null), new cljs.core.Symbol(null, "*not-default-mesg*", "*not-default-mesg*", 1702699795, null), new cljs.core.Symbol(null, 
+                  "mesg", "mesg", -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core.not_EQ_, values__10521__auto___11311), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
                 } else {
-                  cemerick.cljs.test.do_report.call(null, _test_ctx_11390__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "not\x3d", "not\x3d", 1466536204, null), new cljs.core.Symbol(null, "*not-default-mesg*", "*not-default-mesg*", 1702699795, null), new cljs.core.Symbol(null, 
-                  "mesg", "mesg", -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "not\x3d", "not\x3d", 1466536204, null), values__10603__auto___11393)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+                  cemerick.cljs.test.do_report.call(null, _test_ctx_11308__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "not\x3d", "not\x3d", 1466536204, null), new cljs.core.Symbol(null, "*not-default-mesg*", "*not-default-mesg*", 1702699795, null), new cljs.core.Symbol(null, 
+                  "mesg", "mesg", -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "not\x3d", "not\x3d", 1466536204, null), values__10521__auto___11311)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
                 }
-              } catch (e11382) {
-                if (e11382 instanceof Error) {
-                  var t__10640__auto___11395 = e11382;
-                  cemerick.cljs.test.do_report.call(null, _test_ctx_11390__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "not\x3d", "not\x3d", 1466536204, null), new cljs.core.Symbol(null, "*not-default-mesg*", "*not-default-mesg*", 1702699795, null), new cljs.core.Symbol(null, 
-                  "mesg", "mesg", -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__10640__auto___11395, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+              } catch (e11300) {
+                if (e11300 instanceof Error) {
+                  var t__10558__auto___11313 = e11300;
+                  cemerick.cljs.test.do_report.call(null, _test_ctx_11308__$1, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "not\x3d", "not\x3d", 1466536204, null), new cljs.core.Symbol(null, "*not-default-mesg*", "*not-default-mesg*", 1702699795, null), new cljs.core.Symbol(null, 
+                  "mesg", "mesg", -430820709, null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__10558__auto___11313, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
                 } else {
-                  throw e11382;
+                  throw e11300;
                 }
               }
-            } catch (e11381) {
-              if (e11381 instanceof Error) {
-                var e__10584__auto___11396 = e11381;
-                if (cljs.core.truth_(async_QMARK___10583__auto___11391__$1)) {
-                  cemerick.cljs.test.done_STAR_.call(null, _test_ctx_11390__$1, e__10584__auto___11396);
+            } catch (e11299) {
+              if (e11299 instanceof Error) {
+                var e__10502__auto___11314 = e11299;
+                if (cljs.core.truth_(async_QMARK___10501__auto___11309__$1)) {
+                  cemerick.cljs.test.done_STAR_.call(null, _test_ctx_11308__$1, e__10502__auto___11314);
                 } else {
-                  throw e__10584__auto___11396;
+                  throw e__10502__auto___11314;
                 }
               } else {
-                throw e11381;
+                throw e11299;
               }
             }
           } finally {
-            cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11380_11392;
+            cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11298_11310;
           }
           return cemerick.cljs.test.done_STAR_.call(null, _test_ctx);
         };
-      }(_STAR_test_ctx_STAR_11375, _test_ctx, async_QMARK___10583__auto__));
+      }(_STAR_test_ctx_STAR_11293, _test_ctx, async_QMARK___10501__auto__));
       return cljs.core.async.put_BANG_.call(null, sailing_study_guide.dispatch.dispatch_chan, sailing_study_guide.test.dispatch._STAR_default_payload_STAR_);
-    } catch (e11376) {
-      if (e11376 instanceof Error) {
-        var e__10584__auto__ = e11376;
-        if (cljs.core.truth_(async_QMARK___10583__auto__)) {
-          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10584__auto__);
+    } catch (e11294) {
+      if (e11294 instanceof Error) {
+        var e__10502__auto__ = e11294;
+        if (cljs.core.truth_(async_QMARK___10501__auto__)) {
+          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10502__auto__);
         } else {
-          throw e__10584__auto__;
+          throw e__10502__auto__;
         }
       } else {
-        throw e11376;
+        throw e11294;
       }
     }
   } finally {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11375;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11293;
   }
 }], null)));
 cemerick.cljs.test.register_test_BANG_.call(null, new cljs.core.Symbol(null, "sailing-study-guide.test.dispatch", "sailing-study-guide.test.dispatch", 2120704787, null), new cljs.core.Symbol("sailing-study-guide.test.dispatch", "whenever-test", "sailing-study-guide.test.dispatch/whenever-test", -1608122768, null), sailing_study_guide.test.dispatch.whenever_test);
 sailing_study_guide.test.dispatch.dispatch_test = function dispatch_test() {
   return cemerick.cljs.test.test_function.call(null, cemerick.cljs.test.init_test_environment.call(null), sailing_study_guide.test.dispatch.dispatch_test);
 };
-sailing_study_guide.test.dispatch.dispatch_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.dispatch_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "line", "line", 212345235), 50, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 50, new cljs.core.Keyword(null, "end-column", 
-"end-column", 1425389514), 31], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "dispatch-test", "sailing-study-guide.test.dispatch/dispatch-test", -1391993851, null), new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "line", "line", 212345235), 50, new cljs.core.Keyword(null, 
-"column", "column", 2078222095), 18, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 50, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 31], null)), new cljs.core.Keyword(null, "test", "test", 577538877), function dispatch_test_test(test_ctx__10668__auto__) {
-  var _test_ctx = test_ctx__10668__auto__;
-  var async_QMARK___10583__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
-  var _STAR_test_ctx_STAR_11516 = cemerick.cljs.test._STAR_test_ctx_STAR_;
+sailing_study_guide.test.dispatch.dispatch_test = cljs.core.with_meta.call(null, sailing_study_guide.test.dispatch.dispatch_test, cljs.core.merge.call(null, new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 32, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 50, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "line", 
+"line", 212345235), 50, new cljs.core.Keyword(null, "file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "name", "name", 1843675177), cljs.core.with_meta.call(null, new cljs.core.Symbol("sailing-study-guide.test.dispatch", "dispatch-test", "sailing-study-guide.test.dispatch/dispatch-test", -1391993851, null), new cljs.core.PersistentArrayMap(null, 
+6, [new cljs.core.Keyword(null, "async", "async", 1050769601), true, new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), 32, new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), 50, new cljs.core.Keyword(null, "column", "column", 2078222095), 18, new cljs.core.Keyword(null, "line", "line", 212345235), 50, new cljs.core.Keyword(null, "file", "file", -1269645878), "/Users/matthew/Documents/Code/sailing-study-guide/tests/sailing_study_guide/test/dispatch.cljs"], null)), 
+new cljs.core.Keyword(null, "test", "test", 577538877), function dispatch_test_test(test_ctx__10586__auto__) {
+  var _test_ctx = test_ctx__10586__auto__;
+  var async_QMARK___10501__auto__ = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(cljs.core.meta.call(null, (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx)));
+  var _STAR_test_ctx_STAR_11434 = cemerick.cljs.test._STAR_test_ctx_STAR_;
   try {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10583__auto__) ? null : _test_ctx;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = cljs.core.truth_(async_QMARK___10501__auto__) ? null : _test_ctx;
     try {
-      var c__6799__auto___11635 = cljs.core.async.chan.call(null, 1);
-      cljs.core.async.impl.dispatch.run.call(null, function(c__6799__auto___11635, _STAR_test_ctx_STAR_11516, _test_ctx, async_QMARK___10583__auto__) {
+      var c__6844__auto___11553 = cljs.core.async.chan.call(null, 1);
+      cljs.core.async.impl.dispatch.run.call(null, function(c__6844__auto___11553, _STAR_test_ctx_STAR_11434, _test_ctx, async_QMARK___10501__auto__) {
         return function() {
-          var f__6800__auto__ = function() {
-            var switch__6784__auto__ = function(c__6799__auto___11635, _STAR_test_ctx_STAR_11516, _test_ctx, async_QMARK___10583__auto__) {
-              return function(state_11594) {
-                var state_val_11595 = state_11594[1];
-                if (state_val_11595 === 7) {
-                  var state_11594__$1 = state_11594;
-                  var statearr_11596_11636 = state_11594__$1;
-                  statearr_11596_11636[2] = _test_ctx;
-                  statearr_11596_11636[1] = 8;
+          var f__6845__auto__ = function() {
+            var switch__6829__auto__ = function(c__6844__auto___11553, _STAR_test_ctx_STAR_11434, _test_ctx, async_QMARK___10501__auto__) {
+              return function(state_11512) {
+                var state_val_11513 = state_11512[1];
+                if (state_val_11513 === 7) {
+                  var state_11512__$1 = state_11512;
+                  var statearr_11514_11554 = state_11512__$1;
+                  statearr_11514_11554[2] = _test_ctx;
+                  statearr_11514_11554[1] = 8;
                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                 } else {
-                  if (state_val_11595 === 20) {
-                    var inst_11557 = state_11594[7];
-                    var inst_11564 = state_11594[2];
-                    var state_11594__$1 = function() {
-                      var statearr_11597 = state_11594;
-                      statearr_11597[8] = inst_11564;
-                      return statearr_11597;
+                  if (state_val_11513 === 20) {
+                    var inst_11475 = state_11512[7];
+                    var inst_11482 = state_11512[2];
+                    var state_11512__$1 = function() {
+                      var statearr_11515 = state_11512;
+                      statearr_11515[8] = inst_11482;
+                      return statearr_11515;
                     }();
-                    if (cljs.core.truth_(inst_11557)) {
-                      var statearr_11598_11637 = state_11594__$1;
-                      statearr_11598_11637[1] = 21;
+                    if (cljs.core.truth_(inst_11475)) {
+                      var statearr_11516_11555 = state_11512__$1;
+                      statearr_11516_11555[1] = 21;
                     } else {
-                      var statearr_11599_11638 = state_11594__$1;
-                      statearr_11599_11638[1] = 22;
+                      var statearr_11517_11556 = state_11512__$1;
+                      statearr_11517_11556[1] = 22;
                     }
                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                   } else {
-                    if (state_val_11595 === 1) {
-                      var state_11594__$1 = state_11594;
-                      return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_11594__$1, 2, sailing_study_guide.dispatch.dispatch_pub_chan);
+                    if (state_val_11513 === 1) {
+                      var state_11512__$1 = state_11512;
+                      return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_11512__$1, 2, sailing_study_guide.dispatch.dispatch_chan);
                     } else {
-                      if (state_val_11595 === 4) {
-                        var inst_11525 = state_11594[2];
-                        var inst_11526 = cemerick.cljs.test._STAR_test_ctx_STAR_ = cemerick.cljs.test._STAR_test_ctx_STAR_;
-                        var state_11594__$1 = function() {
-                          var statearr_11600 = state_11594;
-                          statearr_11600[9] = inst_11525;
-                          statearr_11600[10] = inst_11526;
-                          return statearr_11600;
+                      if (state_val_11513 === 4) {
+                        var inst_11443 = state_11512[2];
+                        var inst_11444 = cemerick.cljs.test._STAR_test_ctx_STAR_ = cemerick.cljs.test._STAR_test_ctx_STAR_;
+                        var state_11512__$1 = function() {
+                          var statearr_11518 = state_11512;
+                          statearr_11518[9] = inst_11443;
+                          statearr_11518[10] = inst_11444;
+                          return statearr_11518;
                         }();
-                        cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11594__$1);
+                        cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11512__$1);
                         return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                       } else {
-                        if (state_val_11595 === 15) {
-                          var inst_11587 = state_11594[2];
-                          var state_11594__$1 = state_11594;
-                          var statearr_11601_11639 = state_11594__$1;
-                          statearr_11601_11639[2] = inst_11587;
-                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11594__$1);
+                        if (state_val_11513 === 15) {
+                          var inst_11505 = state_11512[2];
+                          var state_11512__$1 = state_11512;
+                          var statearr_11519_11557 = state_11512__$1;
+                          statearr_11519_11557[2] = inst_11505;
+                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11512__$1);
                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                         } else {
-                          if (state_val_11595 === 21) {
-                            var inst_11556 = state_11594[11];
-                            var inst_11566 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
-                            var inst_11567 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null), new cljs.core.Symbol(null, "payload", "payload", 1257495435, null));
-                            var inst_11568 = cljs.core.cons.call(null, cljs.core._EQ_, inst_11556);
-                            var inst_11569 = [new cljs.core.Keyword(null, "pass", "pass", 1574159993), inst_11567, inst_11568, null];
-                            var inst_11570 = cljs.core.PersistentHashMap.fromArrays(inst_11566, inst_11569);
-                            var inst_11571 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11570);
-                            var state_11594__$1 = state_11594;
-                            var statearr_11602_11640 = state_11594__$1;
-                            statearr_11602_11640[2] = inst_11571;
-                            statearr_11602_11640[1] = 23;
+                          if (state_val_11513 === 21) {
+                            var inst_11474 = state_11512[11];
+                            var inst_11484 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                            var inst_11485 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null), new cljs.core.Symbol(null, "payload", "payload", 1257495435, null));
+                            var inst_11486 = cljs.core.cons.call(null, cljs.core._EQ_, inst_11474);
+                            var inst_11487 = [new cljs.core.Keyword(null, "pass", "pass", 1574159993), inst_11485, inst_11486, null];
+                            var inst_11488 = cljs.core.PersistentHashMap.fromArrays(inst_11484, inst_11487);
+                            var inst_11489 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11488);
+                            var state_11512__$1 = state_11512;
+                            var statearr_11520_11558 = state_11512__$1;
+                            statearr_11520_11558[2] = inst_11489;
+                            statearr_11520_11558[1] = 23;
                             return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                           } else {
-                            if (state_val_11595 === 13) {
-                              var inst_11541 = state_11594[2];
-                              var state_11594__$1 = state_11594;
-                              var statearr_11603_11641 = state_11594__$1;
-                              statearr_11603_11641[2] = inst_11541;
-                              cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11594__$1);
+                            if (state_val_11513 === 13) {
+                              var inst_11459 = state_11512[2];
+                              var state_11512__$1 = state_11512;
+                              var statearr_11521_11559 = state_11512__$1;
+                              statearr_11521_11559[2] = inst_11459;
+                              cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11512__$1);
                               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                             } else {
-                              if (state_val_11595 === 22) {
-                                var inst_11556 = state_11594[11];
-                                var inst_11573 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
-                                var inst_11574 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null), new cljs.core.Symbol(null, "payload", "payload", 1257495435, null));
-                                var inst_11575 = cljs.core.List.EMPTY;
-                                var inst_11576 = new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null);
-                                var inst_11577 = cljs.core.cons.call(null, inst_11576, inst_11556);
-                                var inst_11578 = cljs.core._conj.call(null, inst_11575, inst_11577);
-                                var inst_11579 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
-                                var inst_11580 = cljs.core._conj.call(null, inst_11578, inst_11579);
-                                var inst_11581 = [new cljs.core.Keyword(null, "fail", "fail", 1706214930), inst_11574, inst_11580, null];
-                                var inst_11582 = cljs.core.PersistentHashMap.fromArrays(inst_11573, inst_11581);
-                                var inst_11583 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11582);
-                                var state_11594__$1 = state_11594;
-                                var statearr_11604_11642 = state_11594__$1;
-                                statearr_11604_11642[2] = inst_11583;
-                                statearr_11604_11642[1] = 23;
+                              if (state_val_11513 === 22) {
+                                var inst_11474 = state_11512[11];
+                                var inst_11491 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                                var inst_11492 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null), new cljs.core.Symbol(null, "payload", "payload", 1257495435, null));
+                                var inst_11493 = cljs.core.List.EMPTY;
+                                var inst_11494 = new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null);
+                                var inst_11495 = cljs.core.cons.call(null, inst_11494, inst_11474);
+                                var inst_11496 = cljs.core._conj.call(null, inst_11493, inst_11495);
+                                var inst_11497 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
+                                var inst_11498 = cljs.core._conj.call(null, inst_11496, inst_11497);
+                                var inst_11499 = [new cljs.core.Keyword(null, "fail", "fail", 1706214930), inst_11492, inst_11498, null];
+                                var inst_11500 = cljs.core.PersistentHashMap.fromArrays(inst_11491, inst_11499);
+                                var inst_11501 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11500);
+                                var state_11512__$1 = state_11512;
+                                var statearr_11522_11560 = state_11512__$1;
+                                statearr_11522_11560[2] = inst_11501;
+                                statearr_11522_11560[1] = 23;
                                 return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                               } else {
-                                if (state_val_11595 === 6) {
-                                  var state_11594__$1 = state_11594;
-                                  var statearr_11605_11643 = state_11594__$1;
-                                  statearr_11605_11643[2] = null;
-                                  statearr_11605_11643[1] = 8;
+                                if (state_val_11513 === 6) {
+                                  var state_11512__$1 = state_11512;
+                                  var statearr_11523_11561 = state_11512__$1;
+                                  statearr_11523_11561[2] = null;
+                                  statearr_11523_11561[1] = 8;
                                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                 } else {
-                                  if (state_val_11595 === 17) {
-                                    var inst_11519 = state_11594[12];
-                                    var inst_11556 = state_11594[11];
-                                    var inst_11557 = state_11594[7];
-                                    var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11594, 16, Error, null, 15);
-                                    var inst_11554 = cljs.core.List.EMPTY;
-                                    var inst_11555 = cljs.core._conj.call(null, inst_11554, inst_11519);
-                                    var inst_11556__$1 = cljs.core._conj.call(null, inst_11555, sailing_study_guide.test.dispatch._STAR_default_payload_STAR_);
-                                    var inst_11557__$1 = cljs.core.apply.call(null, cljs.core._EQ_, inst_11556__$1);
-                                    var inst_11558 = inst_11557__$1 instanceof cemerick.cljs.test.TestContext;
-                                    var state_11594__$1 = function() {
-                                      var statearr_11606 = state_11594;
-                                      statearr_11606[11] = inst_11556__$1;
-                                      statearr_11606[7] = inst_11557__$1;
-                                      return statearr_11606;
+                                  if (state_val_11513 === 17) {
+                                    var inst_11475 = state_11512[7];
+                                    var inst_11474 = state_11512[11];
+                                    var inst_11437 = state_11512[12];
+                                    var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11512, 16, Error, null, 15);
+                                    var inst_11472 = cljs.core.List.EMPTY;
+                                    var inst_11473 = cljs.core._conj.call(null, inst_11472, inst_11437);
+                                    var inst_11474__$1 = cljs.core._conj.call(null, inst_11473, sailing_study_guide.test.dispatch._STAR_default_payload_STAR_);
+                                    var inst_11475__$1 = cljs.core.apply.call(null, cljs.core._EQ_, inst_11474__$1);
+                                    var inst_11476 = inst_11475__$1 instanceof cemerick.cljs.test.TestContext;
+                                    var state_11512__$1 = function() {
+                                      var statearr_11524 = state_11512;
+                                      statearr_11524[7] = inst_11475__$1;
+                                      statearr_11524[11] = inst_11474__$1;
+                                      return statearr_11524;
                                     }();
-                                    if (cljs.core.truth_(inst_11558)) {
-                                      var statearr_11607_11644 = state_11594__$1;
-                                      statearr_11607_11644[1] = 18;
+                                    if (cljs.core.truth_(inst_11476)) {
+                                      var statearr_11525_11562 = state_11512__$1;
+                                      statearr_11525_11562[1] = 18;
                                     } else {
-                                      var statearr_11608_11645 = state_11594__$1;
-                                      statearr_11608_11645[1] = 19;
+                                      var statearr_11526_11563 = state_11512__$1;
+                                      statearr_11526_11563[1] = 19;
                                     }
                                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                   } else {
-                                    if (state_val_11595 === 3) {
-                                      var inst_11591 = state_11594[2];
-                                      var inst_11592 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx);
-                                      var state_11594__$1 = function() {
-                                        var statearr_11609 = state_11594;
-                                        statearr_11609[13] = inst_11591;
-                                        return statearr_11609;
+                                    if (state_val_11513 === 3) {
+                                      var inst_11509 = state_11512[2];
+                                      var inst_11510 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx);
+                                      var state_11512__$1 = function() {
+                                        var statearr_11527 = state_11512;
+                                        statearr_11527[13] = inst_11509;
+                                        return statearr_11527;
                                       }();
-                                      return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_11594__$1, inst_11592);
+                                      return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_11512__$1, inst_11510);
                                     } else {
-                                      if (state_val_11595 === 12) {
-                                        var inst_11535 = state_11594[14];
-                                        var inst_11539 = function() {
-                                          throw inst_11535;
+                                      if (state_val_11513 === 12) {
+                                        var inst_11453 = state_11512[14];
+                                        var inst_11457 = function() {
+                                          throw inst_11453;
                                         }();
-                                        var state_11594__$1 = state_11594;
-                                        var statearr_11610_11646 = state_11594__$1;
-                                        statearr_11610_11646[2] = inst_11539;
-                                        statearr_11610_11646[1] = 13;
+                                        var state_11512__$1 = state_11512;
+                                        var statearr_11528_11564 = state_11512__$1;
+                                        statearr_11528_11564[2] = inst_11457;
+                                        statearr_11528_11564[1] = 13;
                                         return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                       } else {
-                                        if (state_val_11595 === 2) {
-                                          var inst_11519 = state_11594[2];
-                                          var inst_11520 = cljs.core.println.call(null, "payload received");
-                                          var inst_11521 = (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx);
-                                          var inst_11522 = cljs.core.meta.call(null, inst_11521);
-                                          var inst_11523 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(inst_11522);
-                                          var state_11594__$1 = function() {
-                                            var statearr_11611 = state_11594;
-                                            statearr_11611[12] = inst_11519;
-                                            statearr_11611[15] = inst_11523;
-                                            statearr_11611[16] = inst_11520;
-                                            return statearr_11611;
+                                        if (state_val_11513 === 2) {
+                                          var inst_11437 = state_11512[2];
+                                          var inst_11438 = cljs.core.println.call(null, "payload received");
+                                          var inst_11439 = (new cljs.core.Keyword(null, "test-name", "test-name", -675595913)).cljs$core$IFn$_invoke$arity$1(_test_ctx);
+                                          var inst_11440 = cljs.core.meta.call(null, inst_11439);
+                                          var inst_11441 = (new cljs.core.Keyword(null, "async", "async", 1050769601)).cljs$core$IFn$_invoke$arity$1(inst_11440);
+                                          var state_11512__$1 = function() {
+                                            var statearr_11529 = state_11512;
+                                            statearr_11529[15] = inst_11438;
+                                            statearr_11529[16] = inst_11441;
+                                            statearr_11529[12] = inst_11437;
+                                            return statearr_11529;
                                           }();
-                                          var statearr_11612_11647 = state_11594__$1;
-                                          statearr_11612_11647[2] = null;
-                                          statearr_11612_11647[1] = 5;
+                                          var statearr_11530_11565 = state_11512__$1;
+                                          statearr_11530_11565[2] = null;
+                                          statearr_11530_11565[1] = 5;
                                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                         } else {
-                                          if (state_val_11595 === 23) {
-                                            var inst_11557 = state_11594[7];
-                                            var inst_11585 = state_11594[2];
-                                            var state_11594__$1 = function() {
-                                              var statearr_11613 = state_11594;
-                                              statearr_11613[17] = inst_11585;
-                                              return statearr_11613;
+                                          if (state_val_11513 === 23) {
+                                            var inst_11475 = state_11512[7];
+                                            var inst_11503 = state_11512[2];
+                                            var state_11512__$1 = function() {
+                                              var statearr_11531 = state_11512;
+                                              statearr_11531[17] = inst_11503;
+                                              return statearr_11531;
                                             }();
-                                            var statearr_11614_11648 = state_11594__$1;
-                                            statearr_11614_11648[2] = inst_11557;
-                                            cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11594__$1);
+                                            var statearr_11532_11566 = state_11512__$1;
+                                            statearr_11532_11566[2] = inst_11475;
+                                            cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11512__$1);
                                             return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                           } else {
-                                            if (state_val_11595 === 19) {
-                                              var state_11594__$1 = state_11594;
-                                              var statearr_11615_11649 = state_11594__$1;
-                                              statearr_11615_11649[2] = null;
-                                              statearr_11615_11649[1] = 20;
+                                            if (state_val_11513 === 19) {
+                                              var state_11512__$1 = state_11512;
+                                              var statearr_11533_11567 = state_11512__$1;
+                                              statearr_11533_11567[2] = null;
+                                              statearr_11533_11567[1] = 20;
                                               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                             } else {
-                                              if (state_val_11595 === 11) {
-                                                var inst_11535 = state_11594[14];
-                                                var inst_11537 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx, inst_11535);
-                                                var state_11594__$1 = state_11594;
-                                                var statearr_11616_11650 = state_11594__$1;
-                                                statearr_11616_11650[2] = inst_11537;
-                                                statearr_11616_11650[1] = 13;
+                                              if (state_val_11513 === 11) {
+                                                var inst_11453 = state_11512[14];
+                                                var inst_11455 = cemerick.cljs.test.done_STAR_.call(null, _test_ctx, inst_11453);
+                                                var state_11512__$1 = state_11512;
+                                                var statearr_11534_11568 = state_11512__$1;
+                                                statearr_11534_11568[2] = inst_11455;
+                                                statearr_11534_11568[1] = 13;
                                                 return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                               } else {
-                                                if (state_val_11595 === 9) {
-                                                  var inst_11589 = state_11594[2];
-                                                  var state_11594__$1 = state_11594;
-                                                  var statearr_11617_11651 = state_11594__$1;
-                                                  statearr_11617_11651[2] = inst_11589;
-                                                  cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11594__$1);
+                                                if (state_val_11513 === 9) {
+                                                  var inst_11507 = state_11512[2];
+                                                  var state_11512__$1 = state_11512;
+                                                  var statearr_11535_11569 = state_11512__$1;
+                                                  statearr_11535_11569[2] = inst_11507;
+                                                  cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11512__$1);
                                                   return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                 } else {
-                                                  if (state_val_11595 === 5) {
-                                                    var inst_11523 = state_11594[15];
-                                                    var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11594, null, null, 4, 3);
-                                                    var state_11594__$1 = state_11594;
-                                                    if (cljs.core.truth_(inst_11523)) {
-                                                      var statearr_11618_11652 = state_11594__$1;
-                                                      statearr_11618_11652[1] = 6;
+                                                  if (state_val_11513 === 5) {
+                                                    var inst_11441 = state_11512[16];
+                                                    var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11512, null, null, 4, 3);
+                                                    var state_11512__$1 = state_11512;
+                                                    if (cljs.core.truth_(inst_11441)) {
+                                                      var statearr_11536_11570 = state_11512__$1;
+                                                      statearr_11536_11570[1] = 6;
                                                     } else {
-                                                      var statearr_11619_11653 = state_11594__$1;
-                                                      statearr_11619_11653[1] = 7;
+                                                      var statearr_11537_11571 = state_11512__$1;
+                                                      statearr_11537_11571[1] = 7;
                                                     }
                                                     return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                   } else {
-                                                    if (state_val_11595 === 14) {
-                                                      var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11594, 10, Error, null, 9);
-                                                      var state_11594__$1 = state_11594;
-                                                      var statearr_11620_11654 = state_11594__$1;
-                                                      statearr_11620_11654[2] = null;
-                                                      statearr_11620_11654[1] = 17;
+                                                    if (state_val_11513 === 14) {
+                                                      var _ = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_11512, 10, Error, null, 9);
+                                                      var state_11512__$1 = state_11512;
+                                                      var statearr_11538_11572 = state_11512__$1;
+                                                      statearr_11538_11572[2] = null;
+                                                      statearr_11538_11572[1] = 17;
                                                       return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                     } else {
-                                                      if (state_val_11595 === 16) {
-                                                        var inst_11545 = state_11594[2];
-                                                        var inst_11546 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
-                                                        var inst_11547 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null), new cljs.core.Symbol(null, "payload", "payload", 1257495435, null));
-                                                        var inst_11548 = [new cljs.core.Keyword(null, "error", "error", -978969032), inst_11547, inst_11545, null];
-                                                        var inst_11549 = cljs.core.PersistentHashMap.fromArrays(inst_11546, inst_11548);
-                                                        var inst_11550 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11549);
-                                                        var state_11594__$1 = state_11594;
-                                                        var statearr_11621_11655 = state_11594__$1;
-                                                        statearr_11621_11655[2] = inst_11550;
-                                                        cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11594__$1);
+                                                      if (state_val_11513 === 16) {
+                                                        var inst_11463 = state_11512[2];
+                                                        var inst_11464 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                                                        var inst_11465 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "*default-payload*", "*default-payload*", 1747854792, null), new cljs.core.Symbol(null, "payload", "payload", 1257495435, null));
+                                                        var inst_11466 = [new cljs.core.Keyword(null, "error", "error", -978969032), inst_11465, inst_11463, null];
+                                                        var inst_11467 = cljs.core.PersistentHashMap.fromArrays(inst_11464, inst_11466);
+                                                        var inst_11468 = cemerick.cljs.test.do_report.call(null, _test_ctx, inst_11467);
+                                                        var state_11512__$1 = state_11512;
+                                                        var statearr_11539_11573 = state_11512__$1;
+                                                        statearr_11539_11573[2] = inst_11468;
+                                                        cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11512__$1);
                                                         return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                       } else {
-                                                        if (state_val_11595 === 10) {
-                                                          var inst_11523 = state_11594[15];
-                                                          var inst_11535 = state_11594[2];
-                                                          var state_11594__$1 = function() {
-                                                            var statearr_11622 = state_11594;
-                                                            statearr_11622[14] = inst_11535;
-                                                            return statearr_11622;
+                                                        if (state_val_11513 === 10) {
+                                                          var inst_11441 = state_11512[16];
+                                                          var inst_11453 = state_11512[2];
+                                                          var state_11512__$1 = function() {
+                                                            var statearr_11540 = state_11512;
+                                                            statearr_11540[14] = inst_11453;
+                                                            return statearr_11540;
                                                           }();
-                                                          if (cljs.core.truth_(inst_11523)) {
-                                                            var statearr_11623_11656 = state_11594__$1;
-                                                            statearr_11623_11656[1] = 11;
+                                                          if (cljs.core.truth_(inst_11441)) {
+                                                            var statearr_11541_11574 = state_11512__$1;
+                                                            statearr_11541_11574[1] = 11;
                                                           } else {
-                                                            var statearr_11624_11657 = state_11594__$1;
-                                                            statearr_11624_11657[1] = 12;
+                                                            var statearr_11542_11575 = state_11512__$1;
+                                                            statearr_11542_11575[1] = 12;
                                                           }
                                                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                         } else {
-                                                          if (state_val_11595 === 18) {
-                                                            var inst_11560 = new Error("TestContext provided as [form] in `is` assertion. If using `is` with an explicit test context, use the 3-arg arity.");
-                                                            var inst_11561 = function() {
-                                                              throw inst_11560;
+                                                          if (state_val_11513 === 18) {
+                                                            var inst_11478 = new Error("TestContext provided as [form] in `is` assertion. If using `is` with an explicit test context, use the 3-arg arity.");
+                                                            var inst_11479 = function() {
+                                                              throw inst_11478;
                                                             }();
-                                                            var state_11594__$1 = state_11594;
-                                                            var statearr_11625_11658 = state_11594__$1;
-                                                            statearr_11625_11658[2] = inst_11561;
-                                                            statearr_11625_11658[1] = 20;
+                                                            var state_11512__$1 = state_11512;
+                                                            var statearr_11543_11576 = state_11512__$1;
+                                                            statearr_11543_11576[2] = inst_11479;
+                                                            statearr_11543_11576[1] = 20;
                                                             return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                           } else {
-                                                            if (state_val_11595 === 8) {
-                                                              var inst_11533 = state_11594[2];
-                                                              var inst_11534 = cemerick.cljs.test._STAR_test_ctx_STAR_ = inst_11533;
-                                                              var state_11594__$1 = function() {
-                                                                var statearr_11626 = state_11594;
-                                                                statearr_11626[18] = inst_11534;
-                                                                return statearr_11626;
+                                                            if (state_val_11513 === 8) {
+                                                              var inst_11451 = state_11512[2];
+                                                              var inst_11452 = cemerick.cljs.test._STAR_test_ctx_STAR_ = inst_11451;
+                                                              var state_11512__$1 = function() {
+                                                                var statearr_11544 = state_11512;
+                                                                statearr_11544[18] = inst_11452;
+                                                                return statearr_11544;
                                                               }();
-                                                              var statearr_11627_11659 = state_11594__$1;
-                                                              statearr_11627_11659[2] = null;
-                                                              statearr_11627_11659[1] = 14;
+                                                              var statearr_11545_11577 = state_11512__$1;
+                                                              statearr_11545_11577[2] = null;
+                                                              statearr_11545_11577[1] = 14;
                                                               return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                                                             } else {
                                                               return null;
@@ -39114,89 +39122,89 @@ sailing_study_guide.test.dispatch.dispatch_test = cljs.core.with_meta.call(null,
                   }
                 }
               };
-            }(c__6799__auto___11635, _STAR_test_ctx_STAR_11516, _test_ctx, async_QMARK___10583__auto__);
-            return function(switch__6784__auto__, c__6799__auto___11635, _STAR_test_ctx_STAR_11516, _test_ctx, async_QMARK___10583__auto__) {
+            }(c__6844__auto___11553, _STAR_test_ctx_STAR_11434, _test_ctx, async_QMARK___10501__auto__);
+            return function(switch__6829__auto__, c__6844__auto___11553, _STAR_test_ctx_STAR_11434, _test_ctx, async_QMARK___10501__auto__) {
               return function() {
-                var state_machine__6785__auto__ = null;
-                var state_machine__6785__auto____0 = function() {
-                  var statearr_11631 = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
-                  statearr_11631[0] = state_machine__6785__auto__;
-                  statearr_11631[1] = 1;
-                  return statearr_11631;
+                var state_machine__6830__auto__ = null;
+                var state_machine__6830__auto____0 = function() {
+                  var statearr_11549 = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+                  statearr_11549[0] = state_machine__6830__auto__;
+                  statearr_11549[1] = 1;
+                  return statearr_11549;
                 };
-                var state_machine__6785__auto____1 = function(state_11594) {
+                var state_machine__6830__auto____1 = function(state_11512) {
                   while (true) {
-                    var ret_value__6786__auto__ = function() {
+                    var ret_value__6831__auto__ = function() {
                       try {
                         while (true) {
-                          var result__6787__auto__ = switch__6784__auto__.call(null, state_11594);
-                          if (cljs.core.keyword_identical_QMARK_.call(null, result__6787__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                          var result__6832__auto__ = switch__6829__auto__.call(null, state_11512);
+                          if (cljs.core.keyword_identical_QMARK_.call(null, result__6832__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
                             continue;
                           } else {
-                            return result__6787__auto__;
+                            return result__6832__auto__;
                           }
                           break;
                         }
-                      } catch (e11632) {
-                        if (e11632 instanceof Object) {
-                          var ex__6788__auto__ = e11632;
-                          var statearr_11633_11660 = state_11594;
-                          statearr_11633_11660[5] = ex__6788__auto__;
-                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11594);
+                      } catch (e11550) {
+                        if (e11550 instanceof Object) {
+                          var ex__6833__auto__ = e11550;
+                          var statearr_11551_11578 = state_11512;
+                          statearr_11551_11578[5] = ex__6833__auto__;
+                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_11512);
                           return new cljs.core.Keyword(null, "recur", "recur", -437573268);
                         } else {
-                          throw e11632;
+                          throw e11550;
                         }
                       }
                     }();
-                    if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6786__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
-                      var G__11661 = state_11594;
-                      state_11594 = G__11661;
+                    if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__6831__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                      var G__11579 = state_11512;
+                      state_11512 = G__11579;
                       continue;
                     } else {
-                      return ret_value__6786__auto__;
+                      return ret_value__6831__auto__;
                     }
                     break;
                   }
                 };
-                state_machine__6785__auto__ = function(state_11594) {
+                state_machine__6830__auto__ = function(state_11512) {
                   switch(arguments.length) {
                     case 0:
-                      return state_machine__6785__auto____0.call(this);
+                      return state_machine__6830__auto____0.call(this);
                     case 1:
-                      return state_machine__6785__auto____1.call(this, state_11594);
+                      return state_machine__6830__auto____1.call(this, state_11512);
                   }
                   throw new Error("Invalid arity: " + arguments.length);
                 };
-                state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6785__auto____0;
-                state_machine__6785__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6785__auto____1;
-                return state_machine__6785__auto__;
+                state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$0 = state_machine__6830__auto____0;
+                state_machine__6830__auto__.cljs$core$IFn$_invoke$arity$1 = state_machine__6830__auto____1;
+                return state_machine__6830__auto__;
               }();
-            }(switch__6784__auto__, c__6799__auto___11635, _STAR_test_ctx_STAR_11516, _test_ctx, async_QMARK___10583__auto__);
+            }(switch__6829__auto__, c__6844__auto___11553, _STAR_test_ctx_STAR_11434, _test_ctx, async_QMARK___10501__auto__);
           }();
-          var state__6801__auto__ = function() {
-            var statearr_11634 = f__6800__auto__.call(null);
-            statearr_11634[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6799__auto___11635;
-            return statearr_11634;
+          var state__6846__auto__ = function() {
+            var statearr_11552 = f__6845__auto__.call(null);
+            statearr_11552[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__6844__auto___11553;
+            return statearr_11552;
           }();
-          return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6801__auto__);
+          return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__6846__auto__);
         };
-      }(c__6799__auto___11635, _STAR_test_ctx_STAR_11516, _test_ctx, async_QMARK___10583__auto__));
+      }(c__6844__auto___11553, _STAR_test_ctx_STAR_11434, _test_ctx, async_QMARK___10501__auto__));
       return sailing_study_guide.dispatch.dispatch_BANG_.call(null, sailing_study_guide.test.dispatch._STAR_default_tag_STAR_, sailing_study_guide.test.dispatch._STAR_default_mesg_STAR_);
-    } catch (e11517) {
-      if (e11517 instanceof Error) {
-        var e__10584__auto__ = e11517;
-        if (cljs.core.truth_(async_QMARK___10583__auto__)) {
-          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10584__auto__);
+    } catch (e11435) {
+      if (e11435 instanceof Error) {
+        var e__10502__auto__ = e11435;
+        if (cljs.core.truth_(async_QMARK___10501__auto__)) {
+          return cemerick.cljs.test.done_STAR_.call(null, _test_ctx, e__10502__auto__);
         } else {
-          throw e__10584__auto__;
+          throw e__10502__auto__;
         }
       } else {
-        throw e11517;
+        throw e11435;
       }
     }
   } finally {
-    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11516;
+    cemerick.cljs.test._STAR_test_ctx_STAR_ = _STAR_test_ctx_STAR_11434;
   }
 }], null)));
 cemerick.cljs.test.register_test_BANG_.call(null, new cljs.core.Symbol(null, "sailing-study-guide.test.dispatch", "sailing-study-guide.test.dispatch", 2120704787, null), new cljs.core.Symbol("sailing-study-guide.test.dispatch", "dispatch-test", "sailing-study-guide.test.dispatch/dispatch-test", -1391993851, null), sailing_study_guide.test.dispatch.dispatch_test);

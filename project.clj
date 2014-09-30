@@ -26,7 +26,7 @@
                                    :optimizations :none
                                    :pretty-print true
                                    :source-map true}}
-                       {:id "test"
+                       {:id "testing"
                         :source-paths ["src" "tests"]
                         :compiler {
                                    :output-to "out/sailing_study_guide_test.js"
