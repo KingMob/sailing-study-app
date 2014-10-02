@@ -8,7 +8,7 @@
                  [spellhouse/clairvoyant "0.0-29-g825d69c"]
                  [om "0.7.3"]]
 
-  :hooks [leiningen.cljsbuild]
+;;   :hooks [leiningen.cljsbuild]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.11"]

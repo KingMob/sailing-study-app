@@ -6,9 +6,9 @@
 
 (def *dispatcher-logging-enabled* false)
 
-(def ^:private dispatch-chan (chan))
+(def ^:private dispatch-chan (chan 1))
 (def ^:private dispatch-mult (mult dispatch-chan))
-(def ^:private dispatch-pub-chan (chan))
+(def ^:private dispatch-pub-chan (chan 1))
 (def ^:private dispatch-pub (pub dispatch-pub-chan #(:tag %)))
 (tap dispatch-mult dispatch-pub-chan)
 
@@ -39,11 +39,23 @@
     c))
 
 
-(defn dispatch! [tags & message]
-  (letfn ([dispatchfn [tag] (put! dispatch-chan {:tag tag :message message})])
-    (if (sequential? tags)
-      (doseq [tag tags] (dispatchfn tag))
-      (dispatchfn tags))))
+;; (defn dispatch! [tags & message]
+;;   (letfn ([dispatchfn [tag] (put! dispatch-chan {:tag tag :message message} #(println "Put!"))])
+;;     (if (sequential? tags)
+;;       (doseq [tag tags] (dispatchfn tag))
+;;       (dispatchfn tags))))
+
+;; (defn dispatch! [tagortags & message]
+;;   (let [tags (if (sequential? tagortags) tagortags [tagortags])]
+;;     (doseq [tag tags]
+;;       (put! dispatch-chan {:tag tag :message message} #(println "Put!")))))
+
+(defn dispatch! [tagortags & message]
+  (let [tags (if (sequential? tagortags) tagortags [tagortags])]
+    (doseq [tag tags]
+      (go
+       (>! dispatch-chan {:tag tag :message message})
+       (println "Put!")))))
 
 
 ;; Start logger

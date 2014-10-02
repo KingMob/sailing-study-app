@@ -2,7 +2,7 @@
   (:require-macros [cemerick.cljs.test :refer (is deftest with-test run-tests testing test-var done block-or-done use-fixtures)]
                    [cljs.core.async.macros :refer [go go-loop]])
   (:require [cemerick.cljs.test :as t]
-            [cljs.core.async :refer [chan mult tap put! <! >! pub sub unsub close!]]
+            [cljs.core.async :refer [chan mult tap put! take! <! >! pub sub unsub close!] :as async]
             [clairvoyant.core :as trace :include-macros true]
             [sailing-study-guide.dispatch :as dispatcher]))
 
@@ -25,7 +25,8 @@
 
 (deftest ^:async register-test
   (let [c (dispatcher/register *default-tag*)]
-    (put! c *default-payload*)
+    (go
+     (>! c *default-payload*))
 
     (go
      (is (not (nil? (<! c))))
@@ -45,15 +46,43 @@
      (is (= *default-mesg* mesg))
      (is (not= *not-default-mesg* mesg))
      (done)))
-  (put! dispatcher/dispatch-chan *default-payload*))
+  (go (>! dispatcher/dispatch-chan *default-payload*)))
 
-(deftest ^:async dispatch-test
-  (go
-   (let [payload (<! dispatcher/dispatch-chan)]
-     (println "payload received")
-     (is (= *default-payload* payload))
-     (done)))
-  (dispatcher/dispatch! *default-tag* *default-mesg*))
+;; (deftest ^:async dispatch-test
+;; ;;   (binding [dispatcher/dispatch-chan (chan)]
+;;     (go
+;;      (let [payload (<! dispatcher/dispatch-pub-chan)]
+;;        (println "payload received")
+;;        (is (= *default-payload* payload))
+;;        (done)))
+;;     (dispatcher/dispatch! *default-tag* *default-mesg*))
+;; ;; )
+
+;; (deftest ^:async dispatch-test-cb1
+;; ;;   (let [c (chan)]
+;; ;;     (binding [dispatcher/dispatch-chan c]
+;;       (go
+;;        (let [payload (<! dispatcher/dispatch-pub-chan)]
+;;          (println "payload received")
+;;          (is (= *default-payload* payload))
+;;          (done)))
+;;       (dispatcher/dispatch! *default-tag* *default-mesg*))
+
+(comment
+
+
+;; (deftest ^:async dispatch-test-cb2
+;;   (binding [dispatcher/dispatch-chan (chan)]
+;;     (dispatcher/dispatch! *default-tag* *default-mesg*)
+;;     (take! dispatcher/dispatch-chan #(do #_(println "Taken!") (done)))))
+
+;; (deftest ^:async dispatch-test-tags
+;;   (binding [dispatcher/dispatch-chan (chan)]
+;;     (dispatcher/dispatch! [*default-tag* :foo] *default-mesg*)
+;;     (take! dispatcher/dispatch-chan #(do (println "Taken one!")))
+;;     (take! dispatcher/dispatch-chan #(do (println "Taken two!") (done)))))
+)
+
 
 ;; (deftest ^:async core-async-test
 ;;   (let [inputs (repeatedly 10000 #(go 1))]
