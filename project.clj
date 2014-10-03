@@ -15,7 +15,7 @@
             [com.cemerick/clojurescript.test "0.3.1"]
             ]
 
-  :source-paths ["src"]
+  :source-paths ["src"] 
 
   :cljsbuild {
               :builds [{:id "dev"
