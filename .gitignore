@@ -9,3 +9,5 @@ pom.xml
 .nrepl-port
 .DS_Store
 .sass-cache
+.idea
+
