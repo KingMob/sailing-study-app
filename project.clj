@@ -3,14 +3,14 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2511"]
+                 [org.clojure/clojurescript "0.0-2725"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [spellhouse/clairvoyant "0.0-29-g825d69c"]
-                 [org.om/om "0.8.1"]]
+                 [org.omcljs/om "0.8.3"]]
 
 ;;   :hooks [leiningen.cljsbuild]
 
-  :plugins [[lein-cljsbuild "1.0.3"]
+  :plugins [[lein-cljsbuild "1.0.4"]
             [lein-ring "0.8.11"]
             [com.cemerick/clojurescript.test "0.3.1"]
             ]
@@ -21,6 +21,7 @@
               :builds [{:id "dev"
                         :source-paths ["src"]
                         :compiler {
+                                   :main main.core
                                    :output-to "out/sailing_study_guide.js"
                                    :output-dir "out"
                                    :optimizations :none
@@ -29,6 +30,7 @@
                        {:id "testing"
                         :source-paths ["src" "tests"]
                         :compiler {
+                                   :main main.core
                                    :output-to "out/sailing_study_guide_test.js"
                                    :optimizations :whitespace
                                    :pretty-print true
@@ -38,6 +40,7 @@
                        {:id "production"
                         :source-paths ["src"]
                         :compiler {
+                                   :main main.core
                                    :output-to "main.js"
                                    :optimizations :advanced
                                    :pretty-print false
