@@ -3,10 +3,10 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2356"]
+                 [org.clojure/clojurescript "0.0-2511"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [spellhouse/clairvoyant "0.0-29-g825d69c"]
-                 [om "0.7.3"]]
+                 [org.om/om "0.8.1"]]
 
 ;;   :hooks [leiningen.cljsbuild]
 
@@ -15,7 +15,7 @@
             [com.cemerick/clojurescript.test "0.3.1"]
             ]
 
-  :source-paths ["src"] 
+  :source-paths ["src"]
 
   :cljsbuild {
               :builds [{:id "dev"
