@@ -34,7 +34,7 @@
                  (cb (retrieve-message payload))
                  (recur (<! c)))
                (do
-;;                  (println "Leaving loop for " c)
+                 (println "Leaving loop for " c)
                  (close! c))))
     c))
 
