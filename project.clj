@@ -49,6 +49,6 @@
 
               :test-commands {"unit-tests-phantomjs" ["phantomjs" :runner
                                                       "out/sailing_study_guide_test.js"]
-;;                               "unit-tests-rhino" ["rhino" "-opt" "-1" :rhino-runner
+;;;;                               "unit-tests-rhino" ["rhino" "-opt" "-1" :rhino-runner
 ;;                                                   "out/sailing_study_guide_test.js"]
                               }})
