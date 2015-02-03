@@ -3,12 +3,13 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [com.facebook/react "0.12.2.4"]
+;;                 [com.facebook/react "0.12.2.4"]
+                 [cljsjs/react "0.12.2-5"]
                  [reagent "0.4.3"]
                  [reagent-forms "0.4.3"]
                  [reagent-utils "0.1.2"]
                  [secretary "1.2.1"]
-                 [org.clojure/clojurescript "0.0-2740" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-2760" :scope "provided"]
                  [com.cemerick/piggieback "0.1.5"]
                  [weasel "0.5.0"]
                  [ring "1.3.2"]
@@ -21,7 +22,7 @@
                  [figwheel "0.1.6-SNAPSHOT"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
 
-;;   :hooks [leiningen.cljsbuild]
+  :hooks [leiningen.cljsbuild]
 
   :plugins [[lein-cljsbuild "1.0.4"]
             [com.cemerick/clojurescript.test "0.3.1"]
@@ -31,8 +32,8 @@
 
   :source-paths ["src/clj" "src/cljs"]
 
-  :ring {:handler sailreagent.handler/app
-         :uberwar-name "sailreagent.war"}
+  ;; :ring {:handler sailreagent.handler/app
+  ;;        :uberwar-name "sailreagent.war"}
 
   :min-lein-version "2.5.0"
 
@@ -47,38 +48,41 @@
    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
 
-  :cljsbuild {
-              :builds [{:id "dev"
-                        :source-paths ["src"]
-                        :compiler {
-                                   :main main.core
-                                   :output-to "out/sailing_study_guide.js"
-                                   :output-dir "out"
-                                   :optimizations :none
-                                   :pretty-print true
-                                   :source-map true}}
-                       {:id "testing"
-                        :source-paths ["src" "tests"]
-                        :compiler {
-                                   :main main.core
-                                   :output-to "out/sailing_study_guide_test.js"
-                                   :optimizations :whitespace
-                                   :pretty-print true
-;;                                    :preamble ["react/react.min.js"] ; seems to cause "React not found" warnings is missing, but "cemerick.cljs.test not found" errors if present!
-;;                                    :externs ["react/externs/react.js"]
-                                   }}
-                       {:id "production"
-                        :source-paths ["src"]
-                        :compiler {
-                                   :main main.core
-                                   :output-to "main.js"
-                                   :optimizations :advanced
-                                   :pretty-print false
-                                   :preamble ["react/react.min.js"]
-                                   :externs ["react/externs/react.js"]}}]
+  :cljsbuild {:builds
+              [{:id "dev"
+                :source-paths ["src"]
+                :compiler {
+                           :main sailing-study-guide.core
+                           :output-to "out/sailing_study_guide.js"
+                           :output-dir "out"
+                           :optimizations :none
+                           :pretty-print true
+;;                           :preamble ["reagent/react.js"]
+                           :source-map true}}
+               {:id "testing"
+                :source-paths ["src" "tests"]
+                :compiler {
+                           :main sailing-study-guide.core
+                           :output-to "out/sailing_study_guide_test.js"
+                           :optimizations :whitespace
+                           :pretty-print true
+                           :preamble ["reagent/react.js"]
+                           ;;                                    :preamble ["react/react.min.js"] ; seems to cause "React not found" warnings is missing, but "cemerick.cljs.test not found" errors if present!
+                           ;;                                    :externs ["react/externs/react.js"]
+                           }}
+               {:id "production"
+                :source-paths ["src"]
+                :compiler {
+                           :main main.core
+                           :output-to "main.js"
+                           :optimizations :advanced
+                           :pretty-print false
+                           ;;:preamble ["react/react.min.js"]
+                           :preamble ["reagent/react.js"]
+                           :externs ["react/externs/react.js"]}}]
 
               :test-commands {"unit-tests-phantomjs" ["phantomjs" :runner
                                                       "out/sailing_study_guide_test.js"]
 ;;;;                               "unit-tests-rhino" ["rhino" "-opt" "-1" :rhino-runner
-;;                                                   "out/sailing_study_guide_test.js"]
+                              ;;                                                   "out/sailing_study_guide_test.js"]
                               }})

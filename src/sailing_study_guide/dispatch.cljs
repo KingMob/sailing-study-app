@@ -1,7 +1,6 @@
 (ns sailing-study-guide.dispatch
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
-  (:require [cljs.core.async :refer [chan mult tap put! <! >! pub sub unsub close!]]
-            [clairvoyant.core :as trace :include-macros true]))
+  (:require [cljs.core.async :refer [chan mult tap put! <! >! pub sub unsub close!]]))
 
 
 (def *dispatcher-logging-enabled* false)
@@ -79,5 +78,3 @@
   ;; (dispatch! [:answer-unchosen "foo"])
   ;; (retrieve! bus)
   )
-
-
