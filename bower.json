@@ -2,7 +2,6 @@
   "name": "sailing-study-guide",
   "dependencies": {
     "modernizr": ">= 2.7.2",
-    "foundation": "zurb/bower-foundation",
-    "react": "~0.12"
+    "foundation": "zurb/bower-foundation"
   }
 }
