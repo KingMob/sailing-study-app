@@ -14,7 +14,7 @@
 (enable-console-print!)
 (set! cljs.core/*print-meta* true)
 
-(def app-state
+(defonce app-state
   (atom
    {:current-section 0
     :current-question 1
@@ -68,12 +68,12 @@
 
 
 (defn answer-view [answer]
-  (let [status :unchosen]
+  (let [status (atom :unchosen)]
     [:div.answer-container
      [:button
       {
        :onClick (fn [e] (dispatcher/dispatch! :answer-chosen answer))
-       :class (str "answer " (answer-css-class status (:correct answer)))}
+       :class (str "answer " (answer-css-class @status (:correct answer)))}
       (:text answer)]]))
 
 

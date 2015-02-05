@@ -1,9 +1,8 @@
-(defproject sailing-study-guide "0.2.0"
+(defproject sailing-study-guide "0.3.0"
   :description "An app to help you study for the ASA sailing certification"
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-;;                 [com.facebook/react "0.12.2.4"]
                  [cljsjs/react "0.12.2-5"]
                  [reagent "0.4.3"]
                  [reagent-forms "0.4.3"]
@@ -19,18 +18,18 @@
                  [selmer "0.8.0"]
                  [environ "1.0.0"]
                  [leiningen "2.5.1"]
-                 [figwheel "0.1.6-SNAPSHOT"]
+                 [figwheel "0.2.2-SNAPSHOT"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
 
   :hooks [leiningen.cljsbuild]
+  :source-paths ["src/clj" "src/cljs"] ;; necessary for cljsbuild to hook into lein tasks
 
   :plugins [[lein-cljsbuild "1.0.4"]
+            [lein-figwheel "0.2.2-SNAPSHOT"]
             [com.cemerick/clojurescript.test "0.3.1"]
             [lein-environ "1.0.0"]
             [lein-ring "0.9.0"]
-            [lein-asset-minifier "0.2.2"]            ]
-
-  :source-paths ["src/clj" "src/cljs"]
+            [lein-asset-minifier "0.2.2"]]
 
   ;; :ring {:handler sailreagent.handler/app
   ;;        :uberwar-name "sailreagent.war"}
@@ -48,41 +47,39 @@
    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
 
-  :cljsbuild {:builds
-              [{:id "dev"
-                :source-paths ["src"]
-                :compiler {
-                           :main sailing-study-guide.core
-                           :output-to "out/sailing_study_guide.js"
-                           :output-dir "out"
-                           :optimizations :none
-                           :pretty-print true
-;;                           :preamble ["reagent/react.js"]
-                           :source-map true}}
-               {:id "testing"
-                :source-paths ["src" "tests"]
-                :compiler {
-                           :main sailing-study-guide.core
-                           :output-to "out/sailing_study_guide_test.js"
-                           :optimizations :whitespace
-                           :pretty-print true
-                           :preamble ["reagent/react.js"]
-                           ;;                                    :preamble ["react/react.min.js"] ; seems to cause "React not found" warnings is missing, but "cemerick.cljs.test not found" errors if present!
-                           ;;                                    :externs ["react/externs/react.js"]
-                           }}
-               {:id "production"
-                :source-paths ["src"]
-                :compiler {
-                           :main main.core
-                           :output-to "main.js"
-                           :optimizations :advanced
-                           :pretty-print false
-                           ;;:preamble ["react/react.min.js"]
-                           :preamble ["reagent/react.js"]
-                           :externs ["react/externs/react.js"]}}]
+  :cljsbuild
+  {:builds
+   [{:id "dev"
+     :source-paths ["src/cljs"]
+     :compiler {
+                :main sailing-study-guide.core
+                :output-to "resources/public/js/sailing_study_guide.js"
+                :output-dir "resources/public/js/out"
+                :optimizations :none
+                :pretty-print true
+                :source-map true}}
+    {:id "testing"
+     :source-paths ["src" "tests"] ;;fixme
+     :compiler {
+                :main sailing-study-guide.core
+                :output-to "out/sailing_study_guide_test.js"
+                :optimizations :whitespace
+                :pretty-print true}}
+    {:id "production"
+     :source-paths ["src"]
+     :compiler {
+                :main main.core
+                :output-to "main.js"
+                :optimizations :advanced
+                :pretty-print false}}]
 
-              :test-commands {"unit-tests-phantomjs" ["phantomjs" :runner
-                                                      "out/sailing_study_guide_test.js"]
+   :test-commands {"unit-tests-phantomjs" ["phantomjs" :runner
+                                           "out/sailing_study_guide_test.js"]
 ;;;;                               "unit-tests-rhino" ["rhino" "-opt" "-1" :rhino-runner
-                              ;;                                                   "out/sailing_study_guide_test.js"]
-                              }})
+                   ;;                                                   "out/sailing_study_guide_test.js"]
+                   }})
+
+:figwheel {
+   :http-server-root "public" ;; this will be in resources/
+
+   :css-dirs ["resources/public/css"]}
