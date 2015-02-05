@@ -36,12 +36,12 @@
 (defn current-section []
   (get-in @app-state [:quiz :sections 0])) ;; FIXME
 
-;; ;; (current-section @app-state)
+;; (current-section)
 
-;; (defn current-question []
-;;   (let [curr-sec (:current-section app-state)
-;;         curr-ques (:current-question app-state)]
-;;     (om/ref-cursor (get-in (om/root-cursor app-state) [:quiz :sections curr-sec :questions curr-ques]))))
+(defn current-question []
+  (let [curr-sec (:current-section @app-state)
+        curr-ques (:current-question @app-state)]
+    (get-in @app-state [:quiz :sections curr-sec :questions curr-ques])))
 
 ;; ;; (current-question @app-state)
 ;; ;; (-> @app-state current-section :questions count)
@@ -55,11 +55,11 @@
 ;; ;; (current-section @app-state)
 ;; ;; (.dir js/console (current-question @app-state))
 
-;; (defn answer-css-class [status correct]
-;;   (cond
-;;    (= :unchosen status) "answer-default"
-;;    correct "answer-correct success"
-;;    :else "answer-incorrect alert"))
+(defn answer-css-class [status correct]
+  (cond
+   (= :unchosen status) "answer-default"
+   correct "answer-correct success"
+   :else "answer-incorrect alert"))
 
 ;; ;; (answer-css-class :unchosen false)
 ;; ;; (answer-css-class :chosen false)
@@ -67,105 +67,90 @@
 
 
 
-;; (defn answer-view [answer owner]
-;;   (reify
-;;     om/IInitState
-;;     (init-state [_]
-;;                 {:status :unchosen})
-;;     om/IRenderState
-;;     (render-state [_ {:keys [answer-chan status]}]
-;;                   (dom/div
-;;                    #js{:className "answer-container"}
-;;                    (dom/button
-;;                     #js{
-;; ;;                         :onClick (fn [e] (put! answer-chan answer))
-;;                         :onClick (fn [e] (dispatcher/dispatch! :answer-chosen answer))
-;;                         :className (str "answer " (answer-css-class status (:correct answer)))}
-;;                     (:text answer))))))
-
-;; (defn answer-section-view [answers owner]
-;;   (reify
-;;     om/IRenderState
-;;     (render-state [_ {:keys [answer-chan]}]
-;;                   (apply dom/div #js{:className "answer-section"}
-;;                          (om/build-all answer-view answers
-;;                                        {:init-state {:answer-chan answer-chan}})))))
+(defn answer-view [answer]
+  (let [status :unchosen]
+    [:div.answer-container
+     [:button
+      {
+       :onClick (fn [e] (dispatcher/dispatch! :answer-chosen answer))
+       :class (str "answer " (answer-css-class status (:correct answer)))}
+      (:text answer)]]))
 
 
-;; (defn question-view [quiz-question owner]
-;;   (reify
-;;     ;;     om/IInitState
-;;     ;;     (init-state [_]
-;;     ;;                 {:answer-chan (chan)})
+(defn answer-section-view [answers]
+  (.dir js/console answers)
+  [:div.answer-section
+   (for [ans answers]
+     ^{:key ans} [answer-view ans]
+     ;; {:init-state {:answer-chan answer-chan}}
+     )])
 
-;; ;;     om/IWillMount
-;; ;;     (will-mount [_]
-;; ;;                 ;;                 (let [answer-chan (om/get-state owner :answer-chan)]
-;; ;;                 (let [answer-chan (om/get-shared owner :tx-chan)]
-;; ;;                   (go (loop []
-;; ;;                         (let [answer-chosen (<! answer-chan)]
-;; ;;                           (.log js/console (str "Chose " (:text @answer-chosen)))
-;; ;;                           (om/transact! answer-chosen [:text] #(str % " *"))
-;; ;;                           ;;                           (om/update! answer-chosen :status :chosen)
-;; ;;                           ;;                           (when (:correct @answer-chosen)
-;; ;;                           ;;                             (question-answered))
-;; ;;                           (recur))))))
 
-;; ;;     om/IWillMount
-;; ;;     (will-mount [_]
-;; ;;                 (let [answer-chan (dispatcher/register :answer-chosen)]
-;; ;;                   (go-loop []
-;; ;;                            (let [answer-chosen (<! answer-chan)]
-;; ;;                              (.log js/console (str "Chose " (:text @answer-chosen)))
-;; ;;                              ;;                           (om/transact! answer-chosen [:text] #(str % " *"))
-;; ;;                              ;;                           ;;                           (om/update! answer-chosen :status :chosen)
-;; ;;                              ;;                           ;;                           (when (:correct @answer-chosen)
-;; ;;                              ;;                           ;;                             (question-answered))
-;; ;;                              (recur)))))
+(defn question-view [quiz-question]
 
-;;     om/IRenderState
-;;     (render-state [_ {:keys [answer-chan]}]
-;;       (.dir js/console quiz-question)
-;;       (dom/div #js{:className "question-container"}
-;;                (dom/div #js{:className "question-text-container"}
-;;                         (dom/h3 #js{:className "question-text"} (:question quiz-question)))
-;;                (dom/div #js{:className "media-container"})
-;;                (om/build answer-section-view (:answers quiz-question)
-;;                          {:init-state {:answer-chan answer-chan}})))))
+  ;;     om/IInitState
+  ;;     (init-state [_]
+  ;;                 {:answer-chan (chan)})
 
-;; (defn header-bar-view [section _]
-;;   (reify
-;;     om/IRender
-;;     (render [_]
-;;             (let [current-question-num (inc (:current-question section))
-;;                   total-num-questions (count (:questions section))]
-;;               (dom/nav
-;;                #js{:className "tab-bar"}
-;;                (dom/section #js{:className "left-small text-center"} (str current-question-num "/" total-num-questions))
-;;                (dom/section #js{:className "middle tab-bar-section"} (:name section))
-;;                (dom/section #js{:className "right-small"}
-;;                             (dom/a #js{:className "right-off-canvas-toggle menu-icon" :href "#"}
-;;                                    (dom/span nil))))))))
+  ;;     om/IWillMount
+  ;;     (will-mount [_]
+  ;;                 ;;                 (let [answer-chan (om/get-state owner :answer-chan)]
+  ;;                 (let [answer-chan (om/get-shared owner :tx-chan)]
+  ;;                   (go (loop []
+  ;;                         (let [answer-chosen (<! answer-chan)]
+  ;;                           (.log js/console (str "Chose " (:text @answer-chosen)))
+  ;;                           (om/transact! answer-chosen [:text] #(str % " *"))
+  ;;                           ;;                           (om/update! answer-chosen :status :chosen)
+  ;;                           ;;                           (when (:correct @answer-chosen)
+  ;;                           ;;                             (question-answered))
+  ;;                           (recur))))))
 
-;; (defn header-progress-view [section _]
-;;   (reify
-;;     om/IRender
-;;     (render [_]
-;;             (let [current-question-num (inc (:current-question section))
-;;                   total-num-questions (count (:questions section))]
-;;               (dom/div
-;;                #js{:className "progress"}
-;;                (dom/span
-;;                 #js{:className "meter"
-;;                     :style #js{:width (str (* 100 (/ current-question-num total-num-questions)) "%")}}))))))
+  ;;     om/IWillMount
+  ;;     (will-mount [_]
+  ;;                 (let [answer-chan (dispatcher/register :answer-chosen)]
+  ;;                   (go-loop []
+  ;;                            (let [answer-chosen (<! answer-chan)]
+  ;;                              (.log js/console (str "Chose " (:text @answer-chosen)))
+  ;;                              ;;                           (om/transact! answer-chosen [:text] #(str % " *"))
+  ;;                              ;;                           ;;                           (om/update! answer-chosen :status :chosen)
+  ;;                              ;;                           ;;                           (when (:correct @answer-chosen)
+  ;;                              ;;                           ;;                             (question-answered))
+  ;;                              (recur)))))
+
+  ;; [{:keys [answer-chan]}]
+  (.dir js/console quiz-question)
+  [:div.question-container
+   [:div.question-text-container
+    [:h3.question-text (:question quiz-question)]]
+   [:div.media-container]
+   [answer-section-view (:answers quiz-question)
+    ;; {:init-state {:answer-chan answer-chan}}
+    ]])
+
+(defn header-bar-view [section]
+  (let [current-question-num (inc (:current-question section))
+        total-num-questions (count (:questions section))]
+    [:nav.tab-bar
+     [:section.left-small.text-center (str current-question-num "/" total-num-questions)]
+     [:section.middle.tab-bar-section (:name section)]
+     [:section.right-small
+      [:a {:class "right-off-canvas-toggle menu-icon" :href "#"}
+       [:span]]]]))
+
+(defn progress-bar-view [perc]
+  [:div.progress
+   [:span.meter {:style {:width (str perc "%")}}]])
+
+(defn header-progress-view [section curr-ques]
+  (let [current-question-num (inc curr-ques)
+        total-num-questions (count (:questions section))]
+    [progress-bar-view  (* 100 (/ current-question-num total-num-questions))]))
+
 
 (defn header-view [section]
   [:div.quiz-header
    [header-bar-view section]
-   [header-progress-view section]])
-
-(defn header-view [section]
-  [:div "header-view"])
+   [header-progress-view section (:current-question section)]])
 
 ;; ;;(.dir js/console (:current-section @app-state))
 ;; ;; (get-in @app-state [:sections (:current-section @app-state) :name])
@@ -174,10 +159,9 @@
 (defn section-view [section]
   ;; (.dir js/console (current-question))
   [:div {:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
-   "section-view"
    [:div.main-content.inner-wrap
     [header-view section]
-    ;;[question-view (current-question)]
+    [question-view (current-question)]
     [:a.exit-off-canvas]]])
 
 ;; (defn section-view [foo]
@@ -186,7 +170,6 @@
 (defn quiz-view []
   ;;(.dir js/console (current-section))
   [:div
-   "quiz-view"
    [section-view (current-section)]])
 
 (defn ^:export run []
