@@ -3,12 +3,12 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojurescript "0.0-2760" :scope "provided"]
                  [cljsjs/react "0.12.2-5"]
                  [reagent "0.4.3"]
                  [reagent-forms "0.4.3"]
                  [reagent-utils "0.1.2"]
                  [secretary "1.2.1"]
-                 [org.clojure/clojurescript "0.0-2760" :scope "provided"]
                  [com.cemerick/piggieback "0.1.5"]
                  [weasel "0.5.0"]
                  [ring "1.3.2"]
@@ -46,13 +46,18 @@
   {:assets
    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
+                :asset-path "resources/public"
 
   :cljsbuild
-  {:builds
+  {                :asset-path "resources/public"
+
+   :builds
    [{:id "dev"
      :source-paths ["src/cljs"]
+                :asset-path "resources/public"
      :compiler {
                 :main sailing-study-guide.core
+                :asset-path "js/out"
                 :output-to "resources/public/js/sailing_study_guide.js"
                 :output-dir "resources/public/js/out"
                 :optimizations :none
@@ -62,14 +67,16 @@
      :source-paths ["src" "tests"] ;;fixme
      :compiler {
                 :main sailing-study-guide.core
-                :output-to "out/sailing_study_guide_test.js"
+                :asset-path "js/out"
+                :output-to "resources/public/js/sailing_study_guide_test.js"
                 :optimizations :whitespace
                 :pretty-print true}}
     {:id "production"
      :source-paths ["src"]
      :compiler {
                 :main main.core
-                :output-to "main.js"
+                :asset-path "js/out"
+                :output-to "resources/public/js/main.js"
                 :optimizations :advanced
                 :pretty-print false}}]
 
