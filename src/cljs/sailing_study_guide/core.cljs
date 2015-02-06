@@ -1,18 +1,17 @@
 (ns sailing-study-guide.core
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
-  (:require [cljsjs.react]
+  (:require
+   [cljsjs.react]
    [reagent.core :as reagent :refer [atom]]
-   ;;[om.core :as om :include-macros true]
-   ;;[om.dom :as dom :include-macros true]
    [cljs.core.async :refer [chan mult tap put! pub sub unsub <! >! close!]]
    [clojure.string :refer [join]]
-   ;; [clairvoyant.core :as trace :include-macros true]
    [sailing-study-guide.quiz :refer [default-quiz]]
-   [sailing-study-guide.dispatch :as dispatcher]
-   ))
+   [sailing-study-guide.dispatch :as dispatcher]))
 
 (enable-console-print!)
 (set! cljs.core/*print-meta* true)
+(println "Starting...")
+
 
 (defonce app-state
   (atom
@@ -36,12 +35,16 @@
 (defn current-section []
   (get-in @app-state [:quiz :sections 0])) ;; FIXME
 
-;; (current-section)
-
 (defn current-question []
   (let [curr-sec (:current-section @app-state)
         curr-ques (:current-question @app-state)]
     (get-in @app-state [:quiz :sections curr-sec :questions curr-ques])))
+
+(defn set-current-section! [idx]
+  (swap! app-state #(assoc % :current-section idx)))
+
+(defn set-current-question! [idx]
+  (swap! app-state #(assoc % :current-question idx)))
 
 ;; ;; (current-question @app-state)
 ;; ;; (-> @app-state current-section :questions count)
@@ -78,7 +81,7 @@
 
 
 (defn answer-section-view [answers]
-  (.dir js/console answers)
+  ;; (.dir js/console answers)
   [:div.answer-section
    (for [ans answers]
      ^{:key ans} [answer-view ans]
@@ -118,7 +121,7 @@
   ;;                              (recur)))))
 
   ;; [{:keys [answer-chan]}]
-  (.dir js/console quiz-question)
+  ;; (.dir js/console quiz-question)
   [:div.question-container
    [:div.question-text-container
     [:h3.question-text (:question quiz-question)]]
@@ -174,3 +177,5 @@
 
 (defn ^:export run []
   (reagent/render-component [quiz-view] (.-body js/document)))
+
+(run)

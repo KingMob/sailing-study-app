@@ -40,36 +40,40 @@
 
   :main sailing-study-guide.server
 
-  :clean-targets ^{:protect false} ["resources/public/js"]
+  :clean-targets ^{:protect false} ["resources/public/js/out"]
 
   :minify-assets
   {:assets
    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
-                :asset-path "resources/public"
+  :profiles {
+            :dev {:env {:is-dev true}}
+            :production {:env {:is-dev false}}}
 
   :cljsbuild
-  {                :asset-path "resources/public"
-
+  {
    :builds
    [{:id "dev"
-     :source-paths ["src/cljs"]
-                :asset-path "resources/public"
+     :source-paths ["src/cljs" "dev/cljs"]
+     :assert true
      :compiler {
-                :main sailing-study-guide.core
+                :main sailing-study-guide.dev
                 :asset-path "js/out"
                 :output-to "resources/public/js/sailing_study_guide.js"
                 :output-dir "resources/public/js/out"
                 :optimizations :none
                 :pretty-print true
+                :elide-asserts false
                 :source-map true}}
     {:id "testing"
      :source-paths ["src" "tests"] ;;fixme
+     :assert true
      :compiler {
                 :main sailing-study-guide.core
                 :asset-path "js/out"
                 :output-to "resources/public/js/sailing_study_guide_test.js"
                 :optimizations :whitespace
+                :elide-asserts false
                 :pretty-print true}}
     {:id "production"
      :source-paths ["src"]
@@ -84,9 +88,9 @@
                                            "out/sailing_study_guide_test.js"]
 ;;;;                               "unit-tests-rhino" ["rhino" "-opt" "-1" :rhino-runner
                    ;;                                                   "out/sailing_study_guide_test.js"]
-                   }})
+                   }}
 
-:figwheel {
-   :http-server-root "public" ;; this will be in resources/
-
-   :css-dirs ["resources/public/css"]}
+  :figwheel {
+             :http-server-root "public" ;; this will be in resources/
+             :css-dirs ["resources/public/css"]
+             :open-file-command "emacsclient"})
