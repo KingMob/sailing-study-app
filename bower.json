@@ -1,8 +1,9 @@
 {
   "name": "sailing-study-guide",
   "dependencies": {
-    "modernizr": ">= 2.7.2",
-    "foundation": "zurb/bower-foundation",
-    "react": "~0.11"
+      "modernizr": ">= 2.7.2",
+      "jquery": ">= 2.1.1",
+      "foundation": "zurb/bower-foundation",
+      "bourbon": ">= 4.1.1"
   }
 }

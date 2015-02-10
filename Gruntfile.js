@@ -14,7 +14,7 @@ module.exports = function(grunt) {
           style: 'nested'
         },
         files: {
-          'css/sailing-study-guide.css': 'scss/sailing-study-guide.scss'
+          'resources/public/css/sailing-study-guide.css': 'scss/sailing-study-guide.scss'
         }
       }
     },
