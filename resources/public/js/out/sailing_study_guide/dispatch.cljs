@@ -3,12 +3,12 @@
   (:require [cljs.core.async :refer [chan mult tap put! <! >! pub sub unsub close!]]))
 
 
-(def *dispatcher-logging-enabled* false)
+(defonce *dispatcher-logging-enabled* true)
 
-(def ^:private dispatch-chan (chan 1))
-(def ^:private dispatch-mult (mult dispatch-chan))
-(def ^:private dispatch-pub-chan (chan 1))
-(def ^:private dispatch-pub (pub dispatch-pub-chan #(:tag %)))
+(defonce ^:private dispatch-chan (chan 1))
+(defonce ^:private dispatch-mult (mult dispatch-chan))
+(defonce ^:private dispatch-pub-chan (chan 1))
+(defonce ^:private dispatch-pub (pub dispatch-pub-chan #(:tag %)))
 (tap dispatch-mult dispatch-pub-chan)
 
 
@@ -49,7 +49,7 @@
 ;;     (doseq [tag tags]
 ;;       (put! dispatch-chan {:tag tag :message message} #(println "Put!")))))
 
-(defn dispatch! [tagortags & message]
+(defn dispatch! [tagortags message]
   (let [tags (if (sequential? tagortags) tagortags [tagortags])]
     (doseq [tag tags]
       (go
@@ -59,7 +59,7 @@
 
 ;; Start logger
 (when *dispatcher-logging-enabled*
-  (def ^:private dispatch-logger-chan (chan))
+  (defonce ^:private dispatch-logger-chan (chan))
   (tap dispatch-mult dispatch-logger-chan)
 
   (go-loop []
@@ -69,10 +69,8 @@
 
 (comment
 
-  (def tags [:answer-chosen])
-  ;; (def tags :answer-chosen)
-  ;; (def tags nil)
-  (def payload "message")
+  (defonce tags [:answer-chosen])
+  (defonce payload "message")
 
   (dispatch! tags payload)
   ;; (dispatch! [:answer-unchosen "foo"])

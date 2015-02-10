@@ -1,12 +1,15 @@
 (ns figwheel.client.socket
   (:require
+   [figwheel.client.utils :as utils]
    [cljs.reader :refer [read-string]]))
 
-(defn log [{:keys [debug]} & args]
-  (when debug
-    (.log js/console (to-array args))))
-
-(defn have-websockets? [] (js*  "(\"WebSocket\" in window)"))
+(defn get-websocket-imp []
+  (cond
+    (utils/html-env?) (aget js/window "WebSocket")
+    (utils/node-env?) (try (js/require "ws")
+                           (catch js/Error e
+                             nil))
+    :else nil))
 
 ;; messages have the following formats
 
@@ -43,40 +46,37 @@
   (set! (.-onclose @socket-atom) identity)
   (.close @socket-atom))
 
-(defn proper-build-id [build-id msg]
-  (or (nil? build-id)
-      (nil? (:build-id msg))
-      (= (name build-id)
-         (:build-id msg))))
-
 (defn open [{:keys [retry-count retried-count websocket-url build-id] :as opts}]
-  (if-not (have-websockets?)
-    (.debug js/console "Figwheel: Can't start Figwheel!! This browser doesn't support WebSockets")
+  (if-let [WebSocket (get-websocket-imp)]
     (do
-      (.debug js/console "Figwheel: trying to open cljs reload socket")
-      (let [socket (js/WebSocket. websocket-url)]
+      (utils/log :debug "Figwheel: trying to open cljs reload socket")
+      (let [url (str websocket-url (if build-id (str "/" build-id) ""))
+            socket (WebSocket. url)]
         (set! (.-onmessage socket) (fn [msg-str]
                                      (when-let [msg (read-string (.-data msg-str))]
-                                       #_(.log js/console (prn-str msg))
+                                       (utils/debug-prn msg)
                                        (and (map? msg)
                                             (:msg-name msg)
                                             ;; don't forward pings
                                             (not= (:msg-name msg) :ping)
-                                            (proper-build-id build-id msg)
                                             (swap! message-history-atom
                                                    conj msg)))))
         (set! (.-onopen socket)  (fn [x]
                                    (reset! socket-atom socket)
-                                   (.debug js/console "Figwheel: socket connection established")))
+                                   (utils/log :debug "Figwheel: socket connection established")))
         (set! (.-onclose socket) (fn [x]
                                    (let [retried-count (or retried-count 0)]
-                                     (log opts "Figwheel: socket closed or failed to open")
+                                     (utils/debug-prn "Figwheel: socket closed or failed to open")
                                      (when (> retry-count retried-count)
-                                       (.setTimeout js/window
-                                                    (fn []
-                                                      (open
-                                                       (assoc opts :retried-count (inc retried-count))))
-                                                    ;; linear back off
-                                                    (min 10000 (+ 2000 (* 500 retried-count))))))))
-        (set! (.-onerror socket) (fn [x] (log opts "Figwheel: socket error ")))
-        socket))))
+                                       (js/setTimeout 
+                                        (fn []
+                                          (open
+                                           (assoc opts :retried-count (inc retried-count))))
+                                        ;; linear back off
+                                        (min 10000 (+ 2000 (* 500 retried-count))))))))
+        (set! (.-onerror socket) (fn [x] (utils/debug-prn "Figwheel: socket error ")))
+        socket))
+    (utils/log :debug
+               (if (utils/node-env?)
+                 "Figwheel: Can't start Figwheel!! Please make sure ws is installed\n do -> 'node install ws'"
+                 "Figwheel: Can't start Figwheel!! This browser doesn't support WebSockets"))))

@@ -3,12 +3,12 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2760" :scope "provided"]
-                 [cljsjs/react "0.12.2-5"]
-                 [reagent "0.4.3"]
+                 [org.clojure/clojurescript "0.0-2816"]
+                 [cljsjs/react-with-addons "0.12.2-4"]
+                 [reagent "0.5.0-alpha"]
                  [reagent-forms "0.4.3"]
                  [reagent-utils "0.1.2"]
-                 [secretary "1.2.1"]
+                 ;; [secretary "2.0.0.1-5a007a"]
                  [com.cemerick/piggieback "0.1.5"]
                  [weasel "0.5.0"]
                  [ring "1.3.2"]
@@ -26,9 +26,9 @@
 
   :plugins [[lein-cljsbuild "1.0.4"]
             [lein-figwheel "0.2.2-SNAPSHOT"]
-            [com.cemerick/clojurescript.test "0.3.1"]
+            [com.cemerick/clojurescript.test "0.3.3"]
             [lein-environ "1.0.0"]
-            [lein-ring "0.9.0"]
+            [lein-ring "0.9.1"]
             [lein-asset-minifier "0.2.2"]]
 
   ;; :ring {:handler sailreagent.handler/app
@@ -69,7 +69,7 @@
      :source-paths ["src" "tests"] ;;fixme
      :assert true
      :compiler {
-                :main sailing-study-guide.core
+                :main sailing-study-guide.view
                 :asset-path "js/out"
                 :output-to "resources/public/js/sailing_study_guide_test.js"
                 :optimizations :whitespace
@@ -78,7 +78,7 @@
     {:id "production"
      :source-paths ["src"]
      :compiler {
-                :main main.core
+                :main sailing-study-guide.view
                 :asset-path "js/out"
                 :output-to "resources/public/js/main.js"
                 :optimizations :advanced

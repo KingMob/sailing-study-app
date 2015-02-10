@@ -1,11 +1,12 @@
-// Compiled by ClojureScript 0.0-2760 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-2816 {:elide-asserts false}
 goog.provide('sailing_study_guide.dev');
 goog.require('cljs.core');
 goog.require('figwheel.client');
-goog.require('sailing_study_guide.core');
+goog.require('sailing_study_guide.view');
 figwheel.client.start.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"on-jsload","on-jsload",-395756602),(function (){
-return cljs.core.print.call(null,"Reloaded js code");
+cljs.core.print.call(null,"Reloaded at ",Date());
+
+return sailing_study_guide.view.run.call(null);
 })], null));
-sailing_study_guide.core.run.call(null);
 
 //# sourceMappingURL=dev.js.map
