@@ -18,7 +18,7 @@
                  [selmer "0.8.0"]
                  [environ "1.0.0"]
                  [leiningen "2.5.1"]
-                 [figwheel "0.2.2-SNAPSHOT"]
+                 [figwheel "0.2.3-SNAPSHOT"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
 
   :hooks [leiningen.cljsbuild]

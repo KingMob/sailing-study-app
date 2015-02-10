@@ -1,3 +1,4 @@
 #!/bin/bash
 grunt watch &
-lein cljsbuild auto dev
+#lein cljsbuild auto dev
+rlwrap lein figwheel
