@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-2816 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-2843 {:elide-asserts false}
 goog.provide('sailing_study_guide.dev');
 goog.require('cljs.core');
 goog.require('figwheel.client');

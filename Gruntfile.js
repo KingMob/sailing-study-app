@@ -5,8 +5,7 @@ module.exports = function(grunt) {
     // grunt-contrib-sass
     sass: {
       options: {
-        loadPath: ['bower_components/foundation/scss', 'bower_components/bourbon/dist'],
-        sourcemap: true
+        loadPath: ['resources/public/vendor/foundation/scss', 'resources/public/vendor/bourbon/app/assets/stylesheets/']
       },
       dist: {
         options: {

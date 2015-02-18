@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-2816 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-2843 {:elide-asserts false}
 goog.provide('sailing_study_guide.core');
 goog.require('cljs.core');
 goog.require('sailing_study_guide.dispatch');

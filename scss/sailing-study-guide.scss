@@ -72,19 +72,61 @@ $button-incorrect: $alert-color;
   }
 }
 
-@mixin question-transition($duration: 0.5s) {
+@mixin question-transition($duration: 0.3s) {
 
-  @include transition(transform $duration ease-in);
+  // @include transition(transform $duration ease-in);
   transform: translate3d(0, 0, 0);
 
-  &.left {
-    @include transition(transform $duration ease-in);
-    transform: translate3d(-100%, 0, 0);
-  }
-
-  &.right {
+  &.question-transition-enter {
     @include transition(transform $duration ease-in);
     transform: translate3d(100%, 0, 0);
+    
+    &.question-transition-enter-active {
+      // @include transition(transform $duration ease-in);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+ 
+
+  &.question-transition-leave {
+    @include transition(transform $duration ease-in);
+    transform: translate3d(0, 0, 0);
+    
+    &.question-transition-leave-active {
+      // @include transition(transform $duration ease-in);
+      transform: translate3d(-100%, 0, 0);
+    }
+  } 
+}
+
+
+@include keyframes(slide-out-left) {
+  from {
+    @include transform(translate3d(0, 0, 0));
+  }
+  to {
+    @include transform(translate3d(-100%, 0, 0));
+  }
+} 
+
+@include keyframes(slide-in-left) {
+  from {
+    @include transform(translate3d(100%, 0, 0));
+  }
+  to {
+    @include transform(translate3d(0, 0, 0));
+  }
+} 
+
+@mixin slide-in-animation($slide-in-class, $slide-out-class, $duration: 0.3s) {
+  @include animation-duration($duration);
+  @include animation-timing-function(ease);
+
+  &.#{$slide-in-class} {
+    @include animation-name(slide-in-left);
+  }
+  &.#{$slide-out-class} {
+    @include animation-name(slide-out-left);
   }
 }
 
@@ -98,6 +140,12 @@ body {
   min-height: 100vh;
   @include flex-column;
 
+  .question-transition-container {
+    @include flex-column; 
+    @include flex(1 0 auto);
+    display: flex;
+  }
+
   .quiz-header {
     @include flex(0 1 auto);
   }
@@ -106,7 +154,8 @@ body {
     @include flex(1 0 auto);
     @include flex-column;
 
-    @include question-transition();
+    // @include question-transition();
+    @include slide-in-animation("question-transition-enter", "question-transition-leave");
 
     .question-text-container {
       @include flex(0 0 auto);

@@ -3,22 +3,23 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2816"]
+                 [org.clojure/clojurescript "0.0-2850"]
                  [cljsjs/react-with-addons "0.12.2-4"]
-                 [reagent "0.5.0-alpha"]
+                 [reagent "0.5.0-alpha3"]
+                 ;; [reagent "0.4.3"]
                  [reagent-forms "0.4.3"]
                  [reagent-utils "0.1.2"]
                  ;; [secretary "2.0.0.1-5a007a"]
                  [com.cemerick/piggieback "0.1.5"]
                  [weasel "0.5.0"]
                  [ring "1.3.2"]
-                 [ring/ring-defaults "0.1.3"]
+                 [ring/ring-defaults "0.1.4"]
                  [prone "0.8.0"]
                  [compojure "1.3.1"]
                  [selmer "0.8.0"]
                  [environ "1.0.0"]
                  [leiningen "2.5.1"]
-                 [figwheel "0.2.3-SNAPSHOT"]
+                 [figwheel "0.2.4-SNAPSHOT"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
 
   :hooks [leiningen.cljsbuild]
@@ -63,6 +64,7 @@
                 :output-dir "resources/public/js/out"
                 :optimizations :none
                 :pretty-print true
+                :verbose true
                 :elide-asserts false
                 :source-map true}}
     {:id "testing"

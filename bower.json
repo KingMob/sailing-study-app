@@ -4,6 +4,6 @@
       "modernizr": ">= 2.7.2",
       "jquery": ">= 2.1.1",
       "foundation": "zurb/bower-foundation",
-      "bourbon": ">= 4.1.1"
+      "bourbon": ">= 4.2"
   }
 }
