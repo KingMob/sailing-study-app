@@ -5,7 +5,9 @@
    [reagent.core :as reagent :refer [atom cursor]]
    [cljsjs.react :as react]))
 
-(defonce ctg (aget js/React "addons" "CSSTransitionGroup"))
+;; (defonce ctg (aget js/React "addons" "CSSTransitionGroup"))
+(defonce ctg (reagent/adapt-react-class (aget js/React "addons" "CSSTransitionGroup")))
+
 
 (defn answer-css-class [status correct]
   (cond
@@ -37,41 +39,14 @@
      )])
 
 
-(defn question-view []
-  (let [quiz-question (current-question)]
-    (.log js/console "question-view called")
-    ;; ^{:key quiz-question}
-    [:div.question-container {:key quiz-question}
-     [:div.question-text-container
-      [:h3.question-text (:question quiz-question)]]
-     [:div.media-container]
-     [answer-section-view (:answers quiz-question)
-      ;; {:init-state {:answer-chan answer-chan}}
-      ]]))
+(defn question-view [quiz-question]
+  (.log js/console "question-view called for " (:question quiz-question))
+  [:div.question-container {:key quiz-question}
+   [:div.question-text-container
+    [:h3.question-text (:question quiz-question)]]
+   [:div.media-container]
+   [answer-section-view (:answers quiz-question)]])
 
-;; (defn question-view []
-;;   (fn []
-;;     (let [quiz-question (current-question)]
-;;       ^{:key quiz-question}
-;;       [:div.question-container {:key quiz-question}
-;;        [:div.question-text-container
-;;         [:h3.question-text (:question quiz-question)]]
-;;        [:div.media-container]
-;;        [answer-section-view (:answers quiz-question)
-;;         ;; {:init-state {:answer-chan answer-chan}}
-;;         ]])))
-
-;; (defn question-view [quiz-question]
-;;   (fn [q]
-;;     (with-meta
-;;       [:div.question-container
-;;        [:div.question-text-container
-;;         [:h3.question-text (:question q)]]
-;;        [:div.media-container]
-;;        [answer-section-view (:answers q)
-;;         ;; {:init-state {:answer-chan answer-chan}}
-;;         ]]
-;;       {:key "foo 3"})))
 
 (defn header-bar-view [left middle]
   [:nav.tab-bar
@@ -94,23 +69,30 @@
      [header-bar-view (str question-num "/" total-num-questions) (:name (current-section))]
      [progress-bar-view perc]]))
 
-;; ;;(.dir js/console (:current-section @app-state))
-;; ;; (get-in @app-state [:sections (:current-section @app-state) :name])
-
 
 (defn section-view []
   (.log js/console "section-view called")
-  [:div {:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
-   [:div.main-content.inner-wrap
-    [header-view]
-    ;; [question-view]
-    [ctg {:transitionName "question-transition" :className "question-transition-container" :component "div"}
-     ^{:key (current-question)}
-     [question-view (current-question)]]
-    [:a.exit-off-canvas]]])
+  (let [numbah (atom 0)]
+    (.setInterval js/window (fn []
+                              (swap! numbah (comp inc #(mod % 3)))
+                              (.log js/console "numbah now: " @numbah)) 2500)
+    (fn []
+      [:div {:id "quiz-section" :className "off-canvas-wrap" :data-offcanvas true}
+       [:div.main-content.inner-wrap
+        [header-view]
+        ;; [question-view]
+        [ctg {:transitionName "question-transition" :className "question-transition-container" :component "div"}
+         ^{:key (current-question)}
+         [question-view (current-question)]]
+
+        ;; [ctg {:transitionName "question-transition" :className "question-transition-container" :component "div"}
+        ;;  [:div.question-container {:key @numbah}
+        ;;   [:h1 @numbah]]]
+
+        [:a.exit-off-canvas]]])))
 
 (defn quiz-view []
-  ;;(.dir js/console (current-section))
+  (.log js/console "quiz-view called")
   [:div
    [section-view]])
 
