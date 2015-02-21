@@ -4,7 +4,7 @@
 
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2850"]
-                 [cljsjs/react-with-addons "0.12.2-4"]
+                 [cljsjs/react-with-addons "0.12.2-6"]
                  [reagent "0.5.0-alpha3" :exclusions [cljsjs/react]]
                  ;; [reagent "0.4.3"]
                  [reagent-forms "0.4.3"]

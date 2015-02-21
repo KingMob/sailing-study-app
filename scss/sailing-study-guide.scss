@@ -2,6 +2,7 @@
 
 @import "settings";
 @import "foundation";
+@import "hexagon";
 
 // Or selectively include components
 // @import
@@ -130,6 +131,41 @@ $button-incorrect: $alert-color;
 
 body {
   background-image: url("../images/BG_Pattern.gif");
+}
+
+.splash {
+  @include display(flex);
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+  text-align: center;
+  min-height: 100%;
+
+  .logo-hex {
+    position:relative;
+    margin-bottom: 1rem;
+
+    img {
+      position:absolute;
+      margin:auto;
+      top:0;
+      right:0;
+      bottom:0;
+      left:0;
+
+      z-index:10;
+      width: 20vw;
+    }
+  }
+
+  .hexagon-wrapper {
+    display: block;
+    position: absolute;
+  }
+
+  .hexagon {
+    background-color: $app-red;
+  }
 }
 
 .main-content {

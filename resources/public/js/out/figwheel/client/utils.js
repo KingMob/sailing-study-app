@@ -34,34 +34,34 @@ var log__1 = (function (x){
 return log.call(null,new cljs.core.Keyword(null,"info","info",-317069002),x);
 });
 var log__2 = (function (level,arg){
-var f = (function (){var pred__31210 = cljs.core._EQ_;
-var expr__31211 = (cljs.core.truth_(figwheel.client.utils.html_env_QMARK_.call(null))?level:new cljs.core.Keyword(null,"info","info",-317069002));
-if(cljs.core.truth_(pred__31210.call(null,new cljs.core.Keyword(null,"warn","warn",-436710552),expr__31211))){
-return ((function (pred__31210,expr__31211){
-return (function (p1__31203_SHARP_){
-return console.warn(p1__31203_SHARP_);
-});
-;})(pred__31210,expr__31211))
-} else {
-if(cljs.core.truth_(pred__31210.call(null,new cljs.core.Keyword(null,"debug","debug",-1608172596),expr__31211))){
-return ((function (pred__31210,expr__31211){
+var f = (function (){var pred__31211 = cljs.core._EQ_;
+var expr__31212 = (cljs.core.truth_(figwheel.client.utils.html_env_QMARK_.call(null))?level:new cljs.core.Keyword(null,"info","info",-317069002));
+if(cljs.core.truth_(pred__31211.call(null,new cljs.core.Keyword(null,"warn","warn",-436710552),expr__31212))){
+return ((function (pred__31211,expr__31212){
 return (function (p1__31204_SHARP_){
-return console.debug(p1__31204_SHARP_);
+return console.warn(p1__31204_SHARP_);
 });
-;})(pred__31210,expr__31211))
+;})(pred__31211,expr__31212))
 } else {
-if(cljs.core.truth_(pred__31210.call(null,new cljs.core.Keyword(null,"error","error",-978969032),expr__31211))){
-return ((function (pred__31210,expr__31211){
+if(cljs.core.truth_(pred__31211.call(null,new cljs.core.Keyword(null,"debug","debug",-1608172596),expr__31212))){
+return ((function (pred__31211,expr__31212){
 return (function (p1__31205_SHARP_){
-return console.error(p1__31205_SHARP_);
+return console.debug(p1__31205_SHARP_);
 });
-;})(pred__31210,expr__31211))
+;})(pred__31211,expr__31212))
 } else {
-return ((function (pred__31210,expr__31211){
+if(cljs.core.truth_(pred__31211.call(null,new cljs.core.Keyword(null,"error","error",-978969032),expr__31212))){
+return ((function (pred__31211,expr__31212){
 return (function (p1__31206_SHARP_){
-return console.log(p1__31206_SHARP_);
+return console.error(p1__31206_SHARP_);
 });
-;})(pred__31210,expr__31211))
+;})(pred__31211,expr__31212))
+} else {
+return ((function (pred__31211,expr__31212){
+return (function (p1__31207_SHARP_){
+return console.log(p1__31207_SHARP_);
+});
+;})(pred__31211,expr__31212))
 }
 }
 }
