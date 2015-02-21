@@ -72,26 +72,26 @@ $button-incorrect: $alert-color;
 @mixin question-transition($duration: 0.3s) {
 
   // @include transition(transform $duration ease-in);
-  transform: translate3d(0, 0, 0);
+  @include transform(translate3d(0, 0, 0));
 
   &.question-transition-enter {
     @include transition(transform $duration ease-in);
-    transform: translate3d(100%, 0, 0);
+    @include transform(translate3d(100%, 0, 0));
     
     &.question-transition-enter-active {
       // @include transition(transform $duration ease-in);
-      transform: translate3d(0, 0, 0);
+      @include transform(translate3d(0, 0, 0));
     }
   }
  
 
   &.question-transition-leave {
     @include transition(transform $duration ease-in);
-    transform: translate3d(0, 0, 0);
+    @include transform(translate3d(0, 0, 0));
     
     &.question-transition-leave-active {
       // @include transition(transform $duration ease-in);
-      transform: translate3d(-100%, 0, 0);
+      @include transform(translate3d(-100%, 0, 0));
     }
   } 
 }
