@@ -2,6 +2,7 @@
 
 @import "settings";
 @import "foundation";
+@import "hexagon";
 
 // Or selectively include components
 // @import
@@ -46,11 +47,6 @@ $button-correct: $success-color;
 $button-incorrect: $alert-color;
 
 // Mixins
-@mixin flex-column {
-  @include display(flex);
-  @include flex-direction(column);
-}
-
 @mixin full-with-gutter {
 /*   @include grid-column(12); */
   @include padding(0 ($column-gutter / 2));
@@ -61,6 +57,7 @@ $button-incorrect: $alert-color;
   @include flex-wrap(wrap);
   @include justify-content(space-between);
   @include align-items(stretch);
+  @include align-content(stretch);
 
   margin-left: -$spacing;
   padding: $spacing $spacing 0 $spacing;
@@ -100,35 +97,35 @@ $button-incorrect: $alert-color;
 }
 
 
-@include keyframes(slide-out-left) {
-  from {
-    @include transform(translate3d(0, 0, 0));
-  }
-  to {
-    @include transform(translate3d(-100%, 0, 0));
-  }
-} 
+// @include keyframes(slide-out-left) {
+//   from {
+//     @include transform(translate3d(0, 0, 0));
+//   }
+//   to {
+//     @include transform(translate3d(-100%, 0, 0));
+//   }
+// } 
 
-@include keyframes(slide-in-left) {
-  from {
-    @include transform(translate3d(100%, 0, 0));
-  }
-  to {
-    @include transform(translate3d(0, 0, 0));
-  }
-} 
+// @include keyframes(slide-in-left) {
+//   from {
+//     @include transform(translate3d(100%, 0, 0));
+//   }
+//   to {
+//     @include transform(translate3d(0, 0, 0));
+//   }
+// } 
 
-@mixin slide-in-animation($slide-in-class, $slide-out-class, $duration: 0.3s) {
-  @include animation-duration($duration);
-  @include animation-timing-function(ease);
+// @mixin slide-in-animation($slide-in-class, $slide-out-class, $duration: 0.3s) {
+//   @include animation-duration($duration);
+//   @include animation-timing-function(ease);
 
-  &.#{$slide-in-class} {
-    @include animation-name(slide-in-left);
-  }
-  &.#{$slide-out-class} {
-    @include animation-name(slide-out-left);
-  }
-}
+//   &.#{$slide-in-class} {
+//     @include animation-name("slide-in-left");
+//   }
+//   &.#{$slide-out-class} {
+//     @include animation-name("slide-out-left");
+//   }
+// }
 
 // Styles
 
@@ -136,26 +133,71 @@ body {
   background-image: url("../images/BG_Pattern.gif");
 }
 
+.splash {
+  @include display(flex);
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+  text-align: center;
+  min-height: 100%;
+
+  .logo-hex {
+    position:relative;
+    margin-bottom: 1rem;
+
+    img {
+      position:absolute;
+      margin:auto;
+      top:0;
+      right:0;
+      bottom:0;
+      left:0;
+
+      z-index:10;
+      width: 20vw;
+    }
+  }
+
+  .hexagon-wrapper {
+    display: block;
+    position: absolute;
+  }
+
+  .hexagon {
+    background-color: $app-red;
+  }
+}
+
 .main-content {
   min-height: 100vh;
-  @include flex-column;
 
-  .question-transition-container {
-    @include flex-column; 
-    @include flex(1 0 auto);
-    display: flex;
-  }
+  @include display(flex);
+  @include flex-direction(column);
+
 
   .quiz-header {
     @include flex(0 1 auto);
   }
 
-  .question-container {
-    @include flex(1 0 auto);
-    @include flex-column;
+  .question-transition-container {
+    @include display(flex);
+    @include flex(1 0 0);
 
-    // @include question-transition();
-    @include slide-in-animation("question-transition-enter", "question-transition-leave");
+    // width: 200vw;
+    position: relative;
+  }
+
+  .question-container {
+    @include display(flex);
+    @include flex-direction(column);
+
+    // @include flex(0 0 1);
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+
+    @include question-transition(.2s);
+    // @include slide-in-animation("question-transition-enter", "question-transition-leave", 20s);
 
     .question-text-container {
       @include flex(0 0 auto);
@@ -179,7 +221,6 @@ body {
 
       @include grid;
 
-
       background-color: $app-blue-1;
 
       .answer-container {
@@ -194,6 +235,7 @@ body {
       }
 
       .answer {
+        height: 4rem;
 
         @include button($radius:true, $full-width:true, $bg-hover: $button-bg-hover);
         @include button-style($bg: $button-default);

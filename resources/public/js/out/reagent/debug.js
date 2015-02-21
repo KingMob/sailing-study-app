@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-2843 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-2850 {:elide-asserts false}
 goog.provide('reagent.debug');
 goog.require('cljs.core');
 

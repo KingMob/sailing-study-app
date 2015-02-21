@@ -37,18 +37,6 @@
                  (close! c))))
     c))
 
-
-;; (defn dispatch! [tags & message]
-;;   (letfn ([dispatchfn [tag] (put! dispatch-chan {:tag tag :message message} #(println "Put!"))])
-;;     (if (sequential? tags)
-;;       (doseq [tag tags] (dispatchfn tag))
-;;       (dispatchfn tags))))
-
-;; (defn dispatch! [tagortags & message]
-;;   (let [tags (if (sequential? tagortags) tagortags [tagortags])]
-;;     (doseq [tag tags]
-;;       (put! dispatch-chan {:tag tag :message message} #(println "Put!")))))
-
 (defn dispatch! [tagortags message]
   (let [tags (if (sequential? tagortags) tagortags [tagortags])]
     (doseq [tag tags]
