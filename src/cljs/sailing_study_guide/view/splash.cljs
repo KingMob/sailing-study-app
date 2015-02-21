@@ -8,7 +8,7 @@
 
 (defn logo [size color]
   [:div.logo-hex {:style {:width (str size "vw") :height (str size "vw")}}
-   [:img {:src "/images/splash-boat-only.png"}]
+   [:img {:src "images/splash-boat-only.png"}]
    [hexagon size "white" 0]
    [hexagon (* size .9) color (* size .05)]
    [hexagon (* size .8) "white" (* size .1)]
