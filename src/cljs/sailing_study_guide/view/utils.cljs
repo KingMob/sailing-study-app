@@ -7,9 +7,8 @@
   [:div.progress
    [:span.meter {:style {:width (str perc "%")}}]])
 
-(defn hexagon [size color margin]
+(defn hexagon [size color extra-props]
   (let [basis-size (str size "vw")
-        margin-size (str margin "vw")]
-    [:div.hexagon-wrapper {:style {:width basis-size :height basis-size
-                                   :margin-left margin-size :margin-top margin-size}}
+        props (reagent/merge-props {:style {:width basis-size :height basis-size}} extra-props)]
+    [:div.hexagon-wrapper props
      [:div.hexagon {:style {:background-color color}}]]))
