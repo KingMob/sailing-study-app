@@ -7,7 +7,7 @@
   [:div.progress
    [:span.meter {:style {:width (str perc "%")}}]])
 
-(defn- hexagon [size color margin]
+(defn hexagon [size color margin]
   (let [basis-size (str size "vw")
         margin-size (str margin "vw")]
     [:div.hexagon-wrapper {:style {:width basis-size :height basis-size

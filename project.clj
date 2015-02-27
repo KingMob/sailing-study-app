@@ -3,30 +3,30 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2850"]
-                 [cljsjs/react-with-addons "0.12.2-6"]
+                 [org.clojure/clojurescript "0.0-2913"]
+                 [cljsjs/react-with-addons "0.12.2-7"]
                  [reagent "0.5.0-alpha3" :exclusions [cljsjs/react]]
                  ;; [reagent "0.4.3"]
                  [reagent-forms "0.4.3"]
                  [reagent-utils "0.1.2"]
                  ;; [secretary "2.0.0.1-5a007a"]
                  [com.cemerick/piggieback "0.1.5"]
-                 [weasel "0.5.0"]
+                 [weasel "0.6.0"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.4"]
                  [prone "0.8.0"]
-                 [compojure "1.3.1"]
+                 [compojure "1.3.2"]
                  [selmer "0.8.0"]
                  [environ "1.0.0"]
                  [leiningen "2.5.1"]
-                 [figwheel "0.2.4-SNAPSHOT"]
+                 [figwheel "0.2.5-SNAPSHOT"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
 
   :hooks [leiningen.cljsbuild]
   :source-paths ["src/clj" "src/cljs"] ;; necessary for cljsbuild to hook into lein tasks
 
-  :plugins [[lein-cljsbuild "1.0.4"]
-            [lein-figwheel "0.2.2-SNAPSHOT"]
+  :plugins [[lein-cljsbuild "1.0.5"]
+            [lein-figwheel "0.2.5-SNAPSHOT"]
             [com.cemerick/clojurescript.test "0.3.3"]
             [lein-environ "1.0.0"]
             [lein-ring "0.9.1"]
@@ -35,7 +35,7 @@
   ;; :ring {:handler sailreagent.handler/app
   ;;        :uberwar-name "sailreagent.war"}
 
-  :min-lein-version "2.5.0"
+  :min-lein-version "2.5.1"
 
   :uberjar-name "sailing-study-guide.jar"
 
@@ -71,9 +71,9 @@
      :source-paths ["src" "tests"] ;;fixme
      :assert true
      :compiler {
-                :main sailing-study-guide.view
-                :asset-path "js/out"
-                :output-to "resources/public/js/sailing_study_guide_test.js"
+                ;; :main sailing-study-guide.view
+                ;; :asset-path "js/out"
+                :output-to "target/testable.js"
                 :optimizations :whitespace
                 :elide-asserts false
                 :pretty-print true}}
@@ -87,7 +87,7 @@
                 :pretty-print false}}]
 
    :test-commands {"unit-tests-phantomjs" ["phantomjs" :runner
-                                           "out/sailing_study_guide_test.js"]
+                                           "target/testable.js"]
 ;;;;                               "unit-tests-rhino" ["rhino" "-opt" "-1" :rhino-runner
                    ;;                                                   "out/sailing_study_guide_test.js"]
                    }}

@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-2850 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-2913 {:elide-asserts false}
 goog.provide('sailing_study_guide.view');
 goog.require('cljs.core');
 goog.require('sailing_study_guide.core');
@@ -39,25 +39,25 @@ return cljs.core.reset_BANG_.call(null,status,new cljs.core.Keyword(null,"chosen
 ;})(status))
 });
 sailing_study_guide.view.answer_section_view = (function answer_section_view(answers){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.answer-section","div.answer-section",1749317064),(function (){var iter__14084__auto__ = (function iter__20441(s__20442){
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.answer-section","div.answer-section",1749317064),(function (){var iter__17569__auto__ = (function iter__23999(s__24000){
 return (new cljs.core.LazySeq(null,(function (){
-var s__20442__$1 = s__20442;
+var s__24000__$1 = s__24000;
 while(true){
-var temp__4126__auto__ = cljs.core.seq.call(null,s__20442__$1);
+var temp__4126__auto__ = cljs.core.seq.call(null,s__24000__$1);
 if(temp__4126__auto__){
-var s__20442__$2 = temp__4126__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__20442__$2)){
-var c__14082__auto__ = cljs.core.chunk_first.call(null,s__20442__$2);
-var size__14083__auto__ = cljs.core.count.call(null,c__14082__auto__);
-var b__20444 = cljs.core.chunk_buffer.call(null,size__14083__auto__);
-if((function (){var i__20443 = (0);
+var s__24000__$2 = temp__4126__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__24000__$2)){
+var c__17567__auto__ = cljs.core.chunk_first.call(null,s__24000__$2);
+var size__17568__auto__ = cljs.core.count.call(null,c__17567__auto__);
+var b__24002 = cljs.core.chunk_buffer.call(null,size__17568__auto__);
+if((function (){var i__24001 = (0);
 while(true){
-if((i__20443 < size__14083__auto__)){
-var ans = cljs.core._nth.call(null,c__14082__auto__,i__20443);
-cljs.core.chunk_append.call(null,b__20444,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.answer_view,ans], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),ans], null)));
+if((i__24001 < size__17568__auto__)){
+var ans = cljs.core._nth.call(null,c__17567__auto__,i__24001);
+cljs.core.chunk_append.call(null,b__24002,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.answer_view,ans], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),ans], null)));
 
-var G__20445 = (i__20443 + (1));
-i__20443 = G__20445;
+var G__24003 = (i__24001 + (1));
+i__24001 = G__24003;
 continue;
 } else {
 return true;
@@ -65,13 +65,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__20444),iter__20441.call(null,cljs.core.chunk_rest.call(null,s__20442__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__24002),iter__23999.call(null,cljs.core.chunk_rest.call(null,s__24000__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__20444),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__24002),null);
 }
 } else {
-var ans = cljs.core.first.call(null,s__20442__$2);
-return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.answer_view,ans], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),ans], null)),iter__20441.call(null,cljs.core.rest.call(null,s__20442__$2)));
+var ans = cljs.core.first.call(null,s__24000__$2);
+return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.answer_view,ans], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),ans], null)),iter__23999.call(null,cljs.core.rest.call(null,s__24000__$2)));
 }
 } else {
 return null;
@@ -80,13 +80,13 @@ break;
 }
 }),null,null));
 });
-return iter__14084__auto__.call(null,answers);
+return iter__17569__auto__.call(null,answers);
 })()], null);
 });
 sailing_study_guide.view.question_view = (function question_view(quiz_question){
 console.log("question-view called for ",new cljs.core.Keyword(null,"question","question",-1411720117).cljs$core$IFn$_invoke$arity$1(quiz_question));
 
-return new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.question-container","div.question-container",-678898620),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),quiz_question], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.question-text-container","div.question-text-container",1391679038),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3.question-text","h3.question-text",-481973586),new cljs.core.Keyword(null,"question","question",-1411720117).cljs$core$IFn$_invoke$arity$1(quiz_question)], null)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.media-container","div.media-container",-523615011)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.answer_section_view,new cljs.core.Keyword(null,"answers","answers",-2066449770).cljs$core$IFn$_invoke$arity$1(quiz_question)], null)], null);
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.question-container","div.question-container",-678898620),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.question-text-container","div.question-text-container",1391679038),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3.question-text","h3.question-text",-481973586),new cljs.core.Keyword(null,"question","question",-1411720117).cljs$core$IFn$_invoke$arity$1(quiz_question)], null)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.media-container","div.media-container",-523615011)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.answer_section_view,new cljs.core.Keyword(null,"answers","answers",-2066449770).cljs$core$IFn$_invoke$arity$1(quiz_question)], null)], null);
 });
 sailing_study_guide.view.header_bar_view = (function header_bar_view(left,middle){
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"nav.tab-bar","nav.tab-bar",240222619),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"section.left-small.text-center","section.left-small.text-center",-1259024526),left], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"section.middle.tab-bar-section","section.middle.tab-bar-section",-967373016),middle], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"section.right-small","section.right-small",257528220),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"a","a",-2123407586),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),"right-off-canvas-toggle menu-icon",new cljs.core.Keyword(null,"href","href",-793805698),"#"], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991)], null)], null)], null)], null);

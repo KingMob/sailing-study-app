@@ -41,7 +41,7 @@
 
 (defn question-view [quiz-question]
   (.log js/console "question-view called for " (:question quiz-question))
-  [:div.question-container {:key quiz-question}
+  [:div.question-container
    [:div.question-text-container
     [:h3.question-text (:question quiz-question)]]
    [:div.media-container]

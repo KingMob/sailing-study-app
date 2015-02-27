@@ -4,11 +4,11 @@
    [cljsjs.react :as react]
    [sailing-study-guide.view.utils :as util :refer [hexagon]]))
 
-(declare quiz-view)
+(def logo-img "images/splash-boat-only.png")
 
 (defn logo [size color]
   [:div.logo-hex {:style {:width (str size "vw") :height (str size "vw")}}
-   [:img {:src "images/splash-boat-only.png"}]
+   [:img {:src logo-img}]
    [hexagon size "white" 0]
    [hexagon (* size .9) color (* size .05)]
    [hexagon (* size .8) "white" (* size .1)]
