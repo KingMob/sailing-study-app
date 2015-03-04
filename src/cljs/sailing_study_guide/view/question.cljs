@@ -1,9 +1,8 @@
-(ns sailing-study-guide.view
+(ns sailing-study-guide.view.question
   (:require
-   [sailing-study-guide.core :as sail :refer [app-state section question current-section current-question current-question-num num-questions-current-section]]
+   [sailing-study-guide.model :refer [app-state section question current-section current-question current-question-num num-questions-current-section]]
    [sailing-study-guide.dispatch :as dispatcher]
    [sailing-study-guide.view.utils :as util]
-   [sailing-study-guide.view.splash :as splash]
    [reagent.core :as reagent :refer [atom cursor]]
    [cljsjs.react :as react]))
 
@@ -83,10 +82,3 @@
   (.log js/console "quiz-view called")
   [:div
    [section-view]])
-
-
-
-(defn ^:export run []
-  (reagent/render-component [splash/splash quiz-view] (.-body js/document)))
-
-(run)
