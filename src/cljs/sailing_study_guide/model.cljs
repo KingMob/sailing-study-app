@@ -6,16 +6,27 @@
 
 (defonce app-state
   (atom
-   {:current-section 0
+   {:current-quiz 0
+    :current-section 0
     :current-question 0
-    :quiz default-quiz}))
+    :quizzes [default-quiz]}))
 
+;;; Access fns
+(defn quizzes []
+  (:quizzes @app-state))
+
+(defn quiz [idx]
+  (get-in @app-state [:quizzes idx]))
 
 (defn section [idx]
-  (get-in @app-state [:quiz :sections idx]))
+  (get-in @app-state [:quizzes (:current-quiz @app-state) :sections idx]))
 
 (defn question [idx]
-  (get-in @app-state [:quiz :sections (:current-section @app-state) :questions idx]))
+  (get-in @app-state [:quizzes (:current-quiz @app-state) :sections (:current-section @app-state) :questions idx]))
+
+;;; Current quiz/section/question
+(defn current-quiz []
+  (quiz (:current-quiz @app-state)))
 
 (defn current-section []
   (section (:current-section @app-state)))
@@ -23,30 +34,42 @@
 (defn current-question []
   (question (:current-question @app-state)))
 
-(defn current-section-num []
-  (inc (:current-section @app-state)))
+;;; Numerical position
+;; (defn current-quiz-num []
+;;   (inc (:current-quiz @app-state)))
+
+;; (defn current-section-num []
+;;   (inc (:current-section @app-state)))
 
 (defn current-question-num []
   (inc (:current-question @app-state)))
 
 
-(defn num-sections []
-  (count (get-in @app-state [:quiz :sections])))
+;;; Counts
+(defn num-quizzes []
+  (count (:quizzes @app-state)))
 
-(defn num-questions [idx]
-  (count (:questions (section idx))))
+(defn num-sections [quiz]
+  (count (:sections quiz)))
+
+(defn num-sections-current-quiz []
+  (count (get-in @app-state [:quizzes (:current-quiz @app-state)])))
+
+(defn num-questions [section]
+  (count (:questions section)))
 
 (defn num-questions-current-section []
-  (count (get-in @app-state [:quiz :sections (:current-section @app-state) :questions])))
+  (count (get-in @app-state [:quizzes (:current-quiz @app-state) :sections (:current-section @app-state) :questions])))
 
 
+;;; Quiz navigation
 (defn quiz-finished []
   (println "Quiz ended"))
 
 (defn next-question []
   (let [curr-ques (current-question-num)
         curr-sec (current-section-num)
-        curr-num-sections (num-sections)
+        curr-num-sections (num-sections-current-quiz)
         curr-num-questions (num-questions-current-section)]
     (cond
      (< curr-ques curr-num-questions) (swap! app-state assoc :current-question curr-ques)
@@ -62,5 +85,4 @@
    (println "CB called w payload: " answer)
    (when (:correct answer)
      (println "Chose correctly!")
-     ;; (swap! sail/current-question inc)
      (next-question))))

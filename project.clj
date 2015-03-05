@@ -8,13 +8,13 @@
                  [reagent "0.5.0-alpha3" :exclusions [cljsjs/react]]
                  ;; [reagent "0.4.3"]
                  [reagent-forms "0.4.3"]
-                 [reagent-utils "0.1.2"]
+                 [reagent-utils "0.1.3"]
                  ;; [secretary "2.0.0.1-5a007a"]
                  [com.cemerick/piggieback "0.1.5"]
                  [weasel "0.6.0"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.4"]
-                 [prone "0.8.0"]
+                 [prone "0.8.1"]
                  [compojure "1.3.2"]
                  [selmer "0.8.0"]
                  [environ "1.0.0"]
@@ -26,7 +26,6 @@
   :source-paths ["src/clj" "src/cljs"] ;; necessary for cljsbuild to hook into lein tasks
 
   :plugins [[lein-cljsbuild "1.0.5"]
-            [lein-figwheel "0.2.5-SNAPSHOT"]
             [com.cemerick/clojurescript.test "0.3.3"]
             [lein-environ "1.0.0"]
             [lein-ring "0.9.1"]
@@ -41,21 +40,27 @@
 
   :main sailing-study-guide.server
 
-  :clean-targets ^{:protect false} ["resources/public/js/out"]
+  :clean-targets ^{:protect false} ["resources/public/js"]
 
   :minify-assets
   {:assets
    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
   :profiles {
-            :dev {:env {:is-dev true}}
+             :dev {
+                   :env {:is-dev true}
+                   :plugins [[lein-figwheel "0.2.5-SNAPSHOT"]]
+                   :figwheel {
+                              :http-server-root "public" ;; this will be in resources/
+                              :css-dirs ["resources/public/css"]
+                              :open-file-command "emacsclient"}}
             :production {:env {:is-dev false}}}
 
   :cljsbuild
   {
    :builds
    [{:id "dev"
-     :source-paths ["src/cljs" "dev/cljs"]
+     :source-paths ["src/cljs" "env/dev/cljs"]
      :assert true
      :compiler {
                 :main sailing-study-guide.dev
@@ -67,6 +72,7 @@
                 :verbose true
                 :elide-asserts false
                 :source-map true}}
+
     {:id "testing"
      :source-paths ["src" "tests"] ;;fixme
      :assert true
@@ -78,7 +84,7 @@
                 :elide-asserts false
                 :pretty-print true}}
     {:id "production"
-     :source-paths ["src"]
+     :source-paths ["src/cljs" "env/prod/cljs"]
      :compiler {
                 :main sailing-study-guide.view
                 :asset-path "js/out"
@@ -92,7 +98,4 @@
                    ;;                                                   "out/sailing_study_guide_test.js"]
                    }}
 
-  :figwheel {
-             :http-server-root "public" ;; this will be in resources/
-             :css-dirs ["resources/public/css"]
-             :open-file-command "emacsclient"})
+)

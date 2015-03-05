@@ -1,6 +1,6 @@
 (ns sailing-study-guide.view.quizzes
   (:require
-   [sailing-study-guide.model :refer [app-state section]]
+   [sailing-study-guide.model :as model]
    [sailing-study-guide.view.utils :as util]
    [reagent.core :as reagent :refer [atom cursor]]
    [cljsjs.react :as react]))
@@ -8,12 +8,19 @@
 (defn quiz-img [quiz]
   "")
 
+(defn quiz-number [quiz]
+  [:div.quiz-num
+   (:num quiz)])
+
 (defn quiz-card-view [quiz]
   [:div.quiz-card
    [:img.quiz-img {:src (quiz-img quiz)}]
    [:div.separator]
    [quiz-number quiz]
-   [:div.quiz-title ]])
+   [:div.quiz-name (:name quiz)]
+   [:div.quiz-desc (:description quiz)]
+   [quiz-card-footer (num-sections)]
+   ])
 
 (defn header-bar-view []
   [:nav.tab-bar
@@ -26,5 +33,5 @@
   [:div
    [header-bar-view]
    [:div.quiz-list
-    (for [quiz (quizzes)]
+    (for [quiz (model/quizzes)]
       [quiz-card-view quiz])]])
