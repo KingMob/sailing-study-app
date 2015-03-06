@@ -1,6 +1,6 @@
 (ns sailing-study-guide.view.question
   (:require
-   [sailing-study-guide.model :refer [app-state section question current-section current-question current-question-num num-questions-current-section]]
+   [sailing-study-guide.model :as model]
    [sailing-study-guide.dispatch :as dispatcher]
    [sailing-study-guide.view.utils :as util]
    [reagent.core :as reagent :refer [atom cursor]]
@@ -58,11 +58,11 @@
 
 
 (defn header-view []
-  (let [question-num (current-question-num)
-        total-num-questions (num-questions-current-section)
+  (let [question-num (model/current-question-num)
+        total-num-questions (model/num-questions-current-section)
         perc (* 100 (/ question-num total-num-questions))]
     [:div.quiz-header
-     [header-bar-view (str question-num "/" total-num-questions) (:name (current-section))]
+     [header-bar-view (str question-num "/" total-num-questions) (:name (model/current-section))]
      [util/progress-bar-view perc]]))
 
 
@@ -74,8 +74,8 @@
     [header-view]
 
     [ctg {:transitionName "question-transition" :className "question-transition-container" :component "div"}
-     ^{:key (current-question)}
-     [question-view (current-question)]]
+     ^{:key (model/current-question)}
+     [question-view (model/current-question)]]
     [:a.exit-off-canvas]]])
 
 (defn quiz-view []

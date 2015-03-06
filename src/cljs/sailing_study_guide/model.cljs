@@ -15,6 +15,13 @@
 (defn quizzes []
   (:quizzes @app-state))
 
+(defn sections [quiz]
+  (:sections quiz))
+
+(defn questions [section]
+  (:questions section))
+
+
 (defn quiz [idx]
   (get-in @app-state [:quizzes idx]))
 
@@ -38,8 +45,8 @@
 ;; (defn current-quiz-num []
 ;;   (inc (:current-quiz @app-state)))
 
-;; (defn current-section-num []
-;;   (inc (:current-section @app-state)))
+(defn current-section-num []
+  (inc (:current-section @app-state)))
 
 (defn current-question-num []
   (inc (:current-question @app-state)))
@@ -53,13 +60,19 @@
   (count (:sections quiz)))
 
 (defn num-sections-current-quiz []
-  (count (get-in @app-state [:quizzes (:current-quiz @app-state)])))
+  (num-sections (current-quiz)))
 
 (defn num-questions [section]
   (count (:questions section)))
 
 (defn num-questions-current-section []
-  (count (get-in @app-state [:quizzes (:current-quiz @app-state) :sections (:current-section @app-state) :questions])))
+  (num-questions (current-section)))
+
+(defn num-questions-quiz [quiz]
+  (transduce num-questions + (sections quiz)))
+
+(defn num-questions-current-quiz []
+  (num-questions-quiz (current-quiz)))
 
 
 ;;; Quiz navigation
