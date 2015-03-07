@@ -2,6 +2,7 @@
   (:require
    [reagent.core :as reagent :refer [atom cursor]]
    [cljsjs.react :as react]
+   [sailing-study-guide.dispatch :as dispatcher]
    [sailing-study-guide.view.utils :as util :refer [hexagon]]))
 
 (def logo-img "images/splash-boat-only.png")
@@ -19,7 +20,7 @@
    [hexagon (* size .7) color (with-top-left-margin (* size .15))]
    ])
 
-(defn splash [next-page]
-  [:div.splash {:onClick #(reagent/render-component [next-page] (.-body js/document))}
+(defn main []
+  [:div.splash {:onClick #(dispatcher/dispatch! :page-finished :splash)}
    [logo 33 "red"]
    [:h2 "SAIL STUDY"]])

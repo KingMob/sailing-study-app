@@ -1,6 +1,7 @@
 (ns sailing-study-guide.view.quizzes
   (:require
    [sailing-study-guide.model :as model]
+   [sailing-study-guide.dispatch :as dispatcher]
    [sailing-study-guide.view.utils :as util]
    [reagent.core :as reagent :refer [atom cursor]]
    [cljsjs.react :as react]))
@@ -12,10 +13,10 @@
     image
     default-quiz-img))
 
-(defn quiz-card-footer [num-sections]
+(defn quiz-card-footer [num-sections num-questions]
   [:div.quiz-card-footer
    [:div.num-sections num-sections "SECTIONS"]
-   [:div.num-questions "FIXME" "QUESTIONS"]
+   [:div.num-questions num-questions "QUESTIONS"]
    [:div.start-quiz-container
     [:button.start-quiz "Start Quiz"]]])
 
@@ -30,7 +31,7 @@
    [quiz-number quiz]
    [:div.quiz-name (:name quiz)]
    [:div.quiz-desc (:description quiz)]
-   [quiz-card-footer (model/num-sections quiz)]
+   [quiz-card-footer (model/num-sections quiz) (model/num-questions-quiz quiz)]
    ])
 
 (defn header-bar-view []
@@ -40,7 +41,7 @@
     [:a {:class "right-off-canvas-toggle menu-icon" :href "#"}
      [:span]]]])
 
-(defn quiz-list []
+(defn main []
   [:div
    [header-bar-view]
    [:div.quiz-list

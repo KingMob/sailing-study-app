@@ -4,12 +4,17 @@
    [sailing-study-guide.quiz :refer [default-quiz]]
    [sailing-study-guide.dispatch :as dispatcher]))
 
+
+
 (defonce app-state
   (atom
    {:current-quiz 0
     :current-section 0
     :current-question 0
-    :quizzes [default-quiz]}))
+    :quizzes [default-quiz]
+    :current-page :splash}))
+
+(defonce current-page (cursor app-state [:current-page]))
 
 ;;; Access fns
 (defn quizzes []

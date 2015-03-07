@@ -78,7 +78,7 @@
      [question-view (model/current-question)]]
     [:a.exit-off-canvas]]])
 
-(defn quiz-view []
-  (.log js/console "quiz-view called")
+(defn main[]
+  (.log js/console "question/main called")
   [:div
    [section-view]])
