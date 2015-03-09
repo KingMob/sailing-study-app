@@ -74,10 +74,14 @@
   (num-questions (current-section)))
 
 (defn num-questions-quiz [quiz]
-  (transduce num-questions + (sections quiz)))
+  (transduce (map num-questions) + (sections quiz)))
 
 (defn num-questions-current-quiz []
   (num-questions-quiz (current-quiz)))
+
+;;; Misc
+(defn quiz-id [quiz]
+  (str (:name quiz) "-" (:num quiz)))
 
 
 ;;; Quiz navigation

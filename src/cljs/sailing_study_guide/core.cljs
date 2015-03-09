@@ -21,7 +21,7 @@
 (dispatcher/whenever
  :page-finished
  (fn [old-page]
-   (println "Finished with" old-page)
+   (println "Finished with" old-page "page")
    (reset! model/current-page
            (case old-page
                :splash :quizzes
@@ -29,5 +29,9 @@
                :question :quizzes))
    ))
 
+(defn test-container [page]
+  [:div [(pages @page)]])
+
+
 (defn init! []
-  (reagent/render-component [(pages @model/current-page)] (.-body js/document)))
+  (reagent/render-component [test-container model/current-page] (.-body js/document)))

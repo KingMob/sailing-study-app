@@ -15,8 +15,10 @@
 
 (defn quiz-card-footer [num-sections num-questions]
   [:div.quiz-card-footer
-   [:div.num-sections num-sections "SECTIONS"]
-   [:div.num-questions num-questions "QUESTIONS"]
+   [:div.num-sections
+    [:em num-sections] "SECTIONS"]
+   [:div.num-questions
+    [:em num-questions] "QUESTIONS"]
    [:div.start-quiz-container
     [:button.start-quiz "Start Quiz"]]])
 
@@ -29,10 +31,10 @@
    [:img.quiz-img {:src (quiz-img quiz)}]
    [:div.separator]
    [quiz-number quiz]
-   [:div.quiz-name (:name quiz)]
-   [:div.quiz-desc (:description quiz)]
-   [quiz-card-footer (model/num-sections quiz) (model/num-questions-quiz quiz)]
-   ])
+   [:div.quiz-body-text
+    [:div.quiz-name (:name quiz)]
+    [:div.quiz-desc (:description quiz)]]
+   [quiz-card-footer (model/num-sections quiz) (model/num-questions-quiz quiz)]])
 
 (defn header-bar-view []
   [:nav.tab-bar
@@ -46,4 +48,4 @@
    [header-bar-view]
    [:div.quiz-list
     (for [quiz (model/quizzes)]
-      [quiz-card-view quiz])]])
+      ^{:key (model/quiz-id quiz)} [quiz-card-view quiz])]])

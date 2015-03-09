@@ -6130,7 +6130,8 @@ body {
   justify-content: center;
   -ms-flex-pack: center;
   text-align: center;
-  min-height: 100%; }
+  min-height: 100%;
+  height: 100vh; }
   .splash .logo-hex {
     position: relative;
     margin-bottom: 1rem; }
@@ -6148,6 +6149,129 @@ body {
     position: absolute; }
   .splash .hexagon {
     background-color: #ee5665; }
+
+.quiz-list {
+  background-color: white;
+  border-radius: 10px;
+  color: #434a54;
+  margin: .9rem 1.1rem;
+  overflow: hidden; }
+  .quiz-list .quiz-num {
+    float: right;
+    margin-top: -16px; }
+  .quiz-list .quiz-body-text {
+    padding: 1.25rem; }
+  .quiz-list .quiz-name, .quiz-list .quiz-desc {
+    font-family: Roboto, sans; }
+  .quiz-list .quiz-name {
+    color: #4fc1e9;
+    font-size: 1.5rem;
+    font-weight: bold; }
+  .quiz-list .separator {
+    background-color: #ee5665;
+    height: 8px;
+    width: 100%; }
+  .quiz-list .quiz-card-footer {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    background-color: #ededed;
+    color: #99a3b1;
+    font-family: Roboto, sans;
+    font-style: bold;
+    height: 7rem;
+    text-align: center; }
+    .quiz-list .quiz-card-footer > * {
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -moz-box-orient: vertical;
+      box-orient: vertical;
+      -webkit-flex-direction: column;
+      -moz-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-direction: column;
+      -webkit-box-pack: center;
+      -moz-box-pack: center;
+      box-pack: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      justify-content: center;
+      -ms-flex-pack: center; }
+    .quiz-list .quiz-card-footer .num-sections, .quiz-list .quiz-card-footer .num-questions {
+      -webkit-box-flex: 1;
+      -moz-box-flex: 1;
+      box-flex: 1;
+      -webkit-flex: 1 0 auto;
+      -moz-flex: 1 0 auto;
+      flex: 1 0 auto; }
+    .quiz-list .quiz-card-footer .start-quiz-container {
+      -webkit-box-flex: 2;
+      -moz-box-flex: 2;
+      box-flex: 2;
+      -webkit-flex: 2 0 auto;
+      -moz-flex: 2 0 auto;
+      flex: 2 0 auto;
+      padding: 1.25rem; }
+      .quiz-list .quiz-card-footer .start-quiz-container .start-quiz {
+        border-style: solid;
+        border-width: 0;
+        cursor: pointer;
+        font-family: Arvo, serif;
+        font-weight: 700;
+        line-height: normal;
+        margin: 0 0 0;
+        position: relative;
+        text-decoration: none;
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border-radius: 0;
+        display: inline-block;
+        padding-top: 1rem;
+        padding-right: 2rem;
+        padding-bottom: 1.0625rem;
+        padding-left: 2rem;
+        font-size: 1rem;
+        background-color: #233247;
+        border-color: #1c2839;
+        color: #fff;
+        border-radius: 10px;
+        transition: background-color 300ms ease-out;
+        background-color: #ededed;
+        border-color: #bebebe;
+        color: #000; }
+        .quiz-list .quiz-card-footer .start-quiz-container .start-quiz:hover, .quiz-list .quiz-card-footer .start-quiz-container .start-quiz:focus {
+          background-color: #1c2839; }
+        .quiz-list .quiz-card-footer .start-quiz-container .start-quiz:hover, .quiz-list .quiz-card-footer .start-quiz-container .start-quiz:focus {
+          color: #fff; }
+        .quiz-list .quiz-card-footer .start-quiz-container .start-quiz:hover, .quiz-list .quiz-card-footer .start-quiz-container .start-quiz:focus {
+          background-color: #bebebe; }
+        .quiz-list .quiz-card-footer .start-quiz-container .start-quiz:hover, .quiz-list .quiz-card-footer .start-quiz-container .start-quiz:focus {
+          color: #000; }
+    .quiz-list .quiz-card-footer em {
+      color: #4fc1e9;
+      display: block;
+      font-family: Arvo, serif;
+      font-size: 2.5rem;
+      font-style: normal;
+      line-height: 2.5rem; }
 
 .main-content {
   min-height: 100vh;
