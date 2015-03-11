@@ -21,20 +21,24 @@ $font-bold-weight: 700;
 
 // Blues
 $app-blue-1: rgb(35, 50, 71); // #233247; default background
-$app-blue-2: rgb(49, 70, 100);
+$app-blue-2: rgb(49, 70, 100); // header bar bg color
 $app-blue-3: rgb(82, 121, 175);
 $app-blue-4: rgb(42, 151, 186); // #2a97ba
 $app-blue-5: rgb(122, 155, 202);
 $app-blue-6: rgb(90,192,225); // #5AC0E1
 
+
 $quiz-list-blue-1: rgb(79, 193, 233);
 $quiz-list-body-text: rgb(67, 74, 84);
 $quiz-list-footer-text: rgb(153, 163, 177);
+$quiz-list-start-button: rgb(71, 206, 125);
+$quiz-list-start-button-shadow: rgb(40, 154, 125);
 
 $app-blue-gradient-1: rgb(59, 85, 123);
 $app-blue-gradient-2: rgb(40, 59, 86);
 
 $app-gray: rgb(237, 237, 237);
+$app-white: rgb(252, 252, 252);
 
 $app-red: rgb(238, 86, 101);
 
@@ -92,7 +96,7 @@ $success-color: #47ce7d;
 // $info-color: #a0d3e8;
 
 // We use these to make sure border radius matches unless we want it different.
-$global-radius: 10px;
+$global-radius: .3125rem;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
@@ -101,7 +105,8 @@ $global-radius: 10px;
 // $shiny-edge-active-color: rgba(#000, .2);
 
 /* $column-gutter: rem-calc(30); */
-$column-gutter: rem-calc(20px);
+// $column-gutter: rem-calc(20px);
+$column-gutter: 1.25rem;
 $half-column-gutter: $column-gutter / 2;
 
 // Media Query Ranges
@@ -701,10 +706,11 @@ $button-radius: $global-radius;
 
 // $include-html-off-canvas-classes: $include-html-classes;
 
-// $tabbar-bg: #333;
-// $tabbar-height: rem-calc(45);
-// $tabbar-line-height: $tabbar-height;
-// $tabbar-color: #fff;
+$tabbar-bg: $app-blue-2;
+// $tabbar-height: rem-calc(45, $rem-base);
+$tabbar-height: 2.65625rem;
+$tabbar-line-height: $tabbar-height;
+$tabbar-color: $app-white;
 // $tabbar-middle-padding: 0 rem-calc(10);
 
 // Off Canvas Divider Styles
@@ -712,7 +718,7 @@ $button-radius: $global-radius;
 // $tabbar-left-section-border: solid 1px scale-color($tabbar-bg, $lightness: -50%);
 
 // Off Canvas Tab Bar Headers
-// $tabbar-header-color: #fff;
+$tabbar-header-color: $app-white;
 // $tabbar-header-weight: $font-weight-bold;
 // $tabbar-header-line-height: $tabbar-height;
 // $tabbar-header-margin: 0;
@@ -735,7 +741,7 @@ $button-radius: $global-radius;
 // $off-canvas-link-border-bottom: 1px solid scale-color($off-canvas-bg, $lightness: -25%);
 
 // Off Canvas Menu Icon Variables
-// $tabbar-menu-icon-color: #fff;
+$tabbar-menu-icon-color: $app-blue-5;
 // $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
 
 // $tabbar-menu-icon-text-indent: rem-calc(35);
@@ -1216,7 +1222,7 @@ $progress-meter-color: $app-blue-6;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-// $topbar-height: 45px;
+$topbar-height: rem-calc(45px);
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
