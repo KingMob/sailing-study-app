@@ -1,9 +1,8 @@
-(ns sailing-study-guide.view
+(ns sailing-study-guide.view.question
   (:require
-   [sailing-study-guide.core :as sail :refer [app-state section question current-section current-question current-question-num num-questions-current-section]]
+   [sailing-study-guide.model :as model]
    [sailing-study-guide.dispatch :as dispatcher]
    [sailing-study-guide.view.utils :as util]
-   [sailing-study-guide.view.splash :as splash]
    [reagent.core :as reagent :refer [atom cursor]]
    [cljsjs.react :as react]))
 
@@ -41,7 +40,7 @@
 
 (defn question-view [quiz-question]
   (.log js/console "question-view called for " (:question quiz-question))
-  [:div.question-container {:key quiz-question}
+  [:div.question-container
    [:div.question-text-container
     [:h3.question-text (:question quiz-question)]]
    [:div.media-container]
@@ -59,11 +58,11 @@
 
 
 (defn header-view []
-  (let [question-num (current-question-num)
-        total-num-questions (num-questions-current-section)
+  (let [question-num (model/current-question-num)
+        total-num-questions (model/num-questions-current-section)
         perc (* 100 (/ question-num total-num-questions))]
     [:div.quiz-header
-     [header-bar-view (str question-num "/" total-num-questions) (:name (current-section))]
+     [header-bar-view (str question-num "/" total-num-questions) (:name (model/current-section))]
      [util/progress-bar-view perc]]))
 
 
@@ -75,18 +74,11 @@
     [header-view]
 
     [ctg {:transitionName "question-transition" :className "question-transition-container" :component "div"}
-     ^{:key (current-question)}
-     [question-view (current-question)]]
+     ^{:key (model/current-question)}
+     [question-view (model/current-question)]]
     [:a.exit-off-canvas]]])
 
-(defn quiz-view []
-  (.log js/console "quiz-view called")
+(defn main[]
+  (.log js/console "question/main called")
   [:div
    [section-view]])
-
-
-
-(defn ^:export run []
-  (reagent/render-component [splash/splash quiz-view] (.-body js/document)))
-
-(run)

@@ -1,7 +1,10 @@
 (ns sailing-study-guide.quiz)
 
 (defonce ^:export default-quiz
-  {:name "Quiz"
+  {:name "Basic Keelboat Sailing"
+   :num 101
+   :description "Covers basic sailing terminology, boat parts and functions, helm commands, basic sail trim, points of sail, buoyage, seamanship, and safety."
+   :image nil
    :sections [{
                :name "Parts of the boat"
                :questions

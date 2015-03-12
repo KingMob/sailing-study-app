@@ -14,9 +14,10 @@
   (println (str (when-let [ns (:ns m)] (str ns "/")) (:name m)))
   (cond
     (:forms m) (doseq [f (:forms m)]
-                 (print "  ")
-                 (prn f))
-    (:arglists m) (prn (:arglists m)))
+                 (println "  " f))
+    (:arglists m) (if (:macro m)
+                    (prn (:arglists m))
+                    (prn (second (:arglists m)))))
   (if (:special-form m)
     (do
       (println "Special Form")

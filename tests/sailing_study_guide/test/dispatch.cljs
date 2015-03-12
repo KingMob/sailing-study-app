@@ -3,7 +3,6 @@
                    [cljs.core.async.macros :refer [go go-loop]])
   (:require [cemerick.cljs.test :as t]
             [cljs.core.async :refer [chan mult tap put! take! <! >! pub sub unsub close!] :as async]
-            [clairvoyant.core :as trace :include-macros true]
             [sailing-study-guide.dispatch :as dispatcher]))
 
 (defn setup []

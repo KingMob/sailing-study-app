@@ -1,6 +1,6 @@
 (ns sailing-study-guide.dev
   (:require
-   [sailing-study-guide.view :refer [run]]
+   [sailing-study-guide.core :refer [init!]]
    [figwheel.client :as fw]))
 
 ;; Start Figwheel
@@ -9,4 +9,6 @@
            ;; optional callback
            :on-jsload (fn []
                         (print "Reloaded at " (js/Date))
-                        (run))})
+                        (init!))})
+
+(init!)

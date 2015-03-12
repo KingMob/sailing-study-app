@@ -3,30 +3,29 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2850"]
-                 [cljsjs/react-with-addons "0.12.2-6"]
-                 [reagent "0.5.0-alpha3" :exclusions [cljsjs/react]]
+                 [org.clojure/clojurescript "0.0-3053"]
+                 [cljsjs/react-with-addons "0.12.2-8"]
+                 [reagent "0.5.0" :exclusions [cljsjs/react]]
                  ;; [reagent "0.4.3"]
-                 [reagent-forms "0.4.3"]
-                 [reagent-utils "0.1.2"]
+                 [reagent-forms "0.4.4"]
+                 [reagent-utils "0.1.3"]
                  ;; [secretary "2.0.0.1-5a007a"]
                  [com.cemerick/piggieback "0.1.5"]
-                 [weasel "0.5.0"]
+                 [weasel "0.6.0"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.4"]
-                 [prone "0.8.0"]
-                 [compojure "1.3.1"]
-                 [selmer "0.8.0"]
+                 [prone "0.8.1"]
+                 [compojure "1.3.2"]
+                 [selmer "0.8.1"]
                  [environ "1.0.0"]
                  [leiningen "2.5.1"]
-                 [figwheel "0.2.4-SNAPSHOT"]
+                 [figwheel "0.2.5-SNAPSHOT"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
 
   :hooks [leiningen.cljsbuild]
   :source-paths ["src/clj" "src/cljs"] ;; necessary for cljsbuild to hook into lein tasks
 
-  :plugins [[lein-cljsbuild "1.0.4"]
-            [lein-figwheel "0.2.2-SNAPSHOT"]
+  :plugins [[lein-cljsbuild "1.0.5"]
             [com.cemerick/clojurescript.test "0.3.3"]
             [lein-environ "1.0.0"]
             [lein-ring "0.9.1"]
@@ -35,27 +34,33 @@
   ;; :ring {:handler sailreagent.handler/app
   ;;        :uberwar-name "sailreagent.war"}
 
-  :min-lein-version "2.5.0"
+  :min-lein-version "2.5.1"
 
   :uberjar-name "sailing-study-guide.jar"
 
   :main sailing-study-guide.server
 
-  :clean-targets ^{:protect false} ["resources/public/js/out"]
+  :clean-targets ^{:protect false} ["resources/public/js"]
 
   :minify-assets
   {:assets
    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
   :profiles {
-            :dev {:env {:is-dev true}}
+             :dev {
+                   :env {:is-dev true}
+                   :plugins [[lein-figwheel "0.2.5-SNAPSHOT"]]
+                   :figwheel {
+                              :http-server-root "public" ;; this will be in resources/
+                              :css-dirs ["resources/public/css"]
+                              :open-file-command "emacsclient"}}
             :production {:env {:is-dev false}}}
 
   :cljsbuild
   {
    :builds
    [{:id "dev"
-     :source-paths ["src/cljs" "dev/cljs"]
+     :source-paths ["src/cljs" "env/dev/cljs"]
      :assert true
      :compiler {
                 :main sailing-study-guide.dev
@@ -67,18 +72,19 @@
                 :verbose true
                 :elide-asserts false
                 :source-map true}}
+
     {:id "testing"
      :source-paths ["src" "tests"] ;;fixme
      :assert true
      :compiler {
-                :main sailing-study-guide.view
-                :asset-path "js/out"
-                :output-to "resources/public/js/sailing_study_guide_test.js"
+                ;; :main sailing-study-guide.view
+                ;; :asset-path "js/out"
+                :output-to "target/testable.js"
                 :optimizations :whitespace
                 :elide-asserts false
                 :pretty-print true}}
     {:id "production"
-     :source-paths ["src"]
+     :source-paths ["src/cljs" "env/prod/cljs"]
      :compiler {
                 :main sailing-study-guide.view
                 :asset-path "js/out"
@@ -87,12 +93,9 @@
                 :pretty-print false}}]
 
    :test-commands {"unit-tests-phantomjs" ["phantomjs" :runner
-                                           "out/sailing_study_guide_test.js"]
+                                           "target/testable.js"]
 ;;;;                               "unit-tests-rhino" ["rhino" "-opt" "-1" :rhino-runner
                    ;;                                                   "out/sailing_study_guide_test.js"]
                    }}
 
-  :figwheel {
-             :http-server-root "public" ;; this will be in resources/
-             :css-dirs ["resources/public/css"]
-             :open-file-command "emacsclient"})
+)

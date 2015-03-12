@@ -77,55 +77,24 @@ $button-incorrect: $alert-color;
   &.question-transition-enter {
     @include transition(transform $duration ease-in);
     @include transform(translate3d(100%, 0, 0));
-    
+
     &.question-transition-enter-active {
       // @include transition(transform $duration ease-in);
       @include transform(translate3d(0, 0, 0));
     }
   }
- 
+
 
   &.question-transition-leave {
     @include transition(transform $duration ease-in);
     @include transform(translate3d(0, 0, 0));
-    
+
     &.question-transition-leave-active {
       // @include transition(transform $duration ease-in);
       @include transform(translate3d(-100%, 0, 0));
     }
-  } 
+  }
 }
-
-
-// @include keyframes(slide-out-left) {
-//   from {
-//     @include transform(translate3d(0, 0, 0));
-//   }
-//   to {
-//     @include transform(translate3d(-100%, 0, 0));
-//   }
-// } 
-
-// @include keyframes(slide-in-left) {
-//   from {
-//     @include transform(translate3d(100%, 0, 0));
-//   }
-//   to {
-//     @include transform(translate3d(0, 0, 0));
-//   }
-// } 
-
-// @mixin slide-in-animation($slide-in-class, $slide-out-class, $duration: 0.3s) {
-//   @include animation-duration($duration);
-//   @include animation-timing-function(ease);
-
-//   &.#{$slide-in-class} {
-//     @include animation-name("slide-in-left");
-//   }
-//   &.#{$slide-out-class} {
-//     @include animation-name("slide-out-left");
-//   }
-// }
 
 // Styles
 
@@ -140,6 +109,7 @@ body {
   @include justify-content(center);
   text-align: center;
   min-height: 100%;
+  height: 100vh;
 
   .logo-hex {
     position:relative;
@@ -165,6 +135,109 @@ body {
 
   .hexagon {
     background-color: $app-red;
+  }
+
+  .app-name {
+    font-size: 1.45rem;
+  }
+}
+
+.quiz-list {
+  background-color: white;
+  border-radius: $global-radius;
+  color: $quiz-list-body-text;
+  margin: .4375rem .59375rem;
+  overflow: hidden;
+
+  .quiz-num {
+    float: right;
+    margin-top: -$rem-base;
+  }
+
+  .quiz-body-text {
+    padding: .625rem;
+  }
+
+  .quiz-name, .quiz-desc {
+    font-family: $secondary-font-family;
+  }
+
+  .quiz-name {
+    color: $quiz-list-blue-1;
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+
+  .quiz-desc {
+    font-size: .75rem;
+  }
+
+  .separator {
+    background-color: $app-red;
+    height: .25rem;
+    width: 100%
+  }
+
+  .quiz-card-footer {
+    $border-adjustment-factor: 10%;
+
+    @include display(flex);
+    @include flex-direction(row);
+
+    background-color: $app-gray;
+    color: $quiz-list-footer-text;
+    font-family: $secondary-font-family;
+    font-size: .5rem;
+    font-style: bold;
+    height: 3.5rem;
+    text-align: center;
+
+    > * {
+      @include display(flex);
+      @include flex-direction(column);
+      @include justify-content(center);
+    }
+
+    em {
+      color: $quiz-list-blue-1;
+      display: block;
+      font-family: $body-font-family;
+      font-size: 1.40625rem;
+      font-style: normal;
+      line-height: 1.40625rem;
+    }
+
+    .num-sections, .num-questions {
+      @include flex(1 0 0);
+    }
+
+    .num-sections {
+      border-right: darken($app-gray, $border-adjustment-factor) solid 1px;
+    }
+
+    .num-questions {
+      border-left: lighten($app-gray, $border-adjustment-factor) solid 1px;
+      border-right: darken($app-gray, $border-adjustment-factor) solid 1px;
+    }
+
+    .start-quiz-container {
+      @include flex(2 0 0);
+
+      border-left: lighten($app-gray, $border-adjustment-factor) solid 1px;
+      padding: .625rem;
+
+      .start-quiz {
+        @include button($radius:true, $full-width:true, $bg-hover: $button-bg-hover);
+        // @include button-size($padding:$button-tny, $full-width:true);
+        @include button-style($bg: $quiz-list-start-button);
+
+        box-shadow: 0 .09375rem 0 0 $quiz-list-start-button-shadow;
+        font-family: $secondary-font-family;
+        font-size: .875rem;
+        padding-top: .5rem;
+        padding-bottom: .625rem;
+      }
+    }
   }
 }
 
@@ -196,7 +269,7 @@ body {
     height: 100%;
     position: absolute;
 
-    @include question-transition(.2s);
+    @include question-transition(0.2s);
     // @include slide-in-animation("question-transition-enter", "question-transition-leave", 20s);
 
     .question-text-container {

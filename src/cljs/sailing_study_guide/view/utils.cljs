@@ -1,15 +1,21 @@
 (ns sailing-study-guide.view.utils
   (:require
+   [clojure.string :as s]
    [reagent.core :as reagent :refer [atom cursor]]
-   [cljsjs.react :as react]))
+   ))
+
+(defn strip-css-units [size]
+  (s/replace size #"[^0-9.]" ""))
 
 (defn progress-bar-view [perc]
   [:div.progress
    [:span.meter {:style {:width (str perc "%")}}]])
 
-(defn- hexagon [size color margin]
+(defn hexagon [size color extra-props]
   (let [basis-size (str size "vw")
-        margin-size (str margin "vw")]
-    [:div.hexagon-wrapper {:style {:width basis-size :height basis-size
-                                   :margin-left margin-size :margin-top margin-size}}
+        props (reagent/merge-props {:style {:width basis-size :height basis-size}} extra-props)]
+    [:div.hexagon-wrapper props
      [:div.hexagon {:style {:background-color color}}]]))
+
+(defn nested-hexagons [size base-color content]
+  )
