@@ -8,6 +8,18 @@ if(typeof sailing_study_guide.model.app_state !== 'undefined'){
 } else {
 sailing_study_guide.model.app_state = reagent.core.atom.call(null,new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"current-quiz","current-quiz",-1542592384),(0),new cljs.core.Keyword(null,"current-section","current-section",1519906460),(0),new cljs.core.Keyword(null,"current-question","current-question",-749753188),(0),new cljs.core.Keyword(null,"quizzes","quizzes",-1946963243),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.quiz.default_quiz], null),new cljs.core.Keyword(null,"current-page","current-page",-101294180),new cljs.core.Keyword(null,"splash","splash",-1122760796)], null));
 }
+if(typeof sailing_study_guide.model.current_quiz_idx !== 'undefined'){
+} else {
+sailing_study_guide.model.current_quiz_idx = reagent.core.cursor.call(null,sailing_study_guide.model.app_state,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"current-quiz","current-quiz",-1542592384)], null));
+}
+if(typeof sailing_study_guide.model.current_section_idx !== 'undefined'){
+} else {
+sailing_study_guide.model.current_section_idx = reagent.core.cursor.call(null,sailing_study_guide.model.app_state,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"current-section","current-section",1519906460)], null));
+}
+if(typeof sailing_study_guide.model.current_question_idx !== 'undefined'){
+} else {
+sailing_study_guide.model.current_question_idx = reagent.core.cursor.call(null,sailing_study_guide.model.app_state,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"current-question","current-question",-749753188)], null));
+}
 if(typeof sailing_study_guide.model.current_page !== 'undefined'){
 } else {
 sailing_study_guide.model.current_page = reagent.core.cursor.call(null,sailing_study_guide.model.app_state,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"current-page","current-page",-101294180)], null));
@@ -69,6 +81,9 @@ return sailing_study_guide.model.num_questions_quiz.call(null,sailing_study_guid
 sailing_study_guide.model.quiz_id = (function sailing_study_guide$model$quiz_id(quiz){
 return [cljs.core.str(new cljs.core.Keyword(null,"name","name",1843675177).cljs$core$IFn$_invoke$arity$1(quiz)),cljs.core.str("-"),cljs.core.str(new cljs.core.Keyword(null,"num","num",1985240673).cljs$core$IFn$_invoke$arity$1(quiz))].join('');
 });
+sailing_study_guide.model.start_quiz = (function sailing_study_guide$model$start_quiz(quiz_num){
+return cljs.core.List.EMPTY;
+});
 sailing_study_guide.model.quiz_finished = (function sailing_study_guide$model$quiz_finished(){
 return cljs.core.println.call(null,"Quiz ended");
 });
@@ -90,9 +105,20 @@ return sailing_study_guide.model.quiz_finished.call(null);
 }
 }
 });
-sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"answer-chosen","answer-chosen",-703375083),(function (answer){
-cljs.core.println.call(null,"CB called w payload: ",answer);
+sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"start-quiz","start-quiz",-1828957706),(function (quiz_idx){
+if(cljs.core.truth_(quiz_idx)){
+cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_quiz_idx,quiz_idx);
 
+cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_section_idx,(0));
+
+cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_question_idx,(0));
+
+return cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_page,new cljs.core.Keyword(null,"question","question",-1411720117));
+} else {
+return null;
+}
+}));
+sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"answer-chosen","answer-chosen",-703375083),(function (answer){
 if(cljs.core.truth_(new cljs.core.Keyword(null,"correct","correct",984806334).cljs$core$IFn$_invoke$arity$1(answer))){
 cljs.core.println.call(null,"Chose correctly!");
 

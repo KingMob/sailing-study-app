@@ -14,6 +14,9 @@
     :quizzes [default-quiz]
     :current-page :splash}))
 
+(defonce current-quiz-idx (cursor app-state [:current-quiz]))
+(defonce current-section-idx (cursor app-state [:current-section]))
+(defonce current-question-idx (cursor app-state [:current-question]))
 (defonce current-page (cursor app-state [:current-page]))
 
 ;;; Access fns
@@ -85,6 +88,8 @@
 
 
 ;;; Quiz navigation
+(defn start-quiz [quiz-num]
+  ())
 (defn quiz-finished []
   (println "Quiz ended"))
 
@@ -102,9 +107,17 @@
      )))
 
 (dispatcher/whenever
+ :start-quiz
+ (fn [quiz-idx]
+   (when quiz-idx
+     (reset! current-quiz-idx quiz-idx)
+     (reset! current-section-idx 0)
+     (reset! current-question-idx 0)
+     (reset! current-page :question))))
+
+(dispatcher/whenever
  :answer-chosen
  (fn [answer]
-   (println "CB called w payload: " answer)
    (when (:correct answer)
      (println "Chose correctly!")
      (next-question))))
