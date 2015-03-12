@@ -179,6 +179,8 @@ body {
   }
 
   .quiz-card-footer {
+    $border-adjustment-factor: 10%;
+
     @include display(flex);
     @include flex-direction(row);
 
@@ -209,9 +211,19 @@ body {
       @include flex(1 0 0);
     }
 
+    .num-sections {
+      border-right: darken($app-gray, $border-adjustment-factor) solid 1px;
+    }
+
+    .num-questions {
+      border-left: lighten($app-gray, $border-adjustment-factor) solid 1px;
+      border-right: darken($app-gray, $border-adjustment-factor) solid 1px;
+    }
+
     .start-quiz-container {
       @include flex(2 0 0);
 
+      border-left: lighten($app-gray, $border-adjustment-factor) solid 1px;
       padding: .625rem;
 
       .start-quiz {
