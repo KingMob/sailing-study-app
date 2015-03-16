@@ -17,8 +17,8 @@ sailing_study_guide.core.pages = new cljs.core.PersistentArrayMap(null, 3, [new 
 sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"page-finished","page-finished",-1722727657),(function (old_page){
 cljs.core.println.call(null,"Finished with",old_page,"page");
 
-return cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_page,(function (){var G__22719 = (((old_page instanceof cljs.core.Keyword))?old_page.fqn:null);
-switch (G__22719) {
+return cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_page,(function (){var G__24992 = (((old_page instanceof cljs.core.Keyword))?old_page.fqn:null);
+switch (G__24992) {
 case "question":
 return new cljs.core.Keyword(null,"quizzes","quizzes",-1946963243);
 
@@ -37,11 +37,11 @@ throw (new Error([cljs.core.str("No matching clause: "),cljs.core.str(old_page)]
 }
 })());
 }));
-sailing_study_guide.core.test_container = (function sailing_study_guide$core$test_container(page){
+sailing_study_guide.core.page_container = (function sailing_study_guide$core$page_container(page){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.core.pages.call(null,cljs.core.deref.call(null,page))], null)], null);
 });
 sailing_study_guide.core.init_BANG_ = (function sailing_study_guide$core$init_BANG_(){
-return reagent.core.render_component.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.core.test_container,sailing_study_guide.model.current_page], null),document.body);
+return reagent.core.render_component.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.core.page_container,sailing_study_guide.model.current_page], null),document.body);
 });
 
 //# sourceMappingURL=core.js.map

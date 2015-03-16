@@ -12,12 +12,14 @@
     :current-section 0
     :current-question 0
     :quizzes [default-quiz]
+    :responses []
     :current-page :splash}))
 
 (defonce current-quiz-idx (cursor app-state [:current-quiz]))
 (defonce current-section-idx (cursor app-state [:current-section]))
 (defonce current-question-idx (cursor app-state [:current-question]))
 (defonce current-page (cursor app-state [:current-page]))
+(defonce responses (cursor app-state [:responses]))
 
 ;;; Access fns
 (defn quizzes []
@@ -88,10 +90,11 @@
 
 
 ;;; Quiz navigation
-(defn start-quiz [quiz-num]
-  ())
 (defn quiz-finished []
   (println "Quiz ended"))
+
+(defn store-response [question answer]
+  (swap! responses conj [(:question question) answer]))
 
 (defn next-question []
   (let [curr-ques (current-question-num)
@@ -117,7 +120,9 @@
 
 (dispatcher/whenever
  :answer-chosen
- (fn [answer]
+ (fn [{:keys [question answer]}]
+   (println "Chose" answer "to" question)
+   (store-response question answer)
    (when (:correct answer)
      (println "Chose correctly!")
      (next-question))))

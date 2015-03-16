@@ -2,7 +2,7 @@
   (:require
    [sailing-study-guide.model :as model]
    [sailing-study-guide.dispatch :as dispatcher]
-   [sailing-study-guide.view.utils :as util]
+   [sailing-study-guide.view.utils :as util :refer [nested-hexagons]]
    [reagent.core :as reagent :refer [atom cursor]]
    [cljsjs.react :as react]))
 
@@ -25,7 +25,7 @@
 
 (defn quiz-number [quiz]
   [:div.quiz-num
-   (:num quiz)])
+   [nested-hexagons 2 "12vw" "red" (:num quiz)]])
 
 (defn quiz-card-view [idx quiz]
   [:div.quiz-card

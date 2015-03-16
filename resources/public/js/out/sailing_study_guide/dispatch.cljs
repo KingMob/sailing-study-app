@@ -2,12 +2,12 @@
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [cljs.core.async :refer [chan mult tap put! <! >! pub sub unsub close!]]))
 
-
+(defonce default-buffer-size 5)
 (defonce *dispatcher-logging-enabled* true)
 
-(defonce ^:private dispatch-chan (chan 1))
+(defonce ^:private dispatch-chan (chan default-buffer-size))
 (defonce ^:private dispatch-mult (mult dispatch-chan))
-(defonce ^:private dispatch-pub-chan (chan 1))
+(defonce ^:private dispatch-pub-chan (chan default-buffer-size))
 (defonce ^:private dispatch-pub (pub dispatch-pub-chan #(:tag %)))
 (tap dispatch-mult dispatch-pub-chan)
 
@@ -27,14 +27,14 @@
 (defn whenever [tag cb]
   (let [c (register tag)]
     (go-loop [payload (<! c)]
-             (if payload
-               (do
-;;                  (println "Processing mesg in " payload)
-                 (cb (retrieve-message payload))
-                 (recur (<! c)))
-               (do
-                 (println "Leaving loop for " c)
-                 (close! c))))
+      (if payload
+        (do
+          ;;                  (println "Processing mesg in " payload)
+          (cb (retrieve-message payload))
+          (recur (<! c)))
+        (do
+          (println "Leaving loop for " c)
+          (close! c))))
     c))
 
 (defn dispatch! [tagortags message]
