@@ -6060,6 +6060,21 @@ th.hide-for-touch {
 
   th.show-for-print {
     display: table-cell !important; } }
+.nested-hexagons-wrapper {
+  position: relative; }
+  .nested-hexagons-wrapper .hexagon-wrapper {
+    display: block;
+    position: absolute; }
+  .nested-hexagons-wrapper .content {
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    z-index: 1000;
+    text-align: center; }
+
 .hexagon-wrapper {
   text-align: center;
   position: relative;
@@ -6159,6 +6174,7 @@ body {
   margin: .4375rem .59375rem;
   overflow: hidden; }
   .quiz-list .quiz-num {
+    color: white;
     float: right;
     margin-top: -16px; }
   .quiz-list .quiz-body-text {

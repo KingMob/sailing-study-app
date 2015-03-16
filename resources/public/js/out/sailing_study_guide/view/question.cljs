@@ -14,26 +14,27 @@
    correct "answer-correct success"
    :else "answer-incorrect alert"))
 
-(defn answer-view [answer]
+(defn answer-view [quiz-question answer]
   (println "answer-view called")
   (let [status (atom :unchosen)]
     ;; (println "Status: "@status)
-    (fn [answer]
+    (fn [quiz-question answer]
       [:div.answer-container
        [:button
         {
          :onClick (fn [e]
-                    (dispatcher/dispatch! :answer-chosen answer)
+                    (dispatcher/dispatch! :answer-chosen
+                                          {:question quiz-question :answer answer})
                     (reset! status :chosen))
          :class (str "answer " (answer-css-class @status (:correct answer)))}
         (:text answer)]])))
 
 
-(defn answer-section-view [answers]
+(defn answer-section-view [quiz-question answers]
   ;; (.dir js/console answers)
   [:div.answer-section
    (for [ans answers]
-     ^{:key ans} [answer-view ans]
+     ^{:key ans} [answer-view quiz-question ans]
      ;; {:init-state {:answer-chan answer-chan}}
      )])
 
@@ -44,7 +45,7 @@
    [:div.question-text-container
     [:h3.question-text (:question quiz-question)]]
    [:div.media-container]
-   [answer-section-view (:answers quiz-question)]])
+   [answer-section-view quiz-question (:answers quiz-question)]])
 
 
 (defn header-bar-view [left middle]

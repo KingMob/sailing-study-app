@@ -1,3 +1,23 @@
+.nested-hexagons-wrapper {
+  position:relative;
+
+  .hexagon-wrapper {
+    display: block;
+    position: absolute;
+  }
+
+  .content {
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    z-index: 1000;
+    text-align: center;
+  }
+}
+
 .hexagon-wrapper {
   text-align: center;
   // margin: 20px;

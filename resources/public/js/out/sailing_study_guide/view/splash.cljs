@@ -3,24 +3,20 @@
    [reagent.core :as reagent :refer [atom cursor]]
    [cljsjs.react :as react]
    [sailing-study-guide.dispatch :as dispatcher]
-   [sailing-study-guide.view.utils :as util :refer [hexagon]]))
+   [sailing-study-guide.view.utils :as util :refer [hexagon nested-hexagons adjust-css-size]]))
 
 (def logo-img "images/splash-boat-only.png")
 
 (defn- with-top-left-margin [margin]
-  (let [marginvw (str margin "vw")]
-    {:style {:margin-left marginvw :margin-top marginvw}}))
+  {:style {:margin-left margin :margin-top margin}})
 
 (defn logo [size color]
-  [:div.logo-hex {:style {:width (str size "vw") :height (str size "vw")}}
+  [:div.logo-hex {:style {:width size :height size}}
    [:img {:src logo-img}]
-   [hexagon size "white"]
-   [hexagon (* size .9) color (with-top-left-margin (* size .05))]
-   [hexagon (* size .8) "white" (with-top-left-margin (* size .1))]
-   [hexagon (* size .7) color (with-top-left-margin (* size .15))]
+   [nested-hexagons 4 "34vw" "red"]
    ])
 
 (defn main []
   [:div.splash {:onClick #(dispatcher/dispatch! :page-finished :splash)}
-   [logo 34 "red"]
+   [logo "34vw" "red"]
    [:div.app-name "SAIL STUDY"]])

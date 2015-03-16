@@ -29,9 +29,9 @@
                :question :quizzes))
    ))
 
-(defn test-container [page]
+(defn page-container [page]
   [:div [(pages @page)]])
 
 
 (defn init! []
-  (reagent/render-component [test-container model/current-page] (.-body js/document)))
+  (reagent/render-component [page-container model/current-page] (.-body js/document)))
