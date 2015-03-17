@@ -1,8 +1,9 @@
-// Compiled by ClojureScript 0.0-3053 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-3123 {:elide-asserts false}
 goog.provide('sailing_study_guide.view.quizzes');
 goog.require('cljs.core');
 goog.require('reagent.core');
 goog.require('sailing_study_guide.model');
+goog.require('cljsjs.react');
 goog.require('sailing_study_guide.view.utils');
 goog.require('sailing_study_guide.dispatch');
 sailing_study_guide.view.quizzes.default_quiz_img = "http://cdn.makeagif.com/media/6-13-2014/A9qwsI.gif";
@@ -21,7 +22,7 @@ return sailing_study_guide.dispatch.dispatch_BANG_.call(null,new cljs.core.Keywo
 })], null),"Start Quiz"], null)], null)], null);
 });
 sailing_study_guide.view.quizzes.quiz_number = (function sailing_study_guide$view$quizzes$quiz_number(quiz){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.quiz-num","div.quiz-num",2065174305),new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.utils.nested_hexagons,(2),"12vw","red",new cljs.core.Keyword(null,"num","num",1985240673).cljs$core$IFn$_invoke$arity$1(quiz)], null)], null);
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.quiz-num-hex","div.quiz-num-hex",-1009492600),new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.utils.nested_hexagons,(2),.125,"red",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.quiz-num","div.quiz-num",2065174305),new cljs.core.Keyword(null,"num","num",1985240673).cljs$core$IFn$_invoke$arity$1(quiz)], null)], null)], null);
 });
 sailing_study_guide.view.quizzes.quiz_card_view = (function sailing_study_guide$view$quizzes$quiz_card_view(idx,quiz){
 return new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.quiz-card","div.quiz-card",-1060183273),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"img.quiz-img","img.quiz-img",-1787925303),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"src","src",-1651076051),sailing_study_guide.view.quizzes.quiz_img.call(null,quiz)], null)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.separator","div.separator",1779164091)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.quizzes.quiz_number,quiz], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.quiz-body-text","div.quiz-body-text",1924336866),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.quiz-name","div.quiz-name",406211829),new cljs.core.Keyword(null,"name","name",1843675177).cljs$core$IFn$_invoke$arity$1(quiz)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.quiz-desc","div.quiz-desc",589584747),new cljs.core.Keyword(null,"description","description",-1428560544).cljs$core$IFn$_invoke$arity$1(quiz)], null)], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.quizzes.quiz_card_footer,sailing_study_guide.model.num_sections.call(null,quiz),sailing_study_guide.model.num_questions_quiz.call(null,quiz),idx], null)], null);

@@ -7,7 +7,8 @@
    [sailing-study-guide.dispatch :as dispatcher]
    [sailing-study-guide.view.splash :as splash]
    [sailing-study-guide.view.quizzes :as quizzes]
-   [sailing-study-guide.view.question :as question]))
+   [sailing-study-guide.view.question :as question]
+   [sailing-study-guide.view.score :as score]))
 
 (enable-console-print!)
 (set! cljs.core/*print-meta* true)
@@ -16,7 +17,8 @@
 (defonce pages
   {:splash splash/main
    :quizzes quizzes/main
-   :question question/main})
+   :question question/main
+   :score score/main})
 
 (dispatcher/whenever
  :page-finished
@@ -26,7 +28,7 @@
            (case old-page
                :splash :quizzes
                :quizzes :question
-               :question :quizzes))
+               :question :score))
    ))
 
 (defn page-container [page]

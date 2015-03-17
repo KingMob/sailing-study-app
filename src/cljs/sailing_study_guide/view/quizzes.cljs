@@ -24,8 +24,9 @@
      "Start Quiz"]]])
 
 (defn quiz-number [quiz]
-  [:div.quiz-num
-   [nested-hexagons 2 "12vw" "red" (:num quiz)]])
+  [:div.quiz-num-hex
+   [nested-hexagons 2 .125 "red"
+    [:div.quiz-num (:num quiz)]]])
 
 (defn quiz-card-view [idx quiz]
   [:div.quiz-card

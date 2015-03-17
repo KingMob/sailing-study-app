@@ -112,29 +112,10 @@ body {
   height: 100vh;
 
   .logo-hex {
-    position:relative;
+    $splash-logo-size: 40.75vw; // can't use vw, vh, or rem with SVGs
+    height: $splash-logo-size;
+    width: $splash-logo-size;
     margin-bottom: 1rem;
-
-    img {
-      position:absolute;
-      margin:auto;
-      top:0;
-      right:0;
-      bottom:0;
-      left:0;
-
-      z-index:10;
-      width: 20vw;
-    }
-  }
-
-  .hexagon-wrapper {
-    display: block;
-    position: absolute;
-  }
-
-  .hexagon {
-    background-color: $app-red;
   }
 
   .app-name {
@@ -143,16 +124,33 @@ body {
 }
 
 .quiz-list {
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(center);
+}
+
+.quiz-card {
+  @include flex(0 0 auto);
+
   background-color: white;
   border-radius: $global-radius;
   color: $quiz-list-body-text;
-  margin: .4375rem .59375rem;
+  margin: .4375rem .4375rem;
   overflow: hidden;
 
-  .quiz-num {
-    color: white;
+  .quiz-num-hex {
+    $quiz-num-hex-size: 4rem; // Can't use vw, vh, or rem units with SVGs
+
     float: right;
-    margin-top: -$rem-base;
+    height: $quiz-num-hex-size;
+    margin-top: -$quiz-num-hex-size / 2;
+    width: $quiz-num-hex-size;
+
+    .quiz-num {
+      color: white;
+      font-size: 1.125rem;
+      text-align: center;
+    }
   }
 
   .quiz-body-text {

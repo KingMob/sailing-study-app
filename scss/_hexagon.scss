@@ -1,55 +1,21 @@
-.nested-hexagons-wrapper {
-  position:relative;
+.hexagon-wrapper {
+  height: 100%;
+  position: relative;
+  width: 100%;
 
-  .hexagon-wrapper {
-    display: block;
+  svg, .content {
     position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  $default-z-index: 1;
+  svg {
+    z-index: $default-z-index;
   }
 
   .content {
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    z-index: 1000;
-    text-align: center;
+    z-index: $default-z-index + 1;
   }
-}
-
-.hexagon-wrapper {
-  text-align: center;
-  // margin: 20px;
-  position: relative;
-  display: inline-block;
-  @include transform(rotateZ(30deg));
-}
-
-.hexagon {
-  height: 100%;
-  width: calc(100% * 0.57735);
-  display: inline-block;
-}
-
-.hexagon:before {
-  position: absolute;
-  top: 0;
-  right: calc((100% / 2) - ((100% * 0.57735) / 2));
-  background-color: inherit;
-  height: inherit;
-  width: inherit;
-  content: '';
-  @include transform(rotateZ(60deg));
-}
-
-.hexagon:after {
-  position: absolute;
-  top: 0;
-  right: calc((100% / 2) - ((100% * 0.57735) / 2));
-  background-color: inherit;
-  height: inherit;
-  width: inherit;
-  content: '';
-  @include transform(rotateZ(-60deg));
 }

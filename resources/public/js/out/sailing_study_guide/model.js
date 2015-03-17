@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3053 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-3123 {:elide-asserts false}
 goog.provide('sailing_study_guide.model');
 goog.require('cljs.core');
 goog.require('sailing_study_guide.dispatch');
@@ -104,11 +104,16 @@ cljs.core.swap_BANG_.call(null,sailing_study_guide.model.app_state,cljs.core.ass
 
 return cljs.core.swap_BANG_.call(null,sailing_study_guide.model.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"current-question","current-question",-749753188),(0));
 } else {
-return sailing_study_guide.model.quiz_finished.call(null);
+return sailing_study_guide.dispatch.dispatch_BANG_.call(null,new cljs.core.Keyword(null,"quiz-finished","quiz-finished",-874762382));
 
 }
 }
 });
+sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"quiz-finished","quiz-finished",-874762382),(function (){
+cljs.core.println.call(null,"Quiz fin!");
+
+return sailing_study_guide.dispatch.dispatch_BANG_.call(null,new cljs.core.Keyword(null,"page-finished","page-finished",-1722727657),cljs.core.deref.call(null,sailing_study_guide.model.current_page));
+}));
 sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"start-quiz","start-quiz",-1828957706),(function (quiz_idx){
 if(cljs.core.truth_(quiz_idx)){
 cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_quiz_idx,quiz_idx);
@@ -122,18 +127,14 @@ return cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_page,ne
 return null;
 }
 }));
-sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"answer-chosen","answer-chosen",-703375083),(function (p__24975){
-var map__24976 = p__24975;
-var map__24976__$1 = ((cljs.core.seq_QMARK_.call(null,map__24976))?cljs.core.apply.call(null,cljs.core.hash_map,map__24976):map__24976);
-var answer = cljs.core.get.call(null,map__24976__$1,new cljs.core.Keyword(null,"answer","answer",-742633163));
-var question = cljs.core.get.call(null,map__24976__$1,new cljs.core.Keyword(null,"question","question",-1411720117));
-cljs.core.println.call(null,"Chose",answer,"to",question);
-
+sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"answer-chosen","answer-chosen",-703375083),(function (p__22976){
+var map__22977 = p__22976;
+var map__22977__$1 = ((cljs.core.seq_QMARK_.call(null,map__22977))?cljs.core.apply.call(null,cljs.core.hash_map,map__22977):map__22977);
+var answer = cljs.core.get.call(null,map__22977__$1,new cljs.core.Keyword(null,"answer","answer",-742633163));
+var question = cljs.core.get.call(null,map__22977__$1,new cljs.core.Keyword(null,"question","question",-1411720117));
 sailing_study_guide.model.store_response.call(null,question,answer);
 
 if(cljs.core.truth_(new cljs.core.Keyword(null,"correct","correct",984806334).cljs$core$IFn$_invoke$arity$1(answer))){
-cljs.core.println.call(null,"Chose correctly!");
-
 return sailing_study_guide.model.next_question.call(null);
 } else {
 return null;

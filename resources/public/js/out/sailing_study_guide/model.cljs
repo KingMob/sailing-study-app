@@ -4,8 +4,6 @@
    [sailing-study-guide.quiz :refer [default-quiz]]
    [sailing-study-guide.dispatch :as dispatcher]))
 
-
-
 (defonce app-state
   (atom
    {:current-quiz 0
@@ -106,8 +104,13 @@
      (< curr-sec curr-num-sections) (do
                                       (swap! app-state assoc :current-section curr-sec)
                                       (swap! app-state assoc :current-question 0))
-     :else (quiz-finished);; end of all questions
-     )))
+     :else (dispatcher/dispatch! :quiz-finished))))
+
+(dispatcher/whenever
+ :quiz-finished
+ (fn []
+   (println "Quiz fin!")
+   (dispatcher/dispatch! :page-finished @current-page)))
 
 (dispatcher/whenever
  :start-quiz
@@ -121,8 +124,8 @@
 (dispatcher/whenever
  :answer-chosen
  (fn [{:keys [question answer]}]
-   (println "Chose" answer "to" question)
+   ;; (println "Chose" answer "to" question)
    (store-response question answer)
    (when (:correct answer)
-     (println "Chose correctly!")
+     ;; (println "Chose correctly!")
      (next-question))))

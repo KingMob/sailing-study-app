@@ -17,22 +17,25 @@
   [:div.progress
    [:span.meter {:style {:width (str perc "%")}}]])
 
-(defn hexagon [size color extra-props]
-  (let [basis-size size
-        props (reagent/merge-props {:style {:width basis-size :height basis-size}} extra-props)]
-    [:div.hexagon-wrapper props
-     [:div.hexagon {:style {:background-color color}}]]))
+(defn ring-chart-view [perc]
+  )
 
-(defn adjusted-hexagon [scaling-factor size color]
-  (let [css-size (adjust-css-size * scaling-factor size)
-        css-margin (adjust-css-size * (* .5 (- 1 scaling-factor)) size)]
-    [hexagon css-size color {:style {:margin-left css-margin :margin-top css-margin}}]))
 
-(defn nested-hexagons [num-hexagons size base-color content]
+(defn- hexagon [scale color]
+  (let [hex-coords "0 -125, 108 -62.5, 108 62.5, 0 125, -108 62.5, -108 -62.5"]
+    (fn [scale color]
+      [:polygon {:fill color :points hex-coords :transform (str "scale(" scale ")")}])))
+
+(defn nested-hexagons [num-hexagons separation base-color content]
   {:pre [(< num-hexagons 9)]}
-  (let [hexagon-separation .1 ; i.e., 10%
-        scaling-factors (iterate #(- % hexagon-separation) 1)
+  (let [scaling-factors (iterate #(- % separation) 1)
         colors (cycle ["white" base-color])]
-    [:div.nested-hexagons-wrapper {:style {:width size :height size}}
+    [:div.hexagon-wrapper
      [:div.content content]
-     (take num-hexagons (map adjusted-hexagon scaling-factors (cycle [size]) colors))]))
+     [:svg
+      {:width "100%" :height "100%"
+       :viewBox "-130 -130 260 260"
+       :xmlns "http://www.w3.org/2000/svg"
+       :baseProfile "full"
+       :version "1.1"}
+      (take num-hexagons (map #(vector hexagon %1 %2) scaling-factors colors))]]))

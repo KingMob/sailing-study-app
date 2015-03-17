@@ -37,12 +37,14 @@
           (close! c))))
     c))
 
-(defn dispatch! [tagortags message]
-  (let [tags (if (sequential? tagortags) tagortags [tagortags])]
-    (doseq [tag tags]
-      (go
-       (>! dispatch-chan {:tag tag :message message})
-       (println "Put!")))))
+(defn dispatch!
+  ([tagortags] (dispatch! tagortags nil))
+  ([tagortags message]
+    (let [tags (if (sequential? tagortags) tagortags [tagortags])]
+      (doseq [tag tags]
+        (go
+          (>! dispatch-chan {:tag tag :message message})
+          (println "Put!"))))))
 
 
 ;; Start logger
