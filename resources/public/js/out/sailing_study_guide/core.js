@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3123 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-3148 {:elide-asserts false}
 goog.provide('sailing_study_guide.core');
 goog.require('cljs.core');
 goog.require('reagent.core');
@@ -19,8 +19,8 @@ sailing_study_guide.core.pages = new cljs.core.PersistentArrayMap(null, 4, [new 
 sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"page-finished","page-finished",-1722727657),(function (old_page){
 cljs.core.println.call(null,"Finished with",old_page,"page");
 
-return cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_page,(function (){var G__22766 = (((old_page instanceof cljs.core.Keyword))?old_page.fqn:null);
-switch (G__22766) {
+return cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_page,(function (){var G__29917 = (((old_page instanceof cljs.core.Keyword))?old_page.fqn:null);
+switch (G__29917) {
 case "question":
 return new cljs.core.Keyword(null,"score","score",-1963588780);
 
@@ -39,9 +39,31 @@ throw (new Error([cljs.core.str("No matching clause: "),cljs.core.str(old_page)]
 }
 })());
 }));
-sailing_study_guide.core.page_container = (function sailing_study_guide$core$page_container(page){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.core.pages.call(null,cljs.core.deref.call(null,page))], null)], null);
+/**
+ * @param {...*} var_args
+ */
+sailing_study_guide.core.page_container = (function() { 
+var sailing_study_guide$core$page_container__delegate = function (page,args){
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.page-container","div.page-container",-330719046),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.core.pages.call(null,cljs.core.deref.call(null,page))], null)], null);
+};
+var sailing_study_guide$core$page_container = function (page,var_args){
+var args = null;
+if (arguments.length > 1) {
+var G__29919__i = 0, G__29919__a = new Array(arguments.length -  1);
+while (G__29919__i < G__29919__a.length) {G__29919__a[G__29919__i] = arguments[G__29919__i + 1]; ++G__29919__i;}
+  args = new cljs.core.IndexedSeq(G__29919__a,0);
+} 
+return sailing_study_guide$core$page_container__delegate.call(this,page,args);};
+sailing_study_guide$core$page_container.cljs$lang$maxFixedArity = 1;
+sailing_study_guide$core$page_container.cljs$lang$applyTo = (function (arglist__29920){
+var page = cljs.core.first(arglist__29920);
+var args = cljs.core.rest(arglist__29920);
+return sailing_study_guide$core$page_container__delegate(page,args);
 });
+sailing_study_guide$core$page_container.cljs$core$IFn$_invoke$arity$variadic = sailing_study_guide$core$page_container__delegate;
+return sailing_study_guide$core$page_container;
+})()
+;
 sailing_study_guide.core.init_BANG_ = (function sailing_study_guide$core$init_BANG_(){
 return reagent.core.render_component.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.core.page_container,sailing_study_guide.model.current_page], null),document.body);
 });

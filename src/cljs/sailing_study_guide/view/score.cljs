@@ -7,6 +7,8 @@
 ;   [cljsjs.react :as react]
    ))
 
+
+
 (defn- overall-score []
   [:div.overall-score
    [:div.tab-links
@@ -18,11 +20,13 @@
 
 (defn- nav-buttons []
   [:div.nav-buttons
-   [:button "Start Over"]
-   [:button "Next Quiz"]])
+   [:div ; necess container for grid cell
+    [:button.nav-button "Start Over"]]
+   [:div
+    [:button.nav-button "Next Quiz"]]])
 
 (defn main []
-  [:div
+  [:div.score-container
    [overall-score]
    [section-score]
    [nav-buttons]])

@@ -10,17 +10,17 @@
 
 (defn answer-css-class [status correct]
   (cond
-   (= :unchosen status) "answer-default"
-   correct "answer-correct success"
-   :else "answer-incorrect alert"))
+   (= :unchosen status) "default"
+   correct "correct success"
+   :else "incorrect alert"))
 
 (defn answer-view [quiz-question answer]
   (println "answer-view called")
   (let [status (atom :unchosen)]
     ;; (println "Status: "@status)
     (fn [quiz-question answer]
-      [:div.answer-container
-       [:button
+      [:div.answer-container ; necessary to act as grid cell
+       [:button.answer-button
         {
          :onClick (fn [e]
                     (dispatcher/dispatch! :answer-chosen

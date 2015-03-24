@@ -31,8 +31,9 @@
                :question :score))
    ))
 
-(defn page-container [page]
-  [:div [(pages @page)]])
+(defn page-container [page & args]
+  [:div.page-container
+   [(pages @page)]])
 
 
 (defn init! []

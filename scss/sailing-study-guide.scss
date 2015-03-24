@@ -102,6 +102,40 @@ body {
   background-image: url("../images/BG_Pattern.gif");
 }
 
+.ss-button-section {
+  @include flex(0 0 auto);
+  @include grid;
+
+  &.vertical-2 {
+    // Makes 2 items stack vertically by default
+    &:first-child:nth-last-child(2),
+    &:first-child:nth-last-child(2) ~ .button-container {
+      @include flex-basis(100%);
+    }
+  }
+}
+
+.ss-button {
+  height: 4rem;
+
+  @include button($radius:true, $full-width:true, $bg-hover: $button-bg-hover);
+  @include button-style($bg: $button-default);
+
+  cursor: pointer;
+
+  &.default {
+    color: $app-blue-1;
+  }
+
+  &.correct {
+    @include button-style($bg: $button-correct);
+  }
+
+  &.incorrect {
+    @include button-style($bg: $button-incorrect);
+  }
+}
+
 .splash {
   @include display(flex);
   @include flex-direction(column);
@@ -288,45 +322,44 @@ body {
       @include radial-gradient($app-blue-gradient-1, $app-blue-gradient-2, $fallback: $app-blue-2);
     }
 
+    // The following extend the default button styles
     .answer-section {
+      @extend .ss-button-section;
       @include flex(0 0 auto);
-
-      @include grid;
-
       background-color: $app-blue-1;
-
-      .answer-container {
-        background-color: $body-bg;
-        background-image: none;
-
-        // Makes 2 items stack vertically by default
-        &:first-child:nth-last-child(2),
-        &:first-child:nth-last-child(2) ~ .answer-container {
-          @include flex-basis(100%);
-        }
-      }
-
-      .answer {
-        height: 4rem;
-
-        @include button($radius:true, $full-width:true, $bg-hover: $button-bg-hover);
-        @include button-style($bg: $button-default);
-
-        cursor: pointer;
-
-        &.answer-default {
-          color: $app-blue-1;
-        }
-
-        &.answer-correct {
-          @include button-style($bg: $button-correct);
-        }
-
-        &.answer-incorrect {
-          @include button-style($bg: $button-incorrect);
-        }
-      }
     }
+
+    // .answer-container
+
+    .answer-button {
+      @extend .ss-button;
+    }
+
+
   }
 
+}
+
+.score-container {
+    @include display(flex);
+    @include flex-direction(column);
+
+    .overall-score {
+        @include flex(2 1 auto);
+    }
+
+    .section-score {
+        @include flex(1 1 auto);
+    }
+
+    .nav-buttons {
+        @include flex(0 0 auto);
+
+        @extend .ss-button-section;
+        background-color: $app-blue-1;
+        
+        .nav-button {
+            @extend .ss-button;
+        }
+    }
 }

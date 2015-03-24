@@ -106,6 +106,7 @@
                                       (swap! app-state assoc :current-question 0))
      :else (dispatcher/dispatch! :quiz-finished))))
 
+;;; Model logic
 (dispatcher/whenever
  :quiz-finished
  (fn []
