@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3148 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-3149 {:elide-asserts false}
 goog.provide('sailing_study_guide.view.utils');
 goog.require('cljs.core');
 goog.require('reagent.core');
@@ -7,9 +7,9 @@ sailing_study_guide.view.utils.split_css_size = (function sailing_study_guide$vi
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [parseFloat(clojure.string.replace.call(null,size,/[^0-9.]/,"")),clojure.string.trim.call(null,clojure.string.replace.call(null,size,/[0-9.]/,""))], null);
 });
 sailing_study_guide.view.utils.adjust_css_size = (function sailing_study_guide$view$utils$adjust_css_size(op,factor,size){
-var vec__23057 = sailing_study_guide.view.utils.split_css_size.call(null,size);
-var base_size = cljs.core.nth.call(null,vec__23057,(0),null);
-var units = cljs.core.nth.call(null,vec__23057,(1),null);
+var vec__23060 = sailing_study_guide.view.utils.split_css_size.call(null,size);
+var base_size = cljs.core.nth.call(null,vec__23060,(0),null);
+var units = cljs.core.nth.call(null,vec__23060,(1),null);
 return [cljs.core.str(op.call(null,factor,base_size)),cljs.core.str(units)].join('');
 });
 sailing_study_guide.view.utils.progress_bar_view = (function sailing_study_guide$view$utils$progress_bar_view(perc){
@@ -32,13 +32,13 @@ if((num_hexagons < (9))){
 throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str(cljs.core.pr_str.call(null,cljs.core.list(new cljs.core.Symbol(null,"<","<",993667236,null),new cljs.core.Symbol(null,"num-hexagons","num-hexagons",1130381032,null),(9))))].join('')));
 }
 
-var scaling_factors = cljs.core.iterate.call(null,(function (p1__23058_SHARP_){
-return (p1__23058_SHARP_ - separation);
+var scaling_factors = cljs.core.iterate.call(null,(function (p1__23061_SHARP_){
+return (p1__23061_SHARP_ - separation);
 }),(1));
 var colors = cljs.core.cycle.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["white",base_color], null));
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.hexagon-wrapper","div.hexagon-wrapper",1520782472),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.content","div.content",-298042649),content], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"svg","svg",856789142),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"width","width",-384071477),"100%",new cljs.core.Keyword(null,"height","height",1025178622),"100%",new cljs.core.Keyword(null,"viewBox","viewBox",-469489477),"-130 -130 260 260",new cljs.core.Keyword(null,"xmlns","xmlns",-1862095571),"http://www.w3.org/2000/svg",new cljs.core.Keyword(null,"baseProfile","baseProfile",-448131232),"full",new cljs.core.Keyword(null,"version","version",425292698),"1.1"], null),cljs.core.take.call(null,num_hexagons,cljs.core.map.call(null,((function (scaling_factors,colors){
-return (function (p1__23059_SHARP_,p2__23060_SHARP_){
-return (new cljs.core.PersistentVector(null,3,(5),cljs.core.PersistentVector.EMPTY_NODE,[sailing_study_guide.view.utils.hexagon,p1__23059_SHARP_,p2__23060_SHARP_],null));
+return (function (p1__23062_SHARP_,p2__23063_SHARP_){
+return (new cljs.core.PersistentVector(null,3,(5),cljs.core.PersistentVector.EMPTY_NODE,[sailing_study_guide.view.utils.hexagon,p1__23062_SHARP_,p2__23063_SHARP_],null));
 });})(scaling_factors,colors))
 ,scaling_factors,colors))], null)], null);
 });

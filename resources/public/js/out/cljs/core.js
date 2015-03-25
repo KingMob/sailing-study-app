@@ -1,10 +1,10 @@
-// Compiled by ClojureScript 0.0-3148 {:static-fns true}
+// Compiled by ClojureScript 0.0-3149 {:static-fns true}
 goog.provide('cljs.core');
 goog.require('goog.string.StringBuffer');
 goog.require('goog.array');
 goog.require('goog.object');
 goog.require('goog.string');
-cljs.core._STAR_clojurescript_version_STAR_ = "0.0-3148";
+cljs.core._STAR_clojurescript_version_STAR_ = "0.0-3149";
 cljs.core._STAR_unchecked_if_STAR_ = false;
 /**
  * Var bound to the name value of the compiler build :target option.

@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3148 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-3149 {:elide-asserts false}
 goog.provide('sailing_study_guide.core');
 goog.require('cljs.core');
 goog.require('reagent.core');
@@ -19,8 +19,8 @@ sailing_study_guide.core.pages = new cljs.core.PersistentArrayMap(null, 4, [new 
 sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"page-finished","page-finished",-1722727657),(function (old_page){
 cljs.core.println.call(null,"Finished with",old_page,"page");
 
-return cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_page,(function (){var G__29917 = (((old_page instanceof cljs.core.Keyword))?old_page.fqn:null);
-switch (G__29917) {
+return cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_page,(function (){var G__22824 = (((old_page instanceof cljs.core.Keyword))?old_page.fqn:null);
+switch (G__22824) {
 case "question":
 return new cljs.core.Keyword(null,"score","score",-1963588780);
 
@@ -49,15 +49,15 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 var sailing_study_guide$core$page_container = function (page,var_args){
 var args = null;
 if (arguments.length > 1) {
-var G__29919__i = 0, G__29919__a = new Array(arguments.length -  1);
-while (G__29919__i < G__29919__a.length) {G__29919__a[G__29919__i] = arguments[G__29919__i + 1]; ++G__29919__i;}
-  args = new cljs.core.IndexedSeq(G__29919__a,0);
+var G__22826__i = 0, G__22826__a = new Array(arguments.length -  1);
+while (G__22826__i < G__22826__a.length) {G__22826__a[G__22826__i] = arguments[G__22826__i + 1]; ++G__22826__i;}
+  args = new cljs.core.IndexedSeq(G__22826__a,0);
 } 
 return sailing_study_guide$core$page_container__delegate.call(this,page,args);};
 sailing_study_guide$core$page_container.cljs$lang$maxFixedArity = 1;
-sailing_study_guide$core$page_container.cljs$lang$applyTo = (function (arglist__29920){
-var page = cljs.core.first(arglist__29920);
-var args = cljs.core.rest(arglist__29920);
+sailing_study_guide$core$page_container.cljs$lang$applyTo = (function (arglist__22827){
+var page = cljs.core.first(arglist__22827);
+var args = cljs.core.rest(arglist__22827);
 return sailing_study_guide$core$page_container__delegate(page,args);
 });
 sailing_study_guide$core$page_container.cljs$core$IFn$_invoke$arity$variadic = sailing_study_guide$core$page_container__delegate;

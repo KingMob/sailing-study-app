@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3148 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-3149 {:elide-asserts false}
 goog.provide('sailing_study_guide.view.question');
 goog.require('cljs.core');
 goog.require('reagent.core');
@@ -39,25 +39,25 @@ return cljs.core.reset_BANG_.call(null,status,new cljs.core.Keyword(null,"chosen
 ;})(status))
 });
 sailing_study_guide.view.question.answer_section_view = (function sailing_study_guide$view$question$answer_section_view(quiz_question,answers){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.answer-section","div.answer-section",1749317064),(function (){var iter__18457__auto__ = (function sailing_study_guide$view$question$answer_section_view_$_iter__29891(s__29892){
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.answer-section","div.answer-section",1749317064),(function (){var iter__18458__auto__ = (function sailing_study_guide$view$question$answer_section_view_$_iter__23046(s__23047){
 return (new cljs.core.LazySeq(null,(function (){
-var s__29892__$1 = s__29892;
+var s__23047__$1 = s__23047;
 while(true){
-var temp__4126__auto__ = cljs.core.seq.call(null,s__29892__$1);
+var temp__4126__auto__ = cljs.core.seq.call(null,s__23047__$1);
 if(temp__4126__auto__){
-var s__29892__$2 = temp__4126__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__29892__$2)){
-var c__18455__auto__ = cljs.core.chunk_first.call(null,s__29892__$2);
-var size__18456__auto__ = cljs.core.count.call(null,c__18455__auto__);
-var b__29894 = cljs.core.chunk_buffer.call(null,size__18456__auto__);
-if((function (){var i__29893 = (0);
+var s__23047__$2 = temp__4126__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__23047__$2)){
+var c__18456__auto__ = cljs.core.chunk_first.call(null,s__23047__$2);
+var size__18457__auto__ = cljs.core.count.call(null,c__18456__auto__);
+var b__23049 = cljs.core.chunk_buffer.call(null,size__18457__auto__);
+if((function (){var i__23048 = (0);
 while(true){
-if((i__29893 < size__18456__auto__)){
-var ans = cljs.core._nth.call(null,c__18455__auto__,i__29893);
-cljs.core.chunk_append.call(null,b__29894,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.question.answer_view,quiz_question,ans], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),ans], null)));
+if((i__23048 < size__18457__auto__)){
+var ans = cljs.core._nth.call(null,c__18456__auto__,i__23048);
+cljs.core.chunk_append.call(null,b__23049,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.question.answer_view,quiz_question,ans], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),ans], null)));
 
-var G__29895 = (i__29893 + (1));
-i__29893 = G__29895;
+var G__23050 = (i__23048 + (1));
+i__23048 = G__23050;
 continue;
 } else {
 return true;
@@ -65,13 +65,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__29894),sailing_study_guide$view$question$answer_section_view_$_iter__29891.call(null,cljs.core.chunk_rest.call(null,s__29892__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__23049),sailing_study_guide$view$question$answer_section_view_$_iter__23046.call(null,cljs.core.chunk_rest.call(null,s__23047__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__29894),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__23049),null);
 }
 } else {
-var ans = cljs.core.first.call(null,s__29892__$2);
-return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.question.answer_view,quiz_question,ans], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),ans], null)),sailing_study_guide$view$question$answer_section_view_$_iter__29891.call(null,cljs.core.rest.call(null,s__29892__$2)));
+var ans = cljs.core.first.call(null,s__23047__$2);
+return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [sailing_study_guide.view.question.answer_view,quiz_question,ans], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),ans], null)),sailing_study_guide$view$question$answer_section_view_$_iter__23046.call(null,cljs.core.rest.call(null,s__23047__$2)));
 }
 } else {
 return null;
@@ -80,7 +80,7 @@ break;
 }
 }),null,null));
 });
-return iter__18457__auto__.call(null,answers);
+return iter__18458__auto__.call(null,answers);
 })()], null);
 });
 sailing_study_guide.view.question.question_view = (function sailing_study_guide$view$question$question_view(quiz_question){

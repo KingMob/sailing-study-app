@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3148 {:elide-asserts false}
+// Compiled by ClojureScript 0.0-3149 {:elide-asserts false}
 goog.provide('sailing_study_guide.model');
 goog.require('cljs.core');
 goog.require('sailing_study_guide.dispatch');
@@ -127,11 +127,11 @@ return cljs.core.reset_BANG_.call(null,sailing_study_guide.model.current_page,ne
 return null;
 }
 }));
-sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"answer-chosen","answer-chosen",-703375083),(function (p__29923){
-var map__29924 = p__29923;
-var map__29924__$1 = ((cljs.core.seq_QMARK_.call(null,map__29924))?cljs.core.apply.call(null,cljs.core.hash_map,map__29924):map__29924);
-var answer = cljs.core.get.call(null,map__29924__$1,new cljs.core.Keyword(null,"answer","answer",-742633163));
-var question = cljs.core.get.call(null,map__29924__$1,new cljs.core.Keyword(null,"question","question",-1411720117));
+sailing_study_guide.dispatch.whenever.call(null,new cljs.core.Keyword(null,"answer-chosen","answer-chosen",-703375083),(function (p__23036){
+var map__23037 = p__23036;
+var map__23037__$1 = ((cljs.core.seq_QMARK_.call(null,map__23037))?cljs.core.apply.call(null,cljs.core.hash_map,map__23037):map__23037);
+var answer = cljs.core.get.call(null,map__23037__$1,new cljs.core.Keyword(null,"answer","answer",-742633163));
+var question = cljs.core.get.call(null,map__23037__$1,new cljs.core.Keyword(null,"question","question",-1411720117));
 sailing_study_guide.model.store_response.call(null,question,answer);
 
 if(cljs.core.truth_(new cljs.core.Keyword(null,"correct","correct",984806334).cljs$core$IFn$_invoke$arity$1(answer))){
