@@ -86,6 +86,9 @@
 (defn quiz-id [quiz]
   (str (:name quiz) "-" (:num quiz)))
 
+(defn quiz-key [quiz]
+  (:num quiz))
+
 
 ;;; Quiz navigation
 (defn quiz-finished []
@@ -106,11 +109,12 @@
                                       (swap! app-state assoc :current-question 0))
      :else (dispatcher/dispatch! :quiz-finished))))
 
+
 ;;; Model logic
 (dispatcher/whenever
  :quiz-finished
  (fn []
-   (println "Quiz fin!")
+   (println "Quiz fin! Exeunt stage left.")
    (dispatcher/dispatch! :page-finished @current-page)))
 
 (dispatcher/whenever
