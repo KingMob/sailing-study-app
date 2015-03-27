@@ -3,7 +3,7 @@
   :url "https://github.com/KingMob/sailing-study-app"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-3149"]
+                 [org.clojure/clojurescript "0.0-3165"]
                  [cljsjs/react-with-addons "0.13.1-0"]
                  [reagent "0.5.0" :exclusions [cljsjs/react]]
                  [reagent-forms "0.4.6"]
