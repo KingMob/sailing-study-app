@@ -25,8 +25,8 @@
    [:div
     [:button.nav-button "Next Quiz"]]])
 
-(defn main []
+(defn main [quiz]
   [:div.score-container
-   [overall-score]
+   [overall-score quiz]
    [section-score]
    [nav-buttons]])

@@ -6,7 +6,7 @@
                  [org.clojure/clojurescript "0.0-3165"]
                  [cljsjs/react-with-addons "0.13.1-0"]
                  [reagent "0.5.0" :exclusions [cljsjs/react]]
-                 [reagent-forms "0.4.6"]
+                 [reagent-forms "0.4.7"]
                  [reagent-utils "0.1.4"]
                  ;; [com.cemerick/piggieback "0.1.5"]
                  ;; [weasel "0.6.0"]
